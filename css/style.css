@@ -1,0 +1,194 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+.mainmenu-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 20%;
+    background-color: #98b9f25b;
+}
+
+.main-menu {
+    height: 100%;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.main-menu div {
+    font-size: 1.5rem;
+    color: #141B41;
+    margin: 30px;
+    line-height: 1.5;
+    width: 20%;
+    box-sizing: border-box;
+}
+
+.dropd-content {
+    display: none;
+}
+
+
+.dropd-mitem:hover .dropd-content {
+    display: block;
+    line-height: 1.3;
+}
+
+a {
+    text-decoration: none;
+    color: #141B41;
+}
+
+a:hover {
+    border-bottom: 3px solid #141B41;
+}
+
+.main {
+    color: #141B41;
+    position: absolute;
+    top: 70px;
+    left: 25%;
+    height: 100vh;
+    width: 70%;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
