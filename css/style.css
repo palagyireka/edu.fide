@@ -104,6 +104,9 @@ section {
 
 body {
     line-height: 1;
+    background-color: #EAF8BF;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 ol,
@@ -129,114 +132,125 @@ table {
     border-spacing: 0;
 }
 
-.main-menu-container {
-    margin: 0;
+/* ---------------- FŐMENÜ BEÁLLÍTÁSOK ------------------- */
+
+#mainmenu {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100px;
-    font-size: 26px;
+    height: 160px;
 }
 
-.main-menu {
-    position: relative;
-    width: 74%;
-    height: 100%;
-    margin: 0 13%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #DEE2FF;
-    border-bottom: 3px solid black;
-}
-
-.main-menu li {
-    position: relative;
-    display: inline-block;
-    box-sizing: border-box;
-    padding-top: 50px;
-    text-align: left;
-}
-
-.main-menu li::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    top: 0;
-    left: 0;
-    background-color: #000000;
-    transform-origin: center;
-    transition: transform 0.25s ease-out;
-}
-
-.main-menu li:hover::before {
-    transform: scaleX(1);
-    transform-origin: center;
-}
-
-.main-menu ul {
-    display: none;
-    position: absolute;
-    background-color: #DEE2FF;
-    top: 87px;
-}
-
-.main-menu ul li {
-    padding: 2px;
+#mainmenu div {
     display: block;
-}
-
-
-@keyframes dropdown {
-    from {
-        transform: rotate(90deg);
-    }
-
-    to {
-        transform: rotate(0);
-    }
-}
-
-@keyframes listajovetel {
-    from {
-        top: 65px;
-    }
-
-    to {
-        top: 87px;
-    }
-}
-
-.main-menu li:hover ul {
-    display: inherit;
-    animation-name: listajovetel;
-    animation-duration: 0.3s;
-}
-
-.dropd {
-    transform: rotate(90deg);
-    display: inline-block;
-}
-
-.main-menu li:hover .dropd {
-    animation-name: dropdown;
-    transform-origin: center;
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-direction: alternate;
+    height: 100px;
+    background-color: #5B85AA;
 }
 
 #logo {
-    display: inline-block;
-    margin-top: 20px;
+    margin-top: 18.5px;
+    margin-left: 20vw;
 }
 
-.main {
+h1 {
     position: absolute;
-    top: 130px;
-    left: 13%;
+    top: 27.5px;
+    right: 20vw;
+    font-size: 45px;
+    color: #EAF8BF;
+    font-weight: 400;
+}
+
+.lista-1 {
+    display: flex;
+    justify-content: center;
+    padding: 0 15vw;
+    height: 55px;
+    background-color: #EAF8BF;
+    color: #5B85AA;
+}
+
+.lista-1 li {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 17.5px 2vw;
+    text-align: center;
+}
+
+.lista-1 li:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -2vw;
+    padding: 0;
+    width: 1px;
+    height: 20px;
+    background-color: #5B85AA;
+}
+
+.lista-1 li:first-child:before {
+    content: "";
+    width: 0;
+    height: 0;
+    background-color: none;
+}
+
+
+.lista-2 {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    left: 0;
+    height: 50px;
+    background-color: #5b85aa9e;
+    z-index: -100;
+    color: #EAF8BF;
+}
+
+
+
+@keyframes lista2jovetel {
+    from {
+        top: 100px;
+        z-index: -150;
+    }
+
+    to {
+        top: 155px;
+        z-index: 1;
+    }
+}
+
+.lista-1 li:hover+.lista-2,
+.lista-2:hover {
+    display: flex;
+    justify-content: center;
+    top: 155px;
+    animation-name: lista2jovetel;
+    animation-duration: 0.3s;
+    z-index: 1;
+}
+
+.lista-2 li {
     font-size: 18px;
+    padding: 16px 3vw;
+}
+
+.lista-2 li:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -3vw;
+    padding: 0;
+    width: 1px;
+    height: 18px;
+    background-color: #EAF8BF;
+}
+
+.lista-2 li:first-child:before {
+    content: "";
+    width: 0;
+    height: 0;
+    background-color: none;
 }
