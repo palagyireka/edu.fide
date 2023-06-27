@@ -167,24 +167,30 @@ h1 {
 .lista-1 {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100vw;
-  height: 62px;
+  height: 75px;
   background-color: #eaf8bf;
   color: #5b85aa;
 }
 
 .lista-1 li {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 500;
-  padding: 20.5px 2.5vw;
+  padding: 26.5px 4vw;
   text-align: center;
+  transition: 0.3s;
+}
+
+.lista-1 li:hover {
+  letter-spacing: 2px;
 }
 
 .lista-1 li:before {
   content: "";
   display: inline-block;
   position: relative;
-  left: -2vw;
+  left: -4vw;
   padding: 0;
   width: 2px;
   height: 20px;
@@ -217,7 +223,7 @@ h1 {
   }
 
   to {
-    top: 162px;
+    top: 175px;
     z-index: 1;
   }
 }
@@ -226,7 +232,7 @@ h1 {
 .lista-2:hover {
   display: flex;
   justify-content: center;
-  top: 162px;
+  top: 175px;
   animation-name: lista2jovetel;
   animation-duration: 0.3s;
   z-index: 1;
