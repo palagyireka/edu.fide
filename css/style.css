@@ -79,12 +79,12 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -99,158 +99,158 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
-    background-color: #EAF8BF;
-    color: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1;
+  background-color: #eaf8bf;
+  color: black;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-/* ---------------- FŐMENÜ BEÁLLÍTÁSOK ------------------- */
+/* -------------- FŐMENÜ BEÁLLÍTÁSOK ASZTALRA----------- */
 
 #mainmenu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 160px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 162px;
 }
 
 #mainmenu div {
-    display: block;
-    height: 100px;
-    background-color: #5B85AA;
+  display: block;
+  height: 100px;
+  background-color: #5b85aa;
 }
 
 #logo {
-    margin-top: 18.5px;
-    margin-left: 20vw;
+  margin-top: 18.5px;
+  margin-left: 20vw;
 }
 
 h1 {
-    position: absolute;
-    top: 27.5px;
-    right: 20vw;
-    font-size: 45px;
-    color: #EAF8BF;
-    font-weight: 400;
+  position: absolute;
+  top: 27.5px;
+  right: 20vw;
+  font-size: 45px;
+  color: #eaf8bf;
+  font-weight: 400;
 }
 
+/* ------------ ELSŐ SZINT -------------- */
+
 .lista-1 {
-    display: flex;
-    justify-content: center;
-    padding: 0 15vw;
-    height: 55px;
-    background-color: #EAF8BF;
-    color: #5B85AA;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 62px;
+  background-color: #eaf8bf;
+  color: #5b85aa;
 }
 
 .lista-1 li {
-    font-size: 20px;
-    font-weight: 500;
-    padding: 17.5px 2vw;
-    text-align: center;
+  font-size: 21px;
+  font-weight: 500;
+  padding: 20.5px 2.5vw;
+  text-align: center;
 }
 
 .lista-1 li:before {
-    content: "";
-    display: inline-block;
-    position: relative;
-    left: -2vw;
-    padding: 0;
-    width: 1px;
-    height: 20px;
-    background-color: #5B85AA;
+  content: "";
+  display: inline-block;
+  position: relative;
+  left: -2vw;
+  padding: 0;
+  width: 2px;
+  height: 20px;
+  background-color: #5b85aa;
 }
 
 .lista-1 li:first-child:before {
-    content: "";
-    width: 0;
-    height: 0;
-    background-color: none;
+  content: "";
+  width: 0;
+  height: 0;
+  background-color: none;
 }
 
+/* -------- MÁSODIK SZINT ------------- */
 
 .lista-2 {
-    display: none;
-    position: absolute;
-    width: 100vw;
-    left: 0;
-    height: 50px;
-    background-color: #5b85aa9e;
-    z-index: -100;
-    color: #EAF8BF;
+  display: none;
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  height: 50px;
+  background-color: #5b85aa9e;
+  color: #eaf8bf;
 }
-
-
 
 @keyframes lista2jovetel {
-    from {
-        top: 100px;
-        z-index: -150;
-    }
+  from {
+    top: 100px;
+    z-index: -150;
+  }
 
-    to {
-        top: 155px;
-        z-index: 1;
-    }
+  to {
+    top: 162px;
+    z-index: 1;
+  }
 }
 
-.lista-1 li:hover+.lista-2,
+.lista-1 li:hover + .lista-2,
 .lista-2:hover {
-    display: flex;
-    justify-content: center;
-    top: 155px;
-    animation-name: lista2jovetel;
-    animation-duration: 0.3s;
-    z-index: 1;
+  display: flex;
+  justify-content: center;
+  top: 162px;
+  animation-name: lista2jovetel;
+  animation-duration: 0.3s;
+  z-index: 1;
 }
 
 .lista-2 li {
-    font-size: 18px;
-    padding: 16px 3vw;
+  font-size: 18px;
+  padding: 16px 4vw;
 }
 
 .lista-2 li:before {
-    content: "";
-    display: inline-block;
-    position: relative;
-    left: -3vw;
-    padding: 0;
-    width: 1px;
-    height: 18px;
-    background-color: #EAF8BF;
+  content: "";
+  display: inline-block;
+  position: relative;
+  left: -3vw;
+  padding: 0;
+  width: 2px;
+  height: 18px;
+  background-color: #eaf8bf;
 }
 
 .lista-2 li:first-child:before {
-    content: "";
-    width: 0;
-    height: 0;
-    background-color: none;
+  content: "";
+  width: 0;
+  height: 0;
+  background-color: none;
 }
