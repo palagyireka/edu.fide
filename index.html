@@ -18,48 +18,66 @@
 
   <body>
     <nav id="mainmenu">
-      <div class="logo-container" id="elso">
-        <img src="edulogo.png" alt="CIE" id="logo" />
+      <div class="logo-container">
+        <a href="index.html"><img src="edulogo.png" alt="CIE" id="logo" /></a>
         <h1>Chess in Education Comission</h1>
+        <a href="https://www.fide.com/" target="_blank"
+          ><img src="fide-logo.png" alt="FIDE" id="fidelogo"
+        /></a>
       </div>
-      <ul class="lista-1">
-        <li>CIE</li>
-        <ul class="lista-2">
-          <li>Introduction</li>
-          <li>Commission</li>
-          <li>Research</li>
+      <input
+        class="menu-icon"
+        type="checkbox"
+        id="menu-icon"
+        name="menu-icon"
+      />
+      <label for="menu-icon"></label>
+      <div class="navtarolo">
+        <ul class="lista-1">
+          <li onmouseover="igazitsdBalra()" ontouchstart="fixalj()">CIE</li>
+          <ul class="lista-2">
+            <li>Introduction</li>
+            <li>Commission</li>
+            <li>Research</li>
+          </ul>
+          <li onmouseover="igazitsdBalra()" ontouchstart="fixalj()">
+            Partnerships
+          </li>
+          <ul class="lista-2">
+            <li>Universities</li>
+            <li>CIE Coalition</li>
+            <li>Opening Master</li>
+          </ul>
+          <li onmouseover="egyIgazitas()" ontouchstart="fixalj()">
+            Certification
+          </li>
+          <ul class="lista-2">
+            <li>Schools</li>
+            <li>CIE Programs</li>
+            <li>CIE Courses</li>
+          </ul>
+          <li ontouchstart="fixalj()">EDU Courses</li>
+          <ul class="lista-2">
+            <li>Preparation of Teachers</li>
+            <li>Preparation of Pre-school Techers</li>
+            <li>Lead School Instructors</li>
+            <li>Course Registration</li>
+          </ul>
+          <li onmouseover="igazitsdJobbra()" ontouchstart="fixalj()">
+            Materials
+          </li>
+          <ul class="lista-2">
+            <li>Recommended</li>
+            <li>Download</li>
+          </ul>
+          <li onmouseover="igazitsdJobbra()" ontouchstart="fixalj()">News</li>
+          <ul class="lista-2" id="utolso">
+            <li>CIE News</li>
+            <li>Blog</li>
+            <li>Videos</li>
+          </ul>
         </ul>
-        <li>Partnerships</li>
-        <ul class="lista-2">
-          <li>Universities</li>
-          <li>CIE Coalition</li>
-          <li>Opening Master</li>
-        </ul>
-        <li>Certification</li>
-        <ul class="lista-2">
-          <li>Schools</li>
-          <li>CIE Programs</li>
-          <li>CIE Courses</li>
-        </ul>
-        <li>EDU Courses</li>
-        <ul class="lista-2">
-          <li>Preparation of Teachers</li>
-          <li>Preparation of Pre-school Techers</li>
-          <li>Lead School Instructors</li>
-          <li>Course Registration</li>
-        </ul>
-        <li>Materials</li>
-        <ul class="lista-2">
-          <li>Recommended</li>
-          <li>Download</li>
-        </ul>
-        <li>News</li>
-        <ul class="lista-2" id="utolso">
-          <li>CIE News</li>
-          <li>Blog</li>
-          <li>Videos</li>
-        </ul>
-      </ul>
+      </div>
     </nav>
     <main>
       <p></p>
