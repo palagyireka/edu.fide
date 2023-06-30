@@ -20,13 +20,14 @@ function egyIgazitas() {
   }
 }
 
-function fixalj() {
-  for (let i = 0; i < 6; i++) {
-    lista2Elemek[i].style.display = "flex";
-    lista2Elemek[i].style.top = "0";
-    lista2Elemek[i].style.height = "46vh";
-    lista2Elemek[i].style.width = "35vw";
-    lista2Elemek[i].style.flexWrap = "wrap";
-    lista2Elemek[i].style.flexDirection = "column";
+function fixalj(num) {
+  for (const listaelem of lista2Elemek) {
+    listaelem.stlye.display = "none";
   }
+  lista2Elemek[num].style.display = "flex";
+  lista2Elemek[num].style.top = "0";
+  lista2Elemek[num].style.height = "46vh";
+  lista2Elemek[num].style.width = "35vw";
+  lista2Elemek[num].style.flexWrap = "wrap";
+  lista2Elemek[num].style.flexDirection = "column";
 }
