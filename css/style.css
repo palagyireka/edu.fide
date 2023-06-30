@@ -519,8 +519,7 @@ h1 {
     transition: opacity 350ms ease, transform 250ms ease;
   }
 
-  .lista-2,
-  .lista-2:hover {
+  .lista-2 {
     display: none;
     position: absolute;
     top: 2vh;
@@ -546,5 +545,24 @@ h1 {
   .menu-icon:checked ~ .navtarolo .lista-2 li {
     padding: 15px;
     font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  h1 {
+    top: 45px;
+    font-size: 4vw;
+  }
+}
+
+@media only screen and (max-width: 635px) {
+  h1 {
+    display: none;
+  }
+
+  .lista-1 li:hover + .lista-2,
+  .lista-1 li:hover + .lista-2:hover,
+  .lista-2:hover {
+    display: none;
   }
 }

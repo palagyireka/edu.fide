@@ -1,5 +1,5 @@
 const lista2Elemek = document.getElementsByClassName("lista-2");
-const lista1Elemek = document.getElementsByClassName("lista-1");
+const lista1Elem = document.getElementsByClassName("lista-1");
 
 function igazitsdBalra() {
   lista2Elemek[0].style.justifyContent = "left";
@@ -21,13 +21,24 @@ function egyIgazitas() {
 }
 
 function fixalj(num) {
-  for (const listaelem of lista2Elemek) {
-    listaelem.stlye.display = "none";
+  if (window.innerWidth >= 635) {
+    for (const listaelem of lista2Elemek) {
+      listaelem.stlye.display = "none";
+    }
+    lista2Elemek[num].style.display = "flex";
+    lista2Elemek[num].style.top = "0";
+    lista2Elemek[num].style.height = "46vh";
+    lista2Elemek[num].style.width = "35vw";
+    lista2Elemek[num].style.flexWrap = "wrap";
+    lista2Elemek[num].style.flexDirection = "column";
+  } else {
+    lista1Elem[0].style.display = "none";
+    lista2Elemek[num].style.display = "flex";
+    lista2Elemek[num].style.top = "0";
+    lista2Elemek[num].style.left = "0";
+    lista2Elemek[num].style.height = "46vh";
+    lista2Elemek[num].style.width = "35vw";
+    lista2Elemek[num].style.flexWrap = "wrap";
+    lista2Elemek[num].style.flexDirection = "column";
   }
-  lista2Elemek[num].style.display = "flex";
-  lista2Elemek[num].style.top = "0";
-  lista2Elemek[num].style.height = "46vh";
-  lista2Elemek[num].style.width = "35vw";
-  lista2Elemek[num].style.flexWrap = "wrap";
-  lista2Elemek[num].style.flexDirection = "column";
 }
