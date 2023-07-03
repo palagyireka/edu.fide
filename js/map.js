@@ -2,19 +2,24 @@ const element = document.querySelector("#map");
 const instance = panzoom(element, {
   bounds: true,
   boundsPadding: 0.3,
-  maxZoom: 3,
+  maxZoom: 4,
   minZoom: 1,
 });
 
 // MAP
 
-instance.zoomTo(200, 50, 1.5);
+instance.zoomTo(450, 70, 1.7);
 
 const paths = document.querySelectorAll("#map path");
 
 paths.forEach((item) => {
   item.addEventListener("click", (event) => {
     const selectedCountry = document.querySelector(".selected");
+
+    const searchedCountry = document.querySelector(".selected-country");
+    if (searchedCountry) {
+      searchedCountry.classList.remove("selected-country");
+    }
 
     if (selectedCountry) {
       selectedCountry.classList.remove("selected");
@@ -31,8 +36,9 @@ paths.forEach((item) => {
       }
     }
 
-    const pathBBox = event.target.getBBox();
-    console.log(pathBBox.width, pathBBox.height);
+    // const pathBBox = event.target.getBBox();
+    // console.log(pathBBox.width, pathBBox.height);
+
     const text = document.getElementById("country-name");
     text.classList.add("hidden");
     setTimeout(() => {
@@ -60,8 +66,15 @@ for (let country of countryCodes) {
 const listItems = document.querySelectorAll(".search-countries li");
 
 listItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    listItems.forEach((i) => i.setAttribute("hidden", ""));
+  item.addEventListener("click", (event) => {
+    listItems.forEach((i) => {
+      i.classList.remove("selected-country");
+      if (i === event.target) {
+        i.classList.add("selected-country");
+      } else {
+        i.setAttribute("hidden", "");
+      }
+    });
   });
 });
 
