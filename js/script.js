@@ -1,44 +1,30 @@
 const lista2Elemek = document.getElementsByClassName("lista-2");
-const lista1Elem = document.getElementsByClassName("lista-1");
+const lista1Elem = document.querySelector(".lista-1");
+lista2Elemek[0].style.justifyContent = "left";
+lista2Elemek[1].style.justifyContent = "left";
+lista2Elemek[5].style.justifyContent = "right";
+lista2Elemek[4].style.justifyContent = "right";
 
-function igazitsdBalra() {
-  lista2Elemek[0].style.justifyContent = "left";
-  lista2Elemek[1].style.justifyContent = "left";
+for (let i = 0; i < lista2Elemek.length; i++) {
+  lista2Elemek[i].style.content = `${i}`;
 }
 
-function igazitsdJobbra() {
-  lista2Elemek[5].style.justifyContent = "right";
-  lista2Elemek[4].style.justifyContent = "right";
+if (window.innerWidth >= 1083) {
+  lista2Elemek[2].style.justifyContent = "left";
+  lista2Elemek[2].style.paddingLeft = "19.7vw";
+} else {
+  lista2Elemek[2].style.paddingLeft = "0";
 }
 
-function egyIgazitas() {
-  if (window.innerWidth >= 1083) {
-    lista2Elemek[2].style.justifyContent = "left";
-    lista2Elemek[2].style.paddingLeft = "19.7vw";
-  } else {
-    lista2Elemek[2].style.paddingLeft = "0";
-  }
+const lista1elemek = lista1Elem.querySelectorAll("li");
+for (const elem of lista1elemek) {
+  elem.addEventListener("click", fixalj);
 }
 
-function fixalj(num) {
+function fixalj(evt) {
   if (window.innerWidth >= 635) {
-    for (const listaelem of lista2Elemek) {
-      listaelem.stlye.display = "none";
-    }
-    lista2Elemek[num].style.display = "flex";
-    lista2Elemek[num].style.top = "0";
-    lista2Elemek[num].style.height = "46vh";
-    lista2Elemek[num].style.width = "35vw";
-    lista2Elemek[num].style.flexWrap = "wrap";
-    lista2Elemek[num].style.flexDirection = "column";
+    evt.target.style.visibility = "hidden";
   } else {
-    lista1Elem[0].style.display = "none";
-    lista2Elemek[num].style.display = "flex";
-    lista2Elemek[num].style.top = "0";
-    lista2Elemek[num].style.left = "0";
-    lista2Elemek[num].style.height = "46vh";
-    lista2Elemek[num].style.width = "35vw";
-    lista2Elemek[num].style.flexWrap = "wrap";
-    lista2Elemek[num].style.flexDirection = "column";
+    evt.target.style.visibility = "hidden";
   }
 }
