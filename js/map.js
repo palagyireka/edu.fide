@@ -8,7 +8,11 @@ const instance = panzoom(element, {
 
 // MAP
 
-instance.zoomTo(450, 70, 1.7);
+if (window.innerWidth <= 1117) {
+  instance.zoomTo(180, 70, 1.4);
+} else {
+  instance.zoomTo(350, 70, 1.7);
+}
 
 const paths = document.querySelectorAll("#map path");
 

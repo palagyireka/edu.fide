@@ -1,5 +1,9 @@
 /* MAP */
 
+html {
+  overflow-x: hidden;
+}
+
 #map path {
   fill: #476885;
 
@@ -71,7 +75,7 @@
 }
 
 #map-box {
-  margin-top: 60px;
+  margin-top: 20px;
   overflow: hidden;
   height: 95%;
   width: 95%;
@@ -84,10 +88,11 @@
   color: #476885;
   transition: all ease-in 200ms;
   font-size: 1.4rem;
-  font-style: small-caps;
+  font-style: oblique;
   font-weight: bold;
   margin: 15px 5px;
   text-align: center;
+  height: 30px;
 }
 
 /* searchbar */
@@ -107,6 +112,7 @@
   box-shadow: 0 0 10px 3px rgb(212, 212, 212);
   border-radius: 10px;
   margin-right: 20px;
+  margin-top: 20px;
   padding: 4px 4px 4px 0;
 
   --searchbar-height: 30px;
@@ -165,4 +171,68 @@
 
 .selected-country {
   font-weight: bold;
+}
+
+/* -----------TABLET------------ */
+
+@media screen and (max-width: 1117px) {
+  #map-search-container {
+    flex-direction: column;
+  }
+
+  .search-container {
+    width: 80%;
+    flex: none;
+    height: fit-content;
+    max-height: 150px;
+    margin: auto;
+  }
+
+  .searchbar input {
+    padding-left: 20px;
+  }
+
+  .search-countries li {
+    padding-left: 30px;
+  }
+
+  #container {
+    flex-direction: row;
+    margin-top: 20px;
+  }
+
+  /* -----MENU------ */
+
+  /* -----MAP----- */
+
+  .map-container {
+    height: 500px;
+    width: 70%;
+  }
+
+  #map-box {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #container {
+    flex-direction: column;
+    margin-top: 0;
+  }
+  .text-box-container {
+    width: 90%;
+    flex: none;
+    margin: auto;
+  }
+  .map-container {
+    height: 400px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .map-container {
+    height: 250px;
+  }
 }
