@@ -5,13 +5,15 @@ html {
 }
 
 #map path {
-  fill: #476885;
-
+  fill: #5b85aa;
   stroke-width: 1px;
-  &:hover,
   &.selected {
     fill: #c5725f;
   }
+}
+
+#map path:hover{
+  fill:#91b0b2;
 }
 
 #container {
@@ -54,12 +56,12 @@ html {
   font-weight: normal;
   border: none;
   /* underline */
-  background-image: linear-gradient(#476885, #476885);
+  background-image: linear-gradient(#5b85aa, #5b85aa);
   background-size: 0% 0.1em;
   background-position-y: 100%;
   background-position-x: 0%;
   background-repeat: no-repeat;
-  transition: background-size 0.2s ease-in;
+  transition: background-size 0.3s ease-in;
   &:hover,
   &:focus,
   &:active {
@@ -85,7 +87,7 @@ html {
 }
 
 #country-name {
-  color: #476885;
+  color: #5b85aa;
   transition: all ease-in 200ms;
   font-size: 1.4rem;
   font-style: oblique;

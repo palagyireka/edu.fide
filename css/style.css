@@ -194,31 +194,44 @@ h1 {
   font-size: 22px;
   font-weight: 500;
   padding: 26.5px 4vw;
+  height: 60px;
   text-align: center;
-  transition: 0.3s;
+  background-image: linear-gradient(#5b85aa, #5b85aa);
+  background-size: 0% 0.1em;
+  background-position-y: 50%;
+  background-position-x: 0%;
+  background-repeat: no-repeat;
+  transition: 0.3s ease-in;
+  &:hover,
+  &:focus,
+  &:active {
+    background-size: 100% 0.1em;
+  }
 }
 
-.lista-1 li:hover {
-  letter-spacing: 2px;
+.lista-1 li:last-child {
+  padding: 0;
+  padding-top: 15px;
+  background-image: none;
 }
 
-.lista-1 li:before {
+.lista-1 li:last-child::before {
+  opacity:0;
+}
+
+/* .lista-1 li:before {
   content: "";
   display: inline-block;
   position: relative;
   left: -4vw;
+  bottom:10%;
   padding: 0;
-  width: 2px;
-  height: 20px;
+  width: 5px;
+  height: 5px;
+  border-radius:50%;
   background-color: #5b85aa;
-}
+} */
 
-.lista-1 li:first-child:before {
-  content: "";
-  width: 0;
-  height: 0;
-  background-color: none;
-}
 
 /* -------- MÁSODIK SZINT ------------- */
 
@@ -257,9 +270,23 @@ h1 {
 .lista-2 li {
   font-size: 18px;
   padding: 16px 4vw;
+  background-image: linear-gradient(#ffffff, #ffffff);
+  background-size: 0% 0.1em;
+  background-position-y: 44%;
+  background-position-x: 50%;
+  background-repeat: no-repeat;
+  transition: 0.3s ease-in;
+  &:hover,
+  &:focus,
+  &:active {
+    background-size: 70% 0.1em;
+  }
 }
 
-.lista-2 li:before {
+.lista-2 li:last-child{padding: 16px 4vw;}
+.lista-2 li:last-child:before{opacity:1;}
+
+/* .lista-2 li:before {
   content: "";
   display: inline-block;
   position: relative;
@@ -270,12 +297,13 @@ h1 {
   background-color: white;
 }
 
+
 .lista-2 li:first-child:before {
   content: "";
   width: 0;
   height: 0;
   background-color: none;
-}
+} */
 
 /* -------- TABLET ------------------ */
 
