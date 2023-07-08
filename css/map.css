@@ -4,12 +4,17 @@ html {
   overflow-x: hidden;
 }
 
-#map path {
+#map path, #map circle {
   fill: #5b85aa;
   stroke-width: 1px;
   &.selected {
     fill: #c5725f;
+    opacity: 1;
   }
+}
+
+svg circle {
+  opacity: 0;
 }
 
 #map path:hover{
@@ -110,7 +115,7 @@ html {
 .search-container {
   flex: 0 0 180px;
   width: 200px;
-  height: 100%;
+  height: calc(100% - 50px);
   box-shadow: 0 0 10px 3px rgb(212, 212, 212);
   border-radius: 10px;
   margin-right: 20px;

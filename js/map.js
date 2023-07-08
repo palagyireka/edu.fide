@@ -14,7 +14,7 @@ if (window.innerWidth <= 1117) {
   instance.zoomTo(350, 70, 1.7);
 }
 
-const paths = document.querySelectorAll("#map path");
+const paths = document.querySelectorAll("#map path, #path634");
 
 paths.forEach((item) => {
   item.addEventListener("click", (event) => {
@@ -63,6 +63,7 @@ for (let country of countryCodes) {
 
   listItem.addEventListener("click", () => {
     const item = document.querySelector(`.sm_state_${country["alpha-2"]}`);
+    console.log(item)
     item.dispatchEvent(new Event("click"));
   });
   list.appendChild(listItem);
