@@ -521,7 +521,8 @@ background-image: linear-gradient(#ffffff, #ffffff);
 
   .lista-1 li:hover + .lista-2,
   .lista-1 li:hover + .lista-2:hover,
-  .lista-2:hover {
+  .lista-2:hover,
+  .ontablet2 {
     position: fixed;
     animation:none;
     border-radius: 10px;

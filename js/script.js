@@ -28,11 +28,11 @@ function helyreAllit(){
   }
   for(const elem of lista2listak){
     elem.classList.remove("onmobile2");
+    elem.classList.remove("ontablet2");
   }
 }
 
 function fixalj(evt) {
-  console.log(evt);
   for (const elem of lista1elemek){
     elem.style.textDecoration = "none";
   }
@@ -41,6 +41,7 @@ function fixalj(evt) {
   }
   if ((window.innerWidth <= 1150 || window.screen.width <= 1150) && (window.innerWidth > 450 || window.screen.width > 450)) {
       evt.target.style.textDecoration = "underline";
+      evt.target.nextElementSibling.classList.add("ontablet2");
   }
   if(window.innerWidth <= 450 || window.screen.width <= 450) {
     for(const elem of lista1elemek){
