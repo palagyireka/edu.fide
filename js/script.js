@@ -2,6 +2,7 @@ const lista2listak = document.getElementsByClassName("lista-2");
 const lista2elemek = document.querySelectorAll(".lista-2 > li");
 const lista1 = document.querySelector(".lista-1");
 const lista1elemek = document.querySelectorAll(".lista-1 > li");
+const l2bk = document.querySelectorAll(".l2b");
 lista2listak[0].style.justifyContent = "left";
 lista2listak[1].style.justifyContent = "left";
 lista2listak[5].style.justifyContent = "right";
@@ -11,13 +12,22 @@ for(const elem of lista1elemek){
   elem.addEventListener("click", fixalj);
   elem.addEventListener("touchend", fixalj);
 }
+for(const gomb of l2bk){
+  gomb.addEventListener("click", vissza);
+  gomb.addEventListener("touchend", vissza);
+}
 
 document.querySelector("#menu-icon").addEventListener("click", helyreAllit);
+document.querySelector("#menu-icon").addEventListener("touchend", helyreAllit);
 
 function helyreAllit(){
   lista1.style.left = "0";
   for (const elem of lista1elemek){
     elem.style.textDecoration = "none";
+    elem.style.visibility = "visible";
+  }
+  for(const elem of lista2listak){
+    elem.classList.remove("onmobile2");
   }
 }
 
@@ -26,17 +36,29 @@ function fixalj(evt) {
   for (const elem of lista1elemek){
     elem.style.textDecoration = "none";
   }
-  for(const elem of lista2elemek){
+  for(const elem of lista2listak){
     elem.style.justifyContent = "center";
   }
   if ((window.innerWidth <= 1150 || window.screen.width <= 1150) && (window.innerWidth > 450 || window.screen.width > 450)) {
       evt.target.style.textDecoration = "underline";
   }
   if(window.innerWidth <= 450 || window.screen.width <= 450) {
-    lista1.style.left = "-999px";
-    console.log(evt.target.nextElementSibling);
+    for(const elem of lista1elemek){
+      elem.style.visibility = "hidden";
+    }
     evt.target.nextElementSibling.classList.add("onmobile2");
+    evt.target.nextElementSibling.style.display = "flex";
    }
+}
+
+function vissza(evt){
+  for(const elem of lista2listak){
+    elem.classList.remove("onmobile2");
+    elem.style.display = "none";
+  }
+  for(const elem of lista1elemek){
+    elem.style.visibility = "visible";
+  }
 }
 
 const kereseskep = document.getElementById("kereses");

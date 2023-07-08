@@ -564,10 +564,8 @@ background-image: linear-gradient(#ffffff, #ffffff);
   .lista-1 li:hover + .lista-2,
   .lista-1 li:hover + .lista-2:hover,
   .lista-2:hover,
-  .lista-1 li:active + .lista-2,
-  .lista-1 li:active + .lista-2:active,
-  .lista-2:active,
   .onmobile2 {
+    visibility: visible;
     display: flex;
     padding: 30% 15%;
     top:0;
@@ -584,6 +582,9 @@ background-image: linear-gradient(#ffffff, #ffffff);
   }
 
   .l2b{
-
+    display:block;
+    position:fixed;
+    top:3%;
+    right:15px;
   }
 }
