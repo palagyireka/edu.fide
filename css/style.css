@@ -134,6 +134,10 @@ table {
 
 /* -------------- FŐMENÜ BEÁLLÍTÁSOK ASZTALRA----------- */
 
+.l2b{
+  display:none;
+}
+
 #menu-icon {
   display: none;
   position: fixed;
@@ -199,7 +203,7 @@ h1 {
   background-image: linear-gradient(#5b85aa, #5b85aa);
   background-size: 0% 0.1em;
   background-position-y: 50%;
-  background-position-x: 0%;
+  background-position-x: 50%;
   background-repeat: no-repeat;
   transition: 0.3s ease-in;
   &:hover,
@@ -218,19 +222,6 @@ h1 {
 .lista-1 li:last-child::before {
   opacity:0;
 }
-
-/* .lista-1 li:before {
-  content: "";
-  display: inline-block;
-  position: relative;
-  left: -4vw;
-  bottom:10%;
-  padding: 0;
-  width: 5px;
-  height: 5px;
-  border-radius:50%;
-  background-color: #5b85aa;
-} */
 
 
 /* -------- MÁSODIK SZINT ------------- */
@@ -283,58 +274,49 @@ h1 {
   }
 }
 
-.lista-2 li:last-child{padding: 16px 4vw;}
-.lista-2 li:last-child:before{opacity:1;}
+.lista-2 li:last-child{padding: 16px 4vw;
+background-image: linear-gradient(#ffffff, #ffffff);
+  background-size: 0% 0.1em;
+  background-position-y: 44%;
+  background-position-x: 50%;
+  background-repeat: no-repeat;
+  transition: 0.3s ease-in;
+  &:hover,
+  &:focus,
+  &:active {
+    background-size: 70% 0.1em;
+  }}
 
-/* .lista-2 li:before {
-  content: "";
-  display: inline-block;
-  position: relative;
-  left: -4vw;
-  padding: 0;
-  width: 2px;
-  height: 18px;
-  background-color: white;
-}
 
+/* -------- TABLET ÉS TELEFON ------------------ */
 
-.lista-2 li:first-child:before {
-  content: "";
-  width: 0;
-  height: 0;
-  background-color: none;
-} */
-
-/* -------- TABLET ------------------ */
-
-@media only screen and (max-width: 1300px) {
-  .lista-2 li:hover {
-    letter-spacing: normal;
-  }
-}
 @media only screen and (max-width: 1207px) {
   .lista-2 li {
     padding: 14px 2vw;
   }
-  .lista-2 li:before {
-    left: -2vw;
-  }
-}
-@media only screen and (max-width: 1170px) {
-  .lista-1 li:hover {
-    letter-spacing: normal;
-  }
 }
 
-@media only screen and (max-width: 1117px) {
+@media only screen and (max-width: 1150px) {
+  #mainmenu .logo-container {
+    height: 130px;
+    width: 100%;
+    margin:0;
+    padding:0;
+    border-radius: 0 0 50% 50%;
+  }
+  h1{
+    font-size: 34px;
+    width:60%;
+    left:20%;
+    top: 75px;
+  }
+
+
   #menu-icon {
     display: block;
   }
 
-  #mainmenu .logo-container {
-    height: 15vh;
-  }
-
+  /* Csak a label van formázva, ezért maga a checkbox eltüntetve */
   [type="checkbox"]:checked,
   [type="checkbox"]:not(:checked) {
     position: absolute;
@@ -343,16 +325,26 @@ h1 {
   .menu-icon:checked + label,
   .menu-icon:not(:checked) + label {
     position: fixed;
-    left: 52px;
-    top: 130px;
+    top: 8px;
     display: block;
     width: 40px;
-    height: 40px;
+    height: 35px;
     padding: 0;
     margin: 0;
     cursor: pointer;
     z-index: 10;
+    transition: left 450ms 800ms cubic-bezier(0.23, 1, 0.32, 1),
+    top 450ms 800ms cubic-bezier(0.23, 1, 0.32, 1);
   }
+
+  .menu-icon:not(:checked) + label{
+    left: 47%;
+  }
+  .menu-icon:checked + label{
+    left:15px;
+    top: 3%;
+  }
+
 
   /* -------ALSÓ-FELSŐ VONAL---------- */
 
@@ -361,8 +353,8 @@ h1 {
     position: absolute;
     content: "";
     display: block;
-    width: 40px;
-    height: 30px;
+    width:40px;
+    height: 35px;
     z-index: 20;
     top: 0;
     left: 0;
@@ -374,25 +366,26 @@ h1 {
       background-color 100ms ease,
       transform 100ms cubic-bezier(0.23, 1, 0.32, 1);
   }
+
   /* ---- KÖZÉPSŐ VONAL------ */
   .menu-icon:checked + label:after,
   .menu-icon:not(:checked) + label:after {
     position: absolute;
     content: "";
     display: block;
-    width: 25px;
+    width: 28px;
     height: 3px;
     z-index: 20;
-    top: 17px;
-    right: 7.5px;
+    top: 17.5px;
+    right: 6px;
     background-color: white;
-    margin-top: -1px;
+    margin-top:2px;
     transition: width 50ms 650ms ease, right 50ms 650ms ease,
       margin-top 50ms ease, transform 100ms cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .menu-icon:checked + label:before {
-    top: 17px;
+    top: 17.5px;
     transform: rotate(45deg);
     height: 3px;
     background-color: white;
@@ -416,13 +409,16 @@ h1 {
   /* UJ NAVIGACIO */
 
   .navtarolo {
+    border:3px solid white;
+    border-top:none;
+    box-sizing: border-box;
     position: fixed;
     background-color: #5b85aa;
-    left: 0;
-    top: 90px;
+    top: 0;
+    left:44.5%;
     display: block;
-    width: 130px;
-    height: 100px;
+    width: 80px;
+    height: 65px;
     padding: 0;
     margin: 0;
     z-index: 8;
@@ -430,7 +426,7 @@ h1 {
     border-bottom-right-radius: 30%;
     animation: lebeges 9s linear infinite;
     transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
-      right 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+      left 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
       transform 250ms 1100ms ease,
       width 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
       height 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
@@ -438,31 +434,6 @@ h1 {
   }
 
   @keyframes lebeges {
-    0%,
-    100% {
-      border-radius: 0% 37% 54% 46% / 0% 48% 52% 45%;
-    }
-    14% {
-      border-radius: 0% 60% 54% 46% / 0% 60% 40% 51%;
-    }
-    28% {
-      border-radius: 0% 46% 38% 62% / 0% 70% 30% 51%;
-    }
-    42% {
-      border-radius: 0% 39% 55% 45% / 0% 38% 62% 39%;
-    }
-    56% {
-      border-radius: 0% 39% 67% 33% / 0% 50% 50% 30%;
-    }
-    70% {
-      border-radius: 0% 50% 34% 66% / 0% 68% 32% 44%;
-    }
-    84% {
-      border-radius: 0% 54% 50% 50% / 0% 61% 39% 65%;
-    }
-  }
-
-  @keyframes lebegesny {
     0%,
     100% {
       border-radius: 0% 0% 54% 46% / 0% 0% 52% 45%;
@@ -488,14 +459,15 @@ h1 {
   }
 
   .menu-icon:checked ~ .navtarolo {
-    animation: lebegesny 9s linear infinite;
+    animation: none;
     border-bottom-right-radius: 0;
     background-color: #5b85aa;
-    top: 100px;
+    left:0;
+    top: 0px;
     width: 100vw;
-    height: 86vh;
+    height: 100vh;
     transition: top 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
-      right 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+      left 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
       transform 250ms 700ms ease,
       width 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
       height 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
@@ -504,31 +476,29 @@ h1 {
 
   .navtarolo .lista-1 {
     background-color: #5b85aa;
-    position: relative;
-    top: 80px;
-    left: 20vw;
-    display: flex;
+   opacity: 0;
+   box-sizing: border-box;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 50%;
+    height: 100%;
+    padding: 10% 10%;
     flex-direction: column;
-    justify-content: space-between;
-    height: 50vh;
-    width: 40vw;
-    z-index: 6;
     color: white;
-    transition: background-color 2s;
+    transition:visibility  750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .navtarolo .lista-1 li:before {
-    display: none;
+  .menu-icon:checked ~ .navtarolo .lista-1{
+    opacity: 1;
+    transition:opacity  750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .navtarolo .lista-1 li {
     cursor: pointer;
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: 0;
+    padding: 10px 0;
     text-align: left;
-    font-size: 30px;
+    font-size: 35px;
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
@@ -546,48 +516,74 @@ h1 {
 
   .lista-2 {
     display: none;
-    position: absolute;
-    top: 2vh;
-    left: 28vw;
+
   }
 
   .lista-1 li:hover + .lista-2,
   .lista-1 li:hover + .lista-2:hover,
   .lista-2:hover {
-    display: flex;
-    top: 0;
-    height: 46vh;
-    width: 35vw;
+    position: fixed;
+    animation:none;
+    border-radius: 10px;
+    padding: 50px 3%;
+    box-sizing: border-box;
+    top:25%;
+    left: 60%;
+    width: 30%;
+    height: 50%;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: left;
-    animation: none;
+    justify-content: center;
     background-color: #91b0b26a;
-    padding: 20px 0;
-    border-radius: 10px;
   }
 
   .menu-icon:checked ~ .navtarolo .lista-2 li {
-    padding: 15px;
-    font-size: 25px;
+    padding: 8px 15px;
+    font-size: 28px;
   }
 }
 
-@media only screen and (max-width: 870px) {
-  h1 {
-    top: 45px;
-    font-size: 4vw;
-  }
-}
 
 @media only screen and (max-width: 635px) {
   h1 {
     display: none;
   }
+}
+
+@media only screen and (max-width: 450px) {
+  .navtarolo{
+    left: 42%;
+  }
+  .navtarolo .lista-1{
+    width:100%;
+    padding: 0 15%;
+    padding-top: 20%;
+  }
+  .navtarolo .lista-1 li{font-size:32px;}
 
   .lista-1 li:hover + .lista-2,
   .lista-1 li:hover + .lista-2:hover,
-  .lista-2:hover {
-    display: none;
+  .lista-2:hover,
+  .lista-1 li:active + .lista-2,
+  .lista-1 li:active + .lista-2:active,
+  .lista-2:active,
+  .onmobile2 {
+    display: flex;
+    padding: 30% 15%;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .lista-2 li:hover{
+    background:none;
+  }
+
+  .l2b{
+
   }
 }
