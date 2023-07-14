@@ -1,47 +1,47 @@
 const element = document.querySelector("#map");
-const instance = panzoom(element, {
-  bounds: true,
-  boundsPadding: 0.3,
-  maxZoom: 4,
+var panZoomMap = svgPanZoom(element, {
+  zoomEnabled: true,
+  controlIconsEnabled: true,
+  fit: true,
+  center: true,
   minZoom: 1,
+  maxZoom: 2,
+  zoomScaleSensitivity: 1,
 });
 
 // MAP
 
-if (window.innerWidth <= 1117) {
-  instance.zoomTo(180, 70, 1.4);
-} else {
-  instance.zoomTo(350, 70, 1.7);
-}
+// if (window.innerWidth <= 1117) {
+//   instance.zoomTo(180, 70, 1.4);
+// } else {
+//   instance.zoomTo(350, 70, 1.7);
+// }
 
-const paths = document.querySelectorAll("#map path, #path634");
+const paths = document.querySelectorAll("#map .sm_state");
+const hoverText = document.querySelector("#hover-text");
 
 paths.forEach((item) => {
+  const countryCode = item.classList[1].slice(-2);
+  let country = "";
+
+  for (let i = 0; i < countryCodes.length; i++) {
+    if (countryCodes[i]["alpha-2"] === countryCode) {
+      country = countryCodes[i].name;
+      break;
+    }
+  }
+
   item.addEventListener("click", (event) => {
     const selectedCountry = document.querySelector(".selected");
-
     const searchedCountry = document.querySelector(".selected-country");
-    if (searchedCountry) {
-      searchedCountry.classList.remove("selected-country");
-    }
-
     if (selectedCountry) {
       selectedCountry.classList.remove("selected");
     }
     event.target.classList.add("selected");
 
-    const countryCode = event.target.classList[1].slice(-2);
-    let country = "";
-
-    for (let i = 0; i < countryCodes.length; i++) {
-      if (countryCodes[i]["alpha-2"] === countryCode) {
-        country = countryCodes[i].name;
-        break;
-      }
+    if (searchedCountry) {
+      searchedCountry.classList.remove("selected-country");
     }
-
-    // const pathBBox = event.target.getBBox();
-    // console.log(pathBBox.width, pathBBox.height);
 
     const text = document.getElementById("country-name");
     text.classList.add("hidden");
@@ -52,10 +52,53 @@ paths.forEach((item) => {
       text.classList.remove("hidden");
     }, 200);
   });
+
+  // ------------HOVER------------
+
+  item.addEventListener("mousemove", (event) => {
+    hoverText.querySelector("span").textContent = country;
+    hoverText.classList.remove("hidden");
+    hoverText.style.top = event.clientY + "px";
+    hoverText.style.left = event.clientX + "px";
+  });
+
+  item.addEventListener("mouseleave", () => {
+    hoverText.classList.add("hidden");
+  });
 });
 
 // COUNTRY SEARCH
+
 const list = document.querySelector(".search-countries");
+
+function zoomIn(path) {
+  const selectedCountry = document.querySelector(".selected");
+  const tBBox = path.getBBox();
+  console.log(tBBox);
+  const previousBBox = selectedCountry.getBBox();
+  const xDifference = Math.abs(tBBox.x - previousBBox.x);
+  const yDifference = Math.abs(tBBox.x - previousBBox.x);
+  const tViewport = document.querySelector("g.svg-pan-zoom_viewport");
+
+  if (xDifference > 0 || yDifference > 0) {
+    panZoomMap.reset();
+    tViewport.classList.add("zoom");
+    setTimeout(() => {
+      tViewport.classList.remove("zoom");
+    }, 1000);
+  }
+
+  setTimeout(() => {
+    var tViewport = document.querySelector("g.svg-pan-zoom_viewport");
+    var tMatrix = tViewport.transform.baseVal.getItem(0).matrix;
+    var tPoint = {
+      x: tBBox.x - 750 + tBBox.width / 2,
+      y: tBBox.y - 250 + tBBox.height / 2,
+    };
+
+    panZoomMap.zoomAtPoint(1.5, tPoint);
+  }, 5);
+}
 
 for (let country of countryCodes) {
   const listItem = document.createElement("li");
@@ -63,11 +106,12 @@ for (let country of countryCodes) {
 
   listItem.addEventListener("click", () => {
     const item = document.querySelector(`.sm_state_${country["alpha-2"]}`);
-    console.log(item)
+    zoomIn(item);
     item.dispatchEvent(new Event("click"));
   });
   list.appendChild(listItem);
 }
+
 const listItems = document.querySelectorAll(".search-countries li");
 
 listItems.forEach((item) => {
@@ -84,10 +128,19 @@ listItems.forEach((item) => {
 });
 
 const filter = document.querySelector(".searchbar input");
+const searchIcon = document.querySelector(".bi-search");
+const cancelIcon = document.querySelector(".bi-x");
 
 filter.addEventListener("keyup", (event) => {
   const filterValue = event.target.value.toUpperCase();
-  console.log(filterValue);
+
+  if (filterValue != "") {
+    searchIcon.classList.add("hidden");
+    cancelIcon.classList.remove("hidden");
+  } else {
+    searchIcon.classList.remove("hidden");
+    cancelIcon.classList.add("hidden");
+  }
 
   for (let item of listItems) {
     text = item.innerText.toUpperCase();
@@ -97,4 +150,9 @@ filter.addEventListener("keyup", (event) => {
       item.setAttribute("hidden", "");
     }
   }
+});
+
+cancelIcon.addEventListener("click", () => {
+  filter.value = "";
+  filter.dispatchEvent(new Event("keyup"));
 });

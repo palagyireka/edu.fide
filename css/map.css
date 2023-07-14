@@ -4,7 +4,8 @@ html {
   overflow-x: hidden;
 }
 
-#map path, #map circle {
+#map path,
+#map circle {
   fill: #5b85aa;
   stroke-width: 1px;
   &.selected {
@@ -13,12 +14,20 @@ html {
   }
 }
 
+#map {
+  height: 600px;
+}
+
+.svg-pan-zoom_viewport.zoom {
+  transition: transform 0.3s;
+}
+
 svg circle {
   opacity: 0;
 }
 
-#map path:hover{
-  fill:#91b0b2;
+#map path:hover {
+  fill: #91b0b2;
 }
 
 #container {
@@ -102,6 +111,25 @@ svg circle {
   height: 30px;
 }
 
+#hover-text {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#hover-text span {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: #91b0b2b9;
+
+  border-radius: 5px;
+  padding: 3px;
+  font-size: small;
+  font-weight: bold;
+  color: rgb(82, 82, 82);
+}
+
 /* searchbar */
 
 #map-search-container {
@@ -155,6 +183,14 @@ svg circle {
 
 .bi {
   color: rgb(51, 51, 51);
+  position: absolute;
+  transition: all linear 200ms;
+  &:first-of-type {
+    z-index: 1;
+  }
+  &:nth-of-type(2) {
+    cursor: pointer;
+  }
 }
 
 .search-countries {
