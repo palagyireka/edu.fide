@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap");
 html,
 body,
 div,
@@ -106,7 +107,7 @@ body {
   line-height: 1;
   background-color: white;
   color: black;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Raleway", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 ol,
@@ -153,7 +154,7 @@ table {
 
 #mainmenu {
   width: 100vw;
-  height: 175px;
+  height: 25vh;
   padding: 0;
 }
 
@@ -161,7 +162,7 @@ table {
   display: block;
   width: 100vw;
   padding: 0;
-  height: 100px;
+  height: 15vh;
   background-color: #5b85aa;
 }
 
@@ -192,7 +193,7 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   width: 100vw;
-  height: 75px;
+  height: 10vh;
   background-color: white;
   color: #5b85aa;
 }
@@ -200,8 +201,8 @@ h1 {
 .lista-1 li {
   font-size: 22px;
   font-weight: 500;
-  padding: 26.5px 4vw;
-  height: 60px;
+  padding: 24.5px 4vw;
+  height: 8vh;
   text-align: center;
   background-image: linear-gradient(#5b85aa, #5b85aa);
   background-size: 0% 0.1em;
@@ -233,19 +234,19 @@ h1 {
   position: absolute;
   width: 100vw;
   left: 0;
-  height: 50px;
+  height: 7vh;
   background-color: #91b0b2;
   color: white;
 }
 
 @keyframes lista2jovetel {
   from {
-    top: 100px;
+    top: 15vh;
     z-index: -150;
   }
 
   to {
-    top: 175px;
+    top: 25vh;
     z-index: 1;
   }
 }
@@ -254,7 +255,7 @@ h1 {
 .lista-2:hover {
   display: flex;
   justify-content: center;
-  top: 175px;
+  top: 25vh;
   animation-name: lista2jovetel;
   animation-duration: 0.3s;
   z-index: 1;

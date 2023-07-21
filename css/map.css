@@ -15,7 +15,7 @@ html {
 }
 
 #map {
-  height: 600px;
+  height: 68vh;
 }
 
 .svg-pan-zoom_viewport.zoom {
@@ -39,9 +39,7 @@ svg circle {
 }
 .text-box-container {
   flex: 0 0 240px;
-}
-.text-box {
-  margin: 0 50px;
+  margin-top: 5px;
 }
 
 .hidden {
@@ -91,7 +89,7 @@ svg circle {
 }
 
 #map-box {
-  margin-top: 20px;
+  margin-top: 0;
   overflow: hidden;
   height: 95%;
   width: 95%;
@@ -101,14 +99,54 @@ svg circle {
 }
 
 #country-name {
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  margin-top: 12px;
+  margin-left: 15px;
+  appearance: unset;
+  width: 20px;
+  height: 20px;
+}
+
+#country-name::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  transition: all ease-in 200ms;
+  background-image: url("dropd.png");
+}
+
+#country-name:checked::before {
+  transform: rotate(90deg);
+}
+
+#country-name ~ label {
+  cursor: pointer;
   color: #5b85aa;
   transition: all ease-in 200ms;
-  font-size: 1.4rem;
+  font-size: 24px;
   font-style: oblique;
   font-weight: bold;
   margin: 15px 5px;
-  text-align: center;
-  height: 30px;
+  display: inline-block;
+  width: 200px;
+  text-align: left;
+  height: 25px;
+}
+.text-box {
+  margin: 0 50px;
+}
+
+#country-name:not(:checked) ~ label ~ .text-box {
+  visibility: hidden;
+}
+
+#country-name:checked ~ label ~ .text-box {
+  visibility: visible;
 }
 
 #hover-text {
@@ -133,21 +171,21 @@ svg circle {
 /* searchbar */
 
 #map-search-container {
-  margin-top: 60px;
+  margin-top: 7vh;
   display: flex;
   flex-direction: row-reverse;
-  height: 600px;
+  height: 68vh;
   width: 100%;
 }
 
 .search-container {
   flex: 0 0 180px;
   width: 200px;
-  height: calc(100% - 50px);
+  height: 22vh;
   box-shadow: 0 0 10px 3px rgb(212, 212, 212);
   border-radius: 10px;
   margin-right: 20px;
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 4px 4px 4px 0;
 
   --searchbar-height: 30px;
@@ -241,7 +279,7 @@ svg circle {
 
   #container {
     flex-direction: row;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   /* -----MENU------ */

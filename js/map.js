@@ -34,6 +34,7 @@ paths.forEach((item) => {
   item.addEventListener("click", (event) => {
     const selectedCountry = document.querySelector(".selected");
     const searchedCountry = document.querySelector(".selected-country");
+    document.getElementById("country-name").checked = false;
     if (selectedCountry) {
       selectedCountry.classList.remove("selected");
     }
@@ -43,7 +44,7 @@ paths.forEach((item) => {
       searchedCountry.classList.remove("selected-country");
     }
 
-    const text = document.getElementById("country-name");
+    const text = document.querySelector("#country-name ~ label");
     text.classList.add("hidden");
     setTimeout(() => {
       text.innerText = country;
