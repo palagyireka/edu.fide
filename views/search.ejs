@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+<main id="searchpm">
+  <form action="" id="searchbar">
+    <span id="keresotarto">
+      <input type="text" placeholder="Search" name="search" id="search" />
+    </span>
+    <label for="search">
+      <button type="submit">
+        <img src="css/searchbtn.png" alt="" />
+      </button>
+    </label>
+  </form>
+  <div id="searchtitles">
+    <h2>Filters</h2>
+    <h2>Search results</h2>
+  </div>
+  <div id="sfr-container">
+    <div id="searchfilters">
+      <label for="searchable-items">Please choose a searchable item:</label>
+      <select name="searchable-items" id="searchable-items">
+        <option value="">Click for searchable items:</option>
+        <option value="schools">Schools</option>
+        <option value="courses">FIDE Courses</option>
+        <option value="all">All</option>
+      </select>
+      <label for="orszag-search">Country:</label>
+      <select name="orszag-search" id="orszag-search"></select>
+      <label for="searchdate">Date:</label>
+      <input type="datetime-local" name="searchdate" id="searchdate" />
+    </div>
+    <div id="searchresults"></div>
+  </div>
+</main>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIDE EDU DEMO</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/socmed.css" />
+    <link rel="stylesheet" href="css/search.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 11:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+  </head>
+  <body>
+    <%- include('../partials/navbar') %> <%- body %>
+    <script src="js/svg-pan-zoom.js"></script>
+    <script src="https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js"></script>
+    <script src="js/orszagkodok.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
