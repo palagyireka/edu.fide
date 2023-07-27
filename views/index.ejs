@@ -1,38 +1,57 @@
 <% layout('layouts/boilerplate') %> <%- include('partials/socmed') %>
 
 <main>
+  <div class="gtranslate_wrapper"></div>
+  <script>
+    window.gtranslateSettings = {
+      default_language: "en",
+      native_language_names: true,
+      languages: ["en", "fr", "de", "it", "es", "zh-CN", "ru"],
+      wrapper_selector: ".gtranslate_wrapper",
+      switcher_horizontal_position: "right",
+      switcher_vertical_position: "top",
+    };
+  </script>
+  <div id="fblog">
+    <p>Blog</p>
+  </div>
   <div id="map-search-container">
-    <div class="search-container">
-      <div class="searchbar">
-        <input placeholder="Search..." type="text" />
-        <div class="search-symbol">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="12"
-            fill="currentColor"
-            class="bi bi-search"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-            />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="bi bi-x hidden"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-            />
-          </svg>
+    <div id="search-and-featured">
+      <div class="search-container">
+        <div class="searchbar">
+          <input placeholder="Search..." type="text" />
+          <div class="search-symbol">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-x hidden"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+              />
+            </svg>
+          </div>
         </div>
+        <ul class="search-countries"></ul>
       </div>
-      <ul class="search-countries"></ul>
+      <div id="featured">
+        <p>Featured</p>
+      </div>
     </div>
     <div id="container">
       <div class="text-box-container">
@@ -46,13 +65,6 @@
               <ul>
                 <li>SI title holders</li>
                 <li>LSI title holders</li>
-              </ul>
-            </li>
-            <li>
-              Schools
-              <ul>
-                <li>Certified Schools</li>
-                <li>Certified CIE programs</li>
               </ul>
             </li>
             <li>

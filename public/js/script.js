@@ -108,8 +108,9 @@ if (window.innerWidth <= 1150 || window.screen.width <= 1150) {
 
 // Kereső oldal js
 
-document.querySelector("#search").addEventListener("click", nojjMeg);
-document.querySelector("#search").addEventListener("focusout", menjOssze);
+const keresoSav = document.querySelector("#search");
+keresoSav.addEventListener("click", nojjMeg);
+keresoSav.addEventListener("focusout", menjOssze);
 function nojjMeg(evt) {
   evt.target.parentElement.style.width = "45%";
 }

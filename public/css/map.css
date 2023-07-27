@@ -40,6 +40,7 @@ svg circle {
 .text-box-container {
   flex: 0 0 240px;
   margin-top: 5px;
+  height: 65vh;
 }
 
 .hidden {
@@ -49,7 +50,7 @@ svg circle {
 
 .country-menu li {
   color: rgb(82, 82, 82);
-  padding: 15px 10px;
+  padding: 7px 8px;
   font-weight: bold;
   border: 1px solid rgb(219, 219, 219);
   border-width: 2px 0px;
@@ -92,7 +93,7 @@ svg circle {
   margin-top: 0;
   overflow: hidden;
   height: 95%;
-  width: 95%;
+  width: 99%;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -128,7 +129,7 @@ svg circle {
   cursor: pointer;
   color: #5b85aa;
   transition: all ease-in 200ms;
-  font-size: 24px;
+  font-size: 20px;
   font-style: oblique;
   font-weight: bold;
   margin: 15px 5px;
@@ -138,15 +139,33 @@ svg circle {
   height: 25px;
 }
 .text-box {
-  margin: 0 50px;
+  padding: 0 50px;
+  background-color: white;
+  height: 65vh;
+  opacity: 0;
+  animation-name: cmenu;
+  animation-duration: 0.5s;
 }
 
 #country-name:not(:checked) ~ label ~ .text-box {
-  visibility: hidden;
+  opacity: 0;
+  height: 0;
 }
 
 #country-name:checked ~ label ~ .text-box {
-  visibility: visible;
+  opacity: 1;
+  height: 56vh;
+}
+
+@keyframes cmenu {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 65vh;
+    opacity: 1;
+  }
 }
 
 #hover-text {
@@ -159,7 +178,7 @@ svg circle {
   position: absolute;
   left: 20px;
   top: 20px;
-  background-color: #91b0b2b9;
+  background-color: rgb(206, 206, 206) b9;
 
   border-radius: 5px;
   padding: 3px;
@@ -178,16 +197,51 @@ svg circle {
   width: 100%;
 }
 
-.search-container {
+#search-and-featured {
+  display: flex;
+  flex-direction: column;
   flex: 0 0 180px;
+  height: 68vh;
+}
+#featured {
+  height: 38vh;
+  box-sizing: border-box;
   width: 200px;
+  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 4px 4px 4px 0;
+}
+#featured p,
+#fblog p {
+  margin: 5px 15px;
+}
+
+#fblog {
+  position: fixed;
+  left: 0;
+  top: 46vh;
+  height: 50vh;
+  width: 250px;
+  box-sizing: border-box;
+  width: 200px;
+  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
+  border-radius: 10px;
+  margin-left: 10px;
+  padding: 4px 4px 4px 0;
+  z-index: -1;
+}
+
+.search-container {
+  box-sizing: border-box;
   height: 22vh;
-  box-shadow: 0 0 10px 3px rgb(212, 212, 212);
+  width: 200px;
+  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
   border-radius: 10px;
   margin-right: 20px;
   margin-top: 15px;
   padding: 4px 4px 4px 0;
-
   --searchbar-height: 30px;
 }
 
@@ -266,7 +320,7 @@ svg circle {
     flex: none;
     height: fit-content;
     max-height: 150px;
-    margin: auto;
+    margin: 0;
   }
 
   .searchbar input {
@@ -292,7 +346,7 @@ svg circle {
   }
 
   #map-box {
-    margin: auto;
+    margin: 0;
   }
 }
 
@@ -302,9 +356,9 @@ svg circle {
     margin-top: 0;
   }
   .text-box-container {
-    width: 90%;
+    width: 100%;
     flex: none;
-    margin: auto;
+    margin: 0;
   }
   .map-container {
     height: 400px;

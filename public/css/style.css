@@ -186,6 +186,11 @@ h1 {
   right: 20px;
 }
 
+.gt_switcher_wrapper,
+.gtranslate_wrapper {
+  right: 300px;
+}
+
 /* ------------ ELSŐ SZINT -------------- */
 
 .lista-1 {
@@ -315,16 +320,14 @@ h1 {
     top: 75px;
   }
 
+  /* Csak a label van formázva, ezért maga a checkbox eltüntetve */
+
   #menu-icon {
     display: block;
-  }
-
-  /* Csak a label van formázva, ezért maga a checkbox eltüntetve */
-  [type="checkbox"]:checked,
-  [type="checkbox"]:not(:checked) {
     position: absolute;
     left: -9999px;
   }
+
   .menu-icon:checked + label,
   .menu-icon:not(:checked) + label {
     position: fixed;
