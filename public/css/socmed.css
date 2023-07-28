@@ -122,3 +122,9 @@
 #socmed-btn:checked ~ label #socmedbar .socmed-list {
   display: inline-block;
 }
+
+@media only screen and (max-width: 1150px) {
+  #socmed-container {
+    right: 5%;
+  }
+}

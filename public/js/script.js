@@ -8,6 +8,11 @@ lista2listak[1].style.justifyContent = "left";
 lista2listak[5].style.justifyContent = "right";
 lista2listak[4].style.justifyContent = "right";
 
+const noTrans = document.querySelector(".gt_switcher.notranslate");
+if (window.innerWidth <= 610 || window.screen.width <= 610) {
+  noTrans.style.borderRadius = "10px";
+}
+
 for (const elem of lista1elemek) {
   elem.addEventListener("click", fixalj);
   elem.addEventListener("touchend", fixalj);
@@ -30,17 +35,19 @@ function atallit() {
       elem.classList.remove("ontablet2");
       elem.style.display = "none";
     }
+    noTrans.style.borderTopLeftRadius = "0";
+    noTrans.style.borderTopRightRadius = "0";
   }
   if (
     (window.innerWidth <= 1150 || window.screen.width <= 1150) &&
-    (window.innerWidth > 850 || window.screen.width > 850) &&
+    (window.innerWidth > 810 || window.screen.width > 810) &&
     document.getElementById("menu-icon").checked
   ) {
     for (const elem of lista1elemek) {
       elem.style.visibility = "visible";
     }
   }
-  if (window.innerWidth <= 850 || window.screen.width <= 850) {
+  if (window.innerWidth <= 810 || window.screen.width <= 810) {
     for (const elem of lista1elemek) {
       elem.style.visibility = "hidden";
       elem.style.textDecoration = "none";

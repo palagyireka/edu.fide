@@ -88,7 +88,6 @@ video {
   vertical-align: baseline;
 }
 
-/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,
@@ -102,6 +101,8 @@ nav,
 section {
   display: block;
 }
+
+/* HTML5 display-role reset for older browsers */
 
 body {
   line-height: 1;
@@ -149,7 +150,7 @@ table {
   padding: 0;
   margin: 0;
   cursor: pointer;
-  z-index: 10;
+  z-index: 24;
 }
 
 #mainmenu {
@@ -183,12 +184,7 @@ h1 {
 #fidelogo {
   position: absolute;
   top: 18.5px;
-  right: 20px;
-}
-
-.gt_switcher_wrapper,
-.gtranslate_wrapper {
-  right: 300px;
+  right: 235px;
 }
 
 /* ------------ ELSŐ SZINT -------------- */
@@ -294,319 +290,5 @@ h1 {
   &:focus,
   &:active {
     background-size: 70% 0.1em;
-  }
-}
-
-/* -------- TABLET ÉS TELEFON ------------------ */
-
-@media only screen and (max-width: 1207px) {
-  .lista-2 li {
-    padding: 14px 2vw;
-  }
-}
-
-@media only screen and (max-width: 1150px) {
-  #mainmenu .logo-container {
-    height: 130px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-radius: 0 0 50% 50%;
-  }
-  h1 {
-    font-size: 34px;
-    width: 60%;
-    left: 20%;
-    top: 75px;
-  }
-
-  /* Csak a label van formázva, ezért maga a checkbox eltüntetve */
-
-  #menu-icon {
-    display: block;
-    position: absolute;
-    left: -9999px;
-  }
-
-  .menu-icon:checked + label,
-  .menu-icon:not(:checked) + label {
-    position: fixed;
-    top: 8px;
-    display: block;
-    width: 40px;
-    height: 35px;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    z-index: 10;
-    transition: left 450ms 800ms cubic-bezier(0.23, 1, 0.32, 1),
-      top 450ms 800ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .menu-icon:not(:checked) + label {
-    left: 47%;
-  }
-  .menu-icon:checked + label {
-    left: 15px;
-    top: 3%;
-  }
-
-  /* -------ALSÓ-FELSŐ VONAL---------- */
-
-  .menu-icon:checked + label:before,
-  .menu-icon:not(:checked) + label:before {
-    position: absolute;
-    content: "";
-    display: block;
-    width: 40px;
-    height: 35px;
-    z-index: 20;
-    top: 0;
-    left: 0;
-    border-top: 3px solid white;
-    border-bottom: 3px solid white;
-    transition: border-width 50ms 750ms ease,
-      top 50ms 800ms cubic-bezier(0.23, 1, 0.32, 1),
-      height 50ms 800ms cubic-bezier(0.23, 1, 0.32, 1),
-      background-color 100ms ease,
-      transform 100ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  /* ---- KÖZÉPSŐ VONAL------ */
-  .menu-icon:checked + label:after,
-  .menu-icon:not(:checked) + label:after {
-    position: absolute;
-    content: "";
-    display: block;
-    width: 28px;
-    height: 3px;
-    z-index: 20;
-    top: 17.5px;
-    right: 6px;
-    background-color: white;
-    margin-top: 2px;
-    transition: width 50ms 650ms ease, right 50ms 650ms ease,
-      margin-top 50ms ease, transform 100ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .menu-icon:checked + label:before {
-    top: 17.5px;
-    transform: rotate(45deg);
-    height: 3px;
-    background-color: white;
-    border-width: 0;
-    transition: border-width 50ms 340ms ease,
-      top 50ms 150ms cubic-bezier(0.23, 1, 0.32, 1),
-      height 50ms 150ms cubic-bezier(0.23, 1, 0.32, 1),
-      background-color 100ms 250ms ease,
-      transform 100ms 550ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  .menu-icon:checked + label:after {
-    width: 40px;
-    margin-top: 0;
-    background-color: white;
-    right: 0;
-    transform: rotate(-45deg);
-    transition: width 50ms ease, right 50ms ease, margin-top 50ms 250ms ease,
-      transform 100ms 550ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  /* UJ NAVIGACIO */
-
-  .navtarolo {
-    border: 3px solid white;
-    border-top: none;
-    box-sizing: border-box;
-    position: fixed;
-    background-color: #5b85aa;
-    top: 0;
-    left: 44.5%;
-    display: block;
-    width: 80px;
-    height: 65px;
-    padding: 0;
-    margin: 0;
-    z-index: 8;
-    overflow: hidden;
-    border-bottom-right-radius: 30%;
-    animation: lebeges 9s linear infinite;
-    transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
-      left 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
-      transform 250ms 1100ms ease,
-      width 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
-      height 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
-      border-bottom-right-radius 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  @keyframes lebeges {
-    0%,
-    100% {
-      border-radius: 0% 0% 54% 46% / 0% 0% 52% 45%;
-    }
-    14% {
-      border-radius: 0% 0% 54% 46% / 0% 0% 40% 51%;
-    }
-    28% {
-      border-radius: 0% 0% 38% 62% / 0% 0% 30% 51%;
-    }
-    42% {
-      border-radius: 0% 0% 55% 45% / 0% 0% 62% 39%;
-    }
-    56% {
-      border-radius: 0% 0% 67% 33% / 0% 0% 50% 30%;
-    }
-    70% {
-      border-radius: 0% 0% 34% 66% / 0% 0% 32% 44%;
-    }
-    84% {
-      border-radius: 0% 0% 50% 50% / 0% 0% 39% 65%;
-    }
-  }
-
-  .menu-icon:checked ~ .navtarolo {
-    animation: none;
-    border-bottom-right-radius: 0;
-    background-color: #5b85aa;
-    left: 0;
-    top: 0px;
-    width: 100vw;
-    height: 100vh;
-    transition: top 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
-      left 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
-      transform 250ms 700ms ease,
-      width 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
-      height 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
-      border-radius 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .navtarolo .lista-1 {
-    background-color: #5b85aa;
-    opacity: 0;
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    padding: 8% 10%;
-    flex-direction: column;
-    color: white;
-    transition: visibility 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .menu-icon:checked ~ .navtarolo .lista-1 {
-    opacity: 1;
-    transition: opacity 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .navtarolo .lista-1 li {
-    cursor: pointer;
-    padding: 10px 0;
-    text-align: left;
-    font-size: 35px;
-    pointer-events: none;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(30px);
-    transition: all 250ms linear;
-    background: none;
-  }
-
-  .menu-icon:checked ~ .navtarolo .lista-1 li {
-    pointer-events: auto;
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 350ms ease, transform 250ms ease;
-  }
-
-  .lista-2 {
-    display: none;
-  }
-
-  .lista-1 li:hover + .lista-2,
-  .lista-1 li:hover + .lista-2:hover,
-  .lista-2:hover,
-  .ontablet2 {
-    position: fixed;
-    animation: none;
-    border-radius: 10px;
-    padding: 50px 3%;
-    box-sizing: border-box;
-    top: 15%;
-    left: 60%;
-    width: 30%;
-    height: 70%;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #91b0b26a;
-  }
-
-  .menu-icon:checked ~ .navtarolo .lista-2 li {
-    padding: 8px 15px;
-    font-size: 28px;
-  }
-}
-
-@media only screen and (max-width: 850px) {
-  .navtarolo {
-    left: 44.5%;
-  }
-  .navtarolo .lista-1 {
-    width: 100%;
-    padding: 0 15%;
-    padding-top: 20%;
-  }
-  .navtarolo .lista-1 li {
-    font-size: 32px;
-  }
-
-  .lista-1 li:hover + .lista-2,
-  .lista-1 li:hover + .lista-2:hover,
-  .lista-2:hover,
-  .onmobile2 {
-    visibility: visible;
-    display: flex;
-    padding: 20% 15%;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .lista-2 li:hover {
-    background: none;
-  }
-
-  .l2b {
-    display: block;
-    position: fixed;
-    top: 3%;
-    right: 15px;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  h1 {
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 4vw;
-  }
-  .navtarolo {
-    left: 44%;
-  }
-}
-
-@media only screen and (max-width: 615px) {
-  h1 {
-    display: none;
-  }
-  .navtarolo {
-    left: 42%;
   }
 }

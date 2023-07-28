@@ -31,7 +31,10 @@ paths.forEach((item) => {
     }
   }
 
-  item.addEventListener("click", (event) => {
+  item.addEventListener("click", orszagValaszt);
+  item.addEventListener("touchstart", orszagValaszt);
+
+  function orszagValaszt(evt) {
     const selectedCountry = document.querySelector(".selected");
     const searchedCountry = document.querySelector(".selected-country");
     document.getElementById("country-name").checked = false;
@@ -52,7 +55,7 @@ paths.forEach((item) => {
     setTimeout(() => {
       text.classList.remove("hidden");
     }, 200);
-  });
+  }
 
   // ------------HOVER------------
 

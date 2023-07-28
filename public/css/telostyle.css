@@ -1,0 +1,64 @@
+@media only screen and (max-width: 810px) {
+  .navtarolo {
+    left: 44.2%;
+  }
+  .navtarolo .lista-1 {
+    width: 100%;
+    padding: 0 15%;
+    padding-top: 20%;
+  }
+  .navtarolo .lista-1 li {
+    font-size: 32px;
+  }
+
+  .lista-1 li:hover + .lista-2,
+  .lista-1 li:hover + .lista-2:hover,
+  .lista-2:hover,
+  .onmobile2 {
+    visibility: visible;
+    display: flex;
+    padding: 20% 15%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .lista-2 li:hover {
+    background: none;
+  }
+
+  .l2b {
+    display: block;
+    position: fixed;
+    top: 3%;
+    right: 15px;
+  }
+
+  h1 {
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 3vw;
+  }
+
+  #map {
+    height: 400px;
+  }
+
+  #map-container {
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 615px) {
+  h1 {
+    display: none;
+  }
+  .navtarolo {
+    left: 42%;
+  }
+}

@@ -141,7 +141,7 @@ svg circle {
 .text-box {
   padding: 0 50px;
   background-color: white;
-  height: 65vh;
+  height: 56vh;
   opacity: 0;
   animation-name: cmenu;
   animation-duration: 0.5s;
@@ -179,12 +179,13 @@ svg circle {
   left: 20px;
   top: 20px;
   background-color: rgb(206, 206, 206) b9;
-
   border-radius: 5px;
   padding: 3px;
+  width: auto;
+  height: auto;
   font-size: small;
   font-weight: bold;
-  color: rgb(82, 82, 82);
+  color: rgb(53, 51, 51);
 }
 
 /* searchbar */
@@ -199,7 +200,9 @@ svg circle {
 
 #search-and-featured {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 180px;
   height: 68vh;
 }
@@ -219,10 +222,10 @@ svg circle {
 }
 
 #fblog {
-  position: fixed;
+  position: absolute;
   left: 0;
-  top: 46vh;
-  height: 50vh;
+  top: 44.5vh;
+  height: 50.5vh;
   width: 250px;
   box-sizing: border-box;
   width: 200px;
@@ -310,64 +313,10 @@ svg circle {
 
 /* -----------TABLET------------ */
 
-@media screen and (max-width: 1117px) {
-  #map-search-container {
-    flex-direction: column;
-  }
+/* -----MENU------ */
 
-  .search-container {
-    width: 80%;
-    flex: none;
-    height: fit-content;
-    max-height: 150px;
-    margin: 0;
-  }
+/* -----MAP----- */
 
-  .searchbar input {
-    padding-left: 20px;
-  }
-
-  .search-countries li {
-    padding-left: 30px;
-  }
-
-  #container {
-    flex-direction: row;
-    margin-top: 10px;
-  }
-
-  /* -----MENU------ */
-
-  /* -----MAP----- */
-
-  .map-container {
-    height: 500px;
-    width: 70%;
-  }
-
-  #map-box {
-    margin: 0;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  #container {
-    flex-direction: column;
-    margin-top: 0;
-  }
-  .text-box-container {
-    width: 100%;
-    flex: none;
-    margin: 0;
-  }
-  .map-container {
-    height: 400px;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .map-container {
-    height: 250px;
-  }
+#map-box {
+  margin: 0;
 }

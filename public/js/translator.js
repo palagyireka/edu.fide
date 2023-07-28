@@ -1,112 +1,7 @@
-/*!Copyright (C) GTranslate Inc.*/ (function () {
+(function () {
   var gt = window.gtranslateSettings || {};
   gt = gt[document.currentScript.getAttribute("data-gt-widget-id")] || gt;
-  var lang_array_english = {
-    af: "Afrikaans",
-    sq: "Albanian",
-    am: "Amharic",
-    ar: "Arabic",
-    hy: "Armenian",
-    az: "Azerbaijani",
-    eu: "Basque",
-    be: "Belarusian",
-    bn: "Bengali",
-    bs: "Bosnian",
-    bg: "Bulgarian",
-    ca: "Catalan",
-    ceb: "Cebuano",
-    ny: "Chichewa",
-    "zh-CN": "Chinese (Simplified)",
-    "zh-TW": "Chinese (Traditional)",
-    co: "Corsican",
-    hr: "Croatian",
-    cs: "Czech",
-    da: "Danish",
-    nl: "Dutch",
-    en: "English",
-    eo: "Esperanto",
-    et: "Estonian",
-    tl: "Filipino",
-    fi: "Finnish",
-    fr: "French",
-    fy: "Frisian",
-    gl: "Galician",
-    ka: "Georgian",
-    de: "German",
-    el: "Greek",
-    gu: "Gujarati",
-    ht: "Haitian Creole",
-    ha: "Hausa",
-    haw: "Hawaiian",
-    iw: "Hebrew",
-    hi: "Hindi",
-    hmn: "Hmong",
-    hu: "Hungarian",
-    is: "Icelandic",
-    ig: "Igbo",
-    id: "Indonesian",
-    ga: "Irish",
-    it: "Italian",
-    ja: "Japanese",
-    jw: "Javanese",
-    kn: "Kannada",
-    kk: "Kazakh",
-    km: "Khmer",
-    ko: "Korean",
-    ku: "Kurdish (Kurmanji)",
-    ky: "Kyrgyz",
-    lo: "Lao",
-    la: "Latin",
-    lv: "Latvian",
-    lt: "Lithuanian",
-    lb: "Luxembourgish",
-    mk: "Macedonian",
-    mg: "Malagasy",
-    ms: "Malay",
-    ml: "Malayalam",
-    mt: "Maltese",
-    mi: "Maori",
-    mr: "Marathi",
-    mn: "Mongolian",
-    my: "Myanmar (Burmese)",
-    ne: "Nepali",
-    no: "Norwegian",
-    ps: "Pashto",
-    fa: "Persian",
-    pl: "Polish",
-    pt: "Portuguese",
-    pa: "Punjabi",
-    ro: "Romanian",
-    ru: "Russian",
-    sm: "Samoan",
-    gd: "Scottish Gaelic",
-    sr: "Serbian",
-    st: "Sesotho",
-    sn: "Shona",
-    sd: "Sindhi",
-    si: "Sinhala",
-    sk: "Slovak",
-    sl: "Slovenian",
-    so: "Somali",
-    es: "Spanish",
-    su: "Sundanese",
-    sw: "Swahili",
-    sv: "Swedish",
-    tg: "Tajik",
-    ta: "Tamil",
-    te: "Telugu",
-    th: "Thai",
-    tr: "Turkish",
-    uk: "Ukrainian",
-    ur: "Urdu",
-    uz: "Uzbek",
-    vi: "Vietnamese",
-    cy: "Welsh",
-    xh: "Xhosa",
-    yi: "Yiddish",
-    yo: "Yoruba",
-    zu: "Zulu",
-  };
+
   var lang_array_native = {
     af: "Afrikaans",
     sq: "Shqip",
@@ -227,17 +122,17 @@
   var native_language_names = gt.native_language_names || false;
   var detect_browser_language = gt.detect_browser_language || false;
   var wrapper_selector = gt.wrapper_selector || ".gtranslate_wrapper";
-  var switcher_text_color = gt.switcher_text_color || "#666";
-  var switcher_arrow_color = gt.switcher_arrow_color || "#666";
-  var switcher_border_color = gt.switcher_border_color || "#ccc";
+  var switcher_text_color = gt.switcher_text_color || "#5b85aa";
+  var switcher_arrow_color = gt.switcher_arrow_color || "#5b85aa";
+  var switcher_border_color = gt.switcher_border_color || "none";
   var switcher_background_color = gt.switcher_background_color || "#fff";
   var switcher_background_shadow_color =
-    gt.switcher_background_shadow_color || "#efefef";
+    gt.switcher_background_shadow_color || "#fff";
   var switcher_background_hover_color =
     gt.switcher_background_hover_color || "#fff";
-  var dropdown_text_color = gt.dropdown_text_color || "#000";
+  var dropdown_text_color = gt.dropdown_text_color || "#5b85aa";
   var dropdown_hover_color = gt.dropdown_hover_color || "#fff";
-  var dropdown_background_color = gt.dropdown_background_color || "#eee";
+  var dropdown_background_color = gt.dropdown_background_color || "#fff";
   var custom_css = gt.custom_css || "";
   var lang_array =
     (native_language_names && lang_array_native) || lang_array_english;
@@ -334,18 +229,18 @@
     widget_css +=
       "font font{background-color:transparent!important;box-shadow:none!important;position:initial!important}";
   }
-  var font_size = 10,
-    widget_width = 163,
-    arrow_size = 7;
+  var font_size = 8,
+    widget_width = 140,
+    arrow_size = 12;
   if (flag_size == 24)
-    (font_size = 12), (widget_width = 173), (arrow_size = 11);
+    (font_size = 10), (widget_width = 140), (arrow_size = 12);
   else if (flag_size == 32)
-    (font_size = 14), (widget_width = 193), (arrow_size = 12);
+    (font_size = 12), (widget_width = 140), (arrow_size = 12);
   else if (flag_size == 48)
-    (font_size = 16), (widget_width = 223), (arrow_size = 14);
+    (font_size = 14), (widget_width = 140), (arrow_size = 12);
   widget_css +=
     u_class +
-    " .gt_switcher{font-family:Arial;font-size:" +
+    " .gt_switcher{font-family:Raleway;font-size:" +
     font_size +
     "pt;text-align:left;cursor:pointer;overflow:hidden;width:" +
     widget_width +
@@ -371,7 +266,7 @@
     switcher_background_shadow_color +
     " 0%, " +
     switcher_background_color +
-    " 70%);position:relative;z-index:9999}";
+    " 70%);position:relative;z-index:10}";
   widget_css +=
     u_class +
     " .gt_switcher .gt_selected a{border:1px solid " +
@@ -385,7 +280,7 @@
     u_class +
     " .gt_switcher .gt_selected a:after{height:" +
     flag_size +
-    "px;display:inline-block;position:absolute;right:30%;width:15px;background-position:50%;background-size:" +
+    "px;display:inline-block;position:absolute;right:10%;width:15px;background-position:50%;background-size:" +
     arrow_size +
     "px;background-image:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 285 285'><path d='M282 76.5l-14.2-14.3a9 9 0 0 0-13.1 0L142.5 174.4 30.3 62.2a9 9 0 0 0-13.2 0L3 76.5a9 9 0 0 0 0 13.1l133 133a9 9 0 0 0 13.1 0l133-133a9 9 0 0 0 0-13z' style='fill:" +
     escape(switcher_arrow_color) +
@@ -401,7 +296,7 @@
   widget_css += u_class + " .gt_switcher .gt_current{display:none}";
   widget_css +=
     u_class +
-    " .gt_switcher .gt_option{position:relative;z-index:9998;border-left:1px solid " +
+    " .gt_switcher .gt_option{position:relative;z-index:8;border-left:1px solid " +
     switcher_border_color +
     ";border-right:1px solid " +
     switcher_border_color +
@@ -432,7 +327,8 @@
   widget_css +=
     u_class +
     " .gt_switcher .gt_option::-webkit-scrollbar-thumb{background-color:#888}";
-  widget_code += '<div class="gt_switcher notranslate">';
+  widget_code +=
+    '<div class="gt_switcher notranslate" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;">';
   var gt_current_div =
     '<div class="gt_selected"><a href="#"><img src="' +
     get_flag_src(current_lang) +
@@ -466,15 +362,29 @@
     widget_code += gt_options_div + gt_current_div;
   else widget_code += gt_current_div + gt_options_div;
   widget_code += "</div>";
-  if (switcher_horizontal_position != "inline")
+  switcher_vertical_position += ":0;";
+  if (switcher_horizontal_position != "inline") {
+    if (window.innerWidth > 1150 || window.screen.width > 1150) {
+      switcher_horizontal_position = "right: 25%;";
+    }
+    if (
+      (window.innerWidth <= 1150 || window.screen.width <= 1150) &&
+      (window.innerWidth > 610 || window.screen.width > 610)
+    ) {
+      switcher_horizontal_position = "right: 60%;";
+    }
+    if (window.innerWidth <= 610 || window.screen.width <= 610) {
+      switcher_horizontal_position = "left:33%;";
+      switcher_vertical_position = "top: 80px;";
+    }
     widget_code =
-      '<div class="gt_switcher_wrapper" style="position:fixed;' +
+      '<div class="gt_switcher_wrapper" style="position:absolute;' +
       switcher_vertical_position +
-      ":0;" +
       switcher_horizontal_position +
-      ':30%;z-index:999999;">' +
+      'z-index:18;">' +
       widget_code +
       "</div>";
+  }
   var add_css = document.createElement("style");
   add_css.classList.add("gtranslate_css");
   add_css.textContent = widget_css;
