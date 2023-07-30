@@ -328,7 +328,7 @@
     u_class +
     " .gt_switcher .gt_option::-webkit-scrollbar-thumb{background-color:#888}";
   widget_code +=
-    '<div class="gt_switcher notranslate" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;">';
+    '<div class="gt_switcher notranslate" style="border-radius:10px;">';
   var gt_current_div =
     '<div class="gt_selected"><a href="#"><img src="' +
     get_flag_src(current_lang) +
@@ -362,16 +362,17 @@
     widget_code += gt_options_div + gt_current_div;
   else widget_code += gt_current_div + gt_options_div;
   widget_code += "</div>";
-  switcher_vertical_position += ":0;";
+  switcher_vertical_position += ":32px;";
   if (switcher_horizontal_position != "inline") {
     if (window.innerWidth > 1150 || window.screen.width > 1150) {
-      switcher_horizontal_position = "right: 25%;";
+      switcher_horizontal_position = "right: 30%;";
     }
     if (
       (window.innerWidth <= 1150 || window.screen.width <= 1150) &&
       (window.innerWidth > 610 || window.screen.width > 610)
     ) {
       switcher_horizontal_position = "right: 60%;";
+      switcher_vertical_position = "top: 10px;";
     }
     if (window.innerWidth <= 610 || window.screen.width <= 610) {
       switcher_horizontal_position = "left:33%;";

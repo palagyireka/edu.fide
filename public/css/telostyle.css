@@ -52,6 +52,50 @@
   #map-container {
     height: 400px;
   }
+
+  /* ----- LOGIN SIGNUP ÉS TÁRSAI --------- */
+
+  #user-btns,
+  .user-form-active {
+    width: 95%;
+  }
+
+  .user-form-active label,
+  .user-form-active button,
+  .user-form-active input,
+  #signup-form select {
+    font-size: 16px;
+  }
+
+  label[for="login-signup"] {
+    position: static;
+    width: 100%;
+    text-align: center;
+  }
+  #login-signup:checked {
+    margin: 0;
+    appearance: unset;
+    display: block;
+    position: absolute;
+    top: 18.5px;
+    right: 0;
+    width: 90px;
+    height: 63px;
+    z-index: 500;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    cursor: pointer;
+    background-image: url("close.png");
+    background-repeat: no-repeat;
+    background-position: 20% 50%;
+  }
+  label[for="login-signup"] p {
+    display: inline;
+  }
+  label[for="login-signup"] div {
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 615px) {

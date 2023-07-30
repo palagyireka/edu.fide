@@ -9,128 +9,74 @@
   </div>
 </label>
 <div id="login-signup-form-container">
-  <div id="user-btns">
-    <button>Log In</button>
-    <button>Sign Up</button>
-  </div>
-  <form action="" id="login-form">
-    <label for="user-email">Email:</label>
-    <input
-      type="email"
-      name=""
-      id="user-email"
-      placeholder="your.name@example.com"
-    />
-    <label for="user-password">Password:</label>
-    <input type="password" name="" id="user-password" />
-    <button type="submit">Log In</button>
-  </form>
-  <form action="" id="signup-form">
-    <div class="names">
-      <label for="first-name">First name:</label>
-      <label for="first-name">Last name:</label>
+  <div id="login-signup-forms">
+    <div id="user-btns">
+      <button>Log In</button>
+      <button>Sign Up</button>
     </div>
-    <div class="names">
-      <input type="text" name="" id="first-name" />
-      <input type="text" name="" id="last-name" />
-    </div>
-    <div class="names">
-      <label for="nuser-email">Email:</label>
-      <label for="nuser-password">Password:</label>
-    </div>
-    <div class="names">
+    <form action="" id="login-form">
+      <label for="user-email">Email:</label>
       <input
         type="email"
         name=""
-        id="nuser-email"
+        id="user-email"
         placeholder="your.name@example.com"
       />
+      <label for="user-password">Password:</label>
+      <input type="password" name="" id="user-password" />
+      <button type="submit">Log In</button>
+    </form>
+    <form action="" id="signup-form">
+      <div class="names">
+        <label for="first-name">First name:</label>
+        <label for="first-name">Last name:</label>
+      </div>
+      <div class="names">
+        <input type="text" name="" id="first-name" />
+        <input type="text" name="" id="last-name" />
+      </div>
+      <div class="names">
+        <label for="nuser-email">Email:</label>
+        <label for="nuser-password">Password:</label>
+      </div>
+      <div class="names">
+        <input
+          type="email"
+          name=""
+          id="nuser-email"
+          placeholder="your.name@example.com"
+        />
 
-      <input type="password" name="" id="nuser-password" />
-    </div>
-    <div class="names">
-      <label for="workplace">Place of Work</label>
-      <label for="job-title">Job title</label>
-    </div>
-    <div class="names">
-      <input type="text" name="workplace" id="workplace" />
-      <input type="text" name="job-title" id="job-title" />
-    </div>
-    <div class="names">
-      <label for="country-residence">Country of Residence</label>
-      <label for="resp-cie">Responsibilities in Chess and Education</label>
-    </div>
-    <div class="names">
-      <select name="country-residence" id="country-residence"></select>
-      <input type="text" name="resp-cie" id="resp-cie" />
-    </div>
-    <div class="names">
-      <input type="checkbox" name="newsletter" id="newsletter" />
-      <label for="newsletter">Sign Up for quarterly Newsletter?</label>
-    </div>
-
-    <button type="submit">Sign Up</button>
-  </form>
+        <input type="password" name="" id="nuser-password" />
+      </div>
+      <div class="names">
+        <label for="workplace">Place of Work</label>
+        <label for="job-title">Job title</label>
+      </div>
+      <div class="names">
+        <input type="text" name="workplace" id="workplace" />
+        <input type="text" name="job-title" id="job-title" />
+      </div>
+      <div class="names">
+        <label for="country-residence">Country of Residence</label>
+        <label for="resp-cie">Responsibilities in Chess and Education</label>
+      </div>
+      <div class="names">
+        <select name="country-residence" id="country-residence"></select>
+        <input
+          type="text"
+          name="resp-cie"
+          id="resp-cie"
+          required
+          minlength="0"
+          maxlength="400"
+        />
+      </div>
+      <div class="names">
+        <input type="checkbox" name="newsletter" id="newsletter" />
+        <label for="newsletter">Sign Up for quarterly Newsletter?</label>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
 </div>
-<script>
-  const formContainer = document.querySelector("#login-signup-form-container");
-  const userCheckbox = document.querySelector("#login-signup");
-  const userForms = document.querySelectorAll(
-    "#login-signup-form-container form"
-  );
-  const userButtons = document.querySelectorAll("#user-btns button");
-  for (const btn of userButtons) {
-    btn.addEventListener("click", formChange);
-    btn.addEventListener("touchstart", formChange);
-  }
-  userCheckbox.addEventListener("click", userForm);
-  userCheckbox.addEventListener("touchstart", userForm);
-  const szoveg = document.querySelector("#login-signup ~ label p");
-  function userForm(evt) {
-    userButtons[0].style.flexBasis = "30%";
-    userButtons[0].style.flexGrow = "1";
-    userButtons[0].style.backgroundColor = "white";
-    userButtons[0].style.color = "#91b0b2";
-    userButtons[1].style.flexBasis = "30%";
-    userButtons[1].style.flexGrow = "0";
-    userButtons[1].style.backgroundColor = "#91b0b2";
-    userButtons[1].style.color = "white";
-    userForms[0].classList.remove("user-form-inactive");
-    userForms[0].classList.add("user-form-active");
-    userForms[1].classList.add("user-form-inactive");
-    userForms[1].classList.remove("user-form-active");
-    if (userCheckbox.checked) {
-      document.querySelector("#login-signup ~ label img").src = "css/close.png";
-      szoveg.innerHTML = "Close";
-      szoveg.style.margin = "21.5px 15px";
-    } else {
-      document.querySelector("#login-signup ~ label img").src = "css/login.png";
-      szoveg.innerHTML = "\n      Login or <br>\n      sign up\n    ";
-      szoveg.style.margin = "10px 15px";
-    }
-  }
-  function formChange(evt) {
-    for (let i = 0; i < 2; i++) {
-      if (userButtons[i] == evt.target) {
-        userButtons[i].style.flexGrow = "1";
-        userButtons[i].style.backgroundColor = "white";
-        userButtons[i].style.color = "#91b0b2";
-        userForms[i].classList.remove("user-form-inactive");
-        userForms[i].classList.add("user-form-active");
-        if (userForms[i].id == "signup-form") {
-          formContainer.style.paddingBottom = "15vh";
-          userForms[i].style.height = "445px";
-        } else {
-          formContainer.style.paddingBottom = "25vh";
-          userForms[i].style.height = "370px";
-        }
-      } else {
-        userButtons[i].style.flexGrow = "0";
-        userButtons[i].style.backgroundColor = "#91b0b2";
-        userButtons[i].style.color = "white";
-        userForms[i].classList.remove("user-form-active");
-        userForms[i].classList.add("user-form-inactive");
-      }
-    }
-  }
-</script>

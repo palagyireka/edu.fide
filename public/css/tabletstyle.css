@@ -343,21 +343,18 @@
     height: 40vh;
   }
 
+  /* LOGIN SIGNUP ÉS TÁRSAI */
+
   label[for="login-signup"] {
     top: 0;
-    right: 25%;
-    border-radius: 30px;
+    right: 22%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    height: 55px;
   }
-
-  #login-signup:not(:checked) ~ label ~ #login-signup-form-container {
-    padding: 0;
-    display: block;
-  }
-  #user-btns {
-    left: 20vw;
-  }
-
-  .user-form-active {
-    left: -15vw;
+  label[for="login-signup"] img,
+  label[for="login-signup"] p {
+    margin-top: 5px;
   }
 }
