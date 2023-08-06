@@ -1,7 +1,7 @@
 <input type="checkbox" name="login-signup" id="login-signup" />
 <label for="login-signup">
   <div>
-    <img src="css/login.png" alt="" />
+    <img src="/css/login.png" alt="" />
     <p>
       Login or <br />
       sign up
@@ -14,26 +14,26 @@
       <button>Log In</button>
       <button>Sign Up</button>
     </div>
-    <form action="" id="login-form">
+    <form action="/login" method="post" id="login-form">
       <label for="user-email">Email:</label>
       <input
         type="email"
-        name=""
+        name="email"
         id="user-email"
         placeholder="your.name@example.com"
       />
       <label for="user-password">Password:</label>
-      <input type="password" name="" id="user-password" />
+      <input type="password" name="password" id="user-password" />
       <button type="submit" class="fancytime">Log In</button>
     </form>
-    <form action="" id="signup-form">
+    <form action="/signup" method="post" id="signup-form">
       <div class="names">
         <label for="first-name">First name:</label>
         <label for="first-name">Last name:</label>
       </div>
       <div class="names">
-        <input type="text" name="" id="first-name" />
-        <input type="text" name="" id="last-name" />
+        <input type="text" name="firstName" id="first-name" />
+        <input type="text" name="lastName" id="last-name" />
       </div>
       <div class="names">
         <label for="nuser-email">Email:</label>
@@ -42,12 +42,12 @@
       <div class="names">
         <input
           type="email"
-          name=""
+          name="email"
           id="nuser-email"
           placeholder="your.name@example.com"
         />
 
-        <input type="password" name="" id="nuser-password" />
+        <input type="password" name="password" id="nuser-password" />
       </div>
       <div class="names">
         <label for="workplace">Place of Work</label>
@@ -55,7 +55,7 @@
       </div>
       <div class="names">
         <input type="text" name="workplace" id="workplace" />
-        <input type="text" name="job-title" id="job-title" />
+        <input type="text" name="jobtitle" id="job-title" />
       </div>
       <div class="names">
         <label for="country-residence">Country of Residence</label>
@@ -68,7 +68,7 @@
           name="country-residence-in"
         />
         <datalist id="country-residence"></datalist>
-        <textarea name="resp-cie" id="resp-cie"></textarea>
+        <textarea name="respCie" id="resp-cie"></textarea>
       </div>
       <div class="names">
         <input type="checkbox" name="newsletter" id="newsletter" />
