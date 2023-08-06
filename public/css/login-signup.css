@@ -120,7 +120,8 @@ label[for="login-signup"] div {
 .user-form-active label,
 .user-form-active button,
 .user-form-active input,
-#signup-form select {
+#signup-form select,
+#signup-form textarea {
   display: block;
   text-align: left;
   font-size: 18px;
@@ -136,7 +137,7 @@ label[for="login-signup"] div {
   margin-bottom: 18px;
 }
 
-.user-form-active button {
+.fancytime {
   height: 40px;
   width: 30%;
   margin-top: 8px;
@@ -165,7 +166,8 @@ label[for="login-signup"] div {
 }
 
 #signup-form input,
-#signup-form select {
+#signup-form select,
+#signup-form textarea {
   width: 45%;
 }
 
@@ -179,10 +181,9 @@ label[for="login-signup"] div {
   width: 90%;
   margin: 0 5%;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
   &:last-of-type {
     justify-content: center;
-    align-items: center;
   }
 }
 
@@ -207,4 +208,28 @@ label[for="resp-cie"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#resp-cie {
+  resize: none;
+  font-family: "Railway";
+  border-width: 2px;
+  border-color: #5b85aa;
+  margin-bottom: 18px;
+  padding: 0;
+  font-size: 20px;
+  &:placeholder {
+    font-family: "Railway";
+    color: #5b85aa;
+  }
+}
+
+#resp-cie:focus {
+  z-index: 600;
+  position: fixed;
+  top: 15vh;
+  left: 2.5vw;
+  width: 95vw;
+  height: 78vh;
+  padding: 20px 10vw;
 }

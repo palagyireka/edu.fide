@@ -1,0 +1,91 @@
+.v-container {
+  display: none;
+}
+
+#random-video-player {
+  aspect-ratio: 1120/630;
+  width: 82%;
+}
+
+#videop {
+  position: fixed;
+  display: none;
+}
+
+#videop:checked ~ label[for="videop"] {
+  text-align: center;
+  position: fixed;
+  cursor: pointer;
+  color: white;
+  width: 50%;
+  margin: 0 25%;
+  left: 0;
+  top: 26vh;
+  z-index: 700;
+  background-color: #5b85aa;
+  border-radius: 20px;
+  padding: 7px;
+  font-size: 20px;
+  font-weight: 500;
+  animation: novekszik 3s ease-in-out;
+  white-space: nowrap;
+  height: 34px;
+  box-sizing: border-box;
+  letter-spacing: 3px;
+}
+
+label[for="videop"] img {
+  margin-left: 5px;
+  margin-right: 15px;
+}
+
+@keyframes novekszik {
+  from {
+    width: 22%;
+    margin: 0 41%;
+  }
+}
+
+#videop:not(:checked) ~ label[for="videop"] {
+  display: none;
+}
+
+.videoactive {
+  position: fixed;
+  z-index: 700;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #5b85aa89;
+}
+
+.closevid {
+  font-family: "Raleway";
+  width: 7%;
+  height: 14%;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  border-radius: 40%;
+  border: 0;
+  cursor: pointer;
+  transition: 0.5s ease;
+  color: #5b85aa;
+  background-image: linear-gradient(#5b85aa, #5b85aa);
+  background-size: 100% 0%;
+  background-position-y: 0%;
+  background-position-x: 100%;
+  background-repeat: no-repeat;
+  transition: 0.3s ease-in;
+  background-color: white;
+  &:hover,
+  &:focus,
+  &:active {
+    background-size: 100% 100%;
+    color: white;
+  }
+}

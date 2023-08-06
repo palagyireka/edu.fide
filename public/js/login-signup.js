@@ -57,9 +57,24 @@ function formChange(evt) {
   }
 }
 
-const countryResidence = document.getElementById("country-residence");
+const countryResidence = document.querySelector(
+  'datalist[id="country-residence"]'
+);
 for (const orszag of countryCodes) {
   let option = document.createElement("option");
-  option.text = orszag.name;
-  countryResidence.add(option);
+  option.value = orszag.name;
+  countryResidence.appendChild(option);
+}
+
+const respCie = document.querySelector('textarea[id="resp-cie"]');
+respCie.addEventListener("focusin", respEditor);
+respCie.addEventListener("focusout", closeCIEditor);
+
+function respEditor() {
+  respCie.placeholder =
+    "You can describe your responsibilities in Chess and Education up to 400 characters. Touch or click anywhere on the screen to exit editing. Do not click the close button if you want to submit your registration.";
+}
+
+function closeCIEditor() {
+  respCie.placeholder = "Writing is optional. ;)";
 }

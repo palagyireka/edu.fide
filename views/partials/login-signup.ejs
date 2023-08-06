@@ -24,7 +24,7 @@
       />
       <label for="user-password">Password:</label>
       <input type="password" name="" id="user-password" />
-      <button type="submit">Log In</button>
+      <button type="submit" class="fancytime">Log In</button>
     </form>
     <form action="" id="signup-form">
       <div class="names">
@@ -62,21 +62,19 @@
         <label for="resp-cie">Responsibilities in Chess and Education</label>
       </div>
       <div class="names">
-        <select name="country-residence" id="country-residence"></select>
         <input
-          type="text"
-          name="resp-cie"
-          id="resp-cie"
-          required
-          minlength="0"
-          maxlength="400"
+          list="country-residence"
+          id="country-residence-in"
+          name="country-residence-in"
         />
+        <datalist id="country-residence"></datalist>
+        <textarea name="resp-cie" id="resp-cie"></textarea>
       </div>
       <div class="names">
         <input type="checkbox" name="newsletter" id="newsletter" />
         <label for="newsletter">Sign Up for quarterly Newsletter?</label>
       </div>
-      <button type="submit">Sign Up</button>
+      <button type="submit" class="fancytime">Sign Up</button>
     </form>
   </div>
 </div>
