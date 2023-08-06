@@ -1,0 +1,33 @@
+<% if (success && success.length) { %>
+<div class="flash flash-success">
+  <div><%= success %></div>
+  <button>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="18"
+      viewBox="0 -960 960 960"
+      width="20"
+    >
+      <path
+        d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"
+      />
+    </svg>
+  </button>
+</div>
+<% } %> <% if (error && error.length) { %>
+<div class="flash flash-error">
+  <div><%= error %></div>
+  <button>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="18"
+      viewBox="0 -960 960 960"
+      width="20"
+    >
+      <path
+        d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"
+      />
+    </svg>
+  </button>
+</div>
+<% } %>

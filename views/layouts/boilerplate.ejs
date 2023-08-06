@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FIDE EDU DEMO</title>
-    <link rel="stylesheet" href="css/videoplay.css" />
-    <link rel="stylesheet" href="css/login-signup.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/map.css" />
-    <link rel="stylesheet" href="css/socmed.css" />
-    <link rel="stylesheet" href="css/search.css" />
-    <link rel="stylesheet" href="css/tabletstyle.css" />
-    <link rel="stylesheet" href="css/telostyle.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="/css/videoplay.css" />
+    <link rel="stylesheet" href="/css/login-signup.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/map.css" />
+    <link rel="stylesheet" href="/css/socmed.css" />
+    <link rel="stylesheet" href="/css/search.css" />
+    <link rel="stylesheet" href="/css/tabletstyle.css" />
+    <link rel="stylesheet" href="/css/telostyle.css" />
+    <link rel="stylesheet" href="/css/flash.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
     <meta
       http-equiv="Cache-Control"
       content="no-cache, no-store, must-revalidate"
@@ -27,15 +28,18 @@
     <meta http-equiv="pragma" content="no-cache" />
   </head>
   <body>
-    <%- include('../partials/navbar') %> <%- include('../partials/login-signup')
-    %> <%- include('../partials/googletranslate') %> <%- body %>
-    <script src="js/script.js"></script>
-    <script src="js/svg-pan-zoom.js"></script>
+    <%- include("../partials/flash") %> <%- include('../partials/navbar') %> <%
+    if (!currentUser) {%> <%- include('../partials/login-signup')%> <%} else {%>
+    <%-include("../partials/logout")%> <%} %> <%-
+    include('../partials/googletranslate') %> <%- body %>
+    <script src="/js/script.js"></script>
+    <script src="/js/svg-pan-zoom.js"></script>
     <script src="https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js"></script>
-    <script src="js/orszagkodok.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/translator.js"></script>
-    <script src="js/login-signup.js"></script>
+    <script src="/js/orszagkodok.js"></script>
+    <script src="/js/map.js"></script>
+    <script src="/js/translator.js"></script>
+    <script src="/js/login-signup.js"></script>
+    <script src="/js/flash.js"></script>
     <script src="js/videoplay.js"></script>
   </body>
 </html>

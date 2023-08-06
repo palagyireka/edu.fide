@@ -1,0 +1,41 @@
+.flash {
+  position: absolute;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 13px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  border-radius: 10px;
+  transition: all linear 0.3s;
+}
+
+.flash button {
+  all: unset;
+  margin-left: 5px;
+  cursor: pointer;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.flash-success {
+  color: #4a5e17;
+  background-color: #91b0b2;
+}
+
+.flash-success button svg {
+  fill: #4a5e17;
+}
+
+.flash-error {
+  color: #781a00;
+  background-color: #eb7b5b;
+}
+
+.flash-error button svg {
+  fill: #781a00;
+}

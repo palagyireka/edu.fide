@@ -1,0 +1,10 @@
+<% layout('layouts/boilerplate') %>
+<main>
+  <% blogposts.forEach((blog) => {%>
+  <div>
+    <img src="<%= blog.image %>" alt="" />
+    <h2><%= blog.title %></h2>
+    <p><%= blog.text %></p>
+  </div>
+  <% }) %>
+</main>
