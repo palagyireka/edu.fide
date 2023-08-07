@@ -1,10 +1,10 @@
 <% layout('layouts/boilerplate') %>
 <main>
   <% blogposts.forEach((blog) => {%>
-  <div>
+  <a class="blog-card" href="/blog/<%= blog.id %>">
     <img src="<%= blog.image %>" alt="" />
     <h2><%= blog.title %></h2>
     <p><%= blog.text %></p>
-  </div>
+  </a>
   <% }) %>
 </main>

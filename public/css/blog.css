@@ -1,0 +1,28 @@
+.edit-main {
+  width: 70%;
+  margin: 50px auto;
+}
+
+.title-label {
+  display: block;
+  font-weight: bold;
+}
+
+.title-input {
+  display: block;
+}
+
+.text-input {
+  display: block;
+}
+
+.editor-container {
+  width: 500px;
+}
+
+.ql-editor strong {
+  font-weight: bold;
+}
+.ql-editor em {
+  font-style: italic;
+}

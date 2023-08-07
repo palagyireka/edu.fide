@@ -1,10 +1,17 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const blogposts = require("./blogs");
 const mongoose = require("mongoose");
 const Blogpost = require("../models/blogpost");
+const dbUrl = process.env.DB_URL;
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/fideEdu")
-  .catch((error) => console.log(error));
+mongoose.connect(dbUrl).catch((error) => console.log(error));
+
+// mongoose
+//   .connect("mongodb://127.0.0.1:27017/fideEdu")
+//   .catch((error) => console.log(error));
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));

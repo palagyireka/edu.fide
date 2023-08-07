@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -11,10 +15,15 @@ const flash = require("connect-flash");
 const Blogpost = require("./models/blogpost");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
+const methodOverride = require("method-override");
+const dbUrl = process.env.DB_URL;
+const secret = process.env.SECRET || "thisshouldbesecret";
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/fideEdu")
-  .catch((error) => console.log(error));
+mongoose.connect(dbUrl).catch((error) => console.log(error));
+
+// mongoose
+//   .connect("mongodb://127.0.0.1:27017/fideEdu")
+//   .catch((error) => console.log(error));
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -26,11 +35,12 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(methodOverride("_method"));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 sessionConfig = {
-  secret: "notfinalsecret",
+  secret,
   resave: false,
   saveUninitialized: false,
 };
@@ -132,7 +142,7 @@ app.get("/logout", (req, res, next) => {
 
 app.get(
   "/blog/:id",
-  catchAsync(async (req, res, next) => {
+  catchAsync(async (req, res) => {
     const post = await Blogpost.findById(req.params.id);
     console.log(post);
     if (!post) {
@@ -140,6 +150,20 @@ app.get(
       return res.redirect("/");
     }
     res.render("blog/show", { post });
+  })
+);
+
+app.get("/blog/:id/edit", async (req, res) => {
+  const { id } = req.params;
+  const post = await Blogpost.findById(id);
+  res.render("blog/edit", { post });
+});
+
+app.put(
+  "/blog/:id",
+  catchAsync(async (req, res) => {
+    console.log(req.body);
+    res.send("worked");
   })
 );
 
