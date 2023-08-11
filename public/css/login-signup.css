@@ -118,7 +118,6 @@ label[for="login-signup"] div {
 }
 
 .user-form-active label,
-.user-form-active button,
 .user-form-active input,
 #signup-form select,
 #signup-form textarea {
@@ -138,8 +137,10 @@ label[for="login-signup"] div {
 }
 
 .fancytime {
+  font-size: 18px;
+  font-family: "Raleway";
   height: 40px;
-  width: 30%;
+  width: 20%;
   margin-top: 8px;
   cursor: pointer;
   border: 2px solid #5b85aa;

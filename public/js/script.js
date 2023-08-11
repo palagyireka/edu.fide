@@ -5,8 +5,9 @@ const lista1elemek = document.querySelectorAll(".lista-1 > li");
 const l2bk = document.querySelectorAll(".l2b");
 lista2listak[0].style.justifyContent = "left";
 lista2listak[1].style.justifyContent = "left";
+lista2listak[2].style.justifyContent = "left";
 lista2listak[5].style.justifyContent = "right";
-lista2listak[4].style.justifyContent = "right";
+lista2listak[6].style.justifyContent = "right";
 
 for (const elem of lista1elemek) {
   elem.addEventListener("click", fixalj);

@@ -59,7 +59,7 @@ svg circle {
   font-weight: bold;
   border: 1px solid rgb(219, 219, 219);
   border-width: 2px 0px;
-  margin: -1px 0;
+  margin: -2px 0;
   &:first-of-type {
     border-top: none;
   }
@@ -69,6 +69,7 @@ svg circle {
 }
 
 .country-menu li ul li {
+  cursor: pointer;
   width: 130px;
   padding: 10px 0px 10px 10px;
   font-weight: normal;
@@ -89,6 +90,20 @@ svg circle {
     padding-top: 20px;
   }
 }
+
+.country-menu li:nth-of-type(3) ul li {
+  cursor: auto;
+}
+
+.country-menu li:nth-of-type(3) ul li:hover::before {
+  position: absolute;
+  left: 210px;
+  content: "Coming soon!";
+  color: #c5725f;
+  background-color: white;
+  border-radius: 10px;
+}
+
 .map-container {
   width: 100%;
   height: 100%;
@@ -207,12 +222,12 @@ svg circle {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   flex: 0 0 180px;
   height: 68vh;
 }
 #featured {
-  height: 38vh;
+  height: 40vh;
   box-sizing: border-box;
   width: 200px;
   box-shadow: 0 0 10px 3px rgb(206, 206, 206);
@@ -220,7 +235,23 @@ svg circle {
   margin-right: 10px;
   margin-top: 10px;
   padding: 4px 4px 4px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+#fcalendar {
+  width: 95%;
+  height: 98%;
+  border-radius: 8px;
+  background-color: #5b85aa;
+}
+
+.view-cap,
+.view-container-border {
+  background-color: #91b0b2;
+}
+
 #featured p,
 #fblog p {
   margin: 5px 15px;
@@ -248,7 +279,7 @@ svg circle {
   box-shadow: 0 0 10px 3px rgb(206, 206, 206);
   border-radius: 10px;
   margin-right: 20px;
-  margin-top: 15px;
+  margin-top: 0px;
   padding: 4px 4px 4px 0;
   --searchbar-height: 30px;
 }
