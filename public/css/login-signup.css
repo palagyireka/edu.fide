@@ -47,7 +47,7 @@ label[for="login-signup"] p {
   overflow: hidden;
   display: none;
   font-size: 20px;
-  color: #5b85aa;
+  color: black;
 }
 
 label[for="login-signup"]:hover p {
@@ -67,7 +67,7 @@ label[for="login-signup"] div {
   width: 100vw;
   z-index: 408;
   background-color: #5b85aa;
-  color: #5b85aa;
+  color: black;
   box-sizing: border-box;
   padding: 25vh 0;
   padding-top: 15vh;
@@ -86,7 +86,7 @@ label[for="login-signup"] div {
 
 #user-btns button {
   font-size: 22px;
-  color: #5b85aa;
+  color: black;
   font-weight: 550;
   transition: 0.5s ease-in-out;
   cursor: pointer;
@@ -127,7 +127,7 @@ label[for="login-signup"] div {
   height: 26px;
   box-sizing: border-box;
   width: 50%;
-  color: #5b85aa;
+  color: black;
   border-radius: 3px;
 }
 
@@ -146,7 +146,7 @@ label[for="login-signup"] div {
   border: 2px solid #5b85aa;
   transition: 0.5s ease;
   z-index: 10;
-  color: #5b85aa;
+  color: black;
   background-image: linear-gradient(#5b85aa, #5b85aa);
   background-size: 0% 100%;
   background-position-y: 44%;
@@ -221,7 +221,7 @@ label[for="resp-cie"] {
   font-size: 20px;
   &:placeholder {
     font-family: "Railway";
-    color: #5b85aa;
+    color: black;
   }
 }
 
@@ -286,7 +286,7 @@ label[for="logout"] p {
   overflow: hidden;
   display: none;
   font-size: 20px;
-  color: #5b85aa;
+  color: black;
   display: flex;
   align-items: center;
 }

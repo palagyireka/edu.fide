@@ -122,15 +122,15 @@
   var native_language_names = gt.native_language_names || false;
   var detect_browser_language = gt.detect_browser_language || false;
   var wrapper_selector = gt.wrapper_selector || ".gtranslate_wrapper";
-  var switcher_text_color = gt.switcher_text_color || "#5b85aa";
-  var switcher_arrow_color = gt.switcher_arrow_color || "#5b85aa";
+  var switcher_text_color = gt.switcher_text_color || "black";
+  var switcher_arrow_color = gt.switcher_arrow_color || "black";
   var switcher_border_color = gt.switcher_border_color || "none";
   var switcher_background_color = gt.switcher_background_color || "#fff";
   var switcher_background_shadow_color =
     gt.switcher_background_shadow_color || "#fff";
   var switcher_background_hover_color =
     gt.switcher_background_hover_color || "#fff";
-  var dropdown_text_color = gt.dropdown_text_color || "#5b85aa";
+  var dropdown_text_color = gt.dropdown_text_color || "black";
   var dropdown_hover_color = gt.dropdown_hover_color || "#fff";
   var dropdown_background_color = gt.dropdown_background_color || "#fff";
   var custom_css = gt.custom_css || "";

@@ -147,11 +147,10 @@ svg circle {
 
 #country-name ~ label {
   cursor: pointer;
-  color: #5b85aa;
+  color: black;
   transition: all ease-in 200ms;
   font-size: 20px;
   font-style: oblique;
-  font-weight: bold;
   margin: 15px 5px;
   display: inline-block;
   width: 200px;
