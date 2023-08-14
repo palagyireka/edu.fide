@@ -19,7 +19,11 @@ const methodOverride = require("method-override");
 const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET || "thisshouldbesecret";
 
-mongoose.connect(dbUrl).catch((error) => console.log(error));
+mongoose
+  .connect(
+    "mongodb+srv://vernyelj:DbFXR2vYE3HUFDhU@cluster0.ebvtrcv.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .catch((error) => console.log(error));
 
 // mongoose
 //   .connect("mongodb://127.0.0.1:27017/fideEdu")

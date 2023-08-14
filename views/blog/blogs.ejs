@@ -2,9 +2,31 @@
 <main>
   <% blogposts.forEach((blog) => {%>
   <a class="blog-card" href="/blog/<%= blog.id %>">
-    <img src="<%= blog.image %>" alt="" />
-    <h2><%= blog.title %></h2>
+    <h2>
+      <!-- style="background-image: url('<%= blog.image %>')" -->
+      <%= blog.title %>
+    </h2>
     <p><%= blog.text %></p>
   </a>
   <% }) %>
 </main>
+<script>
+  const blogCards = document.querySelectorAll(".blog-card");
+  let cardCount = 0;
+  const fibNums = [1, 2, 3, 5];
+  const main = document.querySelector("main");
+  // main.style.marginTop = "7vh";
+
+  for (let i = 0; i < 4; i++) {
+    const sor = document.createElement("div");
+    sor.className = "blogsor";
+    for (let f = 0; f < fibNums[i]; f++) {
+      if (cardCount < 8) {
+        blogCards[cardCount].style.width = `${100 / fibNums[i]}%`;
+        sor.appendChild(blogCards[cardCount]);
+        cardCount++;
+      }
+    }
+    main.appendChild(sor);
+  }
+</script>
