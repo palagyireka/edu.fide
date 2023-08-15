@@ -2,8 +2,7 @@
 <main>
   <% blogposts.forEach((blog) => {%>
   <a class="blog-card" href="/blog/<%= blog.id %>">
-    <h2>
-      <!-- style="background-image: url('<%= blog.image %>')" -->
+    <h2 style="background-image: url('<%= blog.image %>')">
       <%= blog.title %>
     </h2>
     <p><%= blog.text %></p>

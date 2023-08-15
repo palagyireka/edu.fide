@@ -1,10 +1,9 @@
 <% layout('layouts/boilerplate') %>
 <main class="show-blogpost">
-  <img src="<%= post.image %>" alt="" />
-  <h2><%= post.title %></h2>
+  <h2 style="background-image: url('<%= post.image %>')"><%= post.title %></h2>
   <p><%= post.text %></p>
-  <a href="/blog/<%= post.id %>/edit">Edit</a>
+  <a href="/blog/<%= post.id %>/edit" class="fancytime">Edit</a>
   <form action="/blog/<%= post.id %>?_method=DELETE" method="post">
-    <button>Delete</button>
+    <button class="fancytime">Delete</button>
   </form>
 </main>

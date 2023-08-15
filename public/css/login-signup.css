@@ -183,14 +183,21 @@ label[for="login-signup"] div {
   margin: 0 5%;
   justify-content: space-around;
   align-items: center;
-  &:last-of-type {
+  &:nth-last-of-type(2),
+  :last-of-type {
     justify-content: center;
   }
 }
 
+.names:nth-last-of-type(2) label,
 .names:last-of-type label {
-  width: 70%;
+  width: 92%;
   margin-left: 0;
+}
+
+.names label a {
+  display: inline;
+  text-decoration: underline;
 }
 
 #signup-form #newsletter {
