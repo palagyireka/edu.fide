@@ -16,6 +16,12 @@ const Blogpost = require("./models/blogpost");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
+const deltaToHtml = require("./utils/deltaToHtml");
+const { convert } = require("html-to-text");
+const multer = require("multer");
+const { storage } = require("./cloudinary");
+const upload = multer({ storage });
+
 const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET || "thisshouldbesecret";
 
@@ -38,6 +44,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(methodOverride("_method"));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 sessionConfig = {
   secret,
@@ -144,11 +151,12 @@ app.get(
   "/blog/:id",
   catchAsync(async (req, res) => {
     const post = await Blogpost.findById(req.params.id);
-    console.log(post);
     if (!post) {
       req.flash("error", "Cannot find this post");
       return res.redirect("/");
     }
+    post.text = deltaToHtml(post.text);
+
     res.render("blog/show", { post });
   })
 );
@@ -161,14 +169,40 @@ app.get("/blog/:id/edit", async (req, res) => {
 
 app.put(
   "/blog/:id",
+  upload.single("image"),
   catchAsync(async (req, res) => {
-    console.log(req.body);
-    res.send("worked");
+    const { id } = req.params;
+    const editedPost = await Blogpost.findByIdAndUpdate(
+      id,
+      { title: req.body.title, text: req.body.text },
+      { new: true }
+    );
+
+    if (req.file) {
+      console.log(req.file);
+      editedPost.image[0] = { url: req.file.path, imageId: req.file.filename };
+      await editedPost.save();
+    }
+
+    req.flash("success", "Post saved!");
+    res.send("success");
   })
 );
 
 app.get("/blog", async (req, res) => {
-  const blogposts = await Blogpost.find({});
+  const blogposts = await Blogpost.find({}).limit(10);
+  blogposts.forEach((post) => {
+    post.text = deltaToHtml(post.text);
+    post.text = convert(post.text);
+    let charLength;
+    if (post.text.length >= 40) {
+      charLength = -(post.text.length - 40);
+    } else {
+      charLength = undefined;
+    }
+    post.text = post.text.slice(0, charLength);
+  });
+
   res.render("blog/blogs", { blogposts });
 });
 

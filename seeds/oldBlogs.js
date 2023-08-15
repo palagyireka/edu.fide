@@ -2,10 +2,11 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-const blogposts = require("./blogs");
+const oldblogs = require("./wpposts");
 const mongoose = require("mongoose");
 const Blogpost = require("../models/blogpost");
 const dbUrl = process.env.DB_URL;
+const { convertHtmlToDelta } = require("node-quill-converter");
 
 mongoose
   .connect(
@@ -26,14 +27,17 @@ db.once("open", () => {
 const seedDB = async () => {
   await Blogpost.deleteMany({});
 
-  for (const post of blogposts) {
+  for (const post of oldblogs) {
+    const htmlString = post.Content;
+    const delta = convertHtmlToDelta(htmlString);
+
     const newPost = new Blogpost({
-      title: post.title,
+      title: post.Title,
       image: {
-        url: "https://res.cloudinary.com/dxb02rmpp/image/upload/v1692061181/blogposts/nz64hslhsvnbshhg1sbn.jpg",
+        url: "https://res.cloudinary.com/dxb02rmpp/image/upload/v1692062054/blogposts/ts2kivfu34yy5y7irpw4.jpg",
         filename: "blogposts/nz64hslhsvnbshhg1sbn",
       },
-      text: post.text,
+      text: delta,
     });
     await newPost.save();
   }

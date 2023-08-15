@@ -1,7 +1,9 @@
 blogposts = [
   {
     title: "The Art of Photography",
-    text: "Photography is a powerful form of visual expression that allows us to capture moments, tell stories, and evoke emotions through images...",
+    text: {
+      text: "Photography is a powerful form of visual expression that allows us to capture moments, tell stories, and evoke emotions through images...",
+    },
   },
   {
     title: "A Beginner's Guide to Gardening",
