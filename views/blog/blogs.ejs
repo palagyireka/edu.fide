@@ -1,16 +1,59 @@
 <% layout('layouts/boilerplate') %>
-<main>
-  <% blogposts.forEach((blog) => {%>
-  <a class="blog-card" href="/blog/<%= blog.id %>">
-    <h2 style="background-image: url('<%= blog.image[0].url %>')">
-      <%= blog.title %>
-    </h2>
-    <p><%= blog.text %></p>
-  </a>
-  <% }) %>
+<main class="blogs">
+  <div class="posts-title">
+    <p>Blogposts</p>
+    <span>
+      Chronological order:
+      <select name="chrorder" id="chrorder">
+        <option value="latest">Latest</option>
+        <option value="earliest">Earliest</option>
+      </select>
+    </span>
+  </div>
+  <div id="b-posts">
+    <% blogposts.forEach((blog) => {%>
+    <a class="blog-card" href="/blog/<%= blog.id %>">
+      <div class="tag-names"></div>
+      <h2>
+        <!-- style="background-image: url('<%= blog.image[0].url %>')" -->
+        <%= blog.title %>
+      </h2>
+      <p><%= blog.text %> <br /></p>
+      <span> Read more here >> </span>
+    </a>
+    <% }) %>
+  </div>
 </main>
 <script>
+  const bPosts = document.querySelector("#b-posts");
   const blogCards = document.querySelectorAll(".blog-card");
+  let counter = 0;
+  while (counter < blogCards.length) {
+    const sor = document.createElement("div");
+    sor.className = "blogsor";
+    sor.appendChild(blogCards[counter]);
+    if (counter + 1 != blogCards.length) {
+      sor.appendChild(blogCards[counter + 1]);
+    }
+    if (counter + 2 != blogCards.length) {
+      sor.appendChild(blogCards[counter + 2]);
+    }
+    bPosts.appendChild(sor);
+    counter += 3;
+  }
+
+  const chrOrder = document.querySelector("#chrorder");
+  chrOrder.addEventListener("click", (evt) => {
+    console.log("fired");
+    if (evt.target.selectedIndex == 1) {
+      bPosts.style.flexDirection = "column-reverse";
+    } else {
+      bPosts.style.flexDirection = "column";
+    }
+  });
+</script>
+
+<!-- const blogCards = document.querySelectorAll(".blog-card");
   let cardCount = 0;
   const fibNums = [1, 2, 3, 5];
   const main = document.querySelector("main");
@@ -27,5 +70,4 @@
       }
     }
     main.appendChild(sor);
-  }
-</script>
+  } -->

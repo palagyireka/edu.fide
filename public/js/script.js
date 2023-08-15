@@ -12,6 +12,12 @@ lista2listak[6].style.justifyContent = "right";
 for (const elem of lista1elemek) {
   elem.addEventListener("click", fixalj);
   elem.addEventListener("touchend", fixalj);
+  elem.addEventListener("mouseover", (evt) => {
+    evt.target.nextElementSibling.classList.add("lista-2-active");
+  });
+  elem.addEventListener("mouseout", (evt) => {
+    evt.target.nextElementSibling.classList.remove("lista-2-active");
+  });
 }
 for (const gomb of l2bk) {
   gomb.addEventListener("click", vissza);

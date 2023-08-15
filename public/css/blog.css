@@ -5,80 +5,6 @@
   font-style: italic;
 }
 
-.blogsor {
-  display: flex;
-  justify-content: center;
-  height: 420px;
-  box-sizing: border-box;
-  background-image: linear-gradient(#5b85aa, #5b85aa);
-  border-bottom: 0;
-  padding: 10px;
-  &:first-of-type {
-    padding-top: 20px;
-  }
-}
-
-.blog-card {
-  overflow: hidden;
-  margin: 0 10px;
-  position: relative;
-}
-
-.blog-card h2 {
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-  padding: 180px 30px;
-  font-size: 20px;
-  color: black;
-  border-radius: 5px;
-  border: 0;
-  transition: 0.5s;
-  color: white;
-  font-weight: bold;
-  letter-spacing: 5px;
-  text-shadow: 1px 1px 1px black;
-  &:hover {
-    border-radius: 10px;
-    border: 15px solid white;
-    background-image: linear-gradient(#91b0b27e, #91b0b27e),
-      url("<%= blog.image[0].url %>") !important;
-    padding: 30px;
-    letter-spacing: normal;
-    text-shadow: none;
-    font-size: 22px;
-  }
-}
-
-.blog-card:hover h2 {
-  border-radius: 10px;
-  border: 15px solid white;
-  background-image: linear-gradient(#91b0b27e, #91b0b27e),
-    url("<%= blog.image[0].url %>") !important;
-  padding: 30px;
-  letter-spacing: 0;
-  font-size: 22px;
-  text-shadow: none;
-}
-
-.blog-card p {
-  z-index: 0;
-  display: none;
-  position: absolute;
-}
-
-.blog-card h2:hover ~ p,
-.blog-card:hover h2 ~ p {
-  display: block;
-  top: 20%;
-  font-size: 20px;
-  z-index: 10;
-  color: white;
-  width: 70%;
-  margin: 10%;
-}
-
 .show-blogpost {
   margin-top: 7vh;
 }
@@ -89,7 +15,7 @@
   font-weight: bold;
   font-size: 20px;
   letter-spacing: 5px;
-  text-shadow: 1px 1px 1px black;
+  background-color: #5b85aa;
   text-align: center;
   padding: 30px 0;
   box-sizing: border-box;
@@ -154,4 +80,74 @@ label[for="title"] {
   font-size: 18px;
   text-align: left;
   font-weight: 450;
+}
+
+.blogsor {
+  width: 70%;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 15%;
+  padding: 15px 0;
+}
+
+.blogsor .blog-card {
+  box-sizing: border-box;
+  position: relative;
+  height: 300px;
+  width: 15%;
+  flex-grow: 1;
+  padding: 30px;
+  margin: 15px;
+  background-color: white;
+  transition: 0.3s;
+  border: none;
+  &:hover {
+    flex-grow: 2;
+    border-radius: 50px;
+  }
+}
+
+.blogs {
+  background-color: #5b85aa;
+}
+
+.blog-card p + span {
+  display: block;
+  position: absolute;
+  font-style: italic;
+  top: 80%;
+}
+
+.posts-title p {
+  display: inline-block;
+  width: 100%;
+  height: 80px;
+  font-size: 30px;
+  padding: 25px 40px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.posts-title span {
+  color: white;
+  margin-left: 100px;
+}
+
+#chrorder {
+  display: inline;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.blog-card h2 {
+  font-weight: bold;
+  margin: 15px;
+  margin-top: 0;
+  letter-spacing: 2px;
+}
+
+#b-posts {
+  display: flex;
+  flex-direction: column;
 }

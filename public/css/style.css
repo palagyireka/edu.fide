@@ -266,7 +266,8 @@ h1 {
 }
 
 .lista-1 li:hover + .lista-2,
-.lista-2:hover {
+.lista-2:hover,
+.lista-2-active {
   display: flex;
   justify-content: center;
   top: 25vh;
