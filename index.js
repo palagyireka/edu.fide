@@ -190,7 +190,7 @@ app.put(
 );
 
 app.get("/blog", async (req, res) => {
-  const blogposts = await Blogpost.find({}).limit(10);
+  const blogposts = await Blogpost.find({}).limit(8);
   blogposts.forEach((post) => {
     post.text = deltaToHtml(post.text);
     post.text = convert(post.text);
