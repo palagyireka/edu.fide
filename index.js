@@ -21,6 +21,7 @@ const { convert } = require("html-to-text");
 const multer = require("multer");
 const { storage } = require("./cloudinary");
 const upload = multer({ storage });
+const url = require("url");
 
 const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET || "thisshouldbesecret";
@@ -162,49 +163,77 @@ app.get(
 );
 
 app.get("/blog/:id/edit", async (req, res) => {
+  res.render("blog/edit");
+});
+
+app.get("/blog/:id/edit/json", async (req, res) => {
   const { id } = req.params;
   const post = await Blogpost.findById(id);
-  res.render("blog/edit", { post });
+  console.log(post);
+  res.json(post);
 });
 
-app.put(
-  "/blog/:id",
-  upload.single("image"),
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const editedPost = await Blogpost.findByIdAndUpdate(
-      id,
-      { title: req.body.title, text: req.body.text },
-      { new: true }
-    );
+app.put("/blog/:id", upload.single("image"), async (req, res) => {
+  const { id } = req.params;
+  const editedPost = await Blogpost.findByIdAndUpdate(
+    id,
+    { title: req.body.title, text: req.body.text },
+    { new: true }
+  );
 
-    if (req.file) {
-      console.log(req.file);
-      editedPost.image[0] = { url: req.file.path, imageId: req.file.filename };
-      await editedPost.save();
-    }
-
+  if (req.file) {
+    editedPost.image[0] = { url: req.file.path, imageId: req.file.filename };
+    await editedPost.save();
+  }
+  if (editedPost) {
     req.flash("success", "Post saved!");
-    res.send("success");
+  } else {
+    req.flash("error", "Something went wrong!");
+  }
+});
+
+app.get(
+  "/blog",
+  catchAsync(async (req, res) => {
+    const pageNumber = req.query.page || 1;
+    let blogposts;
+    console.log(pageNumber);
+    const transform = (blogs) => {
+      blogs.forEach((post) => {
+        post.text = deltaToHtml(post.text);
+        post.text = convert(post.text);
+        let charLength;
+        if (post.text.length >= 200) {
+          charLength = -(post.text.length - 200);
+        } else {
+          charLength = undefined;
+        }
+        post.text = post.text.slice(0, charLength);
+      });
+    };
+
+    Blogpost.paginate({}, { page: req.query.page, limit: 12 }).then(
+      (results) => {
+        const { totalPages } = results;
+        if (req.query.page > results.totalPages) {
+          return res.redirect(
+            url.format({
+              pathname: "/blog",
+              query: {
+                page: results.totalPages,
+              },
+            })
+          );
+        } else {
+          blogposts = results.docs;
+
+          transform(blogposts);
+        }
+        res.render("blog/blogs", { blogposts, pageNumber, totalPages });
+      }
+    );
   })
 );
-
-app.get("/blog", async (req, res) => {
-  const blogposts = await Blogpost.find({}).limit(8);
-  blogposts.forEach((post) => {
-    post.text = deltaToHtml(post.text);
-    post.text = convert(post.text);
-    let charLength;
-    if (post.text.length >= 40) {
-      charLength = -(post.text.length - 40);
-    } else {
-      charLength = undefined;
-    }
-    post.text = post.text.slice(0, charLength);
-  });
-
-  res.render("blog/blogs", { blogposts });
-});
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page not found!", 404));

@@ -23,6 +23,13 @@
     </a>
     <% }) %>
   </div>
+  <a href="/blog">First</a>
+  <a href="/blog?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %>"
+    >Previous</a
+  >
+  <div class="page-counter"><%= pageNumber %></div>
+  <a href="/blog?page=<%= parseInt(pageNumber)+ 1 %>">Next</a>
+  <a href="/blog?page=<%= totalPages %>">Last</a>
 </main>
 <script>
   const bPosts = document.querySelector("#b-posts");
