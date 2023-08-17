@@ -3,20 +3,37 @@ const lista2elemek = document.querySelectorAll(".lista-2 > li");
 const lista1 = document.querySelector(".lista-1");
 const lista1elemek = document.querySelectorAll(".lista-1 > li");
 const l2bk = document.querySelectorAll(".l2b");
-lista2listak[0].style.justifyContent = "left";
-lista2listak[1].style.justifyContent = "left";
-lista2listak[2].style.justifyContent = "left";
-lista2listak[5].style.justifyContent = "right";
-lista2listak[6].style.justifyContent = "right";
+function lista2beallitas() {
+  lista2listak[0].style.justifyContent = "left";
+  lista2listak[1].style.justifyContent = "left";
+  lista2listak[2].style.justifyContent = "left";
+  lista2listak[3].style.justifyContent = "center";
+  lista2listak[4].style.justifyContent = "center";
+  lista2listak[5].style.justifyContent = "right";
+  lista2listak[6].style.justifyContent = "right";
+}
+lista2beallitas();
+
+function indexLekuld() {
+  document.getElementById("fblog").style.top = "44.5vh";
+  document.getElementById("map-search-container").style.marginTop = "7vh";
+}
+
+function indexFelmegy() {
+  document.getElementById("map-search-container").style.marginTop = "0";
+  document.getElementById("fblog").style.top = "37.5vh";
+}
 
 for (const elem of lista1elemek) {
   elem.addEventListener("click", fixalj);
   elem.addEventListener("touchend", fixalj);
   elem.addEventListener("mouseover", (evt) => {
     evt.target.nextElementSibling.classList.add("lista-2-active");
+    indexLekuld();
   });
   elem.addEventListener("mouseout", (evt) => {
     evt.target.nextElementSibling.classList.remove("lista-2-active");
+    indexFelmegy();
   });
 }
 for (const gomb of l2bk) {
@@ -76,8 +93,7 @@ function fixalj(evt) {
     elem.style.textDecoration = "none";
   }
   for (const elem of lista2listak) {
-    elem.style.justifyContent = "center";
-    elem.style.display = "none";
+    lista2beallitas();
     elem.classList.remove("onmobile2");
     elem.classList.remove("ontablet2");
   }
@@ -115,16 +131,6 @@ if (window.innerWidth <= 1150 || window.screen.width <= 1150) {
 
 // Kereső oldal js
 
-const keresoSav = document.querySelector("#search");
-keresoSav.addEventListener("click", nojjMeg);
-keresoSav.addEventListener("focusout", menjOssze);
-function nojjMeg(evt) {
-  evt.target.parentElement.style.width = "45%";
-}
-function menjOssze(evt) {
-  evt.target.parentElement.style.width = "35%";
-}
-
 for (const elem of lista1elemek) {
   elem.addEventListener("mouseover", lejjebbKuld);
   elem.addEventListener("mouseout", visszaKuld);
@@ -134,9 +140,11 @@ for (const elem of lista2elemek) {
   elem.addEventListener("mouseout", visszaKuld);
 }
 function lejjebbKuld() {
+  indexLekuld();
   document.getElementById("searchpm").style.top = "225px";
 }
 function visszaKuld() {
+  indexFelmegy();
   document.getElementById("searchpm").style.top = "175px";
 }
 
@@ -146,3 +154,11 @@ for (const orszag of countryCodes) {
   option.text = orszag.name;
   orszagLista.add(option);
 }
+
+const keresoSav = document.querySelector("#search");
+keresoSav.addEventListener("click", (evt) => {
+  evt.target.parentElement.style.width = "45%";
+});
+keresoSav.addEventListener("focusout", (evt) => {
+  evt.target.parentElement.style.width = "35%";
+});

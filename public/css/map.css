@@ -20,7 +20,7 @@ html {
 }
 
 #map {
-  height: 68vh;
+  height: 64.5vh;
 }
 
 .svg-pan-zoom_viewport.zoom {
@@ -45,7 +45,7 @@ svg circle {
 .text-box-container {
   flex: 0 0 240px;
   margin-top: 5px;
-  height: 65vh;
+  height: 64.5vh;
 }
 
 .hidden {
@@ -182,7 +182,7 @@ svg circle {
     opacity: 0;
   }
   to {
-    height: 65vh;
+    height: 64.5vh;
     opacity: 1;
   }
 }
@@ -210,10 +210,11 @@ svg circle {
 /* searchbar */
 
 #map-search-container {
-  margin-top: 7vh;
+  margin-top: 0;
+  transition: 0.5s;
   display: flex;
   flex-direction: row-reverse;
-  height: 68vh;
+  height: 64.5vh;
   width: 100%;
 }
 
@@ -223,6 +224,7 @@ svg circle {
   align-items: center;
   justify-content: left;
   flex: 0 0 180px;
+  transition: 0.5s;
   height: 68vh;
 }
 #featured {
@@ -236,6 +238,7 @@ svg circle {
   padding: 4px 4px 4px 0;
   display: flex;
   justify-content: center;
+  transition: 0.5s;
   align-items: center;
 }
 
@@ -257,9 +260,10 @@ svg circle {
 }
 
 #fblog {
+  transition: 0.3s;
   position: absolute;
   left: 0;
-  top: 44.5vh;
+  top: 37.5vh;
   height: 50.5vh;
   width: 250px;
   box-sizing: border-box;
@@ -272,6 +276,7 @@ svg circle {
 }
 
 .search-container {
+  transition: 0.3s;
   box-sizing: border-box;
   height: 22vh;
   width: 200px;
