@@ -2,13 +2,7 @@
 <main class="blogs">
   <div class="posts-title">
     <p>Blogposts</p>
-    <span>
-      Chronological order:
-      <select name="chrorder" id="chrorder">
-        <option value="latest">Latest</option>
-        <option value="earliest">Earliest</option>
-      </select>
-    </span>
+    <div class="page-counter"><%= pageNumber %></div>
   </div>
   <div id="b-posts">
     <% blogposts.forEach((blog) => {%>
@@ -18,21 +12,37 @@
         <!-- style="background-image: url('<%= blog.image[0].url %>')" -->
         <%= blog.title %>
       </h2>
-      <p><%= blog.text %> <br /></p>
+      <p>
+        <img src="<%= blog.image[0].url %>" alt="image" />
+        <%= blog.text %><br />
+      </p>
+
       <span> Read more here >> </span>
     </a>
     <% }) %>
   </div>
-  <a href="/blog">First</a>
-  <a href="/blog?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %>"
-    >Previous</a
-  >
-  <div class="page-counter"><%= pageNumber %></div>
-  <a href="/blog?page=<%= parseInt(pageNumber)+ 1 %>">Next</a>
-  <a href="/blog?page=<%= totalPages %>">Last</a>
+  <div class="first-prev">
+    <a href="/blog?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %>"
+      >Previous</a
+    >
+    <a href="/blog">First</a>
+  </div>
+  <div class="next-last">
+    <a href="/blog?page=<%= parseInt(pageNumber)+ 1 %>">Next</a>
+    <a href="/blog?page=<%= totalPages %>">Last</a>
+  </div>
 </main>
 <script src="/js/blog.js"></script>
 <script>
+  const jobbLinkek = document.querySelectorAll(".next-last a");
+  for (const link of jobbLinkek) {
+    link.addEventListener("mouseover", (evt) => {
+      evt.target.previousElementSibling.style.marginLeft = "65px";
+    });
+    link.addEventListener("mouseout", (evt) => {
+      evt.target.previousElementSibling.style.marginLeft = "15px";
+    });
+  }
   const bPosts = document.querySelector("#b-posts");
   const blogCards = document.querySelectorAll(".blog-card");
   let counter = 0;
@@ -60,22 +70,3 @@
     }
   });
 </script>
-
-<!-- const blogCards = document.querySelectorAll(".blog-card");
-  let cardCount = 0;
-  const fibNums = [1, 2, 3, 5];
-  const main = document.querySelector("main");
-  // main.style.marginTop = "7vh";
-
-  for (let i = 0; i < 4; i++) {
-    const sor = document.createElement("div");
-    sor.className = "blogsor";
-    for (let f = 0; f < fibNums[i]; f++) {
-      if (cardCount < 8) {
-        blogCards[cardCount].style.width = `${100 / fibNums[i]}%`;
-        sor.appendChild(blogCards[cardCount]);
-        cardCount++;
-      }
-    }
-    main.appendChild(sor);
-  } -->

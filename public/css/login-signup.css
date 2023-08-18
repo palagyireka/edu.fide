@@ -183,10 +183,14 @@ label[for="login-signup"] div {
   margin: 0 5%;
   justify-content: space-around;
   align-items: center;
-  &:nth-last-of-type(2),
-  :last-of-type {
-    justify-content: center;
-  }
+}
+
+.names:nth-last-of-type(2) {
+  justify-content: center;
+}
+
+.names:last-of-type {
+  justify-content: center;
 }
 
 .names:nth-last-of-type(2) label,
@@ -200,7 +204,8 @@ label[for="login-signup"] div {
   text-decoration: underline;
 }
 
-#signup-form #newsletter {
+#signup-form #newsletter,
+#signup-form #pripo {
   width: 5%;
   margin: 0;
   margin-right: 10px;

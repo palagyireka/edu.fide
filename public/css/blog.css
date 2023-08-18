@@ -107,31 +107,45 @@ label[for="title"] {
     border-radius: 50px;
   }
 }
+.blogsor .blog-card:hover img {
+  border-radius: 25px;
+}
 
 .blogs {
   background-color: #5b85aa;
+  transition: 0.3s;
+}
+
+.blog-card p {
+  font-size: 14px;
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+
+.blog-card img {
+  float: right;
+  position: inherit;
+  width: 50%;
+  height: auto;
+  transition: 0.3s;
 }
 
 .blog-card p + span {
   display: block;
   position: absolute;
   font-style: italic;
-  top: 80%;
+  font-size: 14px;
+  top: 88%;
 }
 
 .posts-title p {
   display: inline-block;
   width: 100%;
-  height: 80px;
+  height: max-content;
   font-size: 30px;
   padding: 25px 40px;
   box-sizing: border-box;
   color: white;
-}
-
-.posts-title span {
-  color: white;
-  margin-left: 100px;
 }
 
 #chrorder {
@@ -150,4 +164,61 @@ label[for="title"] {
 #b-posts {
   display: flex;
   flex-direction: column;
+}
+
+.first-prev {
+  position: fixed;
+  top: 45%;
+  left: 30px;
+}
+
+.next-last {
+  position: fixed;
+  top: 45%;
+  right: 30px;
+}
+
+.first-prev a,
+.next-last a {
+  width: 100px;
+  display: block;
+  margin: 15px;
+  padding: 12px;
+  font-size: 20px;
+  background-color: white;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    width: 150px;
+  }
+}
+
+.first-prev a {
+  text-align: right;
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  &:hover {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
+.next-last a {
+  text-align: left;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+  &:hover {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+}
+
+.next-last a:hover + a {
+  margin-left: 65px;
+}
+
+.page-counter {
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 50%;
 }
