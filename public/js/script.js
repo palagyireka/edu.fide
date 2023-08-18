@@ -36,6 +36,10 @@ for (const elem of lista1elemek) {
     indexFelmegy();
   });
 }
+
+lista1elemek[lista1elemek.length - 1].removeEventListener("mouseover");
+lista1elemek[lista1elemek.length - 1].removeEventListener("mouseout");
+
 for (const gomb of l2bk) {
   gomb.addEventListener("click", vissza);
   gomb.addEventListener("touchend", vissza);
@@ -129,8 +133,6 @@ if (window.innerWidth <= 1150 || window.screen.width <= 1150) {
   kereseskep.src = "css/searchiconmt.png";
 }
 
-// Kereső oldal js
-
 for (const elem of lista1elemek) {
   elem.addEventListener("mouseover", lejjebbKuld);
   elem.addEventListener("mouseout", visszaKuld);
@@ -141,24 +143,7 @@ for (const elem of lista2elemek) {
 }
 function lejjebbKuld() {
   indexLekuld();
-  document.getElementById("searchpm").style.top = "225px";
 }
 function visszaKuld() {
   indexFelmegy();
-  document.getElementById("searchpm").style.top = "175px";
 }
-
-var orszagLista = document.getElementById("orszag-search");
-for (const orszag of countryCodes) {
-  let option = document.createElement("option");
-  option.text = orszag.name;
-  orszagLista.add(option);
-}
-
-const keresoSav = document.querySelector("#search");
-keresoSav.addEventListener("click", (evt) => {
-  evt.target.parentElement.style.width = "45%";
-});
-keresoSav.addEventListener("focusout", (evt) => {
-  evt.target.parentElement.style.width = "35%";
-});

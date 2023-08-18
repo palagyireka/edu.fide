@@ -5,7 +5,7 @@ var panZoomMap = svgPanZoom(element, {
   fit: true,
   center: true,
   minZoom: 1,
-  maxZoom: 2,
+  maxZoom: 3,
   zoomScaleSensitivity: 1,
 });
 
