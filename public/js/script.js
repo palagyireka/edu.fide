@@ -29,16 +29,22 @@ for (const elem of lista1elemek) {
   elem.addEventListener("touchend", fixalj);
   elem.addEventListener("mouseover", (evt) => {
     evt.target.nextElementSibling.classList.add("lista-2-active");
-    indexLekuld();
   });
+  elem.addEventListener("mouseover", indexLekuld);
   elem.addEventListener("mouseout", (evt) => {
     evt.target.nextElementSibling.classList.remove("lista-2-active");
-    indexFelmegy();
   });
+  elem.addEventListener("mouseout", indexFelmegy);
 }
 
-lista1elemek[lista1elemek.length - 1].removeEventListener("mouseover");
-lista1elemek[lista1elemek.length - 1].removeEventListener("mouseout");
+lista1elemek[lista1elemek.length - 1].removeEventListener(
+  "mouseover",
+  indexLekuld
+);
+lista1elemek[lista1elemek.length - 1].removeEventListener(
+  "mouseout",
+  indexFelmegy
+);
 
 for (const gomb of l2bk) {
   gomb.addEventListener("click", vissza);
@@ -128,15 +134,6 @@ function vissza(evt) {
   }
 }
 
-const kereseskep = document.getElementById("kereses");
-if (window.innerWidth <= 1150 || window.screen.width <= 1150) {
-  kereseskep.src = "css/searchiconmt.png";
-}
-
-for (const elem of lista1elemek) {
-  elem.addEventListener("mouseover", lejjebbKuld);
-  elem.addEventListener("mouseout", visszaKuld);
-}
 for (const elem of lista2elemek) {
   elem.addEventListener("mouseover", lejjebbKuld);
   elem.addEventListener("mouseout", visszaKuld);
@@ -146,4 +143,9 @@ function lejjebbKuld() {
 }
 function visszaKuld() {
   indexFelmegy();
+}
+
+const kereseskep = document.getElementById("kereses");
+if (window.innerWidth <= 1150 || window.screen.width <= 1150) {
+  kereseskep.src = "css/searchiconmt.png";
 }
