@@ -214,15 +214,17 @@ h1 {
   background-position-x: 50%;
   background-repeat: no-repeat;
   transition: 0.3s ease-in;
-  &:hover,
-  &:focus,
-  &:active {
-    background-size: 100% 0.1em;
-  }
+}
+
+.lista-1 li:hover,
+.lista-1 li:focus,
+.lista-1 li:active {
+  background-size: 100% 0.1em;
 }
 
 .lista-1 li:nth-of-type(4) + .lista-2 li {
   cursor: auto;
+  background-image: none;
 }
 
 .lista-1 li:nth-of-type(4) + .lista-2 li:hover::before {
@@ -235,7 +237,7 @@ h1 {
   padding: 4px;
 }
 
-.lista-1 li:last-child {
+.lista-1 li:last-of-type {
   padding-top: 15px;
   background-image: none;
 }
@@ -279,6 +281,7 @@ h1 {
 .lista-2 li {
   margin: 0;
   cursor: pointer;
+  position: relative;
   font-size: 18px;
   padding: 16px 2.5vw;
   background-image: linear-gradient(#ffffff, #ffffff);
@@ -287,14 +290,17 @@ h1 {
   background-position-x: 50%;
   background-repeat: no-repeat;
   transition: 0.3s ease-in;
-  &:hover,
-  &:focus,
-  &:active {
-    background-size: 70% 0.1em;
-  }
 }
 
-.lista-2 li:last-child {
+.lista-2 li:hover,
+.lista-2 li:focus,
+.lista-2 li:active {
+  background-size: 70% 0.1em;
+}
+
+/* VALAMIRT UTSÓ TAGRA KÜLÖN IS KELL */
+
+.lista-2 li:last-of-type {
   padding: 16px 4vw;
   background-image: linear-gradient(#ffffff, #ffffff);
   background-size: 0% 0.1em;
@@ -302,11 +308,48 @@ h1 {
   background-position-x: 50%;
   background-repeat: no-repeat;
   transition: 0.3s ease-in;
-  &:hover,
-  &:focus,
-  &:active {
-    background-size: 70% 0.1em;
-  }
+}
+
+.lista-2 li:last-of-type:hover,
+.lista-2 li:last-of-type:focus,
+.lista-2 li:last-of-type:active {
+  background-size: 70% 0.1em;
+}
+
+.lista-2 li ul {
+  display: none;
+  opacity: 0;
+}
+
+.lista-2 li:hover ul,
+.lista-2 li:active ul,
+.lista-2 li:focus ul {
+  opacity: 1;
+  position: relative;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  top: 15px;
+  height: auto;
+  left: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 16px;
+  background-color: white;
+  box-sizing: border-box;
+  color: #5b85aa;
+  border: 3px solid #91b0b2;
+  border-top: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.lista-2 li ul li {
+  height: 6vh;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 2.5vw;
+  text-align: center;
 }
 
 footer {

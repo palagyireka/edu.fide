@@ -14,37 +14,16 @@ function lista2beallitas() {
 }
 lista2beallitas();
 
-function indexLekuld() {
-  document.getElementById("fblog").style.top = "44.5vh";
-  document.getElementById("map-search-container").style.marginTop = "7vh";
-}
-
-function indexFelmegy() {
-  document.getElementById("map-search-container").style.marginTop = "0";
-  document.getElementById("fblog").style.top = "37.5vh";
-}
-
 for (const elem of lista1elemek) {
   elem.addEventListener("click", fixalj);
   elem.addEventListener("touchend", fixalj);
   elem.addEventListener("mouseover", (evt) => {
     evt.target.nextElementSibling.classList.add("lista-2-active");
   });
-  elem.addEventListener("mouseover", indexLekuld);
   elem.addEventListener("mouseout", (evt) => {
     evt.target.nextElementSibling.classList.remove("lista-2-active");
   });
-  elem.addEventListener("mouseout", indexFelmegy);
 }
-
-lista1elemek[lista1elemek.length - 1].removeEventListener(
-  "mouseover",
-  indexLekuld
-);
-lista1elemek[lista1elemek.length - 1].removeEventListener(
-  "mouseout",
-  indexFelmegy
-);
 
 for (const gomb of l2bk) {
   gomb.addEventListener("click", vissza);
@@ -132,17 +111,6 @@ function vissza(evt) {
   for (const elem of lista1elemek) {
     elem.style.visibility = "visible";
   }
-}
-
-for (const elem of lista2elemek) {
-  elem.addEventListener("mouseover", lejjebbKuld);
-  elem.addEventListener("mouseout", visszaKuld);
-}
-function lejjebbKuld() {
-  indexLekuld();
-}
-function visszaKuld() {
-  indexFelmegy();
 }
 
 const kereseskep = document.getElementById("kereses");

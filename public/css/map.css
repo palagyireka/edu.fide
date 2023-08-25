@@ -10,22 +10,42 @@ html {
 }
 
 #map path,
-#map circle {
+#map circle,
+#map ellipse {
   fill: #5b85aa;
   stroke-width: 1px;
-  &.selected {
-    fill: #c5725f;
-    opacity: 1;
-  }
+}
+
+#map path.selected,
+#map circle.selected,
+#map ellipse.selected {
+  fill: #c5725f;
+  opacity: 1;
+}
+
+#map path:hover,
+#map circle:hover,
+#map ellipse:hover {
+  cursor: pointer;
+  fill: #91b0b2;
+}
+
+.uk-mate {
+  fill: #5b85aa;
 }
 
 #map {
   height: 64.5vh;
+  width: 100%;
 }
 
 .svg-pan-zoom_viewport.zoom {
   transition: transform 0.3s;
 }
+/* 
+#svg-pan-zoom-reset-pan-zoom .svg-pan-zoom-control-background {
+  fill: #5b85aa;
+} */
 
 svg circle {
   opacity: 0;
@@ -52,6 +72,9 @@ svg circle {
   visibility: hidden;
   opacity: 0%;
 }
+.country-menu {
+  padding-top: 15px;
+}
 
 .country-menu li {
   color: rgb(82, 82, 82);
@@ -60,38 +83,42 @@ svg circle {
   border: 1px solid rgb(219, 219, 219);
   border-width: 2px 0px;
   margin: -2px 0;
-  &:first-of-type {
-    border-top: none;
-  }
-  &:last-of-type {
-    border-bottom: none;
-  }
+}
+.country-menu li:first-of-type {
+  border-top: none;
+}
+.country-menu li:last-of-type {
+  border-bottom: none;
 }
 
 .country-menu li ul li {
   cursor: pointer;
-  width: 130px;
+  width: 180px;
+  font-size: 14px;
+  word-wrap: break-word;
   padding: 10px 0px 10px 10px;
   font-weight: normal;
   border: none;
   /* underline */
   background-image: linear-gradient(#5b85aa, #5b85aa);
   background-size: 0% 0.1em;
-  background-position-y: 100%;
+  background-position-y: 95%;
   background-position-x: 0%;
   background-repeat: no-repeat;
   transition: background-size 0.3s ease-in;
-  &:hover,
-  &:focus,
-  &:active {
-    background-size: 100% 0.1em;
-  }
-  &:first-of-type {
-    padding-top: 20px;
-  }
 }
 
-.country-menu li:nth-of-type(3) ul li {
+.country-menu li ul li:hover,
+.country-menu li ul li:focus,
+.country-menu li ul li:active {
+  background-size: 100% 0.1em;
+}
+
+.country-menu li ul li:first-of-type {
+  padding-top: 20px;
+}
+
+/* .country-menu li:nth-of-type(3) ul li {
   cursor: auto;
 }
 
@@ -102,7 +129,7 @@ svg circle {
   color: #c5725f;
   background-color: white;
   border-radius: 10px;
-}
+} */
 
 .map-container {
   width: 100%;
@@ -122,58 +149,55 @@ svg circle {
 #country-name {
   cursor: pointer;
   position: relative;
-  margin: 0;
-  margin-top: 12px;
-  margin-left: 15px;
   appearance: unset;
-  width: 20px;
+  width: 20%;
   height: 20px;
+  margin-top: -2px;
 }
 
 #country-name::before {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 20px;
   height: 100%;
   top: 0%;
-  left: 0%;
+  left: 50%;
   transition: all ease-in 200ms;
   background-image: url("dropd.png");
 }
 
-#country-name:checked::before {
+#country-name:not(:checked)::before {
   transform: rotate(90deg);
 }
 
-#country-name ~ label {
+.countryname-container {
+  display: flex;
+}
+
+label[for="country-name"] {
   cursor: pointer;
   color: black;
   transition: all ease-in 200ms;
   font-size: 20px;
   font-style: oblique;
-  margin: 15px 5px;
   display: inline-block;
-  width: 200px;
   text-align: left;
+  width: 80%;
   height: 25px;
 }
 .text-box {
-  padding: 0 50px;
+  padding: 0 10px;
+  padding-top: 4vh;
   background-color: white;
-  height: 56vh;
+  height: 0;
   opacity: 0;
   animation-name: cmenu;
   animation-duration: 0.5s;
 }
 
-#country-name:not(:checked) ~ label ~ .text-box {
-  opacity: 0;
-  height: 0;
-}
-
-#country-name:checked ~ label ~ .text-box {
+.shown-country-menu {
   opacity: 1;
-  height: 56vh;
+  height: 60vh;
 }
 
 @keyframes cmenu {
@@ -189,32 +213,33 @@ svg circle {
 
 #hover-text {
   position: absolute;
-  z-index: 1;
+  z-index: 30;
   pointer-events: none;
 }
 
 #hover-text span {
+  z-index: 30;
   position: absolute;
   left: 20px;
   top: 20px;
-  background-color: rgb(206, 206, 206) b9;
+  background-color: rgba(255, 255, 255, 0.577);
   border-radius: 5px;
   padding: 3px;
   width: auto;
   height: auto;
   font-size: small;
   font-weight: bold;
-  color: rgb(53, 51, 51);
+  color: rgb(0, 0, 0);
 }
 
 /* searchbar */
 
 #map-search-container {
-  margin-top: 0;
+  margin-top: 7vh;
   transition: 0.5s;
   display: flex;
   flex-direction: row-reverse;
-  height: 64.5vh;
+  height: 69vh;
   width: 100%;
 }
 
@@ -238,7 +263,6 @@ svg circle {
   padding: 4px 4px 4px 0;
   display: flex;
   justify-content: center;
-  transition: 0.5s;
   align-items: center;
 }
 
@@ -260,10 +284,9 @@ svg circle {
 }
 
 #fblog {
-  transition: 0.3s;
   position: absolute;
   left: 0;
-  top: 37.5vh;
+  top: 45vh;
   height: 50.5vh;
   width: 250px;
   box-sizing: border-box;
@@ -320,12 +343,13 @@ svg circle {
   color: rgb(51, 51, 51);
   position: absolute;
   transition: all linear 200ms;
-  &:first-of-type {
-    z-index: 1;
-  }
-  &:nth-of-type(2) {
-    cursor: pointer;
-  }
+}
+.bi:first-of-type {
+  z-index: 1;
+}
+
+.bi:nth-of-type(2) {
+  cursor: pointer;
 }
 
 .search-countries {
@@ -339,12 +363,12 @@ svg circle {
   color: rgb(82, 82, 82);
   cursor: pointer;
   padding: 7px 7px 7px 13px;
-  &:first-child {
-    margin-top: 0px;
-  }
-  &:hover {
-    background-color: rgb(206, 206, 206);
-  }
+}
+.search-countries li:first-child {
+  margin-top: 0px;
+}
+.search-countries li:hover {
+  background-color: rgb(206, 206, 206);
 }
 
 .selected-country {

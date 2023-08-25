@@ -1,15 +1,17 @@
 // Ezek ISO országkódok, a végleges verzióban a backend szerveren lesznek tárolva
 
-const countryCodes = [
+let countryCodes = [
   { name: "Afghanistan", "alpha-2": "AF", "country-code": "004" },
   { name: "Albania", "alpha-2": "AL", "country-code": "008" },
   { name: "Algeria", "alpha-2": "DZ", "country-code": "012" },
   { name: "American Samoa", "alpha-2": "AS", "country-code": "016" },
   { name: "Andorra", "alpha-2": "AD", "country-code": "020" },
+  { name: "Antigua and Barbuda", "alpha-2": "AG", "country-code": "1-268" },
   { name: "Angola", "alpha-2": "AO", "country-code": "024" },
   { name: "Anguilla", "alpha-2": "AI", "country-code": "660" },
   { name: "Argentina", "alpha-2": "AR", "country-code": "032" },
   { name: "Armenia", "alpha-2": "AM", "country-code": "051" },
+  { name: "Aruba", "alpha-2": "AW", "country-code": "297" },
   { name: "Australia", "alpha-2": "AU", "country-code": "036" },
   { name: "Austria", "alpha-2": "AT", "country-code": "040" },
   { name: "Azerbaijan", "alpha-2": "AZ", "country-code": "031" },
@@ -50,6 +52,7 @@ const countryCodes = [
   { name: "Cambodia", "alpha-2": "KH", "country-code": "116" },
   { name: "Cameroon", "alpha-2": "CM", "country-code": "120" },
   { name: "Canada", "alpha-2": "CA", "country-code": "124" },
+  { name: "Canary Islands", "alpha-2": "IC", "country-code": "124c" },
   { name: "Cayman Islands", "alpha-2": "KY", "country-code": "136" },
   { name: "Central African Republic", "alpha-2": "CF", "country-code": "140" },
   { name: "Chad", "alpha-2": "TD", "country-code": "148" },
@@ -78,6 +81,7 @@ const countryCodes = [
   { name: "Ecuador", "alpha-2": "EC", "country-code": "218" },
   { name: "Egypt", "alpha-2": "EG", "country-code": "818" },
   { name: "El Salvador", "alpha-2": "SV", "country-code": "222" },
+  { name: "England", "alpha-2": "EL", "country-code": "notACountry" },
   { name: "Equatorial Guinea", "alpha-2": "GQ", "country-code": "226" },
   { name: "Eritrea", "alpha-2": "ER", "country-code": "232" },
   { name: "Estonia", "alpha-2": "EE", "country-code": "233" },
@@ -121,7 +125,7 @@ const countryCodes = [
     "alpha-2": "HM",
     "country-code": "334",
   },
-  { name: "Holy See", "alpha-2": "VA", "country-code": "336" },
+  { name: "Vatican", "alpha-2": "VA", "country-code": "379" },
   { name: "Honduras", "alpha-2": "HN", "country-code": "340" },
   { name: "Hong Kong", "alpha-2": "HK", "country-code": "344" },
   { name: "Hungary", "alpha-2": "HU", "country-code": "348" },
@@ -145,6 +149,7 @@ const countryCodes = [
   { name: "Kazakhstan", "alpha-2": "KZ", "country-code": "398" },
   { name: "Kenya", "alpha-2": "KE", "country-code": "404" },
   { name: "Kiribati", "alpha-2": "KI", "country-code": "296" },
+  { name: "Kosovo", "alpha-2": "KO", "country-code": "notACountry" },
   {
     name: "Korea (Democratic People's Republic of)",
     "alpha-2": "KP",
@@ -247,6 +252,7 @@ const countryCodes = [
   { name: "San Marino", "alpha-2": "SM", "country-code": "674" },
   { name: "Sao Tome and Principe", "alpha-2": "ST", "country-code": "678" },
   { name: "Saudi Arabia", "alpha-2": "SA", "country-code": "682" },
+  { name: "Scotland", "alpha-2": "SW", "country-code": "notACountry" },
   { name: "Senegal", "alpha-2": "SN", "country-code": "686" },
   { name: "Serbia", "alpha-2": "RS", "country-code": "688" },
   { name: "Seychelles", "alpha-2": "SC", "country-code": "690" },
@@ -273,6 +279,7 @@ const countryCodes = [
   { name: "Switzerland", "alpha-2": "CH", "country-code": "756" },
   { name: "Syrian Arab Republic", "alpha-2": "SY", "country-code": "760" },
   { name: "Taiwan, Province of China", "alpha-2": "TW", "country-code": "158" },
+  { name: "Taipei", "alpha-2": "TP", "country-code": "notACountry" },
   { name: "Tajikistan", "alpha-2": "TJ", "country-code": "762" },
   {
     name: "Tanzania, United Republic of",
@@ -310,9 +317,919 @@ const countryCodes = [
   { name: "Viet Nam", "alpha-2": "VN", "country-code": "704" },
   { name: "Virgin Islands (British)", "alpha-2": "VG", "country-code": "092" },
   { name: "Virgin Islands (U.S.)", "alpha-2": "VI", "country-code": "850" },
+  { name: "Wales", "alpha-2": "WA", "country-code": "notACountry" },
   { name: "Wallis and Futuna", "alpha-2": "WF", "country-code": "876" },
   { name: "Western Sahara", "alpha-2": "EH", "country-code": "732" },
   { name: "Yemen", "alpha-2": "YE", "country-code": "887" },
   { name: "Zambia", "alpha-2": "ZM", "country-code": "894" },
   { name: "Zimbabwe", "alpha-2": "ZW", "country-code": "716" },
 ];
+
+const copiedEmails = `fadedz[at]outlook.com
+fax.angola[at]gmail.com
+antiguanchess[at]outlook.com
+federacion.argentina.ajedrez[at]gmail.com
+arubachess[at]gmail.com
+abasinmohibi[at]gmail.com
+gwastell[at]netspace.net.au
+info[at]achf.org.al
+info[at]escacsandorra.com
+sargsyantamarachess[at]aspu.am
+email:office[at]chess.at
+email:office[at]asf.org.az
+tmokwaledi[at]gmail.com
+echecsburkina[at]gmail.com
+fechebur[at]yahoo.fr
+bahamaschessofficial[at]gmail.com
+bcfsecretary[at]barbadoschess.org
+belizechess.bcf[at]gmail.com
+bermudachess[at]gmail.com
+federacion.boliviana.ajedrez[at]gmail.com
+gmdarcylima[at]gmail.com
+triadbvi[at]gmail.com
+bahrainchess[at]sport.bh
+banchessfed[at]gmail.com
+bhutanchessfederation[at]gmail.com
+bruneichessfederation[at]hotmail.com
+blr_chess[at]tut.by
+luc.cornet[at]frbe-kbsb-ksb.be
+bihchess[at]bih.net.ba
+chess[at]danielflorea.ro
+secretariat[at]fecade.cm
+geral[at]fcvx.org
+echecs236.rca[at]gmail.com
+federation.echecstchad[at]yahoo.com
+contact[at]fce.co.km
+justin_brou6[at]yahoo.fr
+info[at]chess.ca
+caychess[at]gmail.com
+ajefech[at]gmail.com
+fecodaz[at]gmail.com
+secretaria[at]fcacostarica.com
+riverocajedrez[at]gmail.com
+dachanggroup[at]gmail.com
+2647506476[at]qq.com
+chinesetaipeichess[at]gmail.com
+hss.crochess[at]gmail.com
+cypruschessfederation[at]gmail.com
+sekretariat[at]chess.cz
+fecojec[at]hotmail.fr
+djibfedechec[at]gmail.com
+Dominicachessfederation[at]gmail.com
+contacto[at]fdajedrez.com
+president[at]skak.dk
+egyptian.chess.fed[at]gmail.com
+ajedrezguinea[at]gmail.com
+ernchf[at]gmail.com
+swazichess[at]gmail.com
+secretaria[at]feda.ec
+fedeajedrezsv[at]gmail.com
+office[at]englishchess.org.uk
+maleliit[at]maleliit.ee
+
+office[at]fijichess.com
+ingi[at]faroechess.com
+eetu.tiiva[at]shakkiliitto.fi
+erick.mouret[at]ffechecs.fr
+
+akanga2001[at]yahoo.fr
+laminj2002[at]yahoo.co.uk
+ghanachess[at]gmail.com
+grenadachessfederation[at]gmail.com
+fenag[at]hotmail.com
+guyanachess[at]gmail.com
+santosalmer[at]yahoo.com
+akaki.iashvili[at]fide.com
+praesident[at]schachbund.de
+info[at]chessfed.gr
+gcf[at]gcf.org.gg
+
+info[at]haiti-echecs.org
+hernandezjc84[at]gmail.com
+kkchan.hkg[at]gmail.com
+chess[at]chess.hu
+
+akverma101010[at]gmail.com
+pb.percasi[at]gmail.com
+ircfchess[at]gmail.com
+dhafer.madhloom[at]yahoo.com
+skaksamband[at]skaksamband.is
+secretary[at]icu.ie
+ao[at]manx.net
+office[at]chessfed.org.il
+fsi[at]federscacchi.it
+
+jamchessfed.secretary[at]gmail.com
+info[at]japanchess.org
+royalchessjo[at]yahoo.com
+louisjouault[at]hotmail.com
+
+secretarychesskenya[at]gmail.com
+adiya.n[at]kazchess.kz
+q8chess[at]hotmail.com
+kyrgyzchessunion[at]gmail.com
+fshk[at]shahu-rks.com
+
+motloheloatseliso[at]gmail.com
+federationchessliberia[at]gmail.com
+Libyanchess[at]yahoo.com
+laochess[at]yahoo.com
+secretary[at]lebanesechessfederation.org
+info[at]sahafederacija.lv
+info[at]schach.li
+info[at]chessfed.lt
+contact[at]flde.lu
+
+fmje.mad123[at]gmail.com
+chessam2018[at]gmail.com
+fmje2005[at]yahoo.fr
+mtnchess[at]yahoo.fr
+krish75[at]intnet.mu
+frmechecs1963[at]gmail.com
+fmxdireccao[at]gmail.com
+maramire2001[at]gmail.com
+macauchessfederation[at]gmail.com
+mcfsecretariat[at]malaysiachess.org
+maldiveschessassociation[at]gmail.com
+info[at]mcf.mn
+chess1991[at]gmail.com
+info[at]chessmalta.com
+chessfederation.md[at]gmail.com
+cemc[at]libello.com
+office[at]sahcg.me
+
+president[at]namibiachessfederation.com
+contact[at]fenijec.org
+kunle[at]olchessclub.com
+curacaochessfederation[at]gmail.com
+guy.bendana[at]guybendana.com.ni
+duggob[at]gmail.com
+info[at]nepalchess.org
+NZCFSecretary[at]newzealandchess.co.nz
+bondsbureau[at]schaakbond.nl
+chessmkd[at]t.mk
+nsf[at]sjakk.no
+
+omanchesscommittee[at]gmail.com
+
+info[at]ajedrez.com.pa
+feparaj[at]gmail.com
+unidadtecnica[at]federacionperuanadeajedrez.org
+info[at]federaciondeajedrezdepuertorico.com
+hanif50us[at]gmail.com
+robert_flor31154[at]yahoo.com
+pcf[at]poc.ps
+tompetermccoy[at]gmail.com
+ncfpcorrespondence[at]gmail.com
+biuro[at]pzszach.pl
+fpx[at]fpx.pt
+
+qatarchess[at]hotmail.com
+
+rwandachess[at]gmail.com
+nb[at]ruchess.ru
+contact[at]frsah.ro
+
+tomefernandes57[at]gmail.com
+fesec.infos[at]gmail.com
+seychess[at]yahoo.com
+secretariat[at]sierraleonechess.org
+Somalichess[at]hotmail.com
+olalekan.adeyemi[at]fide.com
+president[at]sscfed.com
+sudanchessfed[at]yahoo.com
+pdellapstanley[at]gmail.com
+StLuciaChessFederation[at]gmail.com
+svgchessf[at]yahoo.com
+surichess[at]yahoo.com
+info[at]scf.gov.sa
+sgchessfed[at]singaporechess.org.sg
+amaelasi[at]gmail.com
+kchess3448[at]gmail.com
+chessfederationsl[at]gmail.com
+aliabbas.chess[at]gmail.com
+smrchessfed[at]yahoo.it
+fide[at]chessscotland.com
+office[at]serbiachess.org
+sekretariat[at]chess.sk
+info[at]sah-zveza.si
+ajedrez[at]feda.org
+kansliet[at]schack.se
+andre.voegtlin[at]swisschess.ch
+
+kenokenneth8[at]gmail.com
+ftdetogo[at]yahoo.fr
+tunchess.fed[at]gmail.com
+secretary[at]chesstt.org
+tajchessfed[at]mail.ru
+thailandchess.tca[at]gmail.com
+ztilman1411[at]gmail.com
+tkmchess[at]gmail.com
+tsf[at]tsf.org.tr
+
+ugandachess[at]yahoo.com
+littlehouseofchess[at]gmail.com
+presidencia[at]fuajedrez.org
+usvichess[at]gmail.com
+
+uzchess[at]inbox.ru
+rating[at]ukr.net
+
+fvajedrez[at]gmail.com
+office[at]vietnamchess.vn
+
+executivedirector[at]welshchessunion.uk
+
+Yemenchessfederation1[at]gmail.com
+
+cfz.secretariat[at]gmail.com
+adeyinkaadewole[at]gmail.com`;
+
+const federationEmails = copiedEmails.split("\n");
+
+const copiedCountryNames = `Algeria
+Angola
+Antigua and Barbuda
+Argentina
+Aruba
+Afghanistan
+Australia
+Albania
+Andorra
+Armenia
+Austria
+Azerbaijan
+Botswana
+Burkina Faso
+Burundi
+Bahamas
+Barbados
+Belize
+Bermuda
+Bolivia
+Brazil
+British Virgin Islands
+Bahrain
+Bangladesh
+Bhutan
+Brunei Darussalam
+Belarus
+Belgium
+Bosnia & Herzegovina
+Bulgaria
+Cameroon
+Cape Verde
+Central African Republic
+Chad
+Comoros Islands
+Cote d’Ivoire
+Canada
+Cayman Islands
+Chile
+Colombia
+Costa Rica
+Cuba
+Cambodia
+China
+Chinese Taipei
+Croatia
+Cyprus
+Czech Republic
+Democratic Republic of the Congo
+Djibouti
+Dominica
+Dominican Republic
+Denmark
+Egypt
+Equatorial Guinea
+Eritrea
+Eswatini
+Ecuador
+El Salvador
+England
+Estonia
+
+Fiji
+Faroe Islands
+Finland
+France
+
+Gabon
+Gambia
+Ghana
+Grenada
+Guatemala
+Guyana
+Guam
+Georgia
+Germany
+Greece
+Guernsey
+
+Haiti
+Honduras
+Hong Kong, China
+Hungary
+
+India
+Indonesia
+Iran
+Iraq
+Iceland
+Ireland
+Isle of Man
+Israel
+Italy
+
+Jamaica
+Japan
+Jordan
+Jersey
+
+Kenya
+Kazakhstan
+Kuwait
+Kyrgyzstan
+Kosovo
+
+Lesotho
+Liberia
+Libya
+Laos
+Lebanon
+Latvia
+Liechtenstein
+Lithuania
+Luxembourg
+
+Madagascar
+Malawi
+Mali
+Mauritania
+Mauritius
+Morocco
+Mozambique
+Mexico
+Macau
+Malaysia
+Maldives
+Mongolia
+Myanmar
+Malta
+Moldova
+Monaco
+Montenegro
+
+Namibia
+Niger
+Nigeria
+Netherlands Antilles
+Nicaragua
+Nauru
+Nepal
+New Zealand
+Netherlands
+North Macedonia
+Norway
+
+Oman
+
+Panama
+Paraguay
+Peru
+Puerto Rico
+Pakistan
+Palau
+Palestine
+Papua New Guinea
+Philippines
+Poland
+Portugal
+
+Qatar
+
+Rwanda
+Russian Federation
+Romania
+
+Sao Tome and Principe
+Senegal
+Seychelles
+Sierra Leone
+Somalia
+South Africa
+South Sudan
+Sudan
+St Kitts and Nevis
+Saint Lucia
+Saint Vincent and the Grenadines
+Suriname
+Saudi Arabia
+Singapore
+Solomon Islands
+South Korea
+Sri Lanka
+Syria
+San Marino
+Scotland
+Serbia
+Slovakia
+Slovenia
+Spain
+Sweden
+Switzerland
+
+Tanzania
+Togo
+Tunisia
+Trinidad and Tobago
+Tajikistan
+Thailand
+Timor-Leste
+Turkmenistan
+Turkiye
+
+Uganda
+United States of America
+Uruguay
+US Virgin Islands
+United Arab Emirates
+Uzbekistan
+Ukraine
+
+Venezuela
+Vietnam
+
+Wales
+
+Yemen
+
+Zambia
+Zimbabwe`;
+
+let copiedLinks = `http://www.fade-dz.net/
+
+
+http://www.federacionargentinadeajedrez.org/
+
+
+http://www.auschess.org.au/
+https://achf.org.al/
+http://www.escacsandorra.com/
+http://www.chessfed.am/
+http://www.chess.at/
+
+https://www.bnsc.co.bw/node/187
+
+
+http://www.bahamaschess.org/
+http://www.barbadoschess.org/
+https://www.belizechess.com/
+https://www.bermudachess.com/
+https://www.federacionbolivianadeajedrez.com/
+http://www.cbx.org.br/
+
+
+https://www.bdchessfederation.com/
+
+http://www.bruneichess.org.bn/
+http://www.openchess.by/
+https://www.frbe-kbsb-ksb.be/en/
+
+
+http://www.fecade.cm/
+http://www.fcvx.org/
+
+
+
+
+http://www.chess.ca/
+
+
+http://www.fecodaz.com/
+https://fcacostarica.com/
+
+
+http://cca.imsa.cn/
+http://www.chinesetaipeichess.com.tw/
+https://hrvatski-sahovski-savez.hr/
+https://cypruschessfederation.org/
+http://www.chess.cz/
+
+
+https://www.facebook.com/chess767/
+http://fdajedrez.com/
+http://www.skak.dk/
+
+
+
+
+
+http://www.ajedrezenelsalvador.com/
+http://www.englishchess.org.uk/
+http://www.maleliit.ee/
+
+https://www.facebook.com/fijichess
+http://www.faroechess.com/
+http://www.shakkiliitto.fi/
+http://www.echecs.asso.fr/
+
+
+
+http://ghanachess.com/
+
+http://www.fenag.net/
+https://guyanachess.gy/
+
+http://www.gcf.org.ge/
+http://www.schachbund.de/
+http://www.chessfed.gr/
+http://www.guernseychessfederation.org.gg/
+
+
+http://www.ajedrezhonduras.com/
+https://hkcfl.com/
+http://www.chess.hu/
+
+http://www.aicf.in/
+https://www.pbpercasi.com/
+http://www.ircf.ir/
+
+http://www.skaksamband.is/
+http://www.icu.ie/
+
+http://www.chess.org.il/
+http://www.federscacchi.it/
+
+http://www.jamchess.com/
+https://japanchess.org/
+http://www.jordanchess.com/
+http://www.jerseychessclub.com/
+
+http://www.chesskenya.or.ke/
+http://www.kazchess.kz/
+http://www.kmsaq8.com/
+
+http://www.shahu-rks.com/
+
+
+
+
+http://laoschess.com/
+https://lebanesechessfederation.org/
+https://sahafederacija.lv/
+http://www.schach.li/
+http://www.chessfed.lt/
+http://www.flde.lu/
+
+
+http://malawi.fide.com/
+
+http://www.mauritaniachess.com/
+http://www.mauritius-chess-federation.com/
+
+
+
+
+http://malaysiachess.org/
+
+http://www.mongolchess.mn/
+http://www.myachess.com/
+http://www.chessmalta.com/
+http://www.sahmoldova.md/
+http://www.facebook.com/groups/722958844403190
+http://www.sahcg.me/
+
+http://www.namchess.blogspot.com/
+https://fenijec.org/
+http://www.ncf.com.ng/
+
+http://www.academiadeajedrezjulioramirezdearellano.com/
+
+http://www.nepalchess.org/
+http://www.newzealandchess.co.nz/
+https://www.schaakbond.nl/
+http://chess-mkd.mk/
+http://www.sjakk.no/
+
+https://www.oman-chess.org/home/
+
+https://ajedrez.com.pa/
+http://www.feparaj.org.py/
+https://federacionperuanadeajedrez.org/
+https://www.federaciondeajedrezdepuertorico.com/
+
+http://www.palau-chess.blogspot.com/
+http://www.palchess.ps/
+http://www.auschess.org.au/oceania/png/
+http://www.ncf-phil.org/
+http://www.pzszach.pl/
+http://www.fpx.pt/
+
+http://www.qatarchess.com/
+
+
+http://www.ruchess.ru/
+http://www.frsah.ro/
+
+http://www.fexa.asso-stp.org/
+https://www.fesec.org/
+
+
+http://www.somchess.net/
+
+
+
+
+
+
+http://www.surichess.com/
+http://scf.gov.sa/
+http://www.singaporechess.org.sg/
+
+http://www.kchess.or.kr/
+http://www.srilankachess.lk/
+
+https://sanmarinoscacchi.com/
+http://www.chessscotland.com/
+http://serbiachess.org/
+http://www.chess.sk/
+http://www.sah-zveza.si/
+http://www.feda.org/
+http://www.schack.se/
+http://www.swisschess.ch/
+
+
+https://ftde.org/
+http://www.chess.tn/
+http://www.chesstt.org/
+
+http://www.thailandchess.or.th/
+
+
+http://www.tsf.org.tr/
+
+http://uganda.fide.com/
+https://new.uschess.org/
+http://www.fuajedrez.com/
+http://www.usvichessfederation.com/
+http://www.uaechess.ae/
+http://www.uzchess.uz/
+http://www.ukrchess.org.ua/
+
+
+http://vnchess.com.vn/
+
+http://www.welshchessunion.uk/
+
+
+
+http://www.zambiachess.com/
+https://zimbabwechess.com/`;
+
+let copiedContactNames = `
+
+
+
+
+
+
+
+
+Tamara Sargsyan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Luc Cornet
+
+Daniel Florea
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lamin Jammeh
+
+
+
+
+
+Akaki Iashvili
+Ingrid Lauterbach
+
+
+
+
+
+
+
+
+Adjeet Kumar Verma
+
+
+
+
+Ciaran Mahon
+
+
+
+
+
+
+
+Louis Jouault
+
+
+Adiya Nurmanova
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Khoa Goodwill
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hanif Qureshi
+
+
+
+
+
+
+
+
+
+
+Nina Bodenchuk
+
+
+
+
+
+
+
+
+
+
+P'Della'P Stanley
+
+
+
+
+
+
+
+
+
+
+
+
+Vladimir Szucs
+
+
+
+Andre Voegtlin
+
+
+
+
+
+
+
+
+
+
+
+
+Sophia Rhode
+
+
+
+
+
+
+
+
+
+Mark Adams
+
+
+
+
+`;
+
+const excelContactNames = copiedContactNames.split("\n");
+
+const excelLinks = copiedLinks.split("\n");
+
+const excelCountryNames = copiedCountryNames.split("\n");
+
+let excelCountryDatas = [];
+
+for (let i = 0; i < excelCountryNames.length; i++) {
+  excelCountryDatas.push([
+    excelCountryNames[i],
+    federationEmails[i],
+    excelLinks[i],
+    excelContactNames[i],
+  ]);
+}
+
+for (const country of countryCodes) {
+  for (let i = 0; i < excelCountryDatas.length; i++) {
+    if (country.name == excelCountryDatas[i][0]) {
+      country.email = excelCountryDatas[i][1];
+      country.website = excelCountryDatas[i][2];
+      country.contact = excelCountryDatas[i][3];
+    }
+  }
+}

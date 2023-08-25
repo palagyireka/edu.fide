@@ -30,9 +30,10 @@
 }
 
 .show-blogpost .fancytime,
-#save-edit {
+#save-edit,
+#discard {
   position: fixed;
-  width: 120px;
+  width: 180px;
 }
 
 .show-blogpost button.fancytime {
@@ -45,6 +46,11 @@
   text-align: center;
   line-height: 2;
   right: 25px;
+  bottom: 15px;
+}
+
+#discard {
+  left: 25px;
   bottom: 15px;
 }
 
@@ -102,11 +108,13 @@ label[for="title"] {
   background-color: white;
   transition: 0.3s;
   border: none;
-  &:hover {
-    flex-grow: 2;
-    border-radius: 50px;
-  }
 }
+
+.blogsor .blog-card:hover {
+  flex-grow: 2;
+  border-radius: 50px;
+}
+
 .blogsor .blog-card:hover img {
   border-radius: 25px;
 }
@@ -187,29 +195,29 @@ label[for="title"] {
   font-size: 20px;
   background-color: white;
   transition: 0.3s ease-in-out;
-  &:hover {
-    width: 150px;
-  }
 }
 
 .first-prev a {
   text-align: right;
   border-bottom-left-radius: 50%;
   border-top-left-radius: 50%;
-  &:hover {
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-  }
+}
+
+.first-prev a:hover {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 150px;
 }
 
 .next-last a {
   text-align: left;
   border-bottom-right-radius: 50%;
   border-top-right-radius: 50%;
-  &:hover {
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-  }
+}
+.next-last a:hover {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 150px;
 }
 
 .next-last a:hover + a {

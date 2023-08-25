@@ -5,8 +5,8 @@ var panZoomMap = svgPanZoom(element, {
   fit: true,
   center: true,
   minZoom: 1,
-  maxZoom: 3,
-  zoomScaleSensitivity: 1,
+  maxZoom: 8,
+  zoomScaleSensitivity: 0.2,
 });
 
 // MAP
@@ -23,10 +23,16 @@ const hoverText = document.querySelector("#hover-text");
 paths.forEach((item) => {
   const countryCode = item.classList[1].slice(-2);
   let country = "";
+  let website = "";
+  let contact = "";
+  let email = "";
 
   for (let i = 0; i < countryCodes.length; i++) {
     if (countryCodes[i]["alpha-2"] === countryCode) {
       country = countryCodes[i].name;
+      website = countryCodes[i].website;
+      contact = countryCodes[i].contact;
+      email = countryCodes[i].email;
       break;
     }
   }
@@ -37,16 +43,37 @@ paths.forEach((item) => {
   function orszagValaszt(evt) {
     const selectedCountry = document.querySelector(".selected");
     const searchedCountry = document.querySelector(".selected-country");
-    document.getElementById("country-name").checked = false;
+
     if (selectedCountry) {
       selectedCountry.classList.remove("selected");
     }
-    event.target.classList.add("selected");
+    evt.target.classList.add("selected");
 
     if (searchedCountry) {
       searchedCountry.classList.remove("selected-country");
     }
 
+    document.querySelector(".text-box").classList.remove("shown-country-menu");
+    document.querySelector("#country-name").checked = true;
+
+    let countryContacts = document.querySelectorAll("#country-contacts li");
+    const fedContacts = document.querySelector("#country-contacts");
+    if (countryContacts.length < 3) {
+      let counter = 3 - countryContacts.length;
+      for (let i = 0; i < counter; i++) {
+        const listItem = document.createElement("li");
+        fedContacts.appendChild(listItem);
+      }
+    }
+    countryContacts = document.querySelectorAll("#country-contacts li");
+    if (countryContacts[0]) countryContacts[0].innerText = website;
+    if (countryContacts[1]) countryContacts[1].innerText = contact;
+    if (countryContacts[2]) countryContacts[2].innerText = email;
+    for (const cont of countryContacts) {
+      if (cont.innerText == "") {
+        cont.remove();
+      }
+    }
     const text = document.querySelector("#country-name ~ label");
     text.classList.add("hidden");
     setTimeout(() => {
@@ -59,7 +86,13 @@ paths.forEach((item) => {
 
   // ------------HOVER------------
 
+  const UKCopy = document.getElementById("UKcopy");
+  UKCopy.classList.add("hidden");
+
   item.addEventListener("mousemove", (event) => {
+    if (item.id == "path435") {
+      UKCopy.classList.remove("hidden");
+    }
     hoverText.querySelector("span").textContent = country;
     hoverText.classList.remove("hidden");
     hoverText.style.top = event.clientY + "px";
@@ -67,6 +100,9 @@ paths.forEach((item) => {
   });
 
   item.addEventListener("mouseleave", () => {
+    if (item.id == "UKcopy") {
+      UKCopy.classList.add("hidden");
+    }
     hoverText.classList.add("hidden");
   });
 });
@@ -117,9 +153,14 @@ for (let country of countryCodes) {
 }
 
 const listItems = document.querySelectorAll(".search-countries li");
+const filter = document.querySelector(".searchbar input");
+const searchIcon = document.querySelector(".bi-search");
+const cancelIcon = document.querySelector(".bi-x");
 
 listItems.forEach((item) => {
   item.addEventListener("click", (event) => {
+    cancelIcon.classList.remove("hidden");
+    searchIcon.classList.add("hidden");
     listItems.forEach((i) => {
       i.classList.remove("selected-country");
       if (i === event.target) {
@@ -130,10 +171,6 @@ listItems.forEach((item) => {
     });
   });
 });
-
-const filter = document.querySelector(".searchbar input");
-const searchIcon = document.querySelector(".bi-search");
-const cancelIcon = document.querySelector(".bi-x");
 
 filter.addEventListener("keyup", (event) => {
   const filterValue = event.target.value.toUpperCase();
@@ -159,4 +196,24 @@ filter.addEventListener("keyup", (event) => {
 cancelIcon.addEventListener("click", () => {
   filter.value = "";
   filter.dispatchEvent(new Event("keyup"));
+});
+
+// SIDEMENU STUFF
+
+const countryNameChB = document.querySelector("#country-name");
+const countryNameLBL = document.querySelector(`label[for="country-name"]`);
+const textBox = document.querySelector(".text-box");
+countryNameLBL.addEventListener("click", (evt) => {
+  if (!countryNameChB.checked) {
+    textBox.classList.add("shown-country-menu");
+  } else {
+    textBox.classList.remove("shown-country-menu");
+  }
+});
+countryNameChB.addEventListener("click", (evt) => {
+  if (!countryNameChB.checked) {
+    textBox.classList.add("shown-country-menu");
+  } else {
+    textBox.classList.remove("shown-country-menu");
+  }
 });

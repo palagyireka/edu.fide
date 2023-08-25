@@ -20,11 +20,12 @@ label[for="login-signup"] {
   border-bottom-left-radius: 30px;
   cursor: pointer;
   transition: 0.5s ease;
-  &:hover {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 180px;
-  }
+}
+
+label[for="login-signup"]:hover {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 180px;
 }
 
 label[for="login-signup"] img {
@@ -96,9 +97,10 @@ label[for="login-signup"] div {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   flex-basis: 30%;
-  &:hover {
-    flex-grow: 2 !important;
-  }
+}
+
+#user-btns button:hover {
+  flex-grow: 2 !important;
 }
 
 .user-form-active {
@@ -154,12 +156,13 @@ label[for="login-signup"] div {
   background-repeat: no-repeat;
   transition: 0.3s ease-in;
   background-color: white;
-  &:hover,
-  &:focus,
-  &:active {
-    background-size: 100% 100%;
-    color: white;
-  }
+}
+
+.fancytime:active,
+.fancytime:focus,
+.fancytime:hover {
+  background-size: 100% 100%;
+  color: white;
 }
 
 .user-form-inactive {
@@ -231,10 +234,11 @@ label[for="resp-cie"] {
   margin-bottom: 18px;
   padding: 0;
   font-size: 20px;
-  &:placeholder {
-    font-family: "Railway";
-    color: black;
-  }
+}
+
+#resp-cie:placeholder {
+  font-family: "Railway";
+  color: black;
 }
 
 #resp-cie:focus {
@@ -271,11 +275,12 @@ label[for="logout"] {
   border-bottom-left-radius: 30px;
   cursor: pointer;
   transition: 0.5s ease;
-  &:hover {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    width: 180px;
-  }
+}
+
+label[for="logout"]:hover {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 180px;
 }
 
 label[for="logout"] img {
