@@ -18,19 +18,20 @@ module.exports.renderEdit = (req, res) => {
 };
 
 module.exports.edit = async (req, res) => {
+  console.log(req.body);
   const { id } = req.params;
   const editedPost = await Blogpost.findByIdAndUpdate(
     id,
     { title: req.body.title, text: req.body.text },
     { new: true }
   );
-
   if (req.file) {
     editedPost.image[0] = { url: req.file.path, imageId: req.file.filename };
     await editedPost.save();
   }
   if (editedPost) {
     req.flash("success", "Post saved!");
+    res.send("ok");
   } else {
     req.flash("error", "Something went wrong!");
   }
