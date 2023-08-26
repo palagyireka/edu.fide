@@ -10,18 +10,14 @@ const session = require("express-session");
 const User = require("./models/user");
 const mongoose = require("mongoose");
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
-const Blogpost = require("./models/blogpost");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
-const deltaToHtml = require("./utils/deltaToHtml");
-const { convert } = require("html-to-text");
-const multer = require("multer");
-const { storage } = require("./cloudinary");
-const upload = multer({ storage });
+
 const url = require("url");
+const userRoutes = require("./routes/users");
+const blogRoutes = require("./routes/blog");
 
 const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET || "thisshouldbesecret";
@@ -69,6 +65,9 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   next();
 });
+
+app.use("/", userRoutes);
+app.use("/blog", blogRoutes);
 
 app.get("/", (req, res) => {
   res.render("index");
