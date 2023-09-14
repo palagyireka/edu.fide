@@ -114,7 +114,6 @@ const list = document.querySelector(".search-countries");
 function zoomIn(path) {
   const selectedCountry = document.querySelector(".selected");
   const tBBox = path.getBBox();
-  console.log(tBBox);
   const previousBBox = selectedCountry.getBBox();
   const xDifference = Math.abs(tBBox.x - previousBBox.x);
   const yDifference = Math.abs(tBBox.x - previousBBox.x);

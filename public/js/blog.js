@@ -6,7 +6,6 @@ async function getContent() {
     method: "GET",
   });
   const quillContent = await response.json();
-  console.log(quillContent);
 
   var tempQuill = new Quill(document.createElement("div"), {
     modules: {
@@ -14,7 +13,6 @@ async function getContent() {
     },
   });
   tempQuill.setContents(quillContent.text);
-  console.log(tempQuill.root.innerHTML);
   textDiv.innerHTML += tempQuill.root.innerHTML;
 }
 

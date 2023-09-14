@@ -1,6 +1,7 @@
 const deltaToHtml = require("../utils/deltaToHtml");
 const { convert } = require("html-to-text");
 const Blogpost = require("../models/blogpost");
+const url = require("url");
 
 module.exports.blogpostRender = async (req, res) => {
   const post = await Blogpost.findById(req.params.id);
@@ -17,16 +18,28 @@ module.exports.renderEdit = (req, res) => {
   res.render("blog/edit");
 };
 
+module.exports.renderNew = (req, res) => {
+  res.render("blog/new");
+};
+
+module.exports.createPost = (req, res) => {};
+
 module.exports.edit = async (req, res) => {
   console.log(req.body);
   const { id } = req.params;
   const editedPost = await Blogpost.findByIdAndUpdate(
     id,
-    { title: req.body.title, text: req.body.text },
+    {
+      title: req.body.title,
+      text: req.body.text,
+    },
     { new: true }
   );
-  if (req.file) {
-    editedPost.image[0] = { url: req.file.path, imageId: req.file.filename };
+  if (req.body.image) {
+    editedPost.image[0] = {
+      url: req.body.image.url,
+      filename: req.body.image.filename,
+    };
     await editedPost.save();
   }
   if (editedPost) {
@@ -50,6 +63,7 @@ module.exports.blogpostsRender = async (req, res) => {
     blogs.forEach((post) => {
       post.text = deltaToHtml(post.text);
       post.text = convert(post.text);
+      post.text = post.text.replace(/\[http.*?\]/gm, "");
       let charLength;
       if (post.text.length >= 200) {
         charLength = -(post.text.length - 200);
@@ -79,3 +93,5 @@ module.exports.blogpostsRender = async (req, res) => {
     res.render("blog/blogs", { blogposts, pageNumber, totalPages });
   });
 };
+
+module.exports.delete = async (req, res) => {};

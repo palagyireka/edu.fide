@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const User = require("../models/user");
 const users = require("../controllers/users");
+const { validateUser } = require("../middleware");
 
 router
   .route("/login")
@@ -15,7 +15,10 @@ router
     users.login
   );
 
-router.route("/register").get(users.renderRegister).post(users.register);
+router
+  .route("/register")
+  .get(users.renderRegister)
+  .post(validateUser, users.register);
 
 router.get("/logout", users.logout);
 

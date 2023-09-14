@@ -14,27 +14,50 @@
       <button>Log In</button>
       <button>Sign Up</button>
     </div>
-    <form action="/login" method="post" id="login-form">
+    <form action="/login" method="post" id="login-form" novalidate>
       <label for="user-email">Email:</label>
       <input
         type="email"
         name="email"
         id="user-email"
         placeholder="your.name@example.com"
+        required
       />
+      <div class="error login-email-error"></div>
       <label for="user-password">Password:</label>
-      <input type="password" name="password" id="user-password" />
+      <input
+        type="password"
+        name="password"
+        id="user-password"
+        required
+        minlength="6"
+        maxlength="16"
+      />
+      <div class="error login-password-error"></div>
       <button type="submit" class="fancytime">Log In</button>
     </form>
-    <form action="/register" method="post" id="signup-form">
+    <form action="/register" method="post" id="signup-form" novalidate>
       <div class="names">
         <label for="first-name">First name:</label>
-        <label for="first-name">Last name:</label>
+        <label for="last-name">Last name:</label>
       </div>
       <div class="names">
-        <input type="text" name="firstName" id="first-name" />
-        <input type="text" name="lastName" id="last-name" />
+        <input
+          type="text"
+          name="firstName"
+          id="first-name"
+          required
+          maxlength="16"
+        />
+        <input
+          type="text"
+          name="lastName"
+          id="last-name"
+          required
+          maxlength="16"
+        />
       </div>
+      <div class="error name-error"></div>
       <div class="names">
         <label for="nuser-email">Email:</label>
         <label for="nuser-password">Password:</label>
@@ -45,10 +68,20 @@
           name="email"
           id="nuser-email"
           placeholder="your.name@example.com"
+          required
         />
 
-        <input type="password" name="password" id="nuser-password" />
+        <input
+          type="password"
+          name="password"
+          id="nuser-password"
+          required
+          minlength="6"
+          maxlength="16"
+        />
       </div>
+      <div class="error password-error"></div>
+      <div class="error email-error"></div>
       <div class="names">
         <label for="workplace">Place of Work</label>
         <label for="job-title">Job title</label>
@@ -87,3 +120,5 @@
 </div>
 <script src="/js/orszagkodok.js"></script>
 <script src="/js/login-signup.js"></script>
+<script src="/js/signup-validation.js"></script>
+<script src="/js/login-validation.js"></script>

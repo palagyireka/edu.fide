@@ -54,7 +54,6 @@ function quill_img_handler() {
       })
         .then(async (response) => {
           const imgResp = await response.json();
-          console.log(imgResp);
           this.quill.enable(true);
           this.quill.editor.insertEmbed(range.index, "image", imgResp.urlPath);
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
@@ -79,8 +78,6 @@ async function getContent() {
   titleInput.value = quillContent.title;
   quill.setContents(quillContent.text);
 }
-
-getContent();
 
 // const editorptions = {
 //   theme: 'snow',
@@ -136,7 +133,14 @@ getContent();
 const clickHandler = async () => {
   const titleContent = document.getElementById("title").value;
   const textContent = quill.getContents();
-  const postData = JSON.stringify({ title: titleContent, text: textContent });
+  const imageContent = quill.root.innerHTML
+    .match(/<img [^>]*src="[^"]*"[^>]*>/gm)
+    .map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
+  const postData = JSON.stringify({
+    title: titleContent,
+    text: textContent,
+    image: { url: imageContent[0], filename: imageContent[0].split("/").pop() },
+  });
   fetch(`/blog/${id}`, {
     method: "PUT",
     body: postData,
@@ -152,4 +156,6 @@ const clickHandler = async () => {
     });
 };
 
-// saveBtn.addEventListener("click", clickHandler);
+getContent();
+
+saveBtn.addEventListener("click", clickHandler);

@@ -15,11 +15,10 @@ const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
 const { isLoggedIn } = require("./middleware");
-
-const url = require("url");
 const userRoutes = require("./routes/users");
 const blogRoutes = require("./routes/blog");
 const apiRoutes = require("./routes/api");
+const adminRoutes = require("./routes/admin");
 
 const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET || "thisshouldbesecret";
@@ -71,8 +70,10 @@ app.use((req, res, next) => {
 app.use("/api", apiRoutes);
 app.use("/", userRoutes);
 app.use("/blog", blogRoutes);
+app.use("/admin", adminRoutes);
 
 app.get("/", (req, res) => {
+  console.log(req.user);
   res.render("index");
 });
 

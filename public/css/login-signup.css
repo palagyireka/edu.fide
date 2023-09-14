@@ -317,3 +317,9 @@ label[for="logout"]:hover p {
 label[for="logout"] a {
   display: flex;
 }
+
+/* -------validation-------- */
+
+input.invalid {
+  border-color: red;
+}
