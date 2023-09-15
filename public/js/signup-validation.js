@@ -15,6 +15,7 @@ function validateInput(input, error) {
       input.classList.remove("invalid");
     } else {
       showError(input);
+      showLoginError(input);
     }
   });
 }

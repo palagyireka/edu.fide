@@ -1,3 +1,24 @@
+VirtualSelect.init({
+  ele: "#country-select",
+  options: [
+    { label: "Options 1", value: "1" },
+    { label: "Options 2", value: "2" },
+    { label: "Options 3", value: "3" },
+  ],
+  multiple: true,
+});
+
+VirtualSelect.init({
+  ele: "#tag-select",
+  options: [
+    { label: "Options 1", value: "1" },
+    { label: "Options 2", value: "2" },
+    { label: "Options 3", value: "3" },
+  ],
+  multiple: true,
+  search: false,
+});
+
 const editorOptions = {
   theme: "snow",
   modules: {

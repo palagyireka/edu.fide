@@ -50,12 +50,6 @@ module.exports.edit = async (req, res) => {
   }
 };
 
-module.exports.getText = async (req, res) => {
-  const { id } = req.params;
-  const post = await Blogpost.findById(id);
-  res.json(post);
-};
-
 module.exports.blogpostsRender = async (req, res) => {
   const pageNumber = req.query.page || 1;
   let blogposts;

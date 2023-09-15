@@ -9,14 +9,14 @@ loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
   }
   if (!loginEmail.validity.valid) {
-    showError(loginEmail);
+    showLoginError(loginEmail);
   }
   if (!loginPassword.validity.valid) {
-    showError(loginPassword);
+    showLoginError(loginPassword);
   }
 });
 
-function showError(inputType) {
+function showLoginError(inputType) {
   switch (inputType) {
     case loginEmail:
       loginEmailErrorText();

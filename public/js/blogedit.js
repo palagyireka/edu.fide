@@ -71,7 +71,7 @@ function quill_img_handler() {
 }
 
 async function getContent() {
-  const response = await fetch(`${url}/json`, {
+  const response = await fetch(`/api/${id}/json`, {
     method: "GET",
   });
   const quillContent = await response.json();

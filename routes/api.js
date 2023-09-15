@@ -7,4 +7,6 @@ const api = require("../controllers/api");
 
 router.post("/image", upload.single("file"), api.imageUpload);
 
+router.get("/:id/json", api.getText);
+
 module.exports = router;
