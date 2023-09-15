@@ -72,7 +72,7 @@ respCie.addEventListener("focusout", closeCIEditor);
 
 function respEditor() {
   respCie.placeholder =
-    "You can describe your responsibilities in Chess and Education up to 400 characters. Touch or click anywhere on the screen to exit editing. Do not click the close button if you want to submit your registration.";
+    "You can describe your responsibilities in Chess and Education up to 400 characters. Touch or click anywhere outside the white box to exit editing. Do not click the close button if you want to submit your registration.";
 }
 
 function closeCIEditor() {

@@ -24,7 +24,6 @@ const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET || "thisshouldbesecret";
 
 mongoose.connect(dbUrl).catch((error) => console.log(error));
-
 // mongoose
 //   .connect("mongodb://127.0.0.1:27017/fideEdu")
 //   .catch((error) => console.log(error));
@@ -79,6 +78,15 @@ app.get("/", (req, res) => {
 
 app.get("/search", (req, res) => {
   res.render("search");
+});
+
+app.get("/intro", (req, res) => {
+  res.render("intro");
+});
+
+app.get("/titleholders/:type", (req, res) => {
+  const type = req.params.type; // Extract the 'type' parameter from the URL
+  res.render("titleholders", { type });
 });
 
 app.get("/download", isLoggedIn, (req, res) => {

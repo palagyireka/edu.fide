@@ -244,11 +244,11 @@ label[for="resp-cie"] {
 #resp-cie:focus {
   z-index: 600;
   position: fixed;
-  top: 15vh;
-  left: 2.5vw;
-  width: 95vw;
-  height: 78vh;
-  padding: 20px 10vw;
+  top: 30vh;
+  left: 35vw;
+  width: 30vw;
+  height: 40vh;
+  padding: 20px 4vw;
 }
 
 /* -----LOGOUT------ */

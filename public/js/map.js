@@ -66,14 +66,22 @@ paths.forEach((item) => {
       }
     }
     countryContacts = document.querySelectorAll("#country-contacts li");
-    if (countryContacts[0]) countryContacts[0].innerText = website;
+    if (countryContacts[0]) {
+      let anchorTag = document.createElement("a");
+      anchorTag.href = website;
+      anchorTag.innerText = website;
+      anchorTag.target = "_blank";
+      countryContacts[0].innerHTML = "";
+      countryContacts[0].appendChild(anchorTag);
+    }
     if (countryContacts[1]) countryContacts[1].innerText = contact;
     if (countryContacts[2]) countryContacts[2].innerText = email;
     for (const cont of countryContacts) {
-      if (cont.innerText == "") {
+      if (cont.innerText == "" || cont.innerText == "undefined") {
         cont.remove();
       }
     }
+
     const text = document.querySelector("#country-name ~ label");
     text.classList.add("hidden");
     setTimeout(() => {

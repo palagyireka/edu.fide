@@ -1,0 +1,64 @@
+main {
+  margin-top: 7vh;
+}
+
+.titleholders-flex {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0 15%;
+  background-color: antiquewhite;
+}
+
+.titleholders-flex * {
+  box-sizing: border-box;
+}
+
+.titleholders-flex > div {
+  width: 35%;
+  padding: 20px;
+  background-color: aliceblue;
+}
+.titleholders-flex > div:nth-of-type(2) {
+  display: flex;
+  flex-direction: column;
+}
+.titleholders-flex > div:nth-of-type(2) > div:first-of-type {
+  height: 40%;
+}
+
+label[for="lsititleholders"],
+label[for="sititleholders"] {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.titleholders-filters ul li {
+  margin-top: 10px;
+}
+
+.titleholders-filters input {
+  display: block;
+  margin-top: 5px;
+}
+
+.chosen-titleholder p,
+.titleholders-filters p {
+  margin-top: 37px;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.chosen-titleholder p {
+  margin-top: 25px;
+}
+.chosen-titleholder ul li {
+  font-size: 18px;
+  margin-top: 10px;
+}
+.chosen-titleholder ul li span {
+  font-size: 16px;
+  display: block;
+  margin-top: 4px;
+}

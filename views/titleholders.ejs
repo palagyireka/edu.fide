@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate') %>
+<main>
+  <section class="titleholders-flex">
+    <div class="titleholders-select">
+      <% if (type === 'lsi') { %>
+      <label for="lsititleholders">LSI Title Holders</label>
+      <select name="lsititleholders" id="lsititleholders" size="19"></select>
+      <% } else if (type === 'si') { %>
+      <label for="sititleholders">SI Title Holders</label>
+      <select name="sititleholders" id="sititleholders" size="19"></select>
+      <% } %>
+    </div>
+    <div>
+      <div class="titleholders-filters">
+        <p>Filter Titleholders By:</p>
+        <ul>
+          <li>
+            Country:
+            <input
+              list="country-titleh"
+              id="country-titleholders"
+              name="country-titleh"
+            />
+            <datalist id="country-titleh"></datalist>
+          </li>
+          <li>
+            Year Of Award:
+            <input list="awarded-year" id="awarded-y" name="awarded-year" />
+            <datalist id="awarded-year"></datalist>
+          </li>
+        </ul>
+      </div>
+      <div class="chosen-titleholder">
+        <p>Selected Titleholder:</p>
+        <ul>
+          <li>
+            First Name:
+            <span></span>
+          </li>
+          <li>
+            Last Name:
+            <span></span>
+          </li>
+          <li>
+            Country:
+            <span></span>
+          </li>
+          <li>FIDE ID: <span></span></li>
+          <li>Award Date:<span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="/js/titleholders.js"></script>
