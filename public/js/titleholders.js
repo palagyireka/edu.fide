@@ -2014,7 +2014,7 @@ document.querySelector(`input[id="country-titleholders"]`).onchange =
 
 document
   .querySelector(`input[id="awarded-y"]`)
-  .addEventListener("oninput", function () {
+  .addEventListener("keyup", function () {
     const allOptions = document.querySelectorAll(".titleholders-select option");
     allOptions.forEach((option) => option.remove());
 
