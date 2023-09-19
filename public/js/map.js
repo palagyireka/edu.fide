@@ -82,13 +82,18 @@ paths.forEach((item) => {
       }
     }
 
-    const text = document.querySelector("#country-name ~ label");
-    text.classList.add("hidden");
+    const cText = document.querySelector("#country-name ~ label");
+    cText.classList.add("hidden");
+    const anchorTags = document.querySelectorAll(
+      ".country-menu li:nth-of-type(2) ul li a"
+    );
+    anchorTags[0].href = `/titleholders/si?country=${country}`;
+    anchorTags[1].href = `/titleholders/lsi?country=${country}`;
     setTimeout(() => {
-      text.innerText = country;
+      cText.innerText = country;
     }, 200);
     setTimeout(() => {
-      text.classList.remove("hidden");
+      cText.classList.remove("hidden");
     }, 200);
   }
 

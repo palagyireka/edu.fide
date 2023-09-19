@@ -45,8 +45,6 @@ label[for="sititleholders"] {
   background-color: initial;
 }
 .titleholders-select select option:hover,
-.titleholders-select select option:active,
-.titleholders-select select option:focus,
 .titleholders-select select option:checked {
   letter-spacing: 1px;
   cursor: pointer;
@@ -85,6 +83,7 @@ label[for="sititleholders"] {
   border-width: 3px;
   height: 25px;
   border-radius: 50px;
+  padding-left: 10px;
 }
 
 .chosen-titleholder p {

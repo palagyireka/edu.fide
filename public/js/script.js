@@ -6,11 +6,10 @@ const l2bk = document.querySelectorAll(".l2b");
 function lista2beallitas() {
   lista2listak[0].style.justifyContent = "left";
   lista2listak[1].style.justifyContent = "left";
-  lista2listak[2].style.justifyContent = "left";
+  lista2listak[2].style.justifyContent = "center";
   lista2listak[3].style.justifyContent = "center";
-  lista2listak[4].style.justifyContent = "center";
+  lista2listak[4].style.justifyContent = "right";
   lista2listak[5].style.justifyContent = "right";
-  lista2listak[6].style.justifyContent = "right";
 }
 lista2beallitas();
 

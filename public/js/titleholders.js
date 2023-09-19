@@ -2834,6 +2834,12 @@ for (let i = 1980; i < 2025; i++) {
   awardedYearFilter.appendChild(option);
 }
 
+let URLparam = new URLSearchParams(document.location.search);
+const initialCountry = URLparam.get("country");
+document.querySelector(`input[id="country-titleholders"]`).value =
+  initialCountry;
+filterOptions();
+
 document
   .querySelector(`input[id="country-titleholders"]`)
   .addEventListener("keyup", filterOptions);
