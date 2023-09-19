@@ -42,12 +42,8 @@ module.exports.edit = async (req, res) => {
     };
     await editedPost.save();
   }
-  if (editedPost) {
-    req.flash("success", "Post saved!");
-    res.send("ok");
-  } else {
-    req.flash("error", "Something went wrong!");
-  }
+
+  req.flash("success", "Post saved!");
 };
 
 module.exports.blogpostsRender = async (req, res) => {

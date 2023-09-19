@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="layout">
+  <div class="title">Gallery</div>
+  <div class="imageGallery">
+    <% for (let i = 0; i < galleryUrls.length; i++) {%>
+    <img class="image" id="img-<%= i %>" src="<%= galleryUrls[i] %>" />
+    <% } %>
+  </div>
+</div>
+<div class="first-prev">
+  <a href="/gallery?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %>"
+    >Previous</a
+  >
+  <a href="/gallery">First</a>
+</div>
+<div class="next-last">
+  <a href="/gallery?page=<%= parseInt(pageNumber)+ 1 %>">Next</a>
+  <a href="/gallery?page=<%= totalPages %>">Last</a>
+</div>
+<div id="modalHolder"></div>
+
+<script src="/js/gallery.js"></script>

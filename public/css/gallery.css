@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Sofia");
+
+body {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.layout {
+  display: grid;
+  grid-template: 20px 40px auto / auto 300px 300px 300px auto;
+  grid-gap: 10px;
+}
+
+.title {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  font-size: 3em;
+}
+
+.imageGallery {
+  display: grid;
+  grid-template: repeat(3, 300px) / repeat(3, 300px);
+  grid-gap: 10px;
+  margin: 50px 50px 50px 50px;
+  align-content: center;
+  justify-content: center;
+  grid-column: 2 / span 3;
+  grid-row: 3 / span 1;
+}
+
+.image {
+  cursor: pointer;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.modal {
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 25px 25px 25px 25px;
+  display: grid;
+  grid-template: 320px 50px / 320px;
+}
+
+.modalHolder {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.boxPhoto {
+  width: 320px;
+}
+
+.closeButton {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+  text-align: right;
+  font-size: 2em;
+  font-family: "Arial Black";
+  cursor: pointer;
+}
+
+@media (max-width: 950px) {
+  .imageGallery {
+    grid-template: repeat(5, 300px) / repeat(2, 300px);
+    grid-column: 2 / span 2;
+  }
+
+  .layout {
+    grid-template: 20px 40px auto / auto 300px 300px auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .imageGallery {
+    grid-template: repeat(9, 300px) / 300px;
+    grid-column: 2 / span 1;
+  }
+
+  .layout {
+    grid-template: 20px 40px auto / auto 300px auto;
+  }
+}

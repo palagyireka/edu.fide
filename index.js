@@ -1,7 +1,7 @@
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-
+const Blogpost = require("./models/blogpost");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -11,6 +11,8 @@ const User = require("./models/user");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const flash = require("connect-flash");
+const { cloudinary } = require("./cloudinary");
+
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
@@ -19,6 +21,7 @@ const userRoutes = require("./routes/users");
 const blogRoutes = require("./routes/blog");
 const apiRoutes = require("./routes/api");
 const adminRoutes = require("./routes/admin");
+const url = require("url");
 
 const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET || "thisshouldbesecret";
@@ -91,6 +94,39 @@ app.get("/titleholders/:type", (req, res) => {
 
 app.get("/download", isLoggedIn, (req, res) => {
   res.render("download");
+});
+
+app.get("/gallery", async (req, res) => {
+  const pageNumber = req.query.page || 1;
+  const pageSize = 9;
+  let imgUrls;
+  await cloudinary.search
+    .expression("folder:gallery/*")
+    .execute()
+    .then((result) => {
+      imgUrls = result.resources.map((img) => img.url);
+    });
+
+  console.log(imgUrls);
+
+  const totalPages = Math.ceil(imgUrls.length / pageSize);
+
+  if (req.query.page > totalPages) {
+    return res.redirect(
+      url.format({
+        pathname: "/gallery",
+        query: {
+          page: totalPages,
+        },
+      })
+    );
+  } else {
+    function paginate(array, pageSize, pageNumber) {
+      return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+    }
+    const galleryUrls = paginate(imgUrls, pageSize, pageNumber);
+    res.render("gallery", { galleryUrls, pageNumber, totalPages });
+  }
 });
 
 app.all("*", (req, res, next) => {

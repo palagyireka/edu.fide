@@ -25,6 +25,8 @@ const titleInput = document.getElementById("title");
 
 const tagSelect = document.querySelector("#tag-select");
 const countrySelect = document.querySelector("#country-select");
+let originalTags = [];
+let originalCountries = [];
 
 function quill_img_handler() {
   let fileInput = this.container.querySelector("input.ql-image[type=file]");
@@ -73,6 +75,22 @@ function quill_img_handler() {
   fileInput.click();
 }
 
+async function getContent() {
+  const response = await fetch(`/api/${id}/json`, {
+    method: "GET",
+  });
+  const quillContent = await response.json();
+  titleInput.value = quillContent.title;
+  quill.setContents(quillContent.text);
+  if (
+    typeof quillContent.tags != "undefined" &&
+    typeof quillContent.countries != "undefined"
+  ) {
+    originalTags = quillContent.tags;
+    originalCountries = quillContent.countries;
+  }
+}
+
 const clickHandler = async () => {
   const titleContent = document.getElementById("title").value;
   const textContent = quill.getContents();
@@ -103,7 +121,7 @@ const clickHandler = async () => {
   });
 
   fetch("/blog", {
-    method: "POST",
+    method: "PUT",
     body: postData,
     headers: {
       "Content-Type": "application/json",
@@ -116,8 +134,6 @@ const clickHandler = async () => {
       window.location.replace("/admin/posts");
     });
 };
-
-// --------TAG SELECT--------
 
 const countryOptions = countryCodes.map((x) => {
   return { label: x.name, value: x["alpha-2"] };
@@ -134,13 +150,7 @@ const tagOptions = [
   { label: "Blog", value: "blog" },
 ];
 
-VirtualSelect.init({
-  ele: "#country-select",
-  options: countryOptions,
-  multiple: true,
-  showSelectedOptionsFirst: true,
-  required: true,
-});
+getContent();
 
 VirtualSelect.init({
   ele: "#tag-select",
@@ -148,6 +158,16 @@ VirtualSelect.init({
   multiple: true,
   search: false,
   required: true,
+  selectedValue: originalTags,
+});
+
+VirtualSelect.init({
+  ele: "#country-select",
+  options: countryOptions,
+  multiple: true,
+  showSelectedOptionsFirst: true,
+  required: true,
+  selectedValue: originalCountries,
 });
 
 saveBtn.addEventListener("click", () => {

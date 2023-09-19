@@ -9,9 +9,11 @@ const ImageSchema = new Schema({
 
 const BlogpostSchema = new Schema({
   title: String,
-  image: [ImageSchema],
+  images: [ImageSchema],
   text: { type: Object },
   date: Date,
+  tags: Array,
+  countries: Array,
 });
 
 BlogpostSchema.plugin(mongoosePaginate);

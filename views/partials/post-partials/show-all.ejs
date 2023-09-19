@@ -1,0 +1,65 @@
+<div class="page-counter"><%= pageNumber %></div>
+<div id="b-posts">
+  <% posts.forEach((post) => {%>
+  <a class="blog-card" href="/blog/<%= post.id %>">
+    <div class="tag-names"></div>
+    <h2>
+      <!-- style="background-image: url('<%= post.image[0].url %>')" -->
+      <%= post.title %>
+    </h2>
+    <p>
+      <img src="<%= post.image[0].url %>" alt="image" />
+      <%= post.text %><br />
+    </p>
+
+    <span> Read more here >> </span>
+  </a>
+  <% }) %>
+</div>
+<div class="first-prev">
+  <a href="/blog?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %>"
+    >Previous</a
+  >
+  <a href="/blog">First</a>
+</div>
+<div class="next-last">
+  <a href="/blog?page=<%= parseInt(pageNumber)+ 1 %>">Next</a>
+  <a href="/blog?page=<%= totalPages %>">Last</a>
+</div>
+<script>
+  const jobbLinkek = document.querySelectorAll(".next-last a");
+  for (const link of jobbLinkek) {
+    link.addEventListener("mouseover", (evt) => {
+      evt.target.previousElementSibling.style.marginLeft = "65px";
+    });
+    link.addEventListener("mouseout", (evt) => {
+      evt.target.previousElementSibling.style.marginLeft = "15px";
+    });
+  }
+  const bPosts = document.querySelector("#b-posts");
+  const blogCards = document.querySelectorAll(".blog-card");
+  let counter = 0;
+  while (counter < blogCards.length) {
+    const sor = document.createElement("div");
+    sor.className = "blogsor";
+    sor.appendChild(blogCards[counter]);
+    if (counter + 1 != blogCards.length) {
+      sor.appendChild(blogCards[counter + 1]);
+    }
+    if (counter + 2 != blogCards.length) {
+      sor.appendChild(blogCards[counter + 2]);
+    }
+    bPosts.appendChild(sor);
+    counter += 3;
+  }
+
+  const chrOrder = document.querySelector("#chrorder");
+  chrOrder.addEventListener("click", (evt) => {
+    console.log("fired");
+    if (evt.target.selectedIndex == 1) {
+      bPosts.style.flexDirection = "column-reverse";
+    } else {
+      bPosts.style.flexDirection = "column";
+    }
+  });
+</script>

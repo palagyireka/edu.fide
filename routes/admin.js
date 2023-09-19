@@ -6,13 +6,16 @@ const catchAsync = require("../utils/catchAsync");
 
 router.get("/posts/new", admin.renderNew);
 
-router.get("/posts", admin.renderPosts);
+router
+  .route("/posts")
+  .get(admin.renderPosts)
+  .post(catchAsync(admin.createPost));
 
 router
   .route("/:id")
   .get(catchAsync(admin.showPost))
   .put(admin.editPost)
-  .delete(isAdmin, admin.deletePost);
+  .delete(admin.deletePost);
 
 router.route("/:id/edit").get(admin.renderEdit);
 

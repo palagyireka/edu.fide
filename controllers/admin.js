@@ -7,6 +7,20 @@ module.exports.renderNew = (req, res) => {
   res.render("admin/new");
 };
 
+module.exports.createPost = async (req, res) => {
+  const newPost = new Blogpost({
+    title: req.body.title,
+    text: req.body.text,
+    tags: req.body.tags,
+    countries: req.body.countries,
+  });
+  if (req.body.images) {
+    newPost.images = req.body.images;
+  }
+  newPost.save();
+  req.flash("success", "Successfully made a new campground!");
+};
+
 module.exports.renderPosts = (req, res) => {
   const pageNumber = req.query.page || 1;
   let posts;
@@ -71,19 +85,21 @@ module.exports.editPost = async (req, res) => {
     },
     { new: true }
   );
-  if (req.body.image) {
-    editedPost.image[0] = {
-      url: req.body.image.url,
-      filename: req.body.image.filename,
-    };
+  if (req.body.images) {
+    const difference = editedPost.images.filter(
+      (x) => !req.body.images.includes(x)
+    );
+
+    editedPost.images = req.body.images;
     await editedPost.save();
   }
-  if (editedPost) {
-    req.flash("success", "Post saved!");
-    res.send("ok");
-  } else {
-    req.flash("error", "Something went wrong!");
-  }
+
+  req.flash("success", "Post saved!");
 };
 
-module.exports.deletePost = async (req, res) => {};
+module.exports.deletePost = async (req, res) => {
+  const { id } = req.params;
+  await Blogpost.findByIdAndDelete(id);
+  req.flash("success", "Successfully deleted post");
+  res.redirect("/admin/posts");
+};

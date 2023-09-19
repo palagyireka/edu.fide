@@ -29,7 +29,7 @@ const seedDB = async () => {
   for (const post of blogposts) {
     const newPost = new Blogpost({
       title: post.title,
-      image: {
+      images: {
         url: "https://res.cloudinary.com/dxb02rmpp/image/upload/v1692061181/blogposts/nz64hslhsvnbshhg1sbn.jpg",
         filename: "blogposts/nz64hslhsvnbshhg1sbn",
       },
