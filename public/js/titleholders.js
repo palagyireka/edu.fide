@@ -1,1910 +1,2780 @@
-const copiedLastNames = `Laubscher
-Bruhn
-Nash
-Garcia
-Vukojevic
-Khader
-Alshaeby
-Belausava
-Blasco de la Cruz
-Botsoe
-Brusamolin
-Dauletova
-Dikgang
-Hernandez
-Kanguma
-Kapce
-Kapush
-Ketalawala
-Khader
-Khaled
-Lapachuk
-Roselli Mailhe
-Takawira
-Thabano
-Velea
-Zaretsky
-Bauyrzhan
-Boateng
-Brokko
-Cardoso
-Duarte
-Efemuai
-Fawole
-Kapush
-Maelasi
-Okoro
-Singler
-Suarez Roa
-Talamantez
-Vasilescu
-Andrade
-Abbas
-Argade
-Assa
-Bisiryu-Salam
-Cortes Aviles
-Fleri
-Goulart Librelato
-Lemouton
-Mane
-Mukumbya
-Prunescu
-Pyryaev
-Rane
-Ryan
-Shashank
-Smith
-Talamantez
-Tejavath 
-Vyas
-Wedisinghe
-Abbas
-Adegbayi
-Adegbie
-Aldori
-Argade
-Katende
-Lahiri
-Martinez Fernandez
-Özbek
-Poley
-Ruwinga
-Saleem
-Sharma
-Venter
-Bisiryu-Salam
-Lohana
-Chan
-Chen
-Cunanan
-Fancelli
-Juarih
-Kormyshev
-Lai
-Springer
-Ushakov
-Venter
-Toukourou 
-Hassan
-Diatta 
-Bissaro
-Kopibida 
-Tossa
-Moreira
-Moreira 
-Urazova 
-Abur
-Okoth 
-King
-Hongo
-Ojok
-Namangale
-Mukundwa 
-Mane
-Pina Ricardo
-Takawira 
-Coleto Calderón
-Stewart
-Keshishian
-Tuvshintugs 
-Alshaeby
-Shamoon
-Kalugampitiya
-Reyes  
-Carpintero Muñoz
-García Outeiro
-Valencia Montero
-Piñeiro Martinez
-Vega Adorno
-Cruz Arce
-Mejia Sosa
-Fernández Guevara 
-Arias 
-González Díaz 
-Nigro Monasterios
-Maury Escalante
-Carrion Pérez 
-Berrios Gonzalez 
-Rojas Gallego 
-Pesqueira 
-Pagés Román
-Ramón Pita 
-Paris 
-Díaz Elzo
-Buiza Prieto
-Idiazabal Troyas
-Gomez 
-Jimenez Chan 
-Baeza
-Carrera Du Bois
-Mousavian
- M S
-Ojok 
- Blanco Hernández
-Mahmood
-Najafian Yazdi
-Alhashemi
-Hongo 
-Ryan
-Lahiri
-Johnson
-Ho
-Lee
-Nsakanya
-Shah
-Bordoli
-Martis 
-Jargalsaikhan 
-King 
-Tavagwisa
-Blasco de la Cruz 
-Navarro Castillo
-Torres Braiz 
-Diaz Vicente
-García Gil 
-Lobo Vásquez 
-Lacerda de Alencar Pereira
-Cortés Ferrándiz
-Benítez Lozano
-Medina Peña
-Fernández 
-Magaña Morales
-Magaña Morales
-Garcia Díaz
-Soriano Folch 
-Fernández Rivero 
-Angeles Diaz
-Hasman
-Musemvu
-Razark
-Okoth
-Enarevba
-Dozva
-Delemarre 
-Kiragu 
- Guzdziol 
-Sankaranarayanan
-Cruz Arce
-Drira
-Akinlade
-Romero  Martin
-Ngugama
-Richards-Porter
-Belgacem
-Vernay 
-Tissier
-Maman
-Pissama Ntsaou 
-Jellid
-Charouq
-Moreira
-Skouroupathis
-Popov 
-Kuzevanova
-Martínez Zambrano
-Ortiz 
- Deida Morales
-Khan
-Kahoba
-Baskaran
-Saravanan
-Callender 
-Prakash
-Ekpo
-Akindayini
-Dafiewharen 
-Oyelese
-Ojomo 
-Ogunsiku
-Adekunle
-Adewole
-Tolulope
-Omosowoni 
-Abiodun
-Mausoom
-Muttathkudy Aboobacker
-Singh
-Laguador 
-Omurzakov
-Ho
-Wijesinghe
-Chen 
-Chen 
-Xiong
-Lyu 
-Peng
-Sidrine
-Chibwe
-Blackwood
-Orfeuvre
-Conran
-Miga
-Lam
-Pérez Pérez
-Koya
-Handrich
-Goh
-Abdul Rahim
-Barrios 
-Menteş
-Hu
-Cheung
-Thyagaraj
-Karamaniolas 
-Onuoha
-Al Shami
-Karaolis
-Vasileva
-Băițel
-Omorjan
-Stan
-Vasquez
-Vavoulidis
-Spasenovski
-Martin
-Kumar
-Tragelli
-Tzortzis
-Vales
-Gupta
-Christodoulopoulou 
-Wang 
-Zhang 
-Parfene
-Juhar
-Sanz
-Guan 
-Tan
-Sagi
-Nuñez Mora
-Ionescu
-Chabala
-Chu
-Lau
-Ton That
-Selvasrinivasan
- Lacson
-Du Plessis
-Vorster
-Wallace
-Mugide 
-Öztürk
-Catayas
-Mesar
-Castillo García
-Dang
-Radić
-Cakmak
-Stefanidi
-Tran
-Javakhishvili
-Saha
-Mertzer
-Nair
-Han
-See`;
+// ------------------------ LSI (Lead School Instructor) Title Holders Object Array
+const lsiTitleHolders = [
+  {
+    firstname: "Anzel",
+    lastname: "Laubscher",
+    fullname: "Anzel Laubscher",
+    country: "South Africa",
+    fideid: "14300800",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Boris",
+    lastname: "Bruhn",
+    fullname: "Boris Bruhn",
+    country: "Germany",
+    fideid: "4626125",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Jerry",
+    lastname: "Nash",
+    fullname: "Jerry Nash",
+    country: "United States of America",
+    fideid: "2042390",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Leontxo",
+    lastname: "Garcia",
+    fullname: "Leontxo Garcia",
+    country: "Spain",
+    fideid: "2200872",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Philippe",
+    lastname: "Vukojevic",
+    fullname: "Philippe Vukojevic",
+    country: "Belgium",
+    fideid: "264059",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Sami",
+    lastname: "Khader",
+    fullname: "Sami Khader",
+    country: "Jordan",
+    fideid: "8100500",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Kaussar",
+    lastname: "Bauyrzhan",
+    fullname: "Kaussar Bauyrzhan",
+    country: "Kazakhstan",
+    fideid: "13707019",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Elvis Kwasi Ofori",
+    lastname: "Boateng",
+    fullname: "Elvis Kwasi Ofori Boateng",
+    country: "Ghana",
+    fideid: "12602582",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Margit",
+    lastname: "Brokko",
+    fullname: "Margit Brokko",
+    country: "Estonia",
+    fideid: "4501098",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Vitor Manuel Barroso",
+    lastname: "Cardoso",
+    fullname: "Vitor Manuel Barroso Cardoso",
+    country: "Portugal",
+    fideid: "1940783",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Ricardo",
+    lastname: "Duarte",
+    fullname: "Ricardo Duarte",
+    country: "Portugal",
+    fideid: "1940805",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Martins Oteri",
+    lastname: "Efemuai",
+    fullname: "Martins Oteri Efemuai",
+    country: "Nigeria",
+    fideid: "8500126",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "John Oyeyemi",
+    lastname: "Fawole",
+    fullname: "John Oyeyemi Fawole",
+    country: "Nigeria",
+    fideid: "8501319",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Oleksandr",
+    lastname: "Kapush",
+    fullname: "Oleksandr Kapush",
+    country: "Canada",
+    fideid: "2632420",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Anthony",
+    lastname: "Maelasi",
+    fullname: "Anthony Maelasi",
+    country: "Solomon Islands",
+    fideid: "17900123",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Mubarak Adérémi Bankolé",
+    lastname: "Okoro",
+    fullname: "Mubarak Adérémi Bankolé Okoro",
+    country: "Togo",
+    fideid: "21200483",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Jonathon",
+    lastname: "Singler",
+    fullname: "Jonathon Singler",
+    country: "United States of America",
+    fideid: "30911435",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Jose Francisco",
+    lastname: "Suarez Roa",
+    fullname: "Jose Francisco Suarez Roa",
+    country: "Spain",
+    fideid: "2203650",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Abel",
+    lastname: "Talamantez",
+    fullname: "Abel Talamantez",
+    country: "United States of America",
+    fideid: "30915694",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Maria",
+    lastname: "Vasilescu",
+    fullname: "Maria Vasilescu",
+    country: "Romania",
+    fideid: "1221116",
+    awarddate: "2021-03-30T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Ali",
+    lastname: "Abbas",
+    fullname: "Ali Abbas",
+    country: "Syria",
+    fideid: "7603215",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Oluwadara",
+    lastname: "Adegbayi",
+    fullname: "Oluwadara Adegbayi",
+    country: "Nigeria",
+    fideid: "8504156",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Adesoji",
+    lastname: "Adegbie",
+    fullname: "Adesoji Adegbie",
+    country: "Nigeria",
+    fideid: "8508607",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Salman",
+    lastname: "Aldori",
+    fullname: "Salman Aldori",
+    country: "Iraq",
+    fideid: "4800664",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Keshav",
+    lastname: "Argade",
+    fullname: "Keshav Argade",
+    country: "India",
+    fideid: "5010357",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Robert",
+    lastname: "Katende",
+    fullname: "Robert Katende",
+    country: "Uganda",
+    fideid: "10002049",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Atanu",
+    lastname: "Lahiri",
+    fullname: "Atanu Lahiri",
+    country: "India",
+    fideid: "5002818",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Juana Maria",
+    lastname: "Martinez Fernandez",
+    fullname: "Juana Maria Martinez Fernandez",
+    country: "Spain",
+    fideid: "24534471",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Celal",
+    lastname: "Özbek",
+    fullname: "Celal Özbek",
+    country: "Turkey",
+    fideid: "6351603",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Vladimir",
+    lastname: "Poley",
+    fullname: "Vladimir Poley",
+    country: "Bulgaria",
+    fideid: "13500090",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "S.P. Dishal",
+    lastname: "Ruwinga",
+    fullname: "S.P. Dishal Ruwinga",
+    country: "Sri Lanka",
+    fideid: "9954503",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Thoha",
+    lastname: "Saleem",
+    fullname: "Thoha Saleem",
+    country: "Maldives",
+    fideid: "16700821",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Ramendra",
+    lastname: "Sharma",
+    fullname: "Ramendra Sharma",
+    country: "India",
+    fideid: "33386897",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Cornelia",
+    lastname: "Venter",
+    fullname: "Cornelia Venter",
+    country: "South Africa",
+    fideid: "14321297",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Oluwaesun",
+    lastname: "Bisiryu-Salam",
+    fullname: "Oluwaesun Bisiryu-Salam",
+    country: "Nigeria",
+    fideid: "8501408",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Yash",
+    lastname: "Lohana",
+    fullname: "Yash Lohana",
+    country: "India",
+    fideid: "25932900",
+    awarddate: "2021-07-31T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Rajendra Raghunath ",
+    lastname: "Mane",
+    fullname: "Rajendra Raghunath  Mane",
+    country: "India",
+    fideid: "35088475",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Javier ",
+    lastname: "Pina Ricardo",
+    fullname: "Javier  Pina Ricardo",
+    country: "Cuba",
+    fideid: "6430767",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Erick ",
+    lastname: "Takawira ",
+    fullname: "Erick  Takawira ",
+    country: "Zimbabwe",
+    fideid: "14304333",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Jose Antonio ",
+    lastname: "Coleto Calderón",
+    fullname: "Jose Antonio  Coleto Calderón",
+    country: "Spain",
+    fideid: "2224631",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Scott ",
+    lastname: "Stewart",
+    fullname: "Scott  Stewart",
+    country: "Australia",
+    fideid: "3203484",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Eva",
+    lastname: "Keshishian",
+    fullname: "Eva Keshishian",
+    country: "United States of America",
+    fideid: "12725462",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Batchimeg ",
+    lastname: "Tuvshintugs ",
+    fullname: "Batchimeg  Tuvshintugs ",
+    country: "Mongolia",
+    fideid: "4900839",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Razan ",
+    lastname: "Alshaeby",
+    fullname: "Razan  Alshaeby",
+    country: "Jordan",
+    fideid: "8102953",
+    awarddate: "2022-06-12T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Ahmed ",
+    lastname: "Shamoon",
+    fullname: "Ahmed  Shamoon",
+    country: "Maldives",
+    fideid: "16700392",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Rajeendra Seneka",
+    lastname: "Kalugampitiya",
+    fullname: "Rajeendra Seneka Kalugampitiya",
+    country: "Sri Lanka",
+    fideid: "9901124",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Amelito Gelera",
+    lastname: "Reyes  ",
+    fullname: "Amelito Gelera Reyes  ",
+    country: "Philippines",
+    fideid: "5261589",
+    awarddate: "2022-04-04T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Patrick ",
+    lastname: "Ojok ",
+    fullname: "Patrick  Ojok ",
+    country: "Uganda",
+    fideid: "10001492",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Uvencio José",
+    lastname: " Blanco Hernández",
+    fullname: "Uvencio José  Blanco Hernández",
+    country: "Venezuela",
+    fideid: "3902340",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Nasrul Humaimi Bin ",
+    lastname: "Mahmood",
+    fullname: "Nasrul Humaimi Bin  Mahmood",
+    country: "Malaysia",
+    fideid: "5702380",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Milad ",
+    lastname: "Najafian Yazdi",
+    fullname: "Milad  Najafian Yazdi",
+    country: "Iran",
+    fideid: "42594375",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Amal Jawad",
+    lastname: "Alhashemi",
+    fullname: "Amal Jawad Alhashemi",
+    country: "Bahrain",
+    fideid: "11204982",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Victor Machel",
+    lastname: "Hongo ",
+    fullname: "Victor Machel Hongo ",
+    country: "Kenya",
+    fideid: "10803491",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Paul Anthony",
+    lastname: "Ryan",
+    fullname: "Paul Anthony Ryan",
+    country: "Ireland",
+    fideid: "2505231",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Santanu ",
+    lastname: "Lahiri",
+    fullname: "Santanu  Lahiri",
+    country: "India",
+    fideid: "5001935",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Gabriella Gianna",
+    lastname: "Johnson",
+    fullname: "Gabriella Gianna Johnson",
+    country: "Trinidad and Tobago",
+    fideid: "7701128",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Hoe Kok ",
+    lastname: "Ho",
+    fullname: "Hoe Kok  Ho",
+    country: "Malaysia",
+    fideid: "5748127",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Marcia Urmeela",
+    lastname: "Lee",
+    fullname: "Marcia Urmeela Lee",
+    country: "Guyana",
+    fideid: "19701250",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Chanda ",
+    lastname: "Nsakanya",
+    fullname: "Chanda  Nsakanya",
+    country: "Zambia",
+    fideid: "8700532",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Binita ",
+    lastname: "Shah",
+    fullname: "Binita  Shah",
+    country: "India",
+    fideid: "35003992",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Jorge Hugo Christian ",
+    lastname: "Bordoli",
+    fullname: "Jorge Hugo Christian  Bordoli",
+    country: "Chile",
+    fideid: "3401936",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Valentino",
+    lastname: "Martis ",
+    fullname: "Valentino Martis ",
+    country: "Aruba",
+    fideid: "7500254",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Munkhzul ",
+    lastname: "Jargalsaikhan ",
+    fullname: "Munkhzul  Jargalsaikhan ",
+    country: "Mongolia",
+    fideid: "4908511",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Ian ",
+    lastname: "King ",
+    fullname: "Ian  King ",
+    country: "Kenya",
+    fideid: "10811249",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Lawrence ",
+    lastname: "Tavagwisa",
+    fullname: "Lawrence  Tavagwisa",
+    country: "Zimbabwe",
+    fideid: "11002123",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Luis ",
+    lastname: "Blasco de la Cruz ",
+    fullname: "Luis  Blasco de la Cruz ",
+    country: "Spain",
+    fideid: "2219107",
+    awarddate: "2022-06-16T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Sadiqah Reísa Ami ",
+    lastname: "Razark",
+    fullname: "Sadiqah Reísa Ami  Razark",
+    country: "Trinidad and Tobago",
+    fideid: "7702329",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Juma Francis ",
+    lastname: "Okoth",
+    fullname: "Juma Francis  Okoth",
+    country: "Kenya",
+    fideid: "10822860",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Tega Mandy ",
+    lastname: "Enarevba",
+    fullname: "Tega Mandy  Enarevba",
+    country: "Nigeria",
+    fideid: "8503150",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Agab ",
+    lastname: "Dozva",
+    fullname: "Agab  Dozva",
+    country: "Zimbabwe",
+    fideid: "11012145",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Jop ",
+    lastname: "Delemarre ",
+    fullname: "Jop  Delemarre ",
+    country: "The Netherlands",
+    fideid: "1003704",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Judy ",
+    lastname: "Kiragu ",
+    fullname: "Judy  Kiragu ",
+    country: "Kenya",
+    fideid: "10812431",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Grzegorz",
+    lastname: " Guzdziol ",
+    fullname: "Grzegorz  Guzdziol ",
+    country: "Luxembourg",
+    fideid: "4007824",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Pon Perumal",
+    lastname: "Sankaranarayanan",
+    fullname: "Pon Perumal Sankaranarayanan",
+    country: "India",
+    fideid: "45043612",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Francisco Javier",
+    lastname: "Cruz Arce",
+    fullname: "Francisco Javier Cruz Arce",
+    country: "Puerto Rico",
+    fideid: "3101959",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Ahmed",
+    lastname: "Drira",
+    fullname: "Ahmed Drira",
+    country: "Tunisia",
+    fideid: "5507154",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Femi Akanji",
+    lastname: "Akinlade",
+    fullname: "Femi Akanji Akinlade",
+    country: "Nigeria",
+    fideid: "8522669",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Raúl",
+    lastname: "Romero  Martin",
+    fullname: "Raúl Romero  Martin",
+    country: "Spain",
+    fideid: "94727813",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Magret ",
+    lastname: "Ngugama",
+    fullname: "Magret  Ngugama",
+    country: "Malawi",
+    fideid: "20500122",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Deborah",
+    lastname: "Richards-Porter",
+    fullname: "Deborah Richards-Porter",
+    country: "Jamaica",
+    fideid: "7400446",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+];
+// ---------------------------------------------------------------------------------
+// ------------------------ SI (School Instructor) Title Holders Object Array
+// ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
+const siTitleHolders = [
+  {
+    firstname: "Razan",
+    lastname: "Alshaeby",
+    fullname: "Razan Alshaeby",
+    country: "Jordan",
+    fideid: "8102953",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Elizaveta",
+    lastname: "Belausava",
+    fullname: "Elizaveta Belausava",
+    country: "Belarus",
+    fideid: "13530682",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Luis",
+    lastname: "Blasco de la Cruz",
+    fullname: "Luis Blasco de la Cruz",
+    country: "Spain",
+    fideid: "2219107",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Koffi",
+    lastname: "Botsoe",
+    fullname: "Koffi Botsoe",
+    country: "Togo",
+    fideid: "21200025",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Valerio",
+    lastname: "Brusamolin",
+    fullname: "Valerio Brusamolin",
+    country: "Brazil",
+    fideid: "2107210",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Guimara",
+    lastname: "Dauletova",
+    fullname: "Guimara Dauletova",
+    country: "Kazakhstan",
+    fideid: "13702971",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Jeremiah",
+    lastname: "Dikgang",
+    fullname: "Jeremiah Dikgang",
+    country: "Botswana",
+    fideid: "11309199",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Juan Carlos",
+    lastname: "Hernandez",
+    fullname: "Juan Carlos Hernandez",
+    country: "Honduras",
+    fideid: "8400318",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Jeffrey",
+    lastname: "Kanguma",
+    fullname: "Jeffrey Kanguma",
+    country: "Zambia",
+    fideid: "8701075",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Viesturs",
+    lastname: "Kapce",
+    fullname: "Viesturs Kapce",
+    country: "Latvia",
+    fideid: "11602562",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Alex",
+    lastname: "Kapush",
+    fullname: "Alex Kapush",
+    country: "Canada",
+    fideid: "2632420",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Jagath K.C.",
+    lastname: "Ketalawala",
+    fullname: "Jagath K.C. Ketalawala",
+    country: "Sri Lanka",
+    fideid: "9902430",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Sami",
+    lastname: "Khader",
+    fullname: "Sami Khader",
+    country: "Jordan",
+    fideid: "8100500",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Mona",
+    lastname: "Khaled",
+    fullname: "Mona Khaled",
+    country: "Egypt",
+    fideid: "10605908",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Natallia",
+    lastname: "Lapachuk",
+    fullname: "Natallia Lapachuk",
+    country: "Belarus",
+    fideid: "13530690",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Bernardo",
+    lastname: "Roselli Mailhe",
+    fullname: "Bernardo Roselli Mailhe",
+    country: "Uruguay",
+    fideid: "3000028",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Erick",
+    lastname: "Takawira",
+    fullname: "Erick Takawira",
+    country: "Zimbabwe",
+    fideid: "14304333",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Mothokomedi",
+    lastname: "Thabano",
+    fullname: "Mothokomedi Thabano",
+    country: "Botswana",
+    fideid: "11309253",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Teodora",
+    lastname: "Velea",
+    fullname: "Teodora Velea",
+    country: "Romania",
+    fideid: "1216090",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Viktor",
+    lastname: "Zaretsky",
+    fullname: "Viktor Zaretsky",
+    country: "Russia",
+    fideid: "55681603",
+    awarddate: "2021-06-06T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Ricardo",
+    lastname: "Andrade",
+    fullname: "Ricardo Andrade",
+    country: "Portugal",
+    fideid: "1942514",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Ali",
+    lastname: "Abbas",
+    fullname: "Ali Abbas",
+    country: "Syria",
+    fideid: "7603215",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Keshav",
+    lastname: "Argade",
+    fullname: "Keshav Argade",
+    country: "India",
+    fideid: "5010357",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Caroline",
+    lastname: "Assa",
+    fullname: "Caroline Assa",
+    country: "Nigeria",
+    fideid: "8503060",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Oluwaseun",
+    lastname: "Bisiryu-Salam",
+    fullname: "Oluwaseun Bisiryu-Salam",
+    country: "Nigeria",
+    fideid: "8501408",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Fernando",
+    lastname: "Cortes Aviles",
+    fullname: "Fernando Cortes Aviles",
+    country: "Mexico",
+    fideid: "5133947",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Mark",
+    lastname: "Fleri",
+    fullname: "Mark Fleri",
+    country: "Malta",
+    fideid: "5602530",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Kathiê",
+    lastname: "Goulart Librelato",
+    fullname: "Kathiê Goulart Librelato",
+    country: "Brazil",
+    fideid: "2153963",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Denis",
+    lastname: "Lemouton",
+    fullname: "Denis Lemouton",
+    country: "France",
+    fideid: "351043573",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Rajendra",
+    lastname: "Mane",
+    fullname: "Rajendra Mane",
+    country: "India",
+    fideid: "35088475",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Benjamin",
+    lastname: "Mukumbya",
+    fullname: "Benjamin Mukumbya",
+    country: "Uganda",
+    fideid: "10001115",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Claudiu",
+    lastname: "Prunescu",
+    fullname: "Claudiu Prunescu",
+    country: "Switzerland",
+    fideid: "1207210",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Konstantin",
+    lastname: "Pyryaev",
+    fullname: "Konstantin Pyryaev",
+    country: "Cananda",
+    fideid: "2610884",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Vivek",
+    lastname: "Rane",
+    fullname: "Vivek Rane",
+    country: "India",
+    fideid: "5052440",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Paul",
+    lastname: "Ryan",
+    fullname: "Paul Ryan",
+    country: "Ireland",
+    fideid: "2505231",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Udupa K.R.",
+    lastname: "Shashank",
+    fullname: "Udupa K.R. Shashank",
+    country: "India",
+    fideid: "5067375",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Irvin",
+    lastname: "Smith",
+    fullname: "Irvin Smith",
+    country: "Saint Lucia",
+    fideid: "11104759",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Abel",
+    lastname: "Talamantez",
+    fullname: "Abel Talamantez",
+    country: "United States of America",
+    fideid: "30915694",
+    awarddate: "2021-07-26T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Naresh",
+    lastname: "Tejavath ",
+    fullname: "Naresh Tejavath ",
+    country: "India",
+    fideid: "35000810",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Samir",
+    lastname: "Vyas",
+    fullname: "Samir Vyas",
+    country: "India",
+    fideid: "5011388",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Wedisinghe Arachchige",
+    lastname: "Wedisinghe",
+    fullname: "Wedisinghe Arachchige Wedisinghe",
+    country: "Sri Lanka",
+    fideid: "29950481",
+    awarddate: "2021-06-07T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Kwai Keong",
+    lastname: "Chan",
+    fullname: "Kwai Keong Chan",
+    country: "Hong Kong",
+    fideid: "6000991",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Mai Feng Dina",
+    lastname: "Chen",
+    fullname: "Mai Feng Dina Chen",
+    country: "Chinese Taipei",
+    fideid: "16300556",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Marlon",
+    lastname: "Cunanan",
+    fullname: "Marlon Cunanan",
+    country: "Philippines",
+    fideid: "5219261",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Sophie",
+    lastname: "Fancelli",
+    fullname: "Sophie Fancelli",
+    country: "France",
+    fideid: "20604122",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Norazlin",
+    lastname: "Juarih",
+    fullname: "Norazlin Juarih",
+    country: "Malaysia",
+    fideid: "5703719",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Valentin",
+    lastname: "Kormyshev",
+    fullname: "Valentin Kormyshev",
+    country: "Russia",
+    fideid: "4175310",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Robin",
+    lastname: "Lai",
+    fullname: "Robin Lai",
+    country: "Hong Kong",
+    fideid: "6000436",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Richard",
+    lastname: "Springer",
+    fullname: "Richard Springer",
+    country: "Panama",
+    fideid: "6612857",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Vladimir",
+    lastname: "Ushakov",
+    fullname: "Vladimir Ushakov",
+    country: "Russia",
+    fideid: "55701957",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Cornelia",
+    lastname: "Venter",
+    fullname: "Cornelia Venter",
+    country: "South Africa",
+    fideid: "1432197",
+    awarddate: "2021-07-27T22:00:00.000Z",
+    year: 2021,
+  },
+  {
+    firstname: "Abdul Jabaar Abiola A.",
+    lastname: "Toukourou ",
+    fullname: "Abdul Jabaar Abiola A. Toukourou ",
+    country: "Bénin",
+    fideid: "7816839",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Yassin",
+    lastname: "Hassan",
+    fullname: "Yassin Hassan",
+    country: "Djibouti",
+    fideid: "32500181",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Kaundum A. Robert",
+    lastname: "Diatta ",
+    fullname: "Kaundum A. Robert Diatta ",
+    country: "Senegal",
+    fideid: "19900163",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Benoit",
+    lastname: "Bissaro",
+    fullname: "Benoit Bissaro",
+    country: "France",
+    fideid: "36061204",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Rémi ",
+    lastname: "Kopibida ",
+    fullname: "Rémi  Kopibida ",
+    country: "France",
+    fideid: "36075434",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Thierry Ulrich Cokou",
+    lastname: "Tossa",
+    fullname: "Thierry Ulrich Cokou Tossa",
+    country: "Ghana",
+    fideid: "12601845",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Florian  ",
+    lastname: "Moreira",
+    fullname: "Florian   Moreira",
+    country: "France",
+    fideid: "26068427",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Philippe ",
+    lastname: "Moreira ",
+    fullname: "Philippe  Moreira ",
+    country: "France",
+    fideid: "626430",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Aruzhan ",
+    lastname: "Urazova ",
+    fullname: "Aruzhan  Urazova ",
+    country: "France",
+    fideid: "652060775",
+    awarddate: "2022-02-10T23:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Linda ",
+    lastname: "Abur",
+    fullname: "Linda  Abur",
+    country: "Kenya",
+    fideid: "10800425",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Juma Francis",
+    lastname: "Okoth ",
+    fullname: "Juma Francis Okoth ",
+    country: "Kenya",
+    fideid: "10822860",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Ian ",
+    lastname: "King",
+    fullname: "Ian  King",
+    country: "Kenya",
+    fideid: "10811249",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Victor",
+    lastname: "Hongo",
+    fullname: "Victor Hongo",
+    country: "Kenya",
+    fideid: "10803491",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Patrick ",
+    lastname: "Ojok",
+    fullname: "Patrick  Ojok",
+    country: "Uganda",
+    fideid: "10001492",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Susan Mfera",
+    lastname: "Namangale",
+    fullname: "Susan Mfera Namangale",
+    country: "Malawi",
+    fideid: "20501790",
+    awarddate: "2023-01-05T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Kudakwashe Walter ",
+    lastname: "Mukundwa ",
+    fullname: "Kudakwashe Walter  Mukundwa ",
+    country: "Zimbabwe",
+    fideid: "11005840",
+    awarddate: "2023-01-05T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Adrián",
+    lastname: "Carpintero Muñoz",
+    fullname: "Adrián Carpintero Muñoz",
+    country: "Spain",
+    fideid: "32090595",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Iago ",
+    lastname: "García Outeiro",
+    fullname: "Iago  García Outeiro",
+    country: "Spain",
+    fideid: "22257462",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Juan Pablo ",
+    lastname: "Valencia Montero",
+    fullname: "Juan Pablo  Valencia Montero",
+    country: "Chile",
+    fideid: "3408680",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Francisco Arturo",
+    lastname: "Piñeiro Martinez",
+    fullname: "Francisco Arturo Piñeiro Martinez",
+    country: "Uruguay",
+    fideid: "3015505",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Cristóbal ",
+    lastname: "Vega Adorno",
+    fullname: "Cristóbal  Vega Adorno",
+    country: "Puerto Rico",
+    fideid: "3101355",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Francisco",
+    lastname: "Cruz Arce",
+    fullname: "Francisco Cruz Arce",
+    country: "Puerto Rico",
+    fideid: "3101959",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Jhonatan Radhames ",
+    lastname: "Mejia Sosa",
+    fullname: "Jhonatan Radhames  Mejia Sosa",
+    country: "Dominican Republic",
+    fideid: "6408524",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "José Luis",
+    lastname: "Fernández Guevara ",
+    fullname: "José Luis Fernández Guevara ",
+    country: "Spain",
+    fideid: "54787220",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Juan Cruz",
+    lastname: "Arias ",
+    fullname: "Juan Cruz Arias ",
+    country: "Argentina",
+    fideid: "118540",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Penélope ",
+    lastname: "González Díaz ",
+    fullname: "Penélope  González Díaz ",
+    country: "Cuba",
+    fideid: "36891",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Nicola Alejandro",
+    lastname: "Nigro Monasterios",
+    fullname: "Nicola Alejandro Nigro Monasterios",
+    country: "Venezuela",
+    fideid: "3908739",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Carlos",
+    lastname: "Maury Escalante",
+    fullname: "Carlos Maury Escalante",
+    country: "Spain",
+    fideid: "54777224",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Louis ",
+    lastname: "Carrion Pérez ",
+    fullname: "Louis  Carrion Pérez ",
+    country: "Puerto Rico",
+    fideid: "3103927",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Juan",
+    lastname: "Berrios Gonzalez ",
+    fullname: "Juan Berrios Gonzalez ",
+    country: "Puerto Rico",
+    fideid: "3110087",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Diego Fernando ",
+    lastname: "Rojas Gallego ",
+    fullname: "Diego Fernando  Rojas Gallego ",
+    country: "Colombia",
+    fideid: "144405294",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Jose ",
+    lastname: "Pesqueira ",
+    fullname: "Jose  Pesqueira ",
+    country: "Aruba",
+    fideid: "15900037",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Seidy ",
+    lastname: "Pagés Román",
+    fullname: "Seidy  Pagés Román",
+    country: "Cuba",
+    fideid: "3510107",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Vivian",
+    lastname: "Ramón Pita ",
+    fullname: "Vivian Ramón Pita ",
+    country: "Cuba",
+    fideid: "3501280",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Pablo Alejandro",
+    lastname: "Paris ",
+    fullname: "Pablo Alejandro Paris ",
+    country: "Argentina",
+    fideid: "136050",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Francisco",
+    lastname: "Díaz Elzo",
+    fullname: "Francisco Díaz Elzo",
+    country: "Spain",
+    fideid: "54782317",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Eihartze",
+    lastname: "Buiza Prieto",
+    fullname: "Eihartze Buiza Prieto",
+    country: "Spain",
+    fideid: "22250220",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Aritz",
+    lastname: "Idiazabal Troyas",
+    fullname: "Aritz Idiazabal Troyas",
+    country: "Spain",
+    fideid: "2242842",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Ezequiel Sebastian",
+    lastname: "Gomez ",
+    fullname: "Ezequiel Sebastian Gomez ",
+    country: "Argentina",
+    fideid: "152021",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Miguel Octavio",
+    lastname: "Jimenez Chan ",
+    fullname: "Miguel Octavio Jimenez Chan ",
+    country: "Mexico",
+    fideid: "5171415",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Patricio ",
+    lastname: "Baeza",
+    fullname: "Patricio  Baeza",
+    country: "Mexico",
+    fideid: "5141753",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Alhan Enock ",
+    lastname: "Carrera Du Bois",
+    fullname: "Alhan Enock  Carrera Du Bois",
+    country: "Panama",
+    fideid: "6600549",
+    awarddate: "2022-04-06T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Seyed Hamed",
+    lastname: "Mousavian",
+    fullname: "Seyed Hamed Mousavian",
+    country: "Iran",
+    fideid: "12501930",
+    awarddate: "2022-07-26T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Govindankutty",
+    lastname: " M S",
+    fullname: "Govindankutty  M S",
+    country: "India",
+    fideid: "45022011",
+    awarddate: "2022-07-26T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Llamin ",
+    lastname: "Navarro Castillo",
+    fullname: "Llamin  Navarro Castillo",
+    country: "Costa Rica",
+    fideid: "6515304",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Sandra María",
+    lastname: "Torres Braiz ",
+    fullname: "Sandra María Torres Braiz ",
+    country: "Costa Rica",
+    fideid: "6515290",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Huascar Jael",
+    lastname: "Diaz Vicente",
+    fullname: "Huascar Jael Diaz Vicente",
+    country: "Dominica",
+    fideid: "6412483",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "José Antonio ",
+    lastname: "García Gil ",
+    fullname: "José Antonio  García Gil ",
+    country: "Spain",
+    fideid: "22200339",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Antonio ",
+    lastname: "Lobo Vásquez ",
+    fullname: "Antonio  Lobo Vásquez ",
+    country: "Panama",
+    fideid: "6602002",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Raphael",
+    lastname: "Lacerda de Alencar Pereira",
+    fullname: "Raphael Lacerda de Alencar Pereira",
+    country: "Spain",
+    fideid: "94715084",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Sergio ",
+    lastname: "Cortés Ferrándiz",
+    fullname: "Sergio  Cortés Ferrándiz",
+    country: "Spain",
+    fideid: "54790123",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Karla ",
+    lastname: "Benítez Lozano",
+    fullname: "Karla  Benítez Lozano",
+    country: "Mexico",
+    fideid: "5120187",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Susan Joan",
+    lastname: "Medina Peña",
+    fullname: "Susan Joan Medina Peña",
+    country: "Mexico",
+    fideid: "5119146",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Andrés Eladio ",
+    lastname: "Fernández ",
+    fullname: "Andrés Eladio  Fernández ",
+    country: "Argentina",
+    fideid: "187410",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "David ",
+    lastname: "Magaña Morales",
+    fullname: "David  Magaña Morales",
+    country: "Mexico",
+    fideid: "5114586",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Roberto",
+    lastname: "Magaña Morales",
+    fullname: "Roberto Magaña Morales",
+    country: "Mexico",
+    fideid: "5114454",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Juan Manuel ",
+    lastname: "Garcia Díaz",
+    fullname: "Juan Manuel  Garcia Díaz",
+    country: "Colombia",
+    fideid: "4411226",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Jonathan ",
+    lastname: "Soriano Folch ",
+    fullname: "Jonathan  Soriano Folch ",
+    country: "Spain",
+    fideid: "2294737",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Karla July ",
+    lastname: "Fernández Rivero ",
+    fullname: "Karla July  Fernández Rivero ",
+    country: "Cuba",
+    fideid: "3517489",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Pablo David ",
+    lastname: "Angeles Diaz",
+    fullname: "Pablo David  Angeles Diaz",
+    country: "Mexico",
+    fideid: "5139333",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Henry",
+    lastname: "Hasman",
+    fullname: "Henry Hasman",
+    country: "United States of America",
+    fideid: "30967309",
+    awarddate: "2022-09-23T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Prosper",
+    lastname: "Musemvu",
+    fullname: "Prosper Musemvu",
+    country: "Zambia",
+    fideid: "8726647",
+    awarddate: "2022-10-13T22:00:00.000Z",
+    year: 2022,
+  },
+  {
+    firstname: "Mohamed",
+    lastname: "Belgacem",
+    fullname: "Mohamed Belgacem",
+    country: "Tunis",
+    fideid: "5534640",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Gaspard ",
+    lastname: "Vernay ",
+    fullname: "Gaspard  Vernay ",
+    country: "France",
+    fideid: "608343",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Jean-Paul ",
+    lastname: "Tissier",
+    fullname: "Jean-Paul  Tissier",
+    country: "France",
+    fideid: "688894",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Oumarou Abou Ibrahim",
+    lastname: "Maman",
+    fullname: "Oumarou Abou Ibrahim Maman",
+    country: "Niger",
+    fideid: "29400031",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Martial ",
+    lastname: "Pissama Ntsaou ",
+    fullname: "Martial  Pissama Ntsaou ",
+    country: "Gabon",
+    fideid: "17400864",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Ridha",
+    lastname: "Jellid",
+    fullname: "Ridha Jellid",
+    country: "Tunis",
+    fideid: "5534984",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Samir ",
+    lastname: "Charouq",
+    fullname: "Samir  Charouq",
+    country: "Marocco",
+    fideid: "9020110",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Valentin ",
+    lastname: "Moreira",
+    fullname: "Valentin  Moreira",
+    country: "France",
+    fideid: "36012793",
+    awarddate: "2023-01-06T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Pavlos",
+    lastname: "Skouroupathis",
+    fullname: "Pavlos Skouroupathis",
+    country: "Cyprus",
+    fideid: "5909724",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Pavlo Pavlovych ",
+    lastname: "Popov ",
+    fullname: "Pavlo Pavlovych  Popov ",
+    country: "Ukraine",
+    fideid: "34130349",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Evgenia ",
+    lastname: "Kuzevanova",
+    fullname: "Evgenia  Kuzevanova",
+    country: "Russia",
+    fideid: "4184424",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Karina Paola ",
+    lastname: "Martínez Zambrano",
+    fullname: "Karina Paola  Martínez Zambrano",
+    country: "Educador",
+    fideid: "3629651",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "David ",
+    lastname: "Ortiz ",
+    fullname: "David  Ortiz ",
+    country: "United States of America",
+    fideid: "30938694",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Rafael Emilio",
+    lastname: " Deida Morales",
+    fullname: "Rafael Emilio  Deida Morales",
+    country: "Puerto Rico",
+    fideid: "3111458",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Mohammad Salman ",
+    lastname: "Khan",
+    fullname: "Mohammad Salman  Khan",
+    country: "Pakistan",
+    fideid: "7803516",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Lewis ",
+    lastname: "Kahoba",
+    fullname: "Lewis  Kahoba",
+    country: "Zimbabwe",
+    fideid: "11001801",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Thivakaran ",
+    lastname: "Baskaran",
+    fullname: "Thivakaran  Baskaran",
+    country: "Sri Lanka",
+    fideid: "29964253",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Valliammai ",
+    lastname: "Saravanan",
+    fullname: "Valliammai  Saravanan",
+    country: "India",
+    fideid: "25017152",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Jessica ",
+    lastname: "Callender ",
+    fullname: "Jessica  Callender ",
+    country: "Guyana",
+    fideid: "19700547",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Harsendra P ",
+    lastname: "Prakash",
+    fullname: "Harsendra P  Prakash",
+    country: "India",
+    fideid: "33321221",
+    awarddate: "2023-01-18T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Ndopnse Edem",
+    lastname: "Ekpo",
+    fullname: "Ndopnse Edem Ekpo",
+    country: "Nigeria  ",
+    fideid: "8507554",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Olumide Ayodeji",
+    lastname: "Akindayini",
+    fullname: "Olumide Ayodeji Akindayini",
+    country: "Nigeria  ",
+    fideid: "8501777",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Efe Abraham ",
+    lastname: "Dafiewharen ",
+    fullname: "Efe Abraham  Dafiewharen ",
+    country: "Nigeria  ",
+    fideid: "8509808",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Mayomi Olayinka",
+    lastname: "Oyelese",
+    fullname: "Mayomi Olayinka Oyelese",
+    country: "Nigeria  ",
+    fideid: "8502900",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Nifemi Solomon ",
+    lastname: "Ojomo ",
+    fullname: "Nifemi Solomon  Ojomo ",
+    country: "Nigeria  ",
+    fideid: "8511489",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Babatunde Timothy ",
+    lastname: "Ogunsiku",
+    fullname: "Babatunde Timothy  Ogunsiku",
+    country: "Nigeria  ",
+    fideid: "8502323",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Sokunbi",
+    lastname: "Adekunle",
+    fullname: "Sokunbi Adekunle",
+    country: "Nigeria  ",
+    fideid: "8515239",
+    awarddate: "2023-02-22T23:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Adeyinka",
+    lastname: "Adewole",
+    fullname: "Adeyinka Adewole",
+    country: "Nigeria  ",
+    fideid: "8502544",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Ogunwobi",
+    lastname: "Tolulope",
+    fullname: "Ogunwobi Tolulope",
+    country: "Nigeria  ",
+    fideid: "8501521",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Oluwafemi Samuel ",
+    lastname: "Omosowoni ",
+    fullname: "Oluwafemi Samuel  Omosowoni ",
+    country: "Nigeria  ",
+    fideid: "8521050",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Samuel Abayomi",
+    lastname: "Abiodun",
+    fullname: "Samuel Abayomi Abiodun",
+    country: "Nigeria  ",
+    fideid: "8514780",
+    awarddate: "2023-06-21T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Mohamed Muneef",
+    lastname: "Mausoom",
+    fullname: "Mohamed Muneef Mausoom",
+    country: "Maldives",
+    fideid: "16704614",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Thafseer",
+    lastname: "Muttathkudy Aboobacker",
+    fullname: "Thafseer Muttathkudy Aboobacker",
+    country: "India",
+    fideid: "88132749",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Anurag",
+    lastname: "Singh",
+    fullname: "Anurag Singh",
+    country: "India",
+    fideid: "25096826",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Marlon Villaflores ",
+    lastname: "Laguador ",
+    fullname: "Marlon Villaflores  Laguador ",
+    country: "Philippines",
+    fideid: "115105244",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Bakyt ",
+    lastname: "Omurzakov",
+    fullname: "Bakyt  Omurzakov",
+    country: "Kyrgyztan",
+    fideid: "13829327",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "In Hei Henry",
+    lastname: "Ho",
+    fullname: "In Hei Henry Ho",
+    country: "Hong Kong",
+    fideid: "6002552",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Prabodhi Methma ",
+    lastname: "Wijesinghe",
+    fullname: "Prabodhi Methma  Wijesinghe",
+    country: "Sri Lanka",
+    fideid: "9933425",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Xi",
+    lastname: "Chen ",
+    fullname: "Xi Chen ",
+    country: "China",
+    fideid: "331107996",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Hongbei",
+    lastname: "Chen ",
+    fullname: "Hongbei Chen ",
+    country: "China",
+    fideid: "8612722",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Honglin ",
+    lastname: "Xiong",
+    fullname: "Honglin  Xiong",
+    country: "China",
+    fideid: "8643636",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Qinhao",
+    lastname: "Lyu ",
+    fullname: "Qinhao Lyu ",
+    country: "China",
+    fideid: "8610517",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Tianlu ",
+    lastname: "Peng",
+    fullname: "Tianlu  Peng",
+    country: "China",
+    fideid: "8605220",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Seddik",
+    lastname: "Sidrine",
+    fullname: "Seddik Sidrine",
+    country: "Morocco",
+    fideid: "9043225",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Victor Lukonde",
+    lastname: "Chibwe",
+    fullname: "Victor Lukonde Chibwe",
+    country: "Zambia",
+    fideid: "8718342",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Ryan Oliver",
+    lastname: "Blackwood",
+    fullname: "Ryan Oliver Blackwood",
+    country: "Jamaica",
+    fideid: "7400640",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Valentin Pierre Joseph",
+    lastname: "Orfeuvre",
+    fullname: "Valentin Pierre Joseph Orfeuvre",
+    country: "France",
+    fideid: "26005042",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Oliver Daniel",
+    lastname: "Conran",
+    fullname: "Oliver Daniel Conran",
+    country: "Hong Kong",
+    fideid: "6005853",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Tomasz ",
+    lastname: "Miga",
+    fullname: "Tomasz  Miga",
+    country: "Poland",
+    fideid: "21827494",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Christian Fang Yip",
+    lastname: "Lam",
+    fullname: "Christian Fang Yip Lam",
+    country: "Hong Kong",
+    fideid: "6013031",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Danay ",
+    lastname: "Pérez Pérez",
+    fullname: "Danay  Pérez Pérez",
+    country: "Puerto Rico",
+    fideid: "3109755",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Stephen ",
+    lastname: "Koya",
+    fullname: "Stephen  Koya",
+    country: "Nigeria",
+    fideid: "8507589",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Lothar ",
+    lastname: "Handrich",
+    fullname: "Lothar  Handrich",
+    country: "Germany",
+    fideid: "16225597",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Casey ",
+    lastname: "Goh",
+    fullname: "Casey  Goh",
+    country: "Australia",
+    fideid: "3251098",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Mohamed Dzuhairy",
+    lastname: "Abdul Rahim",
+    fullname: "Mohamed Dzuhairy Abdul Rahim",
+    country: "Malaysia",
+    fideid: "5726700",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Carlos Zamora",
+    lastname: "Barrios ",
+    fullname: "Carlos Zamora Barrios ",
+    country: "Costa Rica",
+    fideid: "6500358",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Uğur ",
+    lastname: "Menteş",
+    fullname: "Uğur  Menteş",
+    country: "St Vincent and the Grenadines",
+    fideid: "36100021",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Tao",
+    lastname: "Hu",
+    fullname: "Tao Hu",
+    country: "China",
+    fideid: "8638047",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Chun Yu",
+    lastname: "Cheung",
+    fullname: "Chun Yu Cheung",
+    country: "Hong Kong",
+    fideid: "6013074",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Rakshith ",
+    lastname: "Thyagaraj",
+    fullname: "Rakshith  Thyagaraj",
+    country: "India",
+    fideid: "33385599",
+    awarddate: "2023-05-14T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Christos",
+    lastname: "Karamaniolas ",
+    fullname: "Christos Karamaniolas ",
+    country: "Greece",
+    fideid: "42170206",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Obioma ",
+    lastname: "Onuoha",
+    fullname: "Obioma  Onuoha",
+    country: "Nigeria",
+    fideid: "8505837",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Samer Osamah ",
+    lastname: "Al Shami",
+    fullname: "Samer Osamah  Al Shami",
+    country: "Syria",
+    fideid: "7612567",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Vasilios ",
+    lastname: "Karaolis",
+    fullname: "Vasilios  Karaolis",
+    country: "Cyprus",
+    fideid: "5909384",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Aleksandra Valerieva",
+    lastname: "Vasileva",
+    fullname: "Aleksandra Valerieva Vasileva",
+    country: "Bulgaria",
+    fideid: "2906600",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Irina Mihaela",
+    lastname: "Băițel",
+    fullname: "Irina Mihaela Băițel",
+    country: "Romania",
+    fideid: "42225140",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Dejan ",
+    lastname: "Omorjan",
+    fullname: "Dejan  Omorjan",
+    country: "Serbia",
+    fideid: "955345",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Gabriela ",
+    lastname: "Stan",
+    fullname: "Gabriela  Stan",
+    country: "Romania",
+    fideid: "42220149",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Cristian Andrés",
+    lastname: "Vasquez",
+    fullname: "Cristian Andrés Vasquez",
+    country: "Chile",
+    fideid: "3458806",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Georgios ",
+    lastname: "Vavoulidis",
+    fullname: "Georgios  Vavoulidis",
+    country: "Greece",
+    fideid: "25822977",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Savo Panta",
+    lastname: "Spasenovski",
+    fullname: "Savo Panta Spasenovski",
+    country: "North Macedonia",
+    fideid: "15000478",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Andrew ",
+    lastname: "Martin",
+    fullname: "Andrew  Martin",
+    country: "Canada",
+    fideid: "2652285",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Manoj ",
+    lastname: "Kumar",
+    fullname: "Manoj  Kumar",
+    country: "Fiji",
+    fideid: "11400064",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Maria ",
+    lastname: "Tragelli",
+    fullname: "Maria  Tragelli",
+    country: "Greece",
+    fideid: "42145830",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Dimitris ",
+    lastname: "Tzortzis",
+    fullname: "Dimitris  Tzortzis",
+    country: "Greece",
+    fideid: "4278801",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Pedro Ignacio",
+    lastname: "Vales",
+    fullname: "Pedro Ignacio Vales",
+    country: "Puerto Rico",
+    fideid: "3111717",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Dimple ",
+    lastname: "Gupta",
+    fullname: "Dimple  Gupta",
+    country: "Ghana",
+    fideid: "12603341",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Antonia",
+    lastname: "Christodoulopoulou ",
+    fullname: "Antonia Christodoulopoulou ",
+    country: "Greece",
+    fideid: "42109728",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Lian",
+    lastname: "Wang ",
+    fullname: "Lian Wang ",
+    country: "China",
+    fideid: "8649065",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Yun",
+    lastname: "Zhang ",
+    fullname: "Yun Zhang ",
+    country: "China",
+    fideid: "331105463",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Nicolae Horatiu",
+    lastname: "Parfene",
+    fullname: "Nicolae Horatiu Parfene",
+    country: "New Zealand",
+    fideid: "1208438",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Muhammad Luqman ",
+    lastname: "Juhar",
+    fullname: "Muhammad Luqman  Juhar",
+    country: "Malaysia",
+    fideid: "5771536",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Joel",
+    lastname: "Sanz",
+    fullname: "Joel Sanz",
+    country: "Panama",
+    fideid: "6606695",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Zhen Chuan",
+    lastname: "Guan ",
+    fullname: "Zhen Chuan Guan ",
+    country: "Malaysia",
+    fideid: "5717787",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Kai Yi ",
+    lastname: "Tan",
+    fullname: "Kai Yi  Tan",
+    country: "Malaysia",
+    fideid: "35843284",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Vasugi",
+    lastname: "Sagi",
+    fullname: "Vasugi Sagi",
+    country: "Malaysia",
+    fideid: "5729289",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Rodolfo Enrique ",
+    lastname: "Nuñez Mora",
+    fullname: "Rodolfo Enrique  Nuñez Mora",
+    country: "Costa Rica",
+    fideid: "6537278",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Bogdan ",
+    lastname: "Ionescu",
+    fullname: "Bogdan  Ionescu",
+    country: "Romania",
+    fideid: "1212192",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Efford ",
+    lastname: "Chabala",
+    fullname: "Efford  Chabala",
+    country: "Zambia",
+    fideid: "8701598",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Sing Tai",
+    lastname: "Chu",
+    fullname: "Sing Tai Chu",
+    country: "Hong Kong ",
+    fideid: "6010628",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Tsz Ying",
+    lastname: "Lau",
+    fullname: "Tsz Ying Lau",
+    country: "Hong Kong ",
+    fideid: "6012990",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Nhu Tung",
+    lastname: "Ton That",
+    fullname: "Nhu Tung Ton That",
+    country: "Vietnam",
+    fideid: "12401439",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Jeganathan ",
+    lastname: "Selvasrinivasan",
+    fullname: "Jeganathan  Selvasrinivasan",
+    country: "India",
+    fideid: "366127114",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Joemar",
+    lastname: " Lacson",
+    fullname: "Joemar  Lacson",
+    country: "Australia",
+    fideid: "3257762",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Anika ",
+    lastname: "Du Plessis",
+    fullname: "Anika  Du Plessis",
+    country: "South Africa",
+    fideid: "14318610",
+    awarddate: "2023-07-02T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Tyrone Markus",
+    lastname: "Vorster",
+    fullname: "Tyrone Markus Vorster",
+    country: "South Africa",
+    fideid: "14329816",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Amy",
+    lastname: "Wallace",
+    fullname: "Amy Wallace",
+    country: "South Africa",
+    fideid: "14334909",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Safinah",
+    lastname: "Mugide ",
+    fullname: "Safinah Mugide ",
+    country: "Uganda",
+    fideid: "10005188",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Hilal ",
+    lastname: "Öztürk",
+    fullname: "Hilal  Öztürk",
+    country: "Turkey",
+    fideid: "6315330",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Christian Ian Garcia",
+    lastname: "Catayas",
+    fullname: "Christian Ian Garcia Catayas",
+    country: "United States of America",
+    fideid: "39923568",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Darko ",
+    lastname: "Mesar",
+    fullname: "Darko  Mesar",
+    country: "Croatia",
+    fideid: "14531038",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Josué Natanael ",
+    lastname: "Castillo García",
+    fullname: "Josué Natanael  Castillo García",
+    country: "Dominican Republic",
+    fideid: "6402097",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Hien Thi Thuy",
+    lastname: "Dang",
+    fullname: "Hien Thi Thuy Dang",
+    country: "Vietnam",
+    fideid: "12439240",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Goran ",
+    lastname: "Radić",
+    fullname: "Goran  Radić",
+    country: "Croatia",
+    fideid: "14533995",
+    awarddate: "2023-06-29T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Sarven ",
+    lastname: "Cakmak",
+    fullname: "Sarven  Cakmak",
+    country: "Turkey",
+    fideid: "6307353",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Maria Anna",
+    lastname: "Stefanidi",
+    fullname: "Maria Anna Stefanidi",
+    country: "Greece",
+    fideid: "4207750",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Hai Duc",
+    lastname: "Tran",
+    fullname: "Hai Duc Tran",
+    country: "Vietnam",
+    fideid: "12422380",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Mariam ",
+    lastname: "Javakhishvili",
+    fullname: "Mariam  Javakhishvili",
+    country: "Georgia",
+    fideid: "13609955",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Kunal ",
+    lastname: "Saha",
+    fullname: "Kunal  Saha",
+    country: "India",
+    fideid: "88117898",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Svitlana",
+    lastname: "Mertzer",
+    fullname: "Svitlana Mertzer",
+    country: "Israel",
+    fideid: "2844770",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Rajesh Kumar Sethumadhavan",
+    lastname: "Nair",
+    fullname: "Rajesh Kumar Sethumadhavan Nair",
+    country: "India",
+    fideid: "35097164",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Yajun",
+    lastname: "Han",
+    fullname: "Yajun Han",
+    country: "China",
+    fideid: "8609756",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+  {
+    firstname: "Swee Sie",
+    lastname: "See",
+    fullname: "Swee Sie See",
+    country: "Malaysia",
+    fideid: "5731828",
+    awarddate: "2023-07-11T22:00:00.000Z",
+    year: 2023,
+  },
+];
 
-const titleHolderLastNames = copiedLastNames.split("\n");
-
-const copiedFirstNames = `Anzel
-Boris
-Jerry
-Leontxo
-Philippe
-Sami
-Razan
-Elizaveta
-Luis
-Koffi
-Valerio
-Guimara
-Jeremiah
-Juan Carlos
-Jeffrey
-Viesturs
-Alex
-Jagath K.C.
-Sami
-Mona
-Natallia
-Bernardo
-Erick
-Mothokomedi
-Teodora
-Viktor
-Kaussar
-Elvis Kwasi Ofori
-Margit
-Vitor Manuel Barroso
-Ricardo
-Martins Oteri
-John Oyeyemi
-Oleksandr
-Anthony
-Mubarak Adérémi Bankolé
-Jonathon
-Jose Francisco
-Abel
-Maria
-Ricardo
-Ali
-Keshav
-Caroline
-Oluwaseun
-Fernando
-Mark
-Kathiê
-Denis
-Rajendra
-Benjamin
-Claudiu
-Konstantin
-Vivek
-Paul
-Udupa K.R.
-Irvin
-Abel
-Naresh
-Samir
-Wedisinghe Arachchige
-Ali
-Oluwadara
-Adesoji
-Salman
-Keshav
-Robert
-Atanu
-Juana Maria
-Celal
-Vladimir
-S.P. Dishal
-Thoha
-Ramendra
-Cornelia
-Oluwaesun
-Yash
-Kwai Keong
-Mai Feng Dina
-Marlon
-Sophie
-Norazlin
-Valentin
-Robin
-Richard
-Vladimir
-Cornelia
-Abdul Jabaar Abiola A.
-Yassin
-Kaundum A. Robert
-Benoit
-Rémi 
-Thierry Ulrich Cokou
-Florian  
-Philippe 
-Aruzhan 
-Linda 
-Juma Francis
-Ian 
-Victor
-Patrick 
-Susan Mfera
-Kudakwashe Walter 
-Rajendra Raghunath 
-Javier 
-Erick 
-Jose Antonio 
-Scott 
-Eva
-Batchimeg 
-Razan 
-Ahmed 
-Rajeendra Seneka
-Amelito Gelera
-Adrián
-Iago 
-Juan Pablo 
-Francisco Arturo
-Cristóbal 
-Francisco
-Jhonatan Radhames 
-José Luis
-Juan Cruz
-Penélope 
-Nicola Alejandro
-Carlos
-Louis 
-Juan
-Diego Fernando 
-Jose 
-Seidy 
-Vivian
-Pablo Alejandro
-Francisco
-Eihartze
-Aritz
-Ezequiel Sebastian
-Miguel Octavio
-Patricio 
-Alhan Enock 
-Seyed Hamed
-Govindankutty
-Patrick 
-Uvencio José
-Nasrul Humaimi Bin 
-Milad 
-Amal Jawad
-Victor Machel
-Paul Anthony
-Santanu 
-Gabriella Gianna
-Hoe Kok 
-Marcia Urmeela
-Chanda 
-Binita 
-Jorge Hugo Christian 
-Valentino
-Munkhzul 
-Ian 
-Lawrence 
-Luis 
-Llamin 
-Sandra María
-Huascar Jael
-José Antonio 
-Antonio 
-Raphael
-Sergio 
-Karla 
-Susan Joan
-Andrés Eladio 
-David 
-Roberto
-Juan Manuel 
-Jonathan 
-Karla July 
-Pablo David 
-Henry
-Prosper
-Sadiqah Reísa Ami 
-Juma Francis 
-Tega Mandy 
-Agab 
-Jop 
-Judy 
-Grzegorz
-Pon Perumal
-Francisco Javier
-Ahmed
-Femi Akanji
-Raúl
-Magret 
-Deborah
-Mohamed
-Gaspard 
-Jean-Paul 
-Oumarou Abou Ibrahim
-Martial 
-Ridha
-Samir 
-Valentin 
-Pavlos
-Pavlo Pavlovych 
-Evgenia 
-Karina Paola 
-David 
-Rafael Emilio
-Mohammad Salman 
-Lewis 
-Thivakaran 
-Valliammai 
-Jessica 
-Harsendra P 
-Ndopnse Edem
-Olumide Ayodeji
-Efe Abraham 
-Mayomi Olayinka
-Nifemi Solomon 
-Babatunde Timothy 
-Sokunbi
-Adeyinka
-Ogunwobi
-Oluwafemi Samuel 
-Samuel Abayomi
-Mohamed Muneef
-Thafseer
-Anurag
-Marlon Villaflores 
-Bakyt 
-In Hei Henry
-Prabodhi Methma 
-Xi
-Hongbei
-Honglin 
-Qinhao
-Tianlu 
-Seddik
-Victor Lukonde
-Ryan Oliver
-Valentin Pierre Joseph
-Oliver Daniel
-Tomasz 
-Christian Fang Yip
-Danay 
-Stephen 
-Lothar 
-Casey 
-Mohamed Dzuhairy
-Carlos Zamora
-Uğur 
-Tao
-Chun Yu
-Rakshith 
-Christos
-Obioma 
-Samer Osamah 
-Vasilios 
-Aleksandra Valerieva
-Irina Mihaela
-Dejan 
-Gabriela 
-Cristian Andrés
-Georgios 
-Savo Panta
-Andrew 
-Manoj 
-Maria 
-Dimitris 
-Pedro Ignacio
-Dimple 
-Antonia
-Lian
-Yun
-Nicolae Horatiu
-Muhammad Luqman 
-Joel
-Zhen Chuan
-Kai Yi 
-Vasugi
-Rodolfo Enrique 
-Bogdan 
-Efford 
-Sing Tai
-Tsz Ying
-Nhu Tung
-Jeganathan 
-Joemar
-Anika 
-Tyrone Markus
-Amy
-Safinah
-Hilal 
-Christian Ian Garcia
-Darko 
-Josué Natanael 
-Hien Thi Thuy
-Goran 
-Sarven 
-Maria Anna
-Hai Duc
-Mariam 
-Kunal 
-Svitlana
-Rajesh Kumar Sethumadhavan
-Yajun
-Swee Sie`;
-
-const titleHolderFirstNames = copiedFirstNames.split("\n");
-
-let titleHoldersFullName = [];
-
-for (let i = 0; i < titleHolderFirstNames.length; i++) {
-  titleHoldersFullName.push(
-    titleHolderFirstNames[i] + " " + titleHolderLastNames[i]
-  );
-}
-
-const copiedtlCountries = `South Africa
-Germany
-United States of America
-Spain
-Belgium
-Jordan
-Jordan
-Belarus
-Spain
-Togo
-Brazil
-Kazakhstan
-Botswana
-Honduras
-Zambia
-Latvia
-Canada
-Sri Lanka
-Jordan
-Egypt
-Belarus
-Uruguay
-Zimbabwe
-Botswana
-Romania
-Russia
-Kazakhstan
-Ghana
-Estonia
-Portugal
-Portugal
-Nigeria
-Nigeria
-Canada
-Solomon Islands
-Togo
-United States of America
-Spain
-United States of America
-Romania
-Portugal
-Syria
-India
-Nigeria
-Nigeria
-Mexico
-Malta
-Brazil
-France
-India
-Uganda
-Switzerland
-Cananda
-India
-Ireland
-India
-Saint Lucia
-United States of America
-India
-India
-Sri Lanka
-Syria
-Nigeria
-Nigeria
-Iraq
-India
-Uganda
-India
-Spain
-Turkey
-Bulgaria
-Sri Lanka
-Maldives
-India
-South Africa
-Nigeria
-India
-Hong Kong
-Chinese Taipei
-Philippines
-France
-Malaysia
-Russia
-Hong Kong
-Panama
-Russia
-South Africa
-Bénin
-Djibouti
-Senegal
-France
-France
-Ghana
-France
-France
-France
-Kenya
-Kenya
-Kenya
-Kenya
-Uganda
-Malawi
-Zimbabwe
-India
-Cuba
-Zimbabwe
-Spain
-Australia
-United States of America
-Mongolia
-Jordan
-Maldives
-Sri Lanka
-Philippines
-Spain
-Spain
-Chile
-Uruguay
-Puerto Rico
-Puerto Rico
-Dominican Republic
-Spain
-Argentina
-Cuba
-Venezuela
-Spain
-Puerto Rico
-Puerto Rico
-Colombia
-Aruba
-Cuba
-Cuba
-Argentina
-Spain
-Spain
-Spain
-Argentina
-Mexico
-Mexico
-Panama
-Iran
-India
-Uganda
-Venezuela
-Malaysia
-Iran
-Bahrain
-Kenya
-Ireland
-India
-Trinidad and Tobago
-Malaysia
-Guyana
-Zambia
-India
-Chile
-Aruba
-Mongolia
-Kenya
-Zimbabwe
-Spain
-Costa Rica
-Costa Rica
-Dominica
-Spain
-Panama
-Spain
-Spain
-Mexico
-Mexico
-Argentina
-Mexico
-Mexico
-Colombia
-Spain
-Cuba
-Mexico
-United States of America
-Zambia
-Trinidad and Tobago
-Kenya
-Nigeria
-Zimbabwe
-The Netherlands
-Kenya
-Luxembourg
-India
-Puerto Rico
-Tunisia
-Nigeria
-Spain
-Malawi
-Jamaica
-Tunis
-France
-France
-Niger
-Gabon
-Tunis
-Marocco
-France
-Cyprus
-Ukraine
-Russia
-Educador
-United States of America
-Puerto Rico
-Pakistan
-Zimbabwe
-Sri Lanka
-India
-Guyana
-India
-Nigeria  
-Nigeria  
-Nigeria  
-Nigeria  
-Nigeria  
-Nigeria  
-Nigeria  
-Nigeria  
-Nigeria  
-Nigeria  
-Nigeria  
-Maldives
-India
-India
-Philippines
-Kyrgyztan
-Hong Kong
-Sri Lanka
-China
-China
-China
-China
-China
-Morocco
-Zambia
-Jamaica
-France
-Hong Kong
-Poland
-Hong Kong
-Puerto Rico
-Nigeria
-Germany
-Australia
-Malaysia
-Costa Rica
-St Vincent and the Grenadines
-China
-Hong Kong
-India
-Greece
-Nigeria
-Syria
-Cyprus
-Bulgaria
-Romania
-Serbia
-Romania
-Chile
-Greece
-North Macedonia
-Canada
-Fiji
-Greece
-Greece
-Puerto Rico
-Ghana
-Greece
-China
-China
-New Zealand
-Malaysia
-Panama
-Malaysia
-Malaysia
-Malaysia
-Costa Rica
-Romania
-Zambia
-Hong Kong 
-Hong Kong 
-Vietnam
-India
-Australia
-South Africa
-South Africa
-South Africa
-Uganda
-Turkey
-United States of America
-Croatia
-Dominican Republic
-Vietnam
-Croatia
-Turkey
-Greece
-Vietnam
-Georgia
-India
-Israel
-India
-China
-Malaysia`;
-
-const titleHolderCountries = copiedtlCountries.split("\n");
-
-const copiedtlID = `14300800
-4626125
-2042390
-2200872
-264059
-8100500
-8102953
-13530682
-2219107
-21200025
-2107210
-13702971
-11309199
-8400318
-8701075
-11602562
-2632420
-9902430
-8100500
-10605908
-13530690
-3000028
-14304333
-11309253
-1216090
-55681603
-13707019
-12602582
-4501098
-1940783
-1940805
-8500126
-8501319
-2632420
-17900123
-21200483
-30911435
-2203650
-30915694
-1221116
-1942514
-7603215
-5010357
-8503060
-8501408
-5133947
-5602530
-2153963
-351043573
-35088475
-10001115
-1207210
-2610884
-5052440
-2505231
-5067375
-11104759
-30915694
-35000810
-5011388
-29950481
-7603215
-8504156
-8508607
-4800664
-5010357
-10002049
-5002818
-24534471
-6351603
-13500090
-9954503
-16700821
-33386897
-14321297
-8501408
-25932900
-6000991
-16300556
-5219261
-20604122
-5703719
-4175310
-6000436
-6612857
-55701957
-1432197
-7816839
-32500181
-19900163
-36061204
-36075434
-12601845
-26068427
-626430
-652060775
-10800425
-10822860
-10811249
-10803491
-10001492
-20501790
-11005840
-35088475
-6430767
-14304333
-2224631
-3203484
-12725462
-4900839
-8102953
-16700392
-9901124
-5261589
-32090595
-22257462
-3408680
-3015505
-3101355
-3101959
-6408524
-54787220
-118540
-36891
-3908739
-54777224
-3103927
-3110087
-144405294
-15900037
-3510107
-3501280
-136050
-54782317
-22250220
-2242842
-152021
-5171415
-5141753
-6600549
-12501930
-45022011
-10001492
-3902340
-5702380
-42594375
-11204982
-10803491
-2505231
-5001935
-7701128
-5748127
-19701250
-8700532
-35003992
-3401936
-7500254
-4908511
-10811249
-11002123
-2219107
-6515304
-6515290
-6412483
-22200339
-6602002
-94715084
-54790123
-5120187
-5119146
-187410
-5114586
-5114454
-4411226
-2294737
-3517489
-5139333
-30967309
-8726647
-7702329
-10822860
-8503150
-11012145
-1003704
-10812431
-4007824
-45043612
-3101959
-5507154
-8522669
-94727813
-20500122
-7400446
-5534640
-608343
-688894
-29400031
-17400864
-5534984
-9020110
-36012793
-5909724
-34130349
-4184424
-3629651
-30938694
-3111458
-7803516
-11001801
-29964253
-25017152
-19700547
-33321221
-8507554
-8501777
-8509808
-8502900
-8511489
-8502323
-8515239
-8502544
-8501521
-8521050
-8514780
-16704614
-88132749
-25096826
-115105244
-13829327
-6002552
-9933425
-331107996
-8612722
-8643636
-8610517
-8605220
-9043225
-8718342
-7400640
-26005042
-6005853
-21827494
-6013031
-3109755
-8507589
-16225597
-3251098
-5726700
-6500358
-36100021
-8638047
-6013074
-33385599
-42170206
-8505837
-7612567
-5909384
-2906600
-42225140
-955345
-42220149
-3458806
-25822977
-15000478
-2652285
-11400064
-42145830
-4278801
-3111717
-12603341
-42109728
-8649065
-331105463
-1208438
-5771536
-6606695
-5717787
-35843284
-5729289
-6537278
-1212192
-8701598
-6010628
-6012990
-12401439
-366127114
-3257762
-14318610
-14329816
-14334909
-10005188
-6315330
-39923568
-14531038
-6402097
-12439240
-14533995
-6307353
-4207750
-12422380
-13609955
-88117898
-2844770
-35097164
-8609756
-5731828`;
-
-const titleHolderIDs = copiedtlID.split("\n");
-
-const copiedTitleType = `LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-LSI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI
-SI`;
-
-const titleHolderTypes = copiedTitleType.split("\n");
-
-const copiedAwardDates = `2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/06/07
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/03/31
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/06/08
-2021/07/27
-2021/06/08
-2021/06/08
-2021/06/08
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/08/01
-2021/07/28
-2021/07/28
-2021/07/28
-2021/07/28
-2021/07/28
-2021/07/28
-2021/07/28
-2021/07/28
-2021/07/28
-2021/07/28
-11/2/2022
-11/2/2022
-11/2/2022
-11/2/2022
-11/2/2022
-11/2/2022
-11/2/2022
-11/2/2022
-11/2/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-6/1/2023
-6/1/2023
-5/4/2022
-5/4/2022
-5/4/2022
-5/4/2022
-5/4/2022
-5/4/2022
-5/4/2022
-13/6/2022
-5/4/2022
-5/4/2022
-5/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-7/4/2022
-27/7/2022
-27/7/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-17/6/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-24/9/2022
-14/10/2022
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-7/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-19/1/2023
-22/6/2023
-22/6/2023
-22/6/2023
-22/6/2023
-22/6/2023
-22/6/2023
-23/2/2023
-22/6/2023
-22/6/2023
-22/6/2023
-22/6/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-15/5/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-3/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-30/6/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023
-12/7/2023`;
-
-const titleHolderAwardDatesString = copiedAwardDates.split("\n");
-
-let titleHolderAwardDates = [];
-
-for (const date of titleHolderAwardDatesString) {
-  const DateData = date.split("/");
-  DateData[1]--;
-  const nDate = new Date(DateData[0], DateData[1], DateData[2]);
-  titleHolderAwardDates.push(nDate);
-}
-
-let lsiTitleHolders = [];
-let siTitleHolders = [];
-
-for (let i = 0; i < titleHoldersFullName.length; i++) {
-  const titleHolder = {
-    firstname: titleHolderFirstNames[i],
-    lastname: titleHolderLastNames[i],
-    fullname: titleHoldersFullName[i],
-    country: titleHolderCountries[i],
-    fideid: titleHolderIDs[i],
-    awarddate: titleHolderAwardDates[i],
-    year: titleHolderAwardDates[i].getFullYear(),
-  };
-  if (titleHolderTypes[i] == "LSI") {
-    lsiTitleHolders.push(titleHolder);
-  } else if (titleHolderTypes[i] == "SI") {
-    siTitleHolders.push(titleHolder);
-  }
-}
-
-const lsiTrue =
-  document.querySelector(".titleholders-select label").innerText ==
-  "LSI Title Holders";
-
+const titleHolderUL = document.querySelectorAll(
+  ".chosen-titleholder ul li span"
+);
 const lsiSelect = document.querySelector("#lsititleholders")
   ? document.querySelector("#lsititleholders")
   : null;
 const siSelect = document.querySelector("#sititleholders")
   ? document.querySelector("#sititleholders")
   : null;
-
-const titleHolderUL = document.querySelectorAll(
-  ".chosen-titleholder ul li span"
-);
-
-if (lsiSelect != null) {
+const lsiTrue =
+  document.querySelector(".titleholders-select label").innerText ==
+  "LSI Title Holders";
+if (lsiTrue) {
   for (const lsi of lsiTitleHolders) {
     const lsioption = document.createElement("option");
     lsioption.value = lsi.fullname;
@@ -1913,8 +2783,7 @@ if (lsiSelect != null) {
     lsioption.addEventListener("touchstart", mutasdAzAdatokat);
     lsiSelect.appendChild(lsioption);
   }
-}
-if (siSelect != null) {
+} else {
   for (const si of siTitleHolders) {
     const sioption = document.createElement("option");
     sioption.value = si.fullname;
@@ -1965,70 +2834,36 @@ for (let i = 1980; i < 2025; i++) {
   awardedYearFilter.appendChild(option);
 }
 
-document.querySelector(`input[id="country-titleholders"]`).onchange =
-  function () {
-    const allOptions = document.querySelectorAll(".titleholders-select option");
-    for (const option of allOptions) {
-      option.remove();
-    }
-    if (lsiTrue) {
-      for (const lsi of lsiTitleHolders) {
-        if (lsi.country == this.value) {
-          const lsioption = document.createElement("option");
-          lsioption.value = lsi.fullname;
-          lsioption.innerText = lsi.fullname;
-          lsioption.addEventListener("click", mutasdAzAdatokat);
-          lsioption.addEventListener("touchstart", mutasdAzAdatokat);
-          lsiSelect.appendChild(lsioption);
-        }
-        if (this.value === "") {
-          const lsioption = document.createElement("option");
-          lsioption.value = lsi.fullname;
-          lsioption.innerText = lsi.fullname;
-          lsioption.addEventListener("click", mutasdAzAdatokat);
-          lsioption.addEventListener("touchstart", mutasdAzAdatokat);
-          lsiSelect.appendChild(lsioption);
-        }
-      }
-    } else {
-      for (const si of siTitleHolders) {
-        if (si.country == this.value) {
-          const sioption = document.createElement("option");
-          sioption.value = si.fullname;
-          sioption.innerText = si.fullname;
-          sioption.addEventListener("click", mutasdAzAdatokat);
-          sioption.addEventListener("touchstart", mutasdAzAdatokat);
-          siSelect.appendChild(sioption);
-        }
-        if (this.value === "") {
-          const sioption = document.createElement("option");
-          sioption.value = si.fullname;
-          sioption.innerText = si.fullname;
-          sioption.addEventListener("click", mutasdAzAdatokat);
-          sioption.addEventListener("touchstart", mutasdAzAdatokat);
-          siSelect.appendChild(sioption);
-        }
-      }
-    }
-  };
+document
+  .querySelector(`input[id="country-titleholders"]`)
+  .addEventListener("keyup", filterOptions);
 
 document
   .querySelector(`input[id="awarded-y"]`)
-  .addEventListener("keyup", function () {
-    const allOptions = document.querySelectorAll(".titleholders-select option");
-    allOptions.forEach((option) => option.remove());
+  .addEventListener("keyup", filterOptions);
 
-    const titleHolders = lsiTrue ? lsiTitleHolders : siTitleHolders;
-    const selectedYear = this.value;
-    console.log(selectedYear);
-    titleHolders.forEach((holder) => {
-      if (!selectedYear || holder.awarddate.getFullYear() == selectedYear) {
-        const option = document.createElement("option");
-        option.value = holder.fullname;
-        option.innerText = holder.fullname;
-        option.addEventListener("click", mutasdAzAdatokat);
-        option.addEventListener("touchstart", mutasdAzAdatokat);
-        lsiTrue ? lsiSelect.appendChild(option) : siSelect.appendChild(option);
-      }
-    });
+function filterOptions() {
+  const selectedCountry = document.querySelector(
+    `input[id="country-titleholders"]`
+  ).value;
+  const selectedYear = document.querySelector(`input[id="awarded-y"]`).value;
+
+  const allOptions = document.querySelectorAll(".titleholders-select option");
+  allOptions.forEach((option) => option.remove());
+
+  const titleHolders = lsiTrue ? lsiTitleHolders : siTitleHolders;
+
+  titleHolders.forEach((holder) => {
+    const countryMatch = !selectedCountry || holder.country == selectedCountry;
+    const yearMatch = !selectedYear || holder.year == selectedYear;
+
+    if (countryMatch && yearMatch) {
+      const option = document.createElement("option");
+      option.value = holder.fullname;
+      option.innerText = holder.fullname;
+      option.addEventListener("click", mutasdAzAdatokat);
+      option.addEventListener("touchstart", mutasdAzAdatokat);
+      lsiTrue ? lsiSelect.appendChild(option) : siSelect.appendChild(option);
+    }
   });
+}
