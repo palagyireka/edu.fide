@@ -75,7 +75,6 @@ app.use("/blog", blogRoutes);
 app.use("/admin", adminRoutes);
 
 app.get("/", (req, res) => {
-  console.log(req.user);
   res.render("index");
 });
 
@@ -106,8 +105,6 @@ app.get("/gallery", async (req, res) => {
     .then((result) => {
       imgUrls = result.resources.map((img) => img.url);
     });
-
-  console.log(imgUrls);
 
   const totalPages = Math.ceil(imgUrls.length / pageSize);
 

@@ -10,11 +10,11 @@
     <a class="blog-card" href="/blog/<%= blog.id %>">
       <div class="tag-names"></div>
       <h2>
-        <!-- style="background-image: url('<%= blog.image[0].url %>')" -->
+        <!-- style="background-image: url('<%= blog.images[0].url %>')" -->
         <%= blog.title %>
       </h2>
       <p>
-        <img src="<%= blog.image[0].url %>" alt="image" />
+        <img src="<%= blog.images[0].url %>" alt="image" />
         <%= blog.text %><br />
       </p>
 
