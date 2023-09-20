@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   workplace: String,
   jobtitle: String,
   countryResidence: String,
-  respCie: { type: String, required: true },
+  respCie: { type: String, required: false },
   newsletter: { type: Boolean, default: false },
 });
 
