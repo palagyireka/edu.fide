@@ -222,14 +222,16 @@ h1 {
   background-size: 100% 0.1em;
 }
 
-.lista-1 li:nth-of-type(4) + .lista-2 li {
+.lista-1 li:nth-of-type(4) + .lista-2 > li {
   cursor: auto;
   background-image: none;
 }
 
-.lista-1 li:nth-of-type(4) + .lista-2 li:hover::before {
+.lista-1 li:nth-of-type(4) + .lista-2 > li:hover::before {
   position: absolute;
   top: 40px;
+  left: 0;
+  width: 100%;
   content: "Coming soon!";
   color: #c5725f;
   background-color: white;
@@ -278,9 +280,12 @@ h1 {
   z-index: 1;
 }
 
-.lista-2 li {
+.lista-1 li:nth-of-type(3):hover + .lista-2 {
+  display: none;
+}
+
+.lista-2 > li {
   margin: 0;
-  cursor: pointer;
   position: relative;
   font-size: 18px;
   padding: 16px 2.5vw;
@@ -292,15 +297,15 @@ h1 {
   transition: 0.3s ease-in;
 }
 
-.lista-2 li:hover,
-.lista-2 li:focus,
-.lista-2 li:active {
-  background-size: 70% 0.1em;
+.lista-2 > li:hover,
+.lista-2 > li:focus,
+.lista-2 > li:active {
+  background-size: 80% 0.1em;
 }
 
 /* VALAMIRT UTSÓ TAGRA KÜLÖN IS KELL */
 
-.lista-2 li:last-of-type {
+.lista-2 > li:last-of-type {
   padding: 16px 4vw;
   background-image: linear-gradient(#ffffff, #ffffff);
   background-size: 0% 0.1em;
@@ -310,46 +315,43 @@ h1 {
   transition: 0.3s ease-in;
 }
 
-.lista-2 li:last-of-type:hover,
-.lista-2 li:last-of-type:focus,
-.lista-2 li:last-of-type:active {
+.lista-2 > li:last-of-type:hover,
+.lista-2 > li:last-of-type:focus,
+.lista-2 > li:last-of-type:active {
   background-size: 70% 0.1em;
 }
 
-.lista-2 li ul {
+.lista-2 > li ul {
   display: none;
   opacity: 0;
 }
 
-.lista-2 li:hover ul,
-.lista-2 li:active ul,
-.lista-2 li:focus ul {
+.lista-2 > li:hover ul,
+.lista-2 > li:active ul,
+.lista-2 > li:focus ul {
   opacity: 1;
   position: relative;
   transition: 0.3s;
   display: flex;
   flex-direction: column;
   top: 15px;
-  height: auto;
   left: 0;
-  padding: 0;
-  width: 100%;
   font-size: 16px;
-  background-color: white;
+  background-color: #91b0b2;
   box-sizing: border-box;
-  color: #5b85aa;
-  border: 3px solid #91b0b2;
-  border-top: 0;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  color: white;
+  border-bottom-left-radius: 10px;
+
+  border-bottom-right-radius: 10px;
 }
 
-.lista-2 li ul li {
+.lista-2 > li ul li {
   height: 6vh;
-  width: 100%;
   box-sizing: border-box;
-  padding: 14px 2.5vw;
+  padding: 14px 0;
   text-align: center;
+  font-size: 17px;
+  cursor: auto;
 }
 
 footer {

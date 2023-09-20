@@ -78,3 +78,17 @@ function respEditor() {
 function closeCIEditor() {
   respCie.placeholder = "Writing is optional. ;)";
 }
+
+const makeVisibleSpans = document.querySelectorAll(".visible-password");
+makeVisibleSpans.forEach((span) => {
+  span.addEventListener("click", makeVisible);
+  span.addEventListener("touchstart", makeVisible);
+});
+
+function makeVisible() {
+  if (document.querySelector("#nuser-password").type == "password") {
+    document.querySelector("#nuser-password").type = "text";
+  } else {
+    document.querySelector("#nuser-password").type = "password";
+  }
+}

@@ -160,7 +160,7 @@ svg circle {
   position: absolute;
   width: 20px;
   height: 100%;
-  top: 0%;
+  top: 20%;
   left: 50%;
   transition: all ease-in 200ms;
   background-image: url("dropd.png");
@@ -171,7 +171,11 @@ svg circle {
 }
 
 .countryname-container {
+  margin-top: 10px;
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 65px;
 }
 
 label[for="country-name"] {
@@ -182,7 +186,7 @@ label[for="country-name"] {
   font-style: oblique;
   display: inline-block;
   text-align: left;
-  width: 80%;
+  width: 90%;
   height: 25px;
 }
 .text-box {

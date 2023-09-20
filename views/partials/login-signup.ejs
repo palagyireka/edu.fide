@@ -15,7 +15,10 @@
       <button>Sign Up</button>
     </div>
     <form action="/login" method="post" id="login-form" novalidate>
-      <label for="user-email">Email:</label>
+      <label for="user-email"
+        >Email:
+        <span class="error login-email-error"></span>
+      </label>
       <input
         type="email"
         name="email"
@@ -23,8 +26,11 @@
         placeholder="your.name@example.com"
         required
       />
-      <div class="error login-email-error"></div>
-      <label for="user-password">Password:</label>
+      <label for="user-password"
+        >Password:
+        <span class="visible-password" id="userspan">👁</span>
+        <span class="error login-password-error"></span>
+      </label>
       <input
         type="password"
         name="password"
@@ -33,13 +39,16 @@
         minlength="6"
         maxlength="16"
       />
-      <div class="error login-password-error"></div>
+
       <button type="submit" class="fancytime">Log In</button>
     </form>
     <form action="/register" method="post" id="signup-form" novalidate>
       <div class="names">
         <label for="first-name">First name:</label>
-        <label for="last-name">Last name:</label>
+        <label for="last-name"
+          >Last name:
+          <span class="error name-error"></span>
+        </label>
       </div>
       <div class="names">
         <input
@@ -57,10 +66,17 @@
           maxlength="16"
         />
       </div>
-      <div class="error name-error"></div>
+
       <div class="names">
-        <label for="nuser-email">Email:</label>
-        <label for="nuser-password">Password:</label>
+        <label for="nuser-email"
+          >Email:
+          <span class="error email-error"></span>
+        </label>
+        <label for="nuser-password"
+          >Password:
+          <span class="visible-password" id="newspan">👁</span>
+          <span class="error password-error"></span>
+        </label>
       </div>
       <div class="names">
         <input
@@ -80,8 +96,7 @@
           maxlength="16"
         />
       </div>
-      <div class="error password-error"></div>
-      <div class="error email-error"></div>
+
       <div class="names">
         <label for="workplace">Place of Work</label>
         <label for="job-title">Job title</label>

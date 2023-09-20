@@ -1,5 +1,9 @@
 <% layout('layouts/boilerplate') %>
 <main>
-  <h2><%= err.message %></h4>
-  <p><%= err.stack %></p>
+  <img src="error.png" alt="">
+  <div class="show-error">
+    <h2><%= err.message %></h4>
+      <p><%= err.stack %></p>
+  </div>
+  
 </main>

@@ -126,16 +126,17 @@ label[for="login-signup"] div {
   display: block;
   text-align: left;
   font-size: 18px;
-  height: 26px;
+  height: 30px;
   box-sizing: border-box;
   width: 50%;
   color: black;
   border-radius: 3px;
+  position: relative;
 }
 
 .user-form-active input {
   border: 2px solid #5b85aa;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 
 .fancytime {
@@ -183,7 +184,7 @@ label[for="login-signup"] div {
 .names {
   display: flex;
   width: 90%;
-  margin: 0 5%;
+  margin: 0 2%;
   justify-content: space-around;
   align-items: center;
 }
@@ -231,7 +232,7 @@ label[for="resp-cie"] {
   font-family: "Railway";
   border-width: 2px;
   border-color: #5b85aa;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   padding: 0;
   font-size: 20px;
 }
@@ -322,4 +323,68 @@ label[for="logout"] a {
 
 input.invalid {
   border-color: red;
+}
+
+.visible-password {
+  position: relative;
+  top: 30px;
+  z-index: 602;
+  display: inline-block;
+  color: #5b85aa;
+  font-size: 30px;
+}
+
+.visible-password:hover {
+  cursor: pointer;
+}
+
+#userspan {
+  left: 46%;
+}
+#newspan {
+  left: 36%;
+}
+
+.error.password-error,
+.error.login-password-error,
+.error.name-error {
+  position: absolute;
+  bottom: -90%;
+  right: -128%;
+  width: 210px;
+}
+.error.password-error.active,
+.error.login-password-error.active,
+.error.name-error.active {
+  color: red;
+  font-weight: 500;
+  font-size: 13px;
+  border: 2px solid red;
+  background-color: white;
+  border-radius: 3px;
+  padding: 3px;
+  padding-left: 10px;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+.error.email-error,
+.error.login-email-error {
+  position: absolute;
+  bottom: -102%;
+  left: -128%;
+  width: 210px;
+}
+.error.email-error.active,
+.error.login-email-error.active {
+  color: red;
+  font-weight: 500;
+  font-size: 13px;
+  border: 2px solid red;
+  background-color: white;
+  border-radius: 3px;
+  padding: 3px;
+  padding-left: 10px;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
 }
