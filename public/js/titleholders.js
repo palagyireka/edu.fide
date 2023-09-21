@@ -2802,7 +2802,7 @@ function mutasdAzAdatokat(evt) {
         titleHolderUL[1].innerText = lsi.lastname;
         titleHolderUL[2].innerText = lsi.country;
         titleHolderUL[3].innerText = lsi.fideid;
-        titleHolderUL[4].innerText = lsi.awarddate;
+        titleHolderUL[4].innerText = lsi.year;
         break;
       }
     }
@@ -2813,7 +2813,7 @@ function mutasdAzAdatokat(evt) {
         titleHolderUL[1].innerText = si.lastname;
         titleHolderUL[2].innerText = si.country;
         titleHolderUL[3].innerText = si.fideid;
-        titleHolderUL[4].innerText = si.awarddate;
+        titleHolderUL[4].innerText = si.year;
         break;
       }
     }
@@ -2828,7 +2828,8 @@ for (const orszag of countryCodes) {
 }
 
 const awardedYearFilter = document.querySelector('datalist[id="awarded-year"]');
-for (let i = 1980; i < 2025; i++) {
+let thisYear = new Date().getFullYear();
+for (let i = 2015; i <= thisYear; i++) {
   let option = document.createElement("option");
   option.value = i;
   awardedYearFilter.appendChild(option);

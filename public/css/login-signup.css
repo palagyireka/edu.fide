@@ -103,6 +103,10 @@ label[for="login-signup"] div {
   flex-grow: 2 !important;
 }
 
+#login-form.user-form-active {
+  height: 280px;
+}
+
 .user-form-active {
   position: relative;
   display: flex;
@@ -111,7 +115,6 @@ label[for="login-signup"] div {
   justify-content: left;
   padding-top: 30px;
   width: 460px;
-  height: 370px;
   box-sizing: border-box;
   background-color: white;
   border-bottom-left-radius: 10px;

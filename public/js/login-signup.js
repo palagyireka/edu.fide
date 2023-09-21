@@ -45,7 +45,6 @@ function formChange(evt) {
         userForms[i].style.height = "445px";
       } else {
         formContainer.style.paddingBottom = "25vh";
-        userForms[i].style.height = "370px";
       }
     } else {
       userButtons[i].style.flexGrow = "0";

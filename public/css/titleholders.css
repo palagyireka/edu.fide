@@ -100,7 +100,9 @@ label[for="sititleholders"] {
   margin-top: 10px;
 }
 .chosen-titleholder ul li span {
-  font-size: 16px;
+  font-size: 17px;
   display: block;
-  margin-top: 4px;
+  margin-top: 9px;
+  margin-left: 30px;
+  font-weight: 600;
 }

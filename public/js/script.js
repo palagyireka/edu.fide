@@ -10,6 +10,7 @@ function lista2beallitas() {
   lista2listak[3].style.justifyContent = "center";
   lista2listak[4].style.justifyContent = "right";
   lista2listak[5].style.justifyContent = "right";
+  lista2listak[6].style.justifyContent = "right";
 }
 lista2beallitas();
 
