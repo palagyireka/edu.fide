@@ -10,7 +10,7 @@ router.get("/new", blogs.renderNew);
 
 router
   .route("/:id")
-  .get(catchAsync(blogs.showPost))
+  .get(catchAsync(blogs.blogpostRender))
   .put(blogs.edit)
   .delete(isAdmin, blogs.delete);
 

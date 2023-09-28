@@ -1,0 +1,51 @@
+#calendar {
+  height: 50%;
+  height: 400px;
+  padding: 2px 0;
+}
+
+#featured {
+  width: 100%;
+  display: block;
+  height: 700px;
+}
+
+#search-and-featured {
+  flex: 0 0 400px;
+  height: 600px;
+}
+
+button.toastui-calendar-edit-button,
+button.toastui-calendar-delete-button,
+div.toastui-calendar-popup-section.toastui-calendar-section-button {
+  display: none;
+}
+
+div.toastui-calendar-see-more {
+  height: 150px;
+}
+
+.calendar-head {
+  display: flex;
+  margin: 7px 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-nav button {
+  cursor: pointer;
+  background: none;
+  padding: 6px 10px;
+  border: 1px grey solid;
+}
+
+.toastui-calendar-template-popupDetailDate,
+.toastui-calendar-template-popupDetailBody,
+.toastui-calendar-detail-item {
+  color: rgb(85, 85, 85);
+  font-weight: normal;
+}
+
+#month {
+  height: fit-content;
+}

@@ -1,3 +1,13 @@
-#tag-select {
+#tag-select,
+#country-select {
   width: 500px;
+  margin-top: 5px;
+}
+
+.tags {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  align-items: center;
+  margin: 10px;
 }

@@ -215,17 +215,23 @@ cancelIcon.addEventListener("click", () => {
 const countryNameChB = document.querySelector("#country-name");
 const countryNameLBL = document.querySelector(`label[for="country-name"]`);
 const textBox = document.querySelector(".text-box");
+const featuredMenu = document.querySelector("#fblog");
+
 countryNameLBL.addEventListener("click", (evt) => {
   if (!countryNameChB.checked) {
     textBox.classList.add("shown-country-menu");
+    featuredMenu.style.display = "none";
   } else {
     textBox.classList.remove("shown-country-menu");
+    featuredMenu.style.display = "block";
   }
 });
 countryNameChB.addEventListener("click", (evt) => {
   if (!countryNameChB.checked) {
     textBox.classList.add("shown-country-menu");
+    featuredMenu.style.display = "none";
   } else {
     textBox.classList.remove("shown-country-menu");
+    featuredMenu.style.display = "block";
   }
 });

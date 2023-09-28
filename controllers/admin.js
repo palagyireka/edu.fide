@@ -2,6 +2,7 @@ const deltaToHtml = require("../utils/deltaToHtml");
 const { convert } = require("html-to-text");
 const Blogpost = require("../models/blogpost");
 const url = require("url");
+const User = require("../models/user");
 
 module.exports.renderNew = (req, res) => {
   res.render("admin/new");
@@ -11,14 +12,18 @@ module.exports.createPost = async (req, res) => {
   const newPost = new Blogpost({
     title: req.body.title,
     text: req.body.text,
+    date: new Date(),
     tags: req.body.tags,
     countries: req.body.countries,
+    featured: req.body.featured,
   });
   if (req.body.images) {
     newPost.images = req.body.images;
   }
-  newPost.save();
-  req.flash("success", "Successfully made a new campground!");
+  newPost.save().then((post) => {
+    req.flash("success", "Successfully made a new campground!");
+    res.send("ok");
+  });
 };
 
 module.exports.renderPosts = (req, res) => {
@@ -27,6 +32,9 @@ module.exports.renderPosts = (req, res) => {
 
   const transform = (paginatedPosts) => {
     paginatedPosts.forEach((post) => {
+      if (post.images.length === 0) {
+        post.images = [{ url: "" }];
+      }
       post.text = deltaToHtml(post.text);
       post.text = convert(post.text);
       post.text = post.text.replace(/\[http.*?\]/gm, "");
@@ -40,7 +48,10 @@ module.exports.renderPosts = (req, res) => {
     });
   };
 
-  Blogpost.paginate({}, { page: req.query.page, limit: 12 }).then((results) => {
+  Blogpost.paginate(
+    {},
+    { page: req.query.page, limit: 12, sort: { date: -1 } }
+  ).then((results) => {
     const { totalPages } = results;
     if (req.query.page > results.totalPages) {
       return res.redirect(
@@ -102,4 +113,29 @@ module.exports.deletePost = async (req, res) => {
   await Blogpost.findByIdAndDelete(id);
   req.flash("success", "Successfully deleted post");
   res.redirect("/admin/posts");
+};
+
+module.exports.showProfiles = async (req, res) => {
+  const pageNumber = req.query.page || 1;
+
+  User.paginate(
+    {},
+    { page: req.query.page, limit: 50, sort: { registrationDate: -1 } }
+  ).then((results) => {
+    const { totalPages } = results;
+    if (req.query.page > results.totalPages) {
+      return res.redirect(
+        url.format({
+          pathname: "/admin/profiles",
+          query: {
+            page: results.totalPages,
+          },
+        })
+      );
+    } else {
+      const userProfiles = results.docs;
+
+      res.render("admin/profiles", { userProfiles, pageNumber, totalPages });
+    }
+  });
 };

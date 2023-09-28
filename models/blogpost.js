@@ -14,6 +14,7 @@ const BlogpostSchema = new Schema({
   date: Date,
   tags: Array,
   countries: Array,
+  featured: Boolean,
 });
 
 BlogpostSchema.plugin(mongoosePaginate);

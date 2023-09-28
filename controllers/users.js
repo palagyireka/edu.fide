@@ -30,6 +30,7 @@ module.exports.register = async (req, res, next) => {
     if (newsletter) {
       newsletter = true;
     }
+
     const user = new User({
       email,
       firstName,
@@ -39,6 +40,7 @@ module.exports.register = async (req, res, next) => {
       countryResidence,
       respCie,
       newsletter,
+      registrationDate: new Date(),
     });
     const registeredUser = await User.register(user, password);
     req.login(registeredUser, (err) => {

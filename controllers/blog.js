@@ -51,6 +51,9 @@ module.exports.blogpostsRender = async (req, res) => {
   let blogposts;
   const transform = (blogs) => {
     blogs.forEach((post) => {
+      if (post.images.length === 0) {
+        post.images = [{ url: "" }];
+      }
       post.text = deltaToHtml(post.text);
       post.text = convert(post.text);
       post.text = post.text.replace(/\[http.*?\]/gm, "");
@@ -64,7 +67,13 @@ module.exports.blogpostsRender = async (req, res) => {
     });
   };
 
-  Blogpost.paginate({}, { page: req.query.page, limit: 12 }).then((results) => {
+  const query = { $or: [{ tags: "blog" }, { tags: "all" }] };
+
+  Blogpost.paginate(query, {
+    page: req.query.page,
+    limit: 12,
+    sort: { date: -1 },
+  }).then((results) => {
     const { totalPages } = results;
     if (req.query.page > results.totalPages) {
       return res.redirect(
@@ -77,7 +86,6 @@ module.exports.blogpostsRender = async (req, res) => {
       );
     } else {
       blogposts = results.docs;
-
       transform(blogposts);
     }
     res.render("blog/blogs", { blogposts, pageNumber, totalPages });

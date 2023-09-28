@@ -25,6 +25,7 @@ const titleInput = document.getElementById("title");
 
 const tagSelect = document.querySelector("#tag-select");
 const countrySelect = document.querySelector("#country-select");
+const featured = document.querySelector("#featured-box");
 
 function quill_img_handler() {
   let fileInput = this.container.querySelector("input.ql-image[type=file]");
@@ -89,22 +90,23 @@ const clickHandler = async () => {
     });
   }
 
-  tagSelect.isAllSelected() ? (tags = ["All"]) : (tags = tagSelect.value);
+  tagSelect.isAllSelected() ? (tags = ["all"]) : (tags = tagSelect.value);
   countrySelect.isAllSelected()
-    ? (taggedCountries = ["All"])
+    ? (taggedCountries = ["all"])
     : (taggedCountries = countrySelect.value);
 
-  const postData = JSON.stringify({
+  const postData = {
     title: titleContent,
     text: textContent,
     images: images ? imageContent : null,
     tags: tags,
     countries: taggedCountries,
-  });
+    featured: featured.checked,
+  };
 
-  fetch("/blog", {
+  fetch("/admin/posts", {
     method: "POST",
-    body: postData,
+    body: JSON.stringify(postData),
     headers: {
       "Content-Type": "application/json",
     },

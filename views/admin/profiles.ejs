@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="profiles-container">
+  <% userProfiles.forEach((profile) => { %>
+  <div class="profile">
+    <div class="email">
+      <div>Email</div>
+      <div><%= profile.email %></div>
+    </div>
+    <div class="name">
+      <div>Name</div>
+      <div><%= profile.firstName %> <%= profile.lastName %></div>
+    </div>
+    <div class="workplace">
+      <div>Workplace</div>
+      <div><% profile.workplace %></div>
+    </div>
+    <div class="jobtitle">
+      <div>Jobtitle</div>
+      <div><%= profile.jobtitle %></div>
+    </div>
+    <div class="responsibilities">
+      <div>Responsibilities</div>
+      <div><%= profile.respCie %></div>
+    </div>
+    <div class="registration-date">
+      <div>Registration Date</div>
+    </div>
+    <div class="newsletter">
+      <div>Subscribed to newsletter?</div>
+      <div><%= profile.newsletter === true ? "Yes" : "No" %></div>
+    </div>
+  </div>
+  <% }) %>
+</div>

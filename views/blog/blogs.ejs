@@ -13,8 +13,9 @@
         <%= blog.title %>
       </h2>
       <p>
+        <% if (blog.images[0].url !== "") { %>
         <img src="<%= blog.images[0].url %>" alt="image" />
-        <%= blog.text %><br />
+        <% } %> <%= blog.text %><br />
       </p>
 
       <span> Read more here >> </span>

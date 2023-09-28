@@ -201,7 +201,7 @@ label[for="country-name"] {
 
 .shown-country-menu {
   opacity: 1;
-  height: 60vh;
+  height: 55vh;
 }
 
 @keyframes cmenu {

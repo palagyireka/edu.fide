@@ -10,12 +10,13 @@
     <a class="blog-card" href="/admin/<%= post.id %>">
       <div class="tag-names"></div>
       <h2>
-        <!-- style="background-image: url('<%= post.image[0].url %>')" -->
+        <!-- style="background-image: url('<%= post.images[0].url %>')" -->
         <%= post.title %>
       </h2>
       <p>
-        <img src="<%= post.image[0].url %>" alt="image" />
-        <%= post.text %><br />
+        <% if (post.images[0].url !== "") { %>
+        <img src="<%= post.images[0].url %>" alt="image" />
+        <% } %> <%= post.text %><br />
       </p>
 
       <span> Read more here >> </span>

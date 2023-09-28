@@ -23,10 +23,23 @@
 
 .show-blogpost p {
   box-sizing: border-box;
-  padding: 2% 10%;
+  padding: 10px 15%;
   font-size: 18px;
   border-left: 20px solid #91b0b2;
   border-right: 20px solid #91b0b2;
+}
+
+.text-body {
+  margin-top: 10px;
+}
+
+.text-body img {
+  margin: 10px;
+}
+
+.img-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .show-blogpost .fancytime,

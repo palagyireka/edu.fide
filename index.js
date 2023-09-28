@@ -12,6 +12,8 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const flash = require("connect-flash");
 const { cloudinary } = require("./cloudinary");
+const deltaToHtml = require("./utils/deltaToHtml");
+const { convert } = require("html-to-text");
 
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
@@ -74,8 +76,26 @@ app.use("/", userRoutes);
 app.use("/blog", blogRoutes);
 app.use("/admin", adminRoutes);
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  const featuredPost = await Blogpost.findOne({ featured: true }, null, {
+    sort: { date: -1 },
+  });
+
+  if (featuredPost.images.length === 0) {
+    featuredPost.images = [{ url: "" }];
+  }
+  featuredPost.text = deltaToHtml(featuredPost.text);
+  featuredPost.text = convert(featuredPost.text);
+  featuredPost.text = featuredPost.text.replace(/\[http.*?\]/gm, "");
+
+  let tag;
+  if (featuredPost.tags[0] === "all") {
+    tag = "blog";
+  } else {
+    tag = featuredPost.tags[0];
+  }
+
+  res.render("index", { featuredPost, tag });
 });
 
 app.get("/search", (req, res) => {

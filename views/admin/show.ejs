@@ -1,9 +1,6 @@
 <% layout('layouts/boilerplate') %>
 <main class="show-blogpost">
-  <h2 class="title">
-    <!--  style="background-image: url('<%= post.image %>')" -->
-    <%= post.title %>
-  </h2>
+  <h2 class="title"><%= post.title %></h2>
   <div class="text"></div>
   <a href="/admin/<%= post.id %>/edit" class="fancytime">Edit</a>
   <form action="/admin/<%= post.id %>?_method=DELETE" method="post">

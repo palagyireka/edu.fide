@@ -1,0 +1,36 @@
+.featured-container {
+  padding: 5px 15px;
+}
+
+.featured-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.featured-img {
+  width: 90%;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.featured-img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.featured-text {
+  text-align: justify;
+}
+
+.text-box-container {
+  z-index: 0;
+  overflow: hidden;
+}
+
+#fblog {
+  z-index: 1;
+  width: 300px;
+  height: fit-content;
+  max-height: 50.5vh;
+  background-color: white;
+}

@@ -17,6 +17,8 @@ router
   .put(admin.editPost)
   .delete(admin.deletePost);
 
+router.get("profiles", admin.showProfiles);
+
 router.route("/:id/edit").get(admin.renderEdit);
 
 module.exports = router;

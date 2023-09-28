@@ -5,14 +5,7 @@
 <main>
   <div id="map-search-container">
     <div id="search-and-featured">
-      <div id="featured">
-        <iframe
-          src="https://calendar.google.com/calendar/embed?wkst=2&ctz=Europe%2FBudapest&showTitle=0&src=ZmU0ZGY2ZTA2NTMwZTJkMTVmYWRiOGJiNjY2N2MyYzJjMmJlMGY4YThkNjJmZGQ5MWVmNDdkNGQ4OTM1OGZmOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%235b85aa"
-          id="fcalendar"
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
-      </div>
+      <div id="featured"><%- include('partials/calendar') %></div>
       <div class="search-container">
         <div class="searchbar">
           <input placeholder="Search..." type="text" />
@@ -102,7 +95,7 @@
             version="1.1"
             width="652.17285"
             style="overflow: hidden"
-            viewBox="135 30 559.0053 261.77289"
+            viewBox="90 70 559.0053 261.77289"
             preserveAspectRatio="xMinYMin"
             id="map"
             sodipodi:docname="map.svg"
@@ -5171,6 +5164,7 @@
   </div>
   <div id="fblog">
     <p>Featured</p>
+    <%- include('partials/featured') %>
   </div>
   <footer>
     <a href="https://www.fide.com/privacy" target="_blank"
