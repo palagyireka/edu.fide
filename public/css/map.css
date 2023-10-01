@@ -63,7 +63,7 @@ svg circle {
   width: 100%;
 }
 .text-box-container {
-  flex: 0 0 240px;
+  flex: 0 0 280px;
   margin-top: 5px;
   height: 64.5vh;
 }
@@ -117,19 +117,6 @@ svg circle {
 .country-menu li ul li:first-of-type {
   padding-top: 20px;
 }
-
-/* .country-menu li:nth-of-type(3) ul li {
-  cursor: auto;
-}
-
-.country-menu li:nth-of-type(3) ul li:hover::before {
-  position: absolute;
-  left: 210px;
-  content: "Coming soon!";
-  color: #c5725f;
-  background-color: white;
-  border-radius: 10px;
-} */
 
 .map-container {
   width: 100%;
@@ -191,7 +178,6 @@ label[for="country-name"] {
 }
 .text-box {
   padding: 0 10px;
-  padding-top: 4vh;
   background-color: white;
   height: 0;
   opacity: 0;
@@ -201,7 +187,7 @@ label[for="country-name"] {
 
 .shown-country-menu {
   opacity: 1;
-  height: 55vh;
+  height: 64.5vh;
 }
 
 @keyframes cmenu {
@@ -247,34 +233,24 @@ label[for="country-name"] {
   width: 100%;
 }
 
-#search-and-featured {
+#search-and-calendar {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   justify-content: left;
-  flex: 0 0 180px;
+  flex: 0 0 280px;
   transition: 0.5s;
   height: 68vh;
 }
-#featured {
+#calendar-container {
   height: 40vh;
   box-sizing: border-box;
-  width: 200px;
+  width: 280px;
   box-shadow: 0 0 10px 3px rgb(206, 206, 206);
   border-radius: 10px;
   margin-right: 10px;
   margin-top: 10px;
   padding: 4px 4px 4px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#fcalendar {
-  width: 95%;
-  height: 98%;
-  border-radius: 8px;
-  background-color: #5b85aa;
 }
 
 .view-cap,
@@ -282,31 +258,32 @@ label[for="country-name"] {
   background-color: #91b0b2;
 }
 
-#featured p,
-#fblog p {
-  margin: 5px 15px;
+#calendar-container p,
+#featured p {
+  margin: 5px 5px;
 }
 
-#fblog {
+#featured {
   position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
   left: 0;
   top: 45vh;
   height: 50.5vh;
-  width: 250px;
   box-sizing: border-box;
-  width: 200px;
+  width: 280px;
   box-shadow: 0 0 10px 3px rgb(206, 206, 206);
   border-radius: 10px;
   margin-left: 10px;
-  padding: 4px 4px 4px 0;
-  z-index: -1;
+  padding: 10px;
+  z-index: 1;
 }
 
 .search-container {
   transition: 0.3s;
   box-sizing: border-box;
   height: 22vh;
-  width: 200px;
+  width: 280px;
   box-shadow: 0 0 10px 3px rgb(206, 206, 206);
   border-radius: 10px;
   margin-right: 20px;

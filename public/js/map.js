@@ -215,7 +215,7 @@ cancelIcon.addEventListener("click", () => {
 const countryNameChB = document.querySelector("#country-name");
 const countryNameLBL = document.querySelector(`label[for="country-name"]`);
 const textBox = document.querySelector(".text-box");
-const featuredMenu = document.querySelector("#fblog");
+const featuredMenu = document.querySelector("#featured");
 
 countryNameLBL.addEventListener("click", (evt) => {
   if (!countryNameChB.checked) {

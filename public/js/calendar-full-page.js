@@ -1,29 +1,60 @@
+const Calendar = tui.Calendar;
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+const todayBtn = document.getElementById("today-btn");
+const monthDisplay = document.getElementById("month");
+
+const calendar = new Calendar("#calendar", {
+  defaultView: "month",
+  useDetailPopup: true,
+  isReadOnly: true,
+  month: { startDayOfWeek: 1 },
+});
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+function setDate() {
+  const dateObj = calendar.getDate();
+  const currentYear = dateObj.d.getFullYear();
+  const currentMonth = dateObj.d.getMonth();
+
+  monthDisplay.innerText = `${currentYear} ${months[currentMonth]}`;
+}
+
+setDate();
+
+prevBtn.addEventListener("click", () => {
+  calendar.prev();
+  setDate();
+});
+
+nextBtn.addEventListener("click", () => {
+  calendar.next();
+  setDate();
+});
+
+todayBtn.addEventListener("click", () => {
+  calendar.today();
+  setDate();
+});
+
 fetch("/api/events").then(async (response) => {
   let { events } = await response.json();
   const transformedEvents = eventTransform(events);
-  console.log(transformedEvents);
-  const calendarListView = document.querySelector(".calendar-list-view");
-  transformedEvents.forEach((event) => {
-    const listItem = document.createElement("li");
-
-    const listItemTitle = document.createElement("div");
-    const listItemDate = document.createElement("div");
-    listItemTitle.innerText = event.title;
-    listItemTitle.style.borderLeft = `4px solid ${event.backgroundColor}`;
-    let listItemDateString = new Date(event.start);
-    listItemDateString =
-      listItemDateString.toLocaleString("default", {
-        month: "long",
-      }) +
-      " " +
-      listItemDateString.toLocaleString("default", {
-        day: "numeric",
-      });
-    listItemDate.innerText = listItemDateString;
-    listItem.appendChild(listItemDate);
-    listItem.appendChild(listItemTitle);
-    calendarListView.appendChild(listItem);
-  });
+  calendar.createEvents(transformedEvents);
 });
 
 const eventTransform = (events) => {
@@ -110,3 +141,8 @@ const eventTransform = (events) => {
     return eventObject;
   });
 };
+
+document.querySelector("div.navtarolo").style.display = "none";
+document.querySelector("div.lista2-hatter").style.display = "none";
+document.querySelector("#mainmenu").style.height = "15vh";
+document.querySelector("#mainmenu").style.minHeight = "15vh";

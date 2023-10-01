@@ -5,6 +5,8 @@ const lista1elemek = document.querySelectorAll(".lista-1 > li");
 const l2bk = document.querySelectorAll(".l2b");
 function lista2beallitas() {
   lista2listak[0].style.justifyContent = "left";
+  lista1elemek[0].style.backgroundSize = "100% 0.1em";
+  lista2listak[0].classList.add("lista-2-active");
   lista2listak[1].style.justifyContent = "left";
   lista2listak[2].style.justifyContent = "center";
   lista2listak[3].style.justifyContent = "center";
@@ -13,15 +15,22 @@ function lista2beallitas() {
   lista2listak[6].style.justifyContent = "right";
 }
 lista2beallitas();
+function lista1huzas() {
+  for (const lista of lista1elemek) {
+    lista.style.backgroundSize = "0% 0.1em";
+  }
+}
 
 for (const elem of lista1elemek) {
   elem.addEventListener("click", fixalj);
   elem.addEventListener("touchend", fixalj);
   elem.addEventListener("mouseover", (evt) => {
+    for (const klista of lista2listak) {
+      klista.classList.remove("lista-2-active");
+    }
+    lista1huzas();
     evt.target.nextElementSibling.classList.add("lista-2-active");
-  });
-  elem.addEventListener("mouseout", (evt) => {
-    evt.target.nextElementSibling.classList.remove("lista-2-active");
+    evt.target.style.backgroundSize = "100% 0.1em";
   });
 }
 

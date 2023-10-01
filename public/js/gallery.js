@@ -1,20 +1,20 @@
 const Modal = {
-  modalHolder: document.getElementById("modalHolder"),
+  modalHolder: document.getElementById("modal-holder"),
   box: document.createElement("div"),
   boxPhoto: document.createElement("img"),
   closeButton: document.createElement("span"),
   openModal: function (source) {
     this.modalHolder.appendChild(this.box);
-    this.box.appendChild(this.boxPhoto);
     this.box.appendChild(this.closeButton);
+    this.box.appendChild(this.boxPhoto);
 
     this.closeButton.textContent = "x";
     this.boxPhoto.src = source;
 
     this.box.className = "modal";
-    this.closeButton.className = "closeButton";
-    this.modalHolder.className = "modalHolder";
-    this.boxPhoto.className = "boxPhoto";
+    this.closeButton.className = "close-button";
+    this.modalHolder.className = "modal-holder";
+    this.boxPhoto.className = "box-photo";
 
     this.closeButton.addEventListener("click", close);
   },
@@ -28,9 +28,10 @@ function close() {
   Modal.closeModal();
 }
 
-const images = document.querySelectorAll(".image");
+const images = document.querySelectorAll(".image-container");
 images.forEach((img) => {
   img.addEventListener("click", () => {
-    Modal.openModal(img.src);
+    img.querySelector(".image");
+    Modal.openModal(img.querySelector(".image").src);
   });
 });

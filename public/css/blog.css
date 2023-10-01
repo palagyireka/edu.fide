@@ -210,6 +210,12 @@ label[for="title"] {
   transition: 0.3s ease-in-out;
 }
 
+.gallery-page .first-prev a,
+.gallery-page .next-last a {
+  background-color: #5b85aa;
+  color: white;
+}
+
 .first-prev a {
   text-align: right;
   border-bottom-left-radius: 50%;

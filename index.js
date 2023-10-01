@@ -102,17 +102,26 @@ app.get("/search", (req, res) => {
   res.render("search");
 });
 
+app.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
 app.get("/intro", (req, res) => {
   res.render("intro");
 });
 
 app.get("/titleholders/:type", (req, res) => {
   const type = req.params.type; // Extract the 'type' parameter from the URL
-  res.render("titleholders", { type });
+  const country = decodeURIComponent(req.query.country);
+  res.render("titleholders", { type, country });
 });
 
 app.get("/download", isLoggedIn, (req, res) => {
   res.render("download");
+});
+
+app.get("/fullcalendar", (req, res) => {
+  res.render("fullcalendar");
 });
 
 app.get("/gallery", async (req, res) => {

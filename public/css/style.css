@@ -202,7 +202,7 @@ h1 {
   color: black;
 }
 
-.lista-1 li {
+.lista-1 > li {
   font-size: 22px;
   padding: 24.5px 2.2vw;
   margin: 0 0.5vw;
@@ -216,18 +216,18 @@ h1 {
   transition: 0.3s ease-in;
 }
 
-.lista-1 li:hover,
-.lista-1 li:focus,
-.lista-1 li:active {
+.lista-1 > li a:hover,
+.lista-1 > li a:focus,
+.lista-1 > li a:active {
   background-size: 100% 0.1em;
 }
 
-.lista-1 li:nth-of-type(4) + .lista-2 > li {
+.lista-1 > li:nth-of-type(4) + .lista-2 > li {
   cursor: auto;
   background-image: none;
 }
 
-.lista-1 li:nth-of-type(4) + .lista-2 > li:hover::before {
+.lista-1 > li:nth-of-type(4) + .lista-2 > li:hover::before {
   position: absolute;
   top: 40px;
   left: 0;
@@ -239,49 +239,55 @@ h1 {
   padding: 4px;
 }
 
-.lista-1 li:last-of-type {
+.lista-1 > li:last-of-type {
   padding-top: 15px;
   background-image: none;
 }
 
 /* -------- MÁSODIK SZINT ------------- */
 
+.lista2-hatter {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  top: 25vh;
+  height: 7vh;
+  min-height: 45px;
+  background-color: #91b0b2;
+}
+
 .lista-2 {
   display: none;
   position: absolute;
   width: 100vw;
-  left: 0;
+  top: 25vh;
   height: 7vh;
   min-height: 45px;
-  background-color: #91b0b2;
   color: white;
 }
 
 @keyframes lista2jovetel {
   from {
-    top: 15vh;
-    z-index: -150;
+    left: 100vw;
   }
-
   to {
-    top: 25vh;
-    z-index: 1;
+    left: 0;
   }
 }
 
-.lista-1 li:hover + .lista-2,
+.lista-1 > li:hover + .lista-2,
 .lista-2:hover,
 .lista-2-active {
   display: flex;
-  justify-content: center;
   top: 25vh;
   animation-name: lista2jovetel;
-  animation-duration: 0.3s;
+  animation-duration: 0.4s;
+  left: 0;
   z-index: 1;
 }
 
-.lista-1 li:nth-of-type(3):hover + .lista-2 {
-  display: none;
+.lista-1 > li:nth-of-type(3):hover {
+  cursor: pointer;
 }
 
 .lista-2 > li {
@@ -291,7 +297,7 @@ h1 {
   padding: 16px 2.5vw;
   background-image: linear-gradient(#ffffff, #ffffff);
   background-size: 0% 0.1em;
-  background-position-y: 44%;
+  background-position-y: 80%;
   background-position-x: 50%;
   background-repeat: no-repeat;
   transition: 0.3s ease-in;
@@ -301,24 +307,6 @@ h1 {
 .lista-2 > li:focus,
 .lista-2 > li:active {
   background-size: 80% 0.1em;
-}
-
-/* VALAMIRT UTSÓ TAGRA KÜLÖN IS KELL */
-
-.lista-2 > li:last-of-type {
-  padding: 16px 4vw;
-  background-image: linear-gradient(#ffffff, #ffffff);
-  background-size: 0% 0.1em;
-  background-position-y: 44%;
-  background-position-x: 50%;
-  background-repeat: no-repeat;
-  transition: 0.3s ease-in;
-}
-
-.lista-2 > li:last-of-type:hover,
-.lista-2 > li:last-of-type:focus,
-.lista-2 > li:last-of-type:active {
-  background-size: 70% 0.1em;
 }
 
 .lista-2 > li ul {
@@ -341,7 +329,6 @@ h1 {
   box-sizing: border-box;
   color: white;
   border-bottom-left-radius: 10px;
-
   border-bottom-right-radius: 10px;
 }
 
