@@ -14,6 +14,7 @@ const flash = require("connect-flash");
 const { cloudinary } = require("./cloudinary");
 const deltaToHtml = require("./utils/deltaToHtml");
 const { convert } = require("html-to-text");
+const cookieParser = require("cookie-parser");
 
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
@@ -47,6 +48,7 @@ app.use(methodOverride("_method"));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 sessionConfig = {
   secret,
@@ -97,7 +99,7 @@ app.get("/", async (req, res) => {
   }
 
   if (req.user) {
-    if (req.user.status === "pending") {
+    if (req.user.status === "pending" && !req.cookies.verifyClosed) {
       req.flash("verify", "Please verify your e-mail account!");
     }
   }

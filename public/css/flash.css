@@ -41,7 +41,10 @@
 }
 
 .flash-error {
+  color: #fea303;
+  background-color: #ffdb15;
 }
 
 .flash-error button svg {
+  fill: #fea303;
 }

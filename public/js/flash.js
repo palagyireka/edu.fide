@@ -21,5 +21,11 @@ if (alertButtons) {
 }
 
 verifyButton.addEventListener("click", () => {
-  fetch;
+  var timeToAdd = 1000 * 60 * 60 * 24;
+  var date = new Date();
+  var expiryTime = parseInt(date.getTime()) + timeToAdd;
+  date.setTime(expiryTime);
+  var utcTime = date.toUTCString();
+
+  document.cookie = `verifyClosed=true; expires=${utcTime}`;
 });

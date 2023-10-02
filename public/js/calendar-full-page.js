@@ -51,13 +51,15 @@ todayBtn.addEventListener("click", () => {
   setDate();
 });
 
-let evente;
-
-fetch("/api/events").then(async (response) => {
-  let { events } = await response.json();
-  const transformedEvents = eventTransform(events);
-  calendar.createEvents(transformedEvents);
-});
+fetch("/api/events")
+  .then(async (response) => {
+    let { events } = await response.json();
+    const transformedEvents = eventTransform(events);
+    calendar.createEvents(transformedEvents);
+  })
+  .catch((e) => {
+    console.log(e);
+  });
 
 const eventTransform = (events) => {
   return events.map((evt) => {
