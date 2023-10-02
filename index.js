@@ -68,6 +68,7 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.error = req.flash("error");
   res.locals.success = req.flash("success");
+  res.locals.verify = req.flash("verify");
   next();
 });
 
@@ -93,6 +94,12 @@ app.get("/", async (req, res) => {
     tag = "blog";
   } else {
     tag = featuredPost.tags[0];
+  }
+
+  if (req.user) {
+    if (req.user.status === "pending") {
+      req.flash("verify", "Please verify your e-mail account!");
+    }
   }
 
   res.render("index", { featuredPost, tag });

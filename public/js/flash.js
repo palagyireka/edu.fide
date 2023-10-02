@@ -1,5 +1,6 @@
 const alert = document.querySelector(".flash");
-const alertButton = document.querySelector(".flash button");
+const alertButtons = document.querySelector(".flash button");
+const verifyButton = document.querySelector(".flash-verify button");
 
 function removeFadeOut(el, speed) {
   var seconds = speed / 1000;
@@ -11,8 +12,14 @@ function removeFadeOut(el, speed) {
   }, speed);
 }
 
-if (alertButton) {
-  alertButton.addEventListener("click", () => {
-    removeFadeOut(alert, 200);
+if (alertButtons) {
+  alertButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      removeFadeOut(alert, 200);
+    });
   });
 }
+
+verifyButton.addEventListener("click", () => {
+  fetch;
+});

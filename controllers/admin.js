@@ -118,7 +118,7 @@ module.exports.deletePost = async (req, res) => {
 module.exports.showProfiles = async (req, res) => {
   const pageNumber = req.query.page || 1;
 
-  User.paginate(
+  await User.paginate(
     {},
     { page: req.query.page, limit: 50, sort: { registrationDate: -1 } }
   ).then((results) => {

@@ -51,6 +51,8 @@ todayBtn.addEventListener("click", () => {
   setDate();
 });
 
+let evente;
+
 fetch("/api/events").then(async (response) => {
   let { events } = await response.json();
   const transformedEvents = eventTransform(events);

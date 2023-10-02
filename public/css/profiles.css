@@ -1,0 +1,12 @@
+.profile-data {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-data div {
+  margin: 10px;
+}
+
+.admin-page-profile {
+  margin: 10px;
+}

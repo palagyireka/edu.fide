@@ -11,13 +11,13 @@ router
   .get(admin.renderPosts)
   .post(catchAsync(admin.createPost));
 
+router.get("/profiles", admin.showProfiles);
+
 router
   .route("/:id")
   .get(catchAsync(admin.showPost))
   .put(admin.editPost)
   .delete(admin.deletePost);
-
-router.get("profiles", admin.showProfiles);
 
 router.route("/:id/edit").get(admin.renderEdit);
 
