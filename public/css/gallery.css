@@ -12,9 +12,17 @@ body {
 }
 
 .title {
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
+  grid-column: 2/5;
+  grid-row: 2 / 4;
+  padding: 10px 0;
+  margin: 0 50px;
+  box-sizing: border-box;
   font-size: 30px;
+}
+
+.title p {
+  font-size: 18px;
+  padding-top: 10px;
 }
 
 .image-gallery {
@@ -25,7 +33,7 @@ body {
   align-content: center;
   justify-content: center;
   grid-column: 2 / span 3;
-  grid-row: 3 / span 1;
+  grid-row: 5 / span 1;
 }
 
 .image {
@@ -97,26 +105,4 @@ body {
   text-align: left;
   font-size: 2em;
   cursor: pointer;
-}
-
-@media (max-width: 950px) {
-  .image-gallery {
-    grid-template: repeat(5, 300px) / repeat(2, 300px);
-    grid-column: 2 / span 2;
-  }
-
-  .layout {
-    grid-template: 20px 40px auto / auto 300px 300px auto;
-  }
-}
-
-@media (max-width: 500px) {
-  .image-gallery {
-    grid-template: repeat(9, 300px) / 300px;
-    grid-column: 2 / span 1;
-  }
-
-  .layout {
-    grid-template: 20px 40px auto / auto 300px auto;
-  }
 }

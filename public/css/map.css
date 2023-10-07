@@ -163,6 +163,7 @@ svg circle {
   align-items: flex-start;
   justify-content: center;
   height: 65px;
+  padding: 10px;
 }
 
 label[for="country-name"] {
@@ -241,6 +242,8 @@ label[for="country-name"] {
   flex: 0 0 280px;
   transition: 0.5s;
   height: 68vh;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 #calendar-container {
   height: 40vh;
@@ -248,7 +251,6 @@ label[for="country-name"] {
   width: 280px;
   box-shadow: 0 0 10px 3px rgb(206, 206, 206);
   border-radius: 10px;
-  margin-right: 10px;
   margin-top: 10px;
   padding: 4px 4px 4px 0;
 }
@@ -263,22 +265,6 @@ label[for="country-name"] {
   margin: 5px 5px;
 }
 
-#featured {
-  position: absolute;
-  overflow: scroll;
-  overflow-x: hidden;
-  left: 0;
-  top: 45vh;
-  height: 50.5vh;
-  box-sizing: border-box;
-  width: 280px;
-  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
-  border-radius: 10px;
-  margin-left: 10px;
-  padding: 10px;
-  z-index: 1;
-}
-
 .search-container {
   transition: 0.3s;
   box-sizing: border-box;
@@ -286,8 +272,6 @@ label[for="country-name"] {
   width: 280px;
   box-shadow: 0 0 10px 3px rgb(206, 206, 206);
   border-radius: 10px;
-  margin-right: 20px;
-  margin-top: 0px;
   padding: 4px 4px 4px 0;
   --searchbar-height: 30px;
 }

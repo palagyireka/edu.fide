@@ -23,9 +23,6 @@ main {
   display: flex;
   flex-direction: column;
 }
-.titleholders-flex > div:nth-of-type(2) > div:first-of-type {
-  height: 30%;
-}
 
 label[for="lsititleholders"],
 label[for="sititleholders"] {
@@ -58,6 +55,7 @@ label[for="sititleholders"] {
 
 .titleholders-filters {
   background-color: #91b0b2;
+  height: 30%;
   color: white;
   padding: 20px;
   border-radius: 10px;
@@ -73,6 +71,20 @@ label[for="sititleholders"] {
   display: flex;
   justify-content: space-around;
   font-size: 18px;
+}
+
+.titleholders-filters li > div {
+  position: relative;
+}
+
+.titleholders-filters li > div span {
+  display: none;
+  color: grey;
+  position: absolute;
+  top: 4.5px;
+  font-size: 16px;
+  right: 20px;
+  cursor: pointer;
 }
 
 .titleholders-filters input {

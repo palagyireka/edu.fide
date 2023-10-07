@@ -35,3 +35,16 @@ images.forEach((img) => {
     Modal.openModal(img.querySelector(".image").src);
   });
 });
+
+if (window.innerWidth > 1150 || window.screen.width > 1150) {
+  document
+    .querySelector(".next-last a:nth-of-type(2)")
+    .addEventListener("mouseover", (evt) => {
+      evt.target.previousElementSibling.style.marginLeft = "65px";
+    });
+  document
+    .querySelector(".next-last a:nth-of-type(2)")
+    .addEventListener("mouseout", (evt) => {
+      evt.target.previousElementSibling.style.marginLeft = "15px";
+    });
+}

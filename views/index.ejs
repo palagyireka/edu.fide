@@ -3,10 +3,16 @@
 <%- include('partials/socmed') %>
 
 <main>
+  <div id="featured">
+    <%- include('partials/featured') %>
+  </div>
   <div id="map-search-container">
     <div id="search-and-calendar">
       <div id="calendar-container">
-        <%- include('partials/calendar') %>
+        <a href="/fullcalendar" class="calendar-list-container">
+          <p>Upcoming Events</p>
+          <ul class="calendar-list-view"></ul>
+        </a>
       </div>
       <div class="search-container">
         <div class="searchbar">
@@ -93,10 +99,6 @@
   </div>
     </div>
   </div>
-  <div id="featured">
-    <p>Featured</p>
-    <%- include('partials/featured') %>
-  </div>
   <footer>
     <a href="https://www.fide.com/privacy" target="_blank"
       >Read our Privacy Policy</a
@@ -109,3 +111,5 @@
 <script src="https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js"></script>
 <script src="/js/translator.js"></script>
 <script src="/js/map.js"></script>
+<script src="/js/formobile.js"></script>
+<script src="/js/calendar.js"></script>

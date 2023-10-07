@@ -4,9 +4,14 @@
     <span class="my-profile">My Profile</span>
   </a>
   <div class="logout">
-    <a href="#">
+    <a href="/logout">
       Log <br />
       Out
     </a>
   </div>
 </div>
+<script>
+  if (window.innerWidth < 810 || window.screen.width < 810) {
+    document.querySelector(".logout a br").remove();
+  }
+</script>

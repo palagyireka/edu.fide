@@ -52,17 +52,41 @@ div.toastui-calendar-see-more {
 }
 
 .calendar-head {
+  display: block;
+  width: 40%;
+  margin: 10px 30%;
+  margin-bottom: 0;
+}
+
+.calendar-nav {
   display: flex;
-  margin: 10px;
   justify-content: space-between;
-  align-items: center;
 }
 
 .calendar-nav button {
   cursor: pointer;
   background: none;
   padding: 6px 10px;
-  border: 1px grey solid;
+  background-color: #5b85aa;
+  color: white;
+  border-radius: 10px;
+}
+.calendar-nav button:nth-of-type(2) {
+  background-color: #c5725f;
+}
+
+.toastui-calendar-grid-cell-date
+  .toastui-calendar-weekday-grid-date.toastui-calendar-weekday-grid-date-decorator {
+  background-color: #c5725f !important;
+  border-width: 2px !important;
+  border-style: outset !important;
+  border-color: buttonborder !important;
+  border-image: initial !important;
+}
+
+#month {
+  margin-top: 10px;
+  text-align: center;
 }
 
 .toastui-calendar-template-popupDetailDate,
@@ -72,16 +96,11 @@ div.toastui-calendar-see-more {
   font-weight: normal;
 }
 
-#month {
-  height: fit-content;
-}
-/* 
-.toastui-calendar-template-allday,
-.toastui-calendar-weekday-event {
-  height: 10px;
-} */
-
 .toastui-calendar-template-monthDayName {
   font-size: 18px;
   font-weight: 500;
+}
+
+.toastui-calendar-weekday-event {
+  margin-top: 3px;
 }

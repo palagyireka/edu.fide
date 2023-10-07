@@ -2761,6 +2761,8 @@ const siTitleHolders = [
     year: 2023,
   },
 ];
+const countryInput = document.querySelector(`input[id="country-titleholders"]`);
+const awardedYearInput = document.querySelector(`input[id="awarded-y"]`);
 
 const titleHolderUL = document.querySelectorAll(
   ".chosen-titleholder ul li span"
@@ -2779,8 +2781,10 @@ if (lsiTrue) {
     const lsioption = document.createElement("option");
     lsioption.value = lsi.fullname;
     lsioption.innerText = lsi.fullname;
-    lsioption.addEventListener("click", mutasdAzAdatokat);
-    lsioption.addEventListener("touchstart", mutasdAzAdatokat);
+    lsioption.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
+    lsioption.addEventListener("touchstart", (evt) =>
+      mutasdAzAdatokat(evt, false)
+    );
     lsiSelect.appendChild(lsioption);
   }
 } else {
@@ -2788,13 +2792,15 @@ if (lsiTrue) {
     const sioption = document.createElement("option");
     sioption.value = si.fullname;
     sioption.innerText = si.fullname;
-    sioption.addEventListener("click", mutasdAzAdatokat);
-    sioption.addEventListener("touchstart", mutasdAzAdatokat);
+    sioption.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
+    sioption.addEventListener("touchstart", (evt) =>
+      mutasdAzAdatokat(evt, false)
+    );
     siSelect.appendChild(sioption);
   }
 }
 
-function mutasdAzAdatokat(evt) {
+function mutasdAzAdatokat(evt, torol) {
   if (lsiTrue) {
     for (const lsi of lsiTitleHolders) {
       if (evt.target.value == lsi.fullname) {
@@ -2806,6 +2812,13 @@ function mutasdAzAdatokat(evt) {
         break;
       }
     }
+  }
+  if (torol) {
+    titleHolderUL[0].innerText = "";
+    titleHolderUL[1].innerText = "";
+    titleHolderUL[2].innerText = "";
+    titleHolderUL[3].innerText = "";
+    titleHolderUL[4].innerText = "";
   } else {
     for (const si of siTitleHolders) {
       if (evt.target.value == si.fullname) {
@@ -2826,6 +2839,9 @@ for (const orszag of countryCodes) {
   option.value = orszag.name;
   countryTitleH.appendChild(option);
 }
+// countryTitleH.appendChild(
+//   new Option("All Countries", "All Countries", true, true)
+// );
 
 const awardedYearFilter = document.querySelector('datalist[id="awarded-year"]');
 let thisYear = new Date().getFullYear();
@@ -2835,26 +2851,43 @@ for (let i = 2015; i <= thisYear; i++) {
   awardedYearFilter.appendChild(option);
 }
 
+// awardedYearFilter.appendChild(new Option("All Years", "All Years", true, true));
+
 let URLparam = new URLSearchParams(document.location.search);
 const initialCountry = URLparam.get("country");
-document.querySelector(`input[id="country-titleholders"]`).value =
-  initialCountry;
-filterOptions();
+if (initialCountry != null) {
+  document.querySelector(`input[id="country-titleholders"]`).value =
+    initialCountry;
+  filterOptions();
+}
 
+awardedYearInput.addEventListener("keyup", (evt) => filterOptions(evt));
+countryInput.addEventListener("keyup", (evt) => filterOptions(evt));
 document
-  .querySelector(`input[id="country-titleholders"]`)
-  .addEventListener("keyup", filterOptions);
+  .querySelectorAll(".titleholders-filters .clean-search")
+  .forEach((closebtn) => {
+    closebtn.addEventListener("click", (evt) => {
+      evt.target.previousElementSibling.value = "";
+      evt.target.style.display = "none";
+      evt.target.previousElementSibling.dispatchEvent(
+        new KeyboardEvent("keyup")
+      );
+    });
+  });
 
-document
-  .querySelector(`input[id="awarded-y"]`)
-  .addEventListener("keyup", filterOptions);
-
-function filterOptions() {
-  const selectedCountry = document.querySelector(
-    `input[id="country-titleholders"]`
-  ).value;
-  const selectedYear = document.querySelector(`input[id="awarded-y"]`).value;
-
+function filterOptions(evt) {
+  const selectedCountry = countryInput.value;
+  const selectedYear = awardedYearInput.value;
+  mutasdAzAdatokat(evt, true);
+  if (evt.target == countryInput && countryInput.value != "") {
+    document.querySelector(
+      "#country-titleholders + .clean-search"
+    ).style.display = "block";
+  }
+  if (evt.target == awardedYearInput && awardedYearInput.value != "") {
+    document.querySelector("#awarded-y + .clean-search").style.display =
+      "block";
+  }
   const allOptions = document.querySelectorAll(".titleholders-select option");
   allOptions.forEach((option) => option.remove());
 
@@ -2868,8 +2901,10 @@ function filterOptions() {
       const option = document.createElement("option");
       option.value = holder.fullname;
       option.innerText = holder.fullname;
-      option.addEventListener("click", mutasdAzAdatokat);
-      option.addEventListener("touchstart", mutasdAzAdatokat);
+      option.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
+      option.addEventListener("touchstart", (evt) =>
+        mutasdAzAdatokat(evt, false)
+      );
       lsiTrue ? lsiSelect.appendChild(option) : siSelect.appendChild(option);
     }
   });

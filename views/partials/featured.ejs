@@ -1,15 +1,14 @@
-<div class="featured-container">
-  <a href="/<%= tag %>/<%= featuredPost._id %>">
-    <div class="featured-title"><%= featuredPost.title %></div>
-    <% if (featuredPost.images[0].url !== "") { %>
-    <div class="featured-img-container">
-      <img
-        src="<%= featuredPost.images[0].url %>"
-        alt="image"
-        class="featured-img"
-      />
-    </div>
-    <% } %>
-    <div class="featured-text"><%= featuredPost.text %></div></a
-  >
-</div>
+<p>Featured</p>
+<a href="/<%= tag %>/<%= featuredPost._id %>">
+  <div class="featured-title"><%= featuredPost.title %></div>
+  <% if (featuredPost.images[0].url !== "") { %>
+  <div class="featured-img-container">
+    <img
+      src="<%= featuredPost.images[0].url %>"
+      alt="image"
+      class="featured-img"
+    />
+  </div>
+  <% } %>
+  <div class="featured-text"><%= featuredPost.text %></div></a
+>

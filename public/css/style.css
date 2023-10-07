@@ -216,13 +216,12 @@ h1 {
   transition: 0.3s ease-in;
 }
 
-.lista-1 > li a:hover,
-.lista-1 > li a:focus,
-.lista-1 > li a:active {
-  background-size: 100% 0.1em;
+.lista-1-hover {
+  background-size: 100% 0.1em !important;
 }
 
-.lista-1 > li:nth-of-type(4) + .lista-2 > li {
+.lista-1 > li:nth-of-type(4) + .lista-2 > li,
+.lista-1 > li:nth-of-type(3) + .lista-2 > li {
   cursor: auto;
   background-image: none;
 }
@@ -266,6 +265,10 @@ h1 {
   color: white;
 }
 
+.lista-2:nth-of-type(3) {
+  padding-left: 21vw;
+}
+
 @keyframes lista2jovetel {
   from {
     left: 100vw;
@@ -275,11 +278,11 @@ h1 {
   }
 }
 
-.lista-1 > li:hover + .lista-2,
+.lista-1-hover + .lista-2,
 .lista-2:hover,
 .lista-2-active {
-  display: flex;
-  top: 25vh;
+  display: flex !important;
+  top: 25vh !important;
   animation-name: lista2jovetel;
   animation-duration: 0.4s;
   left: 0;

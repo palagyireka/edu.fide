@@ -42,7 +42,6 @@ function formChange(evt) {
       userForms[i].classList.add("user-form-active");
       if (userForms[i].id == "signup-form") {
         formContainer.style.paddingBottom = "15vh";
-        userForms[i].style.height = "445px";
       } else {
         formContainer.style.paddingBottom = "25vh";
       }

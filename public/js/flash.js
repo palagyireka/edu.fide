@@ -1,5 +1,5 @@
 const alert = document.querySelector(".flash");
-const alertButtons = document.querySelector(".flash button");
+const alertButtons = document.querySelectorAll(".flash button");
 const verifyButton = document.querySelector(".flash-verify button");
 
 function removeFadeOut(el, speed) {
@@ -14,18 +14,19 @@ function removeFadeOut(el, speed) {
 
 if (alertButtons) {
   alertButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (evt) => {
       removeFadeOut(alert, 200);
     });
   });
 }
+if (verifyButton) {
+  verifyButton.addEventListener("click", () => {
+    var timeToAdd = 1000 * 60 * 60 * 24;
+    var date = new Date();
+    var expiryTime = parseInt(date.getTime()) + timeToAdd;
+    date.setTime(expiryTime);
+    var utcTime = date.toUTCString();
 
-verifyButton.addEventListener("click", () => {
-  var timeToAdd = 1000 * 60 * 60 * 24;
-  var date = new Date();
-  var expiryTime = parseInt(date.getTime()) + timeToAdd;
-  date.setTime(expiryTime);
-  var utcTime = date.toUTCString();
-
-  document.cookie = `verifyClosed=true; expires=${utcTime}`;
-});
+    document.cookie = `verifyClosed=true; expires=${utcTime}`;
+  });
+}

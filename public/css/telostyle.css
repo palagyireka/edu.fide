@@ -1,34 +1,63 @@
 @media only screen and (max-width: 810px) {
-  .navtarolo {
-    left: 44.2%;
+  #mainmenu {
+    min-height: 138px;
   }
   .navtarolo .lista-1 {
     width: 100%;
-    padding: 0 15%;
-    padding-top: 20%;
+    padding: 0 25%;
+    padding-top: 10%;
   }
-  .navtarolo .lista-1 li {
-    font-size: 32px;
+  .navtarolo .lista-1 > li {
+    font-size: 30px;
   }
 
-  .lista-1 li:hover + .lista-2,
-  .lista-1 li:hover + .lista-2:hover,
-  .lista-2:hover,
   .onmobile2 {
-    visibility: visible;
-    display: flex;
-    padding: 20% 15%;
+    display: flex !important;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    flex-wrap: wrap;
+    visibility: visible;
+    display: flex;
+    border-radius: 20px;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    background-color: white;
+    color: #5b85aa;
+    box-sizing: border-box;
+    width: 60%;
+    margin: 10% 20%;
+    margin-top: 30%;
+    height: 70%;
+    padding: 20px 10px;
+    font-size: 20px;
+  }
+  .onmobile2 li {
+    padding-bottom: 30px;
+    padding-left: 5px;
   }
 
-  .lista-2 li:hover {
-    background: none;
+  .onmobile2 li ul {
+    font-size: 18px;
+    padding: 5px;
+    display: none;
+  }
+
+  .onmobile2 li ul li {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .onmobile2 li:active,
+  .onmobile2 li:focus,
+  .onmobile2 li:hover {
+    padding-bottom: 5px;
+  }
+
+  .onmobile2 li:active ul,
+  .onmobile2 li:focus ul,
+  .onmobile2 li:hover ul {
+    display: block;
   }
 
   .l2b {
@@ -96,13 +125,192 @@
   label[for="login-signup"] div {
     justify-content: center;
   }
+
+  /* GALÉRIA */
+  .first-prev {
+    left: 0;
+    bottom: 0;
+    top: unset;
+  }
+
+  .next-last {
+    right: 0;
+    bottom: 0;
+    top: unset;
+  }
+
+  .next-last a,
+  .first-prev a {
+    margin: 0;
+    border-radius: 0;
+    width: 70px;
+    padding: 8px;
+    font-size: 18px;
+    margin: -2px;
+  }
+
+  .next-last a:hover,
+  .first-prev a:hover {
+    width: 70px;
+    margin-left: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .next-last a:first-of-type {
+    border-top-left-radius: 10px;
+  }
+  .first-prev a:first-of-type {
+    border-top-right-radius: 10px;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 5px;
+  }
+  .title {
+    margin: 0 28px;
+    font-size: 26px;
+  }
+  .title p {
+    font-size: 16px;
+  }
+  .image-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .image-gallery .image-container,
+  .image-gallery .image-container .image {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+  }
+  .image-gallery .image-container {
+    margin: 5px;
+  }
+  .overlay {
+    background-size: contain;
+  }
+  .box-photo {
+    width: 80vw;
+  }
+
+  /* LOGIN-SIGNUP */
+  #userspan {
+    left: 60%;
+  }
+  #newspan {
+    left: 22%;
+  }
+  #signup-form .fancytime {
+    width: 80px;
+  }
+  #resp-cie:focus {
+    width: 95%;
+  }
+  #login-form input,
+  #login-form label {
+    width: 80%;
+  }
+  .error.password-error,
+  .error.login-password-error,
+  .error.name-error,
+  .error.email-error,
+  .error.login-email-error {
+    bottom: 0;
+    right: 0px;
+    left: 0px;
+    width: fit-content;
+  }
+
+  /* BLOG */
+  .blogs {
+    margin: 10px;
+  }
+  .blogsor {
+    width: 90%;
+    margin: 0 0;
+    padding: 5px 0;
+    flex-flow: column wrap;
+  }
+  .blogsor .blog-card {
+    width: 100%;
+    margin: 5%;
+  }
+  .posts-title p {
+    text-align: center;
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+  .blogs .next-last a,
+  .blogs .first-prev a {
+    background-color: #91b0b2;
+    color: white;
+    font-weight: 500;
+  }
+
+  .show-blogpost {
+    margin-top: 10px;
+  }
+
+  .show-blogpost .text-body p {
+    padding: 10px;
+  }
+
+  .text-body img {
+    width: 90%;
+    height: auto;
+  }
+
+  /* LSI és SI filter oldal */
+
+  .titleholders-flex {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0;
+  }
+  .titleholders-flex > div {
+    width: 100%;
+  }
+
+  .titleholders-filters {
+    height: 240px;
+  }
+  .titleholders-filters ul {
+    flex-direction: column;
+  }
+  .titleholders-filters li,
+  .titleholders-filters li input {
+    width: 100%;
+    font-size: 19px;
+    padding: 10px;
+  }
+  .titleholders-filters li > div span {
+    color: black;
+    right: 35px;
+    top: 5.5px;
+  }
+
+  main.intro div {
+    flex-direction: column;
+  }
+  main.intro iframe {
+    width: 100vw;
+  }
+  main.intro div div {
+    width: 100vw;
+    align-items: center;
+  }
 }
 
 @media only screen and (max-width: 615px) {
   h1 {
     display: none;
-  }
-  .navtarolo {
-    left: 42%;
   }
 }

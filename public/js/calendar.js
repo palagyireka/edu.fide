@@ -1,7 +1,6 @@
 fetch("/api/events").then(async (response) => {
   let { events } = await response.json();
   const transformedEvents = eventTransform(events);
-  console.log(transformedEvents);
   const calendarListView = document.querySelector(".calendar-list-view");
   transformedEvents.forEach((event) => {
     const listItem = document.createElement("li");

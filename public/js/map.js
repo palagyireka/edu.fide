@@ -1,4 +1,5 @@
 const element = document.querySelector("#map");
+const featuredMenu = document.querySelector("#featured");
 var panZoomMap = svgPanZoom(element, {
   zoomEnabled: true,
   controlIconsEnabled: true,
@@ -55,6 +56,7 @@ paths.forEach((item) => {
 
     document.querySelector(".text-box").classList.remove("shown-country-menu");
     document.querySelector("#country-name").checked = true;
+    featuredMenu.style.display = "block";
 
     let countryContacts = document.querySelectorAll("#country-contacts li");
     const fedContacts = document.querySelector("#country-contacts");
@@ -215,7 +217,6 @@ cancelIcon.addEventListener("click", () => {
 const countryNameChB = document.querySelector("#country-name");
 const countryNameLBL = document.querySelector(`label[for="country-name"]`);
 const textBox = document.querySelector(".text-box");
-const featuredMenu = document.querySelector("#featured");
 
 countryNameLBL.addEventListener("click", (evt) => {
   if (!countryNameChB.checked) {

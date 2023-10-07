@@ -25,6 +25,8 @@
   box-sizing: border-box;
   padding: 10px 15%;
   font-size: 18px;
+  line-height: 1.1;
+  word-wrap: break-word;
   border-left: 20px solid #91b0b2;
   border-right: 20px solid #91b0b2;
 }
@@ -189,13 +191,13 @@ label[for="title"] {
 
 .first-prev {
   position: fixed;
-  top: 45%;
+  top: 55%;
   left: 30px;
 }
 
 .next-last {
   position: fixed;
-  top: 45%;
+  top: 55%;
   right: 30px;
 }
 

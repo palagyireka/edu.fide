@@ -1,3 +1,24 @@
+#featured {
+  position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
+  left: 0;
+  top: 45vh;
+  height: 50.5vh;
+  box-sizing: border-box;
+  width: 260px;
+  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
+  border-radius: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  z-index: 1;
+}
+
+#featured p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
 .featured-title {
   font-weight: 600;
   margin-bottom: 10px;
