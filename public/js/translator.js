@@ -364,17 +364,17 @@
   widget_code += "</div>";
   switcher_vertical_position += ":32px;";
   if (switcher_horizontal_position != "inline") {
-    if (window.innerWidth > 1150 || window.screen.width > 1150) {
+    if (window.innerWidth > 1200 && window.screen.width > 1200) {
       switcher_horizontal_position = "right: 30%;";
-    }
-    if (
-      (window.innerWidth <= 1150 || window.screen.width <= 1150) &&
-      (window.innerWidth > 610 || window.screen.width > 610)
+    } else if (
+      window.innerWidth <= 1200 &&
+      window.screen.width <= 1200 &&
+      window.innerWidth > 610 &&
+      window.screen.width > 610
     ) {
       switcher_horizontal_position = "right: 60%;";
       switcher_vertical_position = "top: 10px;";
-    }
-    if (window.innerWidth <= 610 || window.screen.width <= 610) {
+    } else if (window.innerWidth <= 610 && window.screen.width <= 610) {
       switcher_horizontal_position = "left:33%;";
       switcher_vertical_position = "top: 80px;";
     }

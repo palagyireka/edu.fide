@@ -269,6 +269,19 @@
     padding-left: 5px;
   }
 
+  .ontablet2 li ul {
+    font-size: 19px;
+    list-style: square;
+    margin-left: 30px;
+  }
+
+  .ontablet2 li ul li {
+    padding-bottom: 10px;
+  }
+  .ontablet2 li ul li:first-of-type {
+    padding-top: 10px;
+  }
+
   #mainmenu {
     height: 130px;
   }

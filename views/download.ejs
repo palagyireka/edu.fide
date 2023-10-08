@@ -1,1 +1,38 @@
 <% layout('layouts/boilerplate') %>
+<main class="download">
+  <p>Download</p>
+  <p>Please choose a cateogry from which you wish to download our materials.</p>
+  <div class="categories">
+    <span class="background"></span>
+    <input
+      type="radio"
+      name="category"
+      id="brochures"
+      value="brochures"
+    /><label for="brochures">EDU Brochures</label>
+    <input
+      type="radio"
+      name="category"
+      id="textbooks"
+      value="textbooks"
+    /><label for="textbooks">Textbooks</label>
+    <input type="radio" name="category" id="ciebooks" value="ciebooks" /><label
+      for="ciebooks"
+      >CIE Books</label
+    >
+    <input type="radio" name="category" id="other" value="other" /><label
+      for="other"
+      >Other Material</label
+    >
+  </div>
+  <table class="materials">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+  </table>
+</main>
+<script src="/js/download.js"></script>
