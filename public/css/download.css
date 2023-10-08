@@ -64,7 +64,7 @@ main.download * {
   animation-duration: 0.4s;
 }
 
-input:checked + label {
+main.download input:checked + label {
   background-color: #5b85aa;
   color: white;
   font-weight: 500;
