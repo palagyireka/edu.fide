@@ -119,6 +119,14 @@ app.get("/intro", (req, res) => {
   res.render("intro");
 });
 
+app.get("/potcoursebook", (req, res) => {
+  res.render("potcoursebook");
+});
+
+app.get("/potnfo", (req, res) => {
+  res.render("potnfo");
+});
+
 app.get("/titleholders/:type", (req, res) => {
   const type = req.params.type; // Extract the 'type' parameter from the URL
   const country = decodeURIComponent(req.query.country);
@@ -127,6 +135,42 @@ app.get("/titleholders/:type", (req, res) => {
 
 app.get("/download", isLoggedIn, (req, res) => {
   res.render("download");
+});
+
+app.get("/sendus", isLoggedIn, (req, res) => {
+  res.render("sendus");
+});
+
+app.get("/commission", (req, res) => {
+  res.render("commission");
+});
+
+app.get("/partnerships", (req, res) => {
+  res.render("partnerships");
+});
+
+app.get("/admin", async (req, res) => {
+  const pageNumber = req.query.page || 1;
+
+  await User.paginate(
+    {},
+    { page: req.query.page, limit: 50, sort: { registrationDate: -1 } }
+  ).then((results) => {
+    const { totalPages } = results;
+    if (req.query.page > results.totalPages) {
+      return res.redirect(
+        url.format({
+          pathname: "/admin/profiles",
+          query: {
+            page: results.totalPages,
+          },
+        })
+      );
+    } else {
+      const userProfiles = results.docs;
+      res.render("admin/admin", { userProfiles, pageNumber, totalPages });
+    }
+  });
 });
 
 app.get("/fullcalendar", (req, res) => {

@@ -145,8 +145,3 @@ const eventTransform = (events) => {
     return eventObject;
   });
 };
-
-document.querySelector("div.navtarolo").style.display = "none";
-document.querySelector("div.lista2-hatter").style.display = "none";
-document.querySelector("#mainmenu").style.height = "15vh";
-document.querySelector("#mainmenu").style.minHeight = "15vh";

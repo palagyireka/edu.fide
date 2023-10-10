@@ -234,6 +234,12 @@
     visibility: hidden;
     background: none;
   }
+  .navtarolo .lista-1 li * {
+    pointer-events: none;
+  }
+  .navtarolo .lista-1 li a {
+    pointer-events: all;
+  }
 
   .menu-icon:checked ~ .navtarolo .lista-1 > li {
     pointer-events: auto;
@@ -393,5 +399,73 @@
   label[for="login-signup"] img,
   label[for="login-signup"] p {
     margin-top: 5px;
+  }
+
+  /* KERESES */
+  #searchpm {
+    position: static;
+    margin: 10px 0;
+    padding: 0;
+  }
+  #keresotarto {
+    width: 60%;
+  }
+  #keresotarto:active,
+  #keresotarto:focus,
+  #keresotarto:focus-visible {
+    width: 70%;
+  }
+  #sfr-container {
+    flex-direction: column;
+  }
+  #searchfilters,
+  #searchresults {
+    width: 90%;
+    margin: 10px 5%;
+  }
+  #searchtitles {
+    display: none;
+  }
+
+  /* CALENDAR */
+  .calendar-head,
+  #calendar {
+    margin: 10px 5%;
+    width: 90%;
+  }
+
+  /* DOWNLOAd */
+
+  main.download {
+    padding: 10px 5%;
+  }
+  .categories {
+    flex-wrap: wrap;
+  }
+
+  .materials * {
+    word-wrap: break-word;
+    white-space: wrap;
+    font-size: 13px;
+  }
+
+  .materials th:nth-child(1) {
+    width: 30%;
+  }
+  .materials th:nth-child(2) {
+    width: 45%;
+  }
+
+  .materials th:nth-child(3) {
+    width: 25%;
+  }
+
+  /* TITLEHOLDERS */
+  .vscomp-toggle-button {
+    width: 95%;
+  }
+
+  main.commission {
+    padding: 20px 10%;
   }
 }

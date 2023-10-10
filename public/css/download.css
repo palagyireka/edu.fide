@@ -68,6 +68,7 @@ main.download input:checked + label {
   background-color: #5b85aa;
   color: white;
   font-weight: 500;
+  padding: 15px 10px;
 }
 
 .materials {
@@ -88,7 +89,6 @@ main.download input:checked + label {
 
 .materials th {
   background-color: #5b85aa40;
-  white-space: nowrap;
   font-weight: 400;
 }
 

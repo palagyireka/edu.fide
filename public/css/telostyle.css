@@ -31,6 +31,7 @@
     height: 70%;
     padding: 20px 10px;
     font-size: 20px;
+    transition: 0.3s;
   }
   .onmobile2 li {
     padding-bottom: 30px;
@@ -41,6 +42,8 @@
     font-size: 18px;
     padding: 5px;
     display: none;
+    height: 0;
+    transition: 0.3s;
   }
 
   .onmobile2 li ul li {
@@ -58,6 +61,7 @@
   .onmobile2 li:focus ul,
   .onmobile2 li:hover ul {
     display: block;
+    height: fit-content;
   }
 
   .l2b {
@@ -307,10 +311,34 @@
     width: 100vw;
     align-items: center;
   }
+  main.intro,
+  main.sendus,
+  main.commission,
+  main.partnerships {
+    margin-top: 10px;
+    border: 20px solid #5b85aa;
+    border-radius: 10px;
+  }
+  .memberdiv {
+    border: 1px solid #5b85aa;
+  }
+  .memberdiv img {
+    float: unset;
+    display: block;
+  }
 }
 
 @media only screen and (max-width: 615px) {
   h1 {
     display: none;
+  }
+  main.intro,
+  main.sendus,
+  main.commission,
+  main.partnerships {
+    margin-top: 10px;
+    border: 10px solid #5b85aa;
+    border-radius: 10px;
+    padding: 10px 5%;
   }
 }

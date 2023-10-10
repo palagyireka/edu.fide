@@ -2761,8 +2761,34 @@ const siTitleHolders = [
     year: 2023,
   },
 ];
-const countryInput = document.querySelector(`input[id="country-titleholders"]`);
-const awardedYearInput = document.querySelector(`input[id="awarded-y"]`);
+const countryFilter = document.querySelector(`#country-filter`);
+const yearFilter = document.querySelector(`#year-filter`);
+
+let thisYear = new Date().getFullYear();
+let yearOptions = [];
+for (let i = 2015; i <= thisYear; i++) {
+  yearOptions.push(i);
+}
+VirtualSelect.init({
+  ele: "#year-filter",
+  options: yearOptions,
+  multiple: false,
+  showSelectedOptionsFirst: true,
+  required: true,
+  search: true,
+});
+
+const countryOptions = countryCodes.map((x) => {
+  return { label: x.name, value: x.name };
+});
+VirtualSelect.init({
+  ele: "#country-filter",
+  options: countryOptions,
+  multiple: false,
+  showSelectedOptionsFirst: true,
+  required: true,
+  search: true,
+});
 
 const titleHolderUL = document.querySelectorAll(
   ".chosen-titleholder ul li span"
@@ -2833,26 +2859,6 @@ function mutasdAzAdatokat(evt, torol) {
   }
 }
 
-const countryTitleH = document.querySelector('datalist[id="country-titleh"]');
-for (const orszag of countryCodes) {
-  let option = document.createElement("option");
-  option.value = orszag.name;
-  countryTitleH.appendChild(option);
-}
-// countryTitleH.appendChild(
-//   new Option("All Countries", "All Countries", true, true)
-// );
-
-const awardedYearFilter = document.querySelector('datalist[id="awarded-year"]');
-let thisYear = new Date().getFullYear();
-for (let i = 2015; i <= thisYear; i++) {
-  let option = document.createElement("option");
-  option.value = i;
-  awardedYearFilter.appendChild(option);
-}
-
-// awardedYearFilter.appendChild(new Option("All Years", "All Years", true, true));
-
 let URLparam = new URLSearchParams(document.location.search);
 const initialCountry = URLparam.get("country");
 if (initialCountry != null) {
@@ -2861,33 +2867,13 @@ if (initialCountry != null) {
   filterOptions();
 }
 
-awardedYearInput.addEventListener("keyup", (evt) => filterOptions(evt));
-countryInput.addEventListener("keyup", (evt) => filterOptions(evt));
-document
-  .querySelectorAll(".titleholders-filters .clean-search")
-  .forEach((closebtn) => {
-    closebtn.addEventListener("click", (evt) => {
-      evt.target.previousElementSibling.value = "";
-      evt.target.style.display = "none";
-      evt.target.previousElementSibling.dispatchEvent(
-        new KeyboardEvent("keyup")
-      );
-    });
-  });
+yearFilter.addEventListener("change", (evt) => filterOptions(evt));
+countryFilter.addEventListener("change", (evt) => filterOptions(evt));
 
 function filterOptions(evt) {
-  const selectedCountry = countryInput.value;
-  const selectedYear = awardedYearInput.value;
+  const selectedCountry = countryFilter.value;
+  const selectedYear = yearFilter.value;
   mutasdAzAdatokat(evt, true);
-  if (evt.target == countryInput && countryInput.value != "") {
-    document.querySelector(
-      "#country-titleholders + .clean-search"
-    ).style.display = "block";
-  }
-  if (evt.target == awardedYearInput && awardedYearInput.value != "") {
-    document.querySelector("#awarded-y + .clean-search").style.display =
-      "block";
-  }
   const allOptions = document.querySelectorAll(".titleholders-select option");
   allOptions.forEach((option) => option.remove());
 

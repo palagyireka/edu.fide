@@ -134,16 +134,18 @@ window.addEventListener("scroll", (evt) => {
 
 catLabels.forEach((lbl) => {
   lbl.addEventListener("mouseenter", (evt) => {
-    hoverActive = true;
-    background.style.left = `${lbl.offsetLeft}px`;
-    background.style.top = `${lbl.offsetTop - window.scrollY}px`;
-    background.style.display = "block";
-    background.style.height = window
-      .getComputedStyle(lbl)
-      .getPropertyValue("height");
-    background.style.width = window
-      .getComputedStyle(lbl)
-      .getPropertyValue("width");
+    if (window.innerWidth > 1200 && window.screen.width > 1200) {
+      hoverActive = true;
+      background.style.left = `${lbl.offsetLeft}px`;
+      background.style.top = `${lbl.offsetTop - window.scrollY}px`;
+      background.style.display = "block";
+      background.style.height = window
+        .getComputedStyle(lbl)
+        .getPropertyValue("height");
+      background.style.width = window
+        .getComputedStyle(lbl)
+        .getPropertyValue("width");
+    }
   });
   lbl.addEventListener("mouseleave", (evt) => {
     background.style.width = "0px";
@@ -174,6 +176,7 @@ catLabels.forEach((lbl) => {
             if (
               row.nextElementSibling &&
               row.nextElementSibling.firstChild &&
+              row.nextElementSibling.firstChild.firstChild &&
               row.nextElementSibling.firstChild.firstChild.tagName == "IFRAME"
             ) {
               row.nextElementSibling.remove();
