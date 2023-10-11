@@ -19,12 +19,13 @@ const cookieParser = require("cookie-parser");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
-const { isLoggedIn } = require("./middleware");
+const { isLoggedIn, isValidated } = require("./middleware");
 const userRoutes = require("./routes/users");
 const blogRoutes = require("./routes/blog");
 const apiRoutes = require("./routes/api");
 const adminRoutes = require("./routes/admin");
 const url = require("url");
+const { sendConfirmationEmail } = require("./utils/nodemailer");
 
 const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET || "thisshouldbesecret";
@@ -48,7 +49,7 @@ app.use(methodOverride("_method"));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser(secret));
 
 sessionConfig = {
   secret,
@@ -70,7 +71,6 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.error = req.flash("error");
   res.locals.success = req.flash("success");
-  res.locals.verify = req.flash("verify");
   next();
 });
 
@@ -79,7 +79,7 @@ app.use("/", userRoutes);
 app.use("/blog", blogRoutes);
 app.use("/admin", adminRoutes);
 
-app.get("/", async (req, res) => {
+app.get("/", isValidated, async (req, res) => {
   const featuredPost = await Blogpost.findOne({ featured: true }, null, {
     sort: { date: -1 },
   });
@@ -96,12 +96,6 @@ app.get("/", async (req, res) => {
     tag = "blog";
   } else {
     tag = featuredPost.tags[0];
-  }
-
-  if (req.user) {
-    if (req.user.status === "pending" && !req.cookies.verifyClosed) {
-      req.flash("verify", "Please verify your e-mail account!");
-    }
   }
 
   res.render("index", { featuredPost, tag });
@@ -177,15 +171,37 @@ app.get("/fullcalendar", (req, res) => {
   res.render("fullcalendar");
 });
 
-app.get("/gallery", async (req, res) => {
+app.get("/gallery", async (req, res, next) => {
   const pageNumber = req.query.page || 1;
   const pageSize = 9;
-  let imgUrls;
+  let imgUrls = {};
   await cloudinary.search
-    .expression("folder:gallery/*")
+    .expression("folder:gallery_fide/*")
+    .sort_by("public_id", "asc")
+    .with_field("context")
+    .with_field("tags")
     .execute()
     .then((result) => {
-      imgUrls = result.resources.map((img) => img.url);
+      imgUrls = result.resources.map((img) => {
+        const url = img.url.split("/");
+        url.splice(6, 0, "c_limit,h_1000");
+
+        const imgObject = { url: url.join("/") };
+
+        if (typeof img.tags !== "undefined") {
+          imgObject.tags = img.tags;
+        }
+
+        if (typeof img.context !== "undefined") {
+          if (typeof img.context.alt !== "undefined") {
+            imgObject.desc = img.context.alt;
+          }
+          if (typeof img.context.Country !== "undefined") {
+            imgObject.country = img.context.Country;
+          }
+        }
+        return imgObject;
+      });
     });
 
   const totalPages = Math.ceil(imgUrls.length / pageSize);
@@ -210,6 +226,15 @@ app.get("/gallery", async (req, res) => {
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page not found!", 404));
+});
+
+app.use((err, req, res, next) => {
+  if (err.type === "flashError") {
+    req.flash("error", err.message);
+    res.redirect("/");
+  } else {
+    next(err);
+  }
 });
 
 app.use((err, req, res, next) => {

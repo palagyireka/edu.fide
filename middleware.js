@@ -26,3 +26,12 @@ module.exports.isAdmin = (req, res, next) => {
   }
   next();
 };
+
+module.exports.isValidated = (req, res, next) => {
+  if (req.user) {
+    if (req.user.status === "pending" && !req.cookies.verifyClosed) {
+      res.locals.verify = true;
+    }
+  }
+  next();
+};

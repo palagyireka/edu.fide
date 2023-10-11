@@ -9,10 +9,17 @@
       </p>
     </div>
 
+    <div id="country-filter"></div>
+
     <div class="image-gallery">
       <% for (let i = 0; i < galleryUrls.length; i++) {%>
       <div class="image-container">
-        <img class="image" id="img-<%= i %>" src="<%= galleryUrls[i] %>" />
+        <img class="image" id="img-<%= i %>" src="<%= galleryUrls[i].url %>" <%
+        if (typeof galleryUrls[i].desc !== "undefined") {%>
+        data-description="<%=galleryUrls[i].desc%>" <% } if (typeof
+        galleryUrls[i].country !== "undefined") {%>
+        data-country="<%=galleryUrls[i].country%>" <% } %> data-tags="<%=
+        galleryUrls[i].tags.toString() %>"/>
         <div class="overlay"></div>
       </div>
       <% } %>

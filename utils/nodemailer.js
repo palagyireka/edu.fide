@@ -1,8 +1,10 @@
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.mailgun.org",
-  port: 587,
+  host: "smtp.elasticemail.com",
+  port: 2525,
   auth: {
     user: process.env.NODEMAILER_USERNAME,
     pass: process.env.NODEMAILER_PASSWORD,
@@ -15,7 +17,7 @@ module.exports.sendConfirmationEmail = async (
   confirmationCode
 ) => {
   await transporter.sendMail({
-    from: "sandbox71aa6f78108a4c9fa9ae922d8f820e28.mailgun.org",
+    from: "vernyel.j@gmail.com",
     to: email,
     subject: "Please confirm your account",
     html: `<h1>Email Confirmation</h1>
@@ -23,6 +25,20 @@ module.exports.sendConfirmationEmail = async (
           <div>
           <p>Please confirm your email by clicking on the following link</p>
           <a href=http://localhost:3000/user/confirm/${confirmationCode}> Click here</a>
+          </div>`,
+  });
+};
+
+module.exports.sendPasswordResetEmail = async (name, email, link) => {
+  await transporter.sendMail({
+    from: "vernyel.j@gmail.com",
+    to: email,
+    subject: "Password Reset",
+    html: `<h1>Password Reset</h1>
+          <h2>Hello ${name}!</h2>
+          <div>
+          <p>Please set a new password by clicking on the following link</p>
+          <a href=http://localhost:3000${link}}> Click here</a>
           </div>`,
   });
 };

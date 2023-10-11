@@ -1,20 +1,24 @@
 const Modal = {
   modalHolder: document.getElementById("modal-holder"),
   box: document.createElement("div"),
+  description: document.createElement("div"),
   boxPhoto: document.createElement("img"),
   closeButton: document.createElement("span"),
-  openModal: function (source) {
+  openModal: function (source, imgDescription) {
     this.modalHolder.appendChild(this.box);
     this.box.appendChild(this.closeButton);
     this.box.appendChild(this.boxPhoto);
+    this.box.appendChild(this.description);
 
     this.closeButton.textContent = "x";
     this.boxPhoto.src = source;
+    this.description.innerText = imgDescription;
 
     this.box.className = "modal";
     this.closeButton.className = "close-button";
     this.modalHolder.className = "modal-holder";
     this.boxPhoto.className = "box-photo";
+    this.description.className = "img-description";
 
     this.closeButton.addEventListener("click", close);
   },
@@ -31,8 +35,8 @@ function close() {
 const images = document.querySelectorAll(".image-container");
 images.forEach((img) => {
   img.addEventListener("click", () => {
-    img.querySelector(".image");
-    Modal.openModal(img.querySelector(".image").src);
+    const photo = img.querySelector(".image");
+    Modal.openModal(photo.src, photo.dataset.description);
   });
 });
 

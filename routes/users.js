@@ -19,7 +19,7 @@ router
 router
   .route("/register")
   .get(users.renderRegister)
-  .post(validateUser, users.register);
+  .post(validateUser, catchAsync(users.register));
 
 router.get("/logout", users.logout);
 

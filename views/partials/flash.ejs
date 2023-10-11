@@ -30,9 +30,9 @@
     </svg>
   </button>
 </div>
-<% } %> <% if (verify && verify.length) {%>
+<% } %> <% if (typeof verify !== "undefined") {%>
 <div class="flash flash-verify">
-  <div><%= error %></div>
+  <div>Please verify your email address!</div>
   <button>
     <svg
       xmlns="http://www.w3.org/2000/svg"
