@@ -52,3 +52,27 @@ if (window.innerWidth > 1150 || window.screen.width > 1150) {
       evt.target.previousElementSibling.style.marginLeft = "15px";
     });
 }
+
+const tags = document.getElementById("country-filter").dataset.tags.split(",");
+tags.pop();
+
+const tagOptions = [];
+
+tags.forEach((tag) => {
+  tagOptions.push({ label: tag, value: tag });
+});
+
+// VirtualSelect.init({
+//   ele: "#country-filter",
+//   options: tagOptions,
+//   multiple: false,
+//   showSelectedOptionsFirst: true,
+//   required: true,
+//   search: true,
+// });
+
+// document.querySelector("#country-filter").addEventListener("change", (evt) => {
+//   window.location.replace(
+//     `${document.location.origin}/gallery/?country=${evt.target.value}`
+//   );
+// });

@@ -9,7 +9,10 @@
       </p>
     </div>
 
-    <div id="country-filter"></div>
+    <div
+      id="country-filter"
+      data-tags="<% for(let i = 0; i < countryTags.length; i++) { %><%= countryTags[i] %>,<%} %>"
+    ></div>
 
     <div class="image-gallery">
       <% for (let i = 0; i < galleryUrls.length; i++) {%>
@@ -26,9 +29,7 @@
     </div>
   </div>
   <div class="first-prev">
-    <a href="/gallery?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %>"
-      >Previous</a
-    >
+    <a href="/gallery?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %><%=typeof query !== "undefined" ? `&country=${query}` : ""%>">Previous</a>
     <a href="/gallery">First</a>
   </div>
   <div class="next-last">
@@ -38,4 +39,5 @@
   <div id="modal-holder"></div>
 </main>
 
+<script src="/js/virtual-select.min.js"></script>
 <script src="/js/gallery.js"></script>

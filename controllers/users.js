@@ -7,7 +7,7 @@ const {
   sendPasswordResetEmail,
 } = require("../utils/nodemailer");
 const secret = process.env.SECRET || "thisshouldbesecret";
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const bcryptSalt = process.env.BYCRYPT_SALT;
 

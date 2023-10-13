@@ -17,28 +17,28 @@ module.exports.sendConfirmationEmail = async (
   confirmationCode
 ) => {
   await transporter.sendMail({
-    from: "vernyel.j@gmail.com",
+    from: "fide.edu.register@gmail.com",
     to: email,
     subject: "Please confirm your account",
     html: `<h1>Email Confirmation</h1>
           <h2>Hello ${name}!</h2>
           <div>
           <p>Please confirm your email by clicking on the following link</p>
-          <a href=http://localhost:3000/user/confirm/${confirmationCode}> Click here</a>
+          <a href=${process.env.CURRENT_SITE}/user/confirm/${confirmationCode}> Click here</a>
           </div>`,
   });
 };
 
 module.exports.sendPasswordResetEmail = async (name, email, link) => {
   await transporter.sendMail({
-    from: "vernyel.j@gmail.com",
+    from: "fide.edu.register@gmail.com",
     to: email,
     subject: "Password Reset",
     html: `<h1>Password Reset</h1>
           <h2>Hello ${name}!</h2>
           <div>
           <p>Please set a new password by clicking on the following link</p>
-          <a href=http://localhost:3000${link}}> Click here</a>
+          <a href=${process.env.CURRENT_SITE}${link}}> Click here</a>
           </div>`,
   });
 };

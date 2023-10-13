@@ -175,8 +175,17 @@ app.get("/gallery", async (req, res, next) => {
   const pageNumber = req.query.page || 1;
   const pageSize = 9;
   let imgUrls = {};
+  const query = req.query.country;
+  let cloudinaryExpression;
+
+  if (query) {
+    cloudinaryExpression = `folder:gallery_fide/* AND tags=${query}`;
+  } else {
+    cloudinaryExpression = "folder:gallery_fide/*";
+  }
+
   await cloudinary.search
-    .expression("folder:gallery_fide/*")
+    .expression(cloudinaryExpression)
     .sort_by("public_id", "asc")
     .with_field("context")
     .with_field("tags")
@@ -204,6 +213,21 @@ app.get("/gallery", async (req, res, next) => {
       });
     });
 
+  const allCountryTags = [];
+
+  imgUrls.forEach((x) => {
+    allCountryTags.push(...x.tags);
+  });
+
+  function uniq(a) {
+    const seen = {};
+    return a.filter(function (item) {
+      return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+    });
+  }
+
+  const countryTags = uniq(allCountryTags);
+
   const totalPages = Math.ceil(imgUrls.length / pageSize);
 
   if (req.query.page > totalPages) {
@@ -220,7 +244,14 @@ app.get("/gallery", async (req, res, next) => {
       return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
     }
     const galleryUrls = paginate(imgUrls, pageSize, pageNumber);
-    res.render("gallery", { galleryUrls, pageNumber, totalPages });
+
+    res.render("gallery", {
+      galleryUrls,
+      pageNumber,
+      totalPages,
+      countryTags,
+      query,
+    });
   }
 });
 
