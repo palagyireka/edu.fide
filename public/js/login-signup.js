@@ -79,14 +79,12 @@ function closeCIEditor() {
 
 const makeVisibleSpans = document.querySelectorAll(".visible-password");
 makeVisibleSpans.forEach((span) => {
-  span.addEventListener("click", makeVisible);
-  span.addEventListener("touchstart", makeVisible);
+  span.addEventListener("click", (evt) => makeVisible(evt));
+  span.addEventListener("touchstart", (evt) => makeVisible(evt));
 });
 
-function makeVisible() {
-  if (document.querySelector("#nuser-password").type == "password") {
-    document.querySelector("#nuser-password").type = "text";
-  } else {
-    document.querySelector("#nuser-password").type = "password";
-  }
+function makeVisible(evt) {
+  const input = document.querySelector(`#${evt.target.parentElement.htmlFor}`);
+  const type = input.getAttribute("type") === "password" ? "text" : "password";
+  input.setAttribute("type", type);
 }

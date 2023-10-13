@@ -101,3 +101,35 @@ main.intro p:last-of-type {
 main.intro p:nth-of-type(2) {
   font-style: normal;
 }
+
+main.intro img:first-of-type {
+  float: left;
+  height: 40vw;
+  width: auto;
+}
+
+/* ERROR */
+
+main.error {
+  margin-top: 9vh;
+}
+
+main.error img {
+  width: 30vw;
+  float: left;
+  margin: 20px;
+}
+
+.show-error h2 {
+  font-size: 30px;
+  color: red;
+  font-weight: 500;
+}
+
+main.sendus p:nth-last-of-type(2) {
+  font-weight: 600;
+  font-size: 18px;
+}
+main.sendus p:nth-last-of-type(2) a {
+  text-decoration: underline;
+}

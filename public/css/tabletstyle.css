@@ -206,6 +206,7 @@
   .navtarolo .lista-1 {
     background-color: #5b85aa;
     opacity: 0;
+    flex-wrap: wrap;
     box-sizing: border-box;
     position: absolute;
     top: 0;

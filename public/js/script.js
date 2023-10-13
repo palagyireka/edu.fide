@@ -4,7 +4,12 @@ const keresesElement = document.getElementById("kereses");
 let touchStarted = false;
 
 function setupListeners() {
-  if (window.innerWidth > 1200 && window.screen.width > 1200) {
+  if (
+    window.innerWidth > 1200 &&
+    window.screen.width > 1200 &&
+    window.outerWidth > 1200
+  ) {
+    touchStarted = false;
     keresesElement.src = "css/searchicon.png";
     lista2listak.forEach((item, index) => {
       item.style.justifyContent =
@@ -15,6 +20,9 @@ function setupListeners() {
       li.addEventListener("mouseenter", handleMouseEnter)
     );
   } else {
+    touchStarted = true;
+    lista2listak.forEach((item) => (item.style.justifyContent = "center"));
+    lista1elemek.forEach((li) => li.classList.remove("lista-1-hover"));
     lista1elemek.forEach((li) => {
       li.addEventListener("touchstart", handleTouchStart);
       li.addEventListener("click", handleTouchStart);
@@ -27,8 +35,9 @@ function setupListeners() {
       .addEventListener("touchstart", handleMenuIconTouchStart);
     keresesElement.src = "css/searchiconmt.png";
   }
-  window.addEventListener("resize", handleResize);
 }
+
+window.addEventListener("resize", setupListeners);
 
 function handleMouseEnter(evt) {
   if (!touchStarted && window.innerWidth > 1200 && window.screen.width > 1200) {
@@ -67,21 +76,6 @@ function handleL2bTouchStart(evt) {
 function handleMenuIconTouchStart(evt) {
   if (evt.target.checked) {
     elrejtVagyMutat(true, lista2listak);
-  }
-}
-
-function handleResize() {
-  if (window.innerWidth <= 1200 && window.screen.width <= 1200) {
-    lista2listak.forEach((item) => {
-      item.style.justifyContent = "left";
-    });
-    lista1elemek.forEach((li) => {
-      li.classList.remove("lista-1-hover");
-    });
-    keresesElement.src = "css/searchiconmt.png";
-  } else {
-    touchStarted = false;
-    keresesElement.src = "css/searchicon.png";
   }
 }
 

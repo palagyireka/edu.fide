@@ -334,11 +334,13 @@ input.invalid {
 
 .visible-password {
   position: relative;
-  top: 30px;
+  top: 35px;
   z-index: 602;
+  width: 36px;
+  height: 18px;
+  background-image: url("eye.png");
   display: inline-block;
   color: #5b85aa;
-  font-size: 30px;
 }
 
 .visible-password:hover {
@@ -346,10 +348,10 @@ input.invalid {
 }
 
 #userspan {
-  left: 46%;
+  left: 43%;
 }
 #newspan {
-  left: 36%;
+  left: 32%;
 }
 
 .error.password-error,
