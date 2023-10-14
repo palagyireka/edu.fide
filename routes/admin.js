@@ -4,21 +4,21 @@ const admin = require("../controllers/admin");
 const { isAdmin } = require("../middleware");
 const catchAsync = require("../utils/catchAsync");
 
-router.get("/posts/new", admin.renderNew);
+router.get("/posts/new", isAdmin, admin.renderNew);
 
 router
   .route("/posts")
-  .get(admin.renderPosts)
-  .post(catchAsync(admin.createPost));
+  .get(isAdmin, admin.renderPosts)
+  .post(isAdmin, catchAsync(admin.createPost));
 
-router.get("/profiles", admin.showProfiles);
+router.get("/profiles", isAdmin, admin.showProfiles);
 
 router
   .route("/:id")
-  .get(catchAsync(admin.showPost))
-  .put(admin.editPost)
-  .delete(admin.deletePost);
+  .get(isAdmin, catchAsync(admin.showPost))
+  .put(isAdmin, admin.editPost)
+  .delete(isAdmin, admin.deletePost);
 
-router.route("/:id/edit").get(admin.renderEdit);
+router.route("/:id/edit").get(isAdmin, admin.renderEdit);
 
 module.exports = router;

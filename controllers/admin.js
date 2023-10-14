@@ -32,7 +32,7 @@ module.exports.renderPosts = (req, res) => {
 
   const transform = (paginatedPosts) => {
     paginatedPosts.forEach((post) => {
-      if (post.images.length === 0) {
+      if (post.images.length === 0 || post.images == null) {
         post.images = [{ url: "" }];
       }
       post.text = deltaToHtml(post.text);
@@ -87,6 +87,7 @@ module.exports.renderEdit = (req, res) => {
 };
 
 module.exports.editPost = async (req, res) => {
+  console.log("smt");
   const { id } = req.params;
   const editedPost = await Blogpost.findByIdAndUpdate(
     id,

@@ -51,6 +51,7 @@ module.exports.blogpostsRender = async (req, res) => {
   let blogposts;
   const transform = (blogs) => {
     blogs.forEach((post) => {
+      console.log(post);
       if (post.images.length === 0) {
         post.images = [{ url: "" }];
       }
@@ -88,6 +89,8 @@ module.exports.blogpostsRender = async (req, res) => {
       blogposts = results.docs;
       transform(blogposts);
     }
+
+    console.log(blogposts[0].images);
     res.render("blog/blogs", { blogposts, pageNumber, totalPages });
   });
 };

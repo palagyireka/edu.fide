@@ -107,6 +107,8 @@ const clickHandler = async () => {
     });
   }
 
+  console.log(images);
+
   tagSelect.isAllSelected() ? (tags = ["All"]) : (tags = tagSelect.value);
   countrySelect.isAllSelected()
     ? (taggedCountries = ["All"])
@@ -120,19 +122,19 @@ const clickHandler = async () => {
     countries: taggedCountries,
   });
 
-  fetch("/blog", {
-    method: "PUT",
-    body: postData,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then(() => {
-      window.location.replace("/admin/posts");
-    })
-    .catch(() => {
-      window.location.replace("/admin/posts");
-    });
+  //   fetch(`/admin/${id}`, {
+  //     method: "PUT",
+  //     body: postData,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then(() => {
+  //       window.location.replace("/admin/posts");
+  //     })
+  //     .catch(() => {
+  //       window.location.replace("/admin/posts");
+  //     });
 };
 
 const countryOptions = countryCodes.map((x) => {

@@ -1,5 +1,5 @@
 <div class="profile-logout">
-  <a href="/profile">
+  <a href=<% if (typeof currentUser !== "undefined") {if (currentUser.role === "admin") {%> <%= "/admin" %> <% } else { %> <%= "/profil" %> <% }} %>>
     <div class="profile"></div>
     <span class="my-profile">My Profile</span>
   </a>
@@ -10,6 +10,7 @@
     </a>
   </div>
 </div>
+<script src="/js/orszagkodok.js"></script>
 <script>
   if (window.innerWidth < 810 || window.screen.width < 810) {
     document.querySelector(".logout a br").remove();

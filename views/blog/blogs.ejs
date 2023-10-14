@@ -8,10 +8,7 @@
     <% blogposts.forEach((blog) => {%>
     <a class="blog-card" href="/blog/<%= blog.id %>">
       <div class="tag-names"></div>
-      <h2>
-        <!-- style="background-image: url('<%= blog.images[0].url %>')" -->
-        <%= blog.title %>
-      </h2>
+      <h2><%= blog.title %></h2>
       <p>
         <% if (blog.images[0].url !== "") { %>
         <img src="<%= blog.images[0].url %>" alt="image" />
