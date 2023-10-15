@@ -7,16 +7,8 @@ var panZoomMap = svgPanZoom(element, {
   center: true,
   minZoom: 1,
   maxZoom: 8,
-  zoomScaleSensitivity: 0.2,
+  zoomScaleSensitivity: 0.4,
 });
-
-// MAP
-
-// if (window.innerWidth <= 1117) {
-//   instance.zoomTo(180, 70, 1.4);
-// } else {
-//   instance.zoomTo(350, 70, 1.7);
-// }
 
 const paths = document.querySelectorAll("#map .sm_state");
 const hoverText = document.querySelector("#hover-text");
@@ -83,7 +75,9 @@ paths.forEach((item) => {
         cont.remove();
       }
     }
-
+    document.querySelector(
+      "#country-gallery"
+    ).href = `/gallery?country=${country}`;
     const cText = document.querySelector("#country-name ~ label");
     cText.classList.add("hidden");
     const anchorTags = document.querySelectorAll(
