@@ -71,6 +71,7 @@ module.exports.blogpostsRender = async (req, res) => {
   Blogpost.paginate(query, {
     page: req.query.page,
     limit: 12,
+    sort: { date: -1 },
   }).then((results) => {
     const { totalPages } = results;
     if (req.query.page > results.totalPages) {
