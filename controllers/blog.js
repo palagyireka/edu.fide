@@ -25,7 +25,6 @@ module.exports.renderNew = (req, res) => {
 module.exports.createPost = (req, res) => {};
 
 module.exports.edit = async (req, res) => {
-  console.log(req.body);
   const { id } = req.params;
   const editedPost = await Blogpost.findByIdAndUpdate(
     id,
@@ -51,7 +50,6 @@ module.exports.blogpostsRender = async (req, res) => {
   let blogposts;
   const transform = (blogs) => {
     blogs.forEach((post) => {
-      console.log(post);
       if (post.images.length === 0) {
         post.images = [{ url: "" }];
       }
@@ -73,7 +71,6 @@ module.exports.blogpostsRender = async (req, res) => {
   Blogpost.paginate(query, {
     page: req.query.page,
     limit: 12,
-    sort: { date: -1 },
   }).then((results) => {
     const { totalPages } = results;
     if (req.query.page > results.totalPages) {
@@ -90,7 +87,6 @@ module.exports.blogpostsRender = async (req, res) => {
       transform(blogposts);
     }
 
-    console.log(blogposts[0].images);
     res.render("blog/blogs", { blogposts, pageNumber, totalPages });
   });
 };

@@ -24,6 +24,7 @@ const userRoutes = require("./routes/users");
 const blogRoutes = require("./routes/blog");
 const apiRoutes = require("./routes/api");
 const adminRoutes = require("./routes/admin");
+const menuRoutes = require("./routes/menu");
 const url = require("url");
 const { sendConfirmationEmail } = require("./utils/nodemailer");
 
@@ -76,6 +77,7 @@ app.use((req, res, next) => {
 
 app.use("/api", apiRoutes);
 app.use("/", userRoutes);
+app.use("/", menuRoutes);
 app.use("/blog", blogRoutes);
 app.use("/admin", adminRoutes);
 

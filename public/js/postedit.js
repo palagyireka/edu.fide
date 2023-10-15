@@ -107,8 +107,6 @@ const clickHandler = async () => {
     });
   }
 
-  console.log(images);
-
   tagSelect.isAllSelected() ? (tags = ["All"]) : (tags = tagSelect.value);
   countrySelect.isAllSelected()
     ? (taggedCountries = ["All"])
@@ -142,7 +140,7 @@ const countryOptions = countryCodes.map((x) => {
 });
 
 const tagOptions = [
-  { label: "Commission News", value: "commisionNews" },
+  { label: "Commission News", value: "commissionNews" },
   { label: "Conferences", value: "conferences" },
   { label: "CIE Initiatives", value: "cieInitiatives" },
   { label: "Personal Stories", value: "personalStories" },
