@@ -1,5 +1,6 @@
 const { userSchema } = require("./schemas");
 const ExpressError = require("./utils/ExpressError");
+const User = require("./models/user");
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -34,4 +35,20 @@ module.exports.isValidated = (req, res, next) => {
     }
   }
   next();
+};
+
+module.exports.isLoginEmailValidated = async (req, res, next) => {
+  const user = await User.findOne({ email: req.body.email });
+
+  if (user) {
+    if ((user.status = "pending")) {
+      res.render("verifyEmail");
+    } else {
+      next();
+    }
+  } else {
+    next(
+      new ExpressError("Invalid email address or password", 401, "flashError")
+    );
+  }
 };

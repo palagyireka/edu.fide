@@ -179,12 +179,45 @@ app.get("/gallery", async (req, res, next) => {
   let imgUrls = {};
   const query = req.query.country;
   let cloudinaryExpression;
+  let tags;
 
   if (query) {
-    cloudinaryExpression = `folder:gallery_fide/* AND tags=${query}`;
+    cloudinaryExpression = `folder:"FIDE EDU Gallery"/* AND tags=${query}`;
   } else {
-    cloudinaryExpression = "folder:gallery_fide/*";
+    cloudinaryExpression = 'folder:"FIDE EDU Gallery"/*';
   }
+
+  await cloudinary.search
+    .expression('folder:"FIDE EDU Gallery"/*')
+    .sort_by("public_id", "asc")
+    .with_field("tags")
+    .execute()
+    .then((result) => {
+      tags = result.resources.map((img) => {
+        const imgObject = {};
+
+        if (typeof img.tags !== "undefined") {
+          imgObject.tags = img.tags;
+        }
+
+        return imgObject;
+      });
+    });
+
+  const allCountryTags = [];
+
+  tags.forEach((x) => {
+    allCountryTags.push(...x.tags);
+  });
+
+  function uniq(a) {
+    const seen = {};
+    return a.filter(function (item) {
+      return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+    });
+  }
+
+  const countryTags = uniq(allCountryTags);
 
   await cloudinary.search
     .expression(cloudinaryExpression)
@@ -199,10 +232,6 @@ app.get("/gallery", async (req, res, next) => {
 
         const imgObject = { url: url.join("/") };
 
-        if (typeof img.tags !== "undefined") {
-          imgObject.tags = img.tags;
-        }
-
         if (typeof img.context !== "undefined") {
           if (typeof img.context.alt !== "undefined") {
             imgObject.desc = img.context.alt;
@@ -214,21 +243,6 @@ app.get("/gallery", async (req, res, next) => {
         return imgObject;
       });
     });
-
-  const allCountryTags = [];
-
-  imgUrls.forEach((x) => {
-    allCountryTags.push(...x.tags);
-  });
-
-  function uniq(a) {
-    const seen = {};
-    return a.filter(function (item) {
-      return seen.hasOwnProperty(item) ? false : (seen[item] = true);
-    });
-  }
-
-  const countryTags = uniq(allCountryTags);
 
   const totalPages = Math.ceil(imgUrls.length / pageSize);
 

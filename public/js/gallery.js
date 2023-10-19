@@ -53,26 +53,37 @@ if (window.innerWidth > 1150 || window.screen.width > 1150) {
     });
 }
 
-const tags = document.getElementById("country-filter").dataset.tags.split(",");
-tags.pop();
-
+const filterDiv = document.getElementById("country-filter");
 const tagOptions = [];
+
+const tags = filterDiv.dataset.tags.split(",");
+tags.pop();
 
 tags.forEach((tag) => {
   tagOptions.push({ label: tag, value: tag });
 });
 
-// VirtualSelect.init({
-//   ele: "#country-filter",
-//   options: tagOptions,
-//   multiple: false,
-//   showSelectedOptionsFirst: true,
-//   required: true,
-//   search: true,
-// });
+const urlParams = new URLSearchParams(window.location.search);
+const countryFilter = urlParams.get("country");
 
-// document.querySelector("#country-filter").addEventListener("change", (evt) => {
-//   window.location.replace(
-//     `${document.location.origin}/gallery/?country=${evt.target.value}`
-//   );
-// });
+VirtualSelect.init({
+  ele: "#country-filter",
+  options: tagOptions,
+  multiple: false,
+  showSelectedOptionsFirst: true,
+  required: true,
+  search: true,
+  selectedValue: countryFilter,
+});
+
+filterDiv.addEventListener("reset", () => {
+  window.location.replace(`${document.location.origin}/gallery`);
+});
+
+filterDiv.addEventListener("change", (evt) => {
+  url = `${document.location.origin}/gallery/?country=${evt.target.value}`;
+
+  if (window.location.href !== url) {
+    window.location.replace(url);
+  }
+});

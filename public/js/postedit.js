@@ -103,7 +103,7 @@ const clickHandler = async () => {
   if (images) {
     const bareImages = images.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
     imageContent = bareImages.map((img) => {
-      ({ url: img, filename: img.split("/").pop() });
+      return { url: img, filename: img.split("/").pop() };
     });
   }
 
