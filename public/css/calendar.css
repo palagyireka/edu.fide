@@ -1,25 +1,28 @@
-#calendar-container {
+.calendar-list-container {
   padding: 10px;
+  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
+  border-radius: 10px;
+  height: calc(50% - 15px);
   overflow: scroll;
   overflow-x: hidden;
 }
 
-#calendar-container p {
+.calendar-list-container p {
   font-size: 18px;
   font-weight: 500;
 }
 
-.calendar-list-view li {
+.calendar-ul li {
   margin: 5px;
 }
 
-.calendar-list-view li div:first-of-type {
+.calendar-ul li div:first-of-type {
   font-style: italic;
 }
-.calendar-list-view li div::first-letter {
+.calendar-ul li div::first-letter {
   text-transform: capitalize;
 }
-.calendar-list-view li div:last-of-type {
+.calendar-ul li div:last-of-type {
   padding: 3px;
   font-size: 17px;
 }
@@ -28,7 +31,7 @@
   position: relative;
 }
 
-.calendar-list-view:hover {
+.calendar-ul:hover {
   cursor: pointer;
 }
 

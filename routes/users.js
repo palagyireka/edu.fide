@@ -9,7 +9,6 @@ router
   .route("/login")
   .get(users.renderLogin)
   .post(
-    isLoginEmailValidated,
     passport.authenticate("local", {
       failureFlash: true,
       failureRedirect: "/",

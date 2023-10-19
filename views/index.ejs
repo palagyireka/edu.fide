@@ -1,19 +1,17 @@
 <% layout('layouts/boilerplate') %>
-<!-- <%- include('partials/videoplay') %> -->
-<%- include('partials/socmed') %>
-
 <main>
-  <div id="featured">
-    <%- include('partials/featured') %>
-  </div>
-  <div id="map-search-container">
-    <div id="search-and-calendar">
-      <div id="calendar-container">
-        <a href="/fullcalendar" class="calendar-list-container">
+  <div class="main-flex">
+    <div class="left-side">
+      <div class="calendar-list-container">
+        <a href="/fullcalendar" class="calendar-anchor">
           <p>Upcoming Events</p>
-          <ul class="calendar-list-view"></ul>
+          <ul class="calendar-ul"></ul>
         </a>
       </div>
+      <div id="featured"><%- include('partials/featured') %></div>
+    </div>
+    <%- include('partials/map') %>
+    <div class="right-side">
       <div class="search-container">
         <div class="searchbar">
           <input placeholder="Search..." type="text" />
@@ -46,57 +44,42 @@
         </div>
         <ul class="search-countries"></ul>
       </div>
-    </div>
-    <div id="container">
-      <div class="text-box-container">
-        <div class="countryname-container">
-          <input
-            type="checkbox"
-            name="country-name"
-            id="country-name"
-            checked
-          />
-          <label for="country-name"> United States of America </label>
-        </div>
-        <div class="text-box">
-          <ul class="country-menu">
-            <li>
-              Chess Federation Contact
-              <ul id="country-contacts">
-                <li>https://new.uschess.org/</li>
-                <li>Sophia Rhode</li>
-                <li>littlehouseofchess[at]gmail.com</li>
-              </ul>
-            </li>
-            <li>
-              FIDE title holders
-              <ul>
-                <li>
-                  <a href="/titleholders/si?country=United States of America">
-                    SI title holders
-                  </a>
-                </li>
-                <li>
-                  <a href="/titleholders/lsi?country=United States of America"
-                    >LSI title holders</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li>
-              Chess life
-              <ul>
-                <li>News</li>
-                <li>
-                  <a href="/gallery?country=United States of America" id="country-gallery"> Gallery </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+      <div class="country-menu-container">
+        <p class="country-name">United States of America</p>
+        <ul class="country-menu">
+          <li>Contact</li>
+          <li>
+            FIDE title holders
+            <ul>
+              <li>
+                <a href="/titleholders/si?country=United States of America">
+                  School Instructors
+                </a>
+              </li>
+              <li>
+                <a href="/titleholders/lsi?country=United States of America"
+                  >Lead School Instructors</a
+                >
+              </li>
+              <li><a href=""> Senior Lead Instructors </a></li>
+            </ul>
+          </li>
+          <li>
+            Chess in Education
+            <ul>
+              <li>News</li>
+              <li>
+                <a
+                  href="/gallery?country=United States of America"
+                  id="country-gallery"
+                >
+                  Gallery
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <%- include('partials/map') %>
-  </div>
     </div>
   </div>
   <footer>
@@ -110,5 +93,4 @@
 <script src="/js/svg-pan-zoom.js"></script>
 <script src="https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js"></script>
 <script src="/js/map.js"></script>
-<script src="/js/formobile.js"></script>
 <script src="/js/calendar.js"></script>

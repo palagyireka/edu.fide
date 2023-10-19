@@ -71,13 +71,6 @@
     right: 15px;
   }
 
-  h1 {
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 3vw;
-  }
-
   #map {
     height: 400px;
   }
@@ -141,6 +134,18 @@
     right: 0;
     bottom: 0;
     top: unset;
+  }
+
+  #mainmenu .logo-container {
+    justify-content: space-between;
+  }
+
+  #fidelogo {
+    padding-right: 5vw;
+  }
+
+  #logo {
+    padding-left: 5vw;
   }
 
   .next-last a,
@@ -234,7 +239,7 @@
 
   /* BLOG */
   .blogs {
-    margin: 10px;
+    margin: 0;
   }
   .blogsor {
     width: 90%;
@@ -244,8 +249,16 @@
   }
   .blogsor .blog-card {
     width: 100%;
-    margin: 5%;
+    margin: 10px 0;
   }
+
+  .blogsor:first-of-type .blog-card img,
+  .blogsor:nth-of-type(2) .blog-card img {
+    width: unset;
+    height: 100%;
+    margin: 0;
+  }
+
   .posts-title p {
     text-align: center;
     font-size: 24px;
@@ -338,6 +351,59 @@
       border-width: 2px;
     }
   }
+
+  #socmed-container {
+    right: 15px;
+    top: unset;
+    bottom: 15px;
+  }
+
+  #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(1) {
+    top: -55px;
+    animation-name: sc-j1;
+  }
+  #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(2) {
+    top: -105px;
+    animation-name: sc-j2;
+  }
+  #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(3) {
+    top: -155px;
+    animation-name: sc-j3;
+  }
+
+  @keyframes sc-j1 {
+    from {
+      top: 0;
+      opacity: 0;
+    }
+    to {
+      top: -55px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes sc-j2 {
+    from {
+      top: 0;
+      opacity: 0;
+    }
+    to {
+      top: -105px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes sc-j3 {
+    from {
+      top: 0;
+      opacity: 0;
+    }
+    to {
+      top: -155px;
+      opacity: 1;
+    }
+  }
+
   label[for="cookies"] {
     width: 270px;
   }
@@ -349,6 +415,28 @@
   }
   .cookies-desc .fancytime {
     width: 40%;
+  }
+  .left-side,
+  .right-side {
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .calendar-list-container,
+  #featured {
+    width: calc(100% - 20px);
+    overflow: auto;
+    height: fit-content;
+    margin: 10px 0;
+  }
+  .search-container,
+  .country-menu-container {
+    height: 380px;
+    margin: 10px 0;
+    width: calc(100% - 20px);
+  }
+  .search-container {
+    height: 200px;
   }
 }
 

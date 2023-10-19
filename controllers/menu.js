@@ -47,7 +47,13 @@ const renderPosts = (tagName, path) => {
         transform(blogposts);
       }
 
-      res.render("menu/posts", { blogposts, pageNumber, totalPages, path });
+      res.render("menu/posts", {
+        blogposts,
+        pageNumber,
+        totalPages,
+        path,
+        tagName,
+      });
     });
   };
 };

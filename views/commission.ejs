@@ -1,6 +1,17 @@
 <% layout('layouts/boilerplate') %>
 <main class="commission">
   <h2>Commission Members</h2>
-  <div class="members"></div>
+  <div class="members">
+    <% commissionData.forEach((member)=>{ %>
+    <div class="memberdiv">
+      <img src="<%= member.imgHref %>" alt="<%= member.name %>" />
+      <a href="<%= member.namelink %>" target="_blank"><%= member.name %></a>
+      <p><%= member.title %></p>
+      <a href="mailto:<%= member.email %>"><%= member.email %></a>
+      <a href="tel:<%= member.phone %>"><%= member.phone %></a>
+      <p><%= member.introduction %></p>
+    </div>
+    <% }) %>
+  </div>
 </main>
 <script src="/js/commission.js"></script>

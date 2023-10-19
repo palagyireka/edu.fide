@@ -1,0 +1,249 @@
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+.main-flex {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  margin-top: 7vh;
+  height: 66vh;
+  box-sizing: border-box;
+}
+
+.main-flex * {
+  box-sizing: border-box;
+}
+
+.left-side,
+.right-side {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* TÉRKÉP */
+#map path,
+#map circle,
+#map ellipse {
+  fill: #5b85aa;
+  stroke-width: 1px;
+}
+
+#map path.selected,
+#map circle.selected,
+#map ellipse.selected {
+  fill: #c5725f;
+  opacity: 1;
+}
+
+#map path:hover,
+#map circle:hover,
+#map ellipse:hover {
+  cursor: pointer;
+  fill: #91b0b2;
+}
+
+.uk-mate {
+  fill: #5b85aa;
+}
+
+#map {
+  height: 64.5vh;
+  width: 100%;
+}
+
+.svg-pan-zoom_viewport.zoom {
+  transition: transform 0.3s;
+}
+
+#map path:hover {
+  fill: #91b0b2;
+}
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+
+#map-box {
+  margin-top: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+#hover-text {
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+}
+
+#hover-text span {
+  z-index: 30;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: rgba(255, 255, 255, 0.577);
+  border-radius: 5px;
+  padding: 3px;
+  width: auto;
+  height: auto;
+  font-size: small;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+/* ORSZÁGMENÜ */
+
+.country-menu {
+  padding: 0 10px;
+  background-color: white;
+}
+
+.country-menu > li {
+  color: rgb(82, 82, 82);
+  padding: 7px 8px;
+  font-weight: bold;
+  border: 4px solid rgb(219, 219, 219);
+  border-width: 2px 0px;
+  margin: -2px 0;
+}
+.country-menu > li:first-of-type {
+  border-top: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 5px;
+}
+
+.country-menu > li:first-of-type:hover {
+  letter-spacing: 2px;
+}
+
+.country-menu li:last-of-type {
+  border-bottom: none;
+}
+
+.country-menu li ul li {
+  cursor: pointer;
+  width: 180px;
+  font-weight: normal;
+  font-size: 14px;
+  word-wrap: break-word;
+  padding: 10px 0px 10px 10px;
+  background-image: linear-gradient(#5b85aa, #5b85aa);
+  background-size: 0% 0.1em;
+  background-position-y: 95%;
+  background-position-x: 0%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease-in;
+}
+
+.country-menu li ul li:hover,
+.country-menu li ul li:focus,
+.country-menu li ul li:active {
+  background-size: 100% 0.1em;
+}
+
+.country-menu li ul li:first-of-type {
+  padding-top: 20px;
+}
+
+.country-name {
+  color: black;
+  transition: all ease-in 200ms;
+  font-size: 20px;
+  font-style: oblique;
+  display: inline-block;
+  text-align: left;
+  width: 90%;
+  height: 25px;
+}
+
+/* KERESÉS */
+
+.search-container {
+  transition: 0.3s;
+  box-sizing: border-box;
+  height: 18vh;
+  width: 280px;
+  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
+  border-radius: 10px;
+  padding: 4px 4px 4px 0;
+  --searchbar-height: 30px;
+}
+
+.searchbar {
+  height: var(--searchbar-height);
+  box-sizing: border-box;
+  position: relative;
+  width: calc(100% - 17px);
+}
+
+.search-symbol {
+  all: unset;
+  height: 30px;
+  width: 35px;
+  position: absolute;
+  top: 0;
+  right: -19px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbar input {
+  all: unset;
+  height: 30px;
+  width: 80%;
+  margin-left: 20px;
+  color: rgb(85, 85, 85);
+}
+
+.bi {
+  color: rgb(51, 51, 51);
+  position: absolute;
+  transition: all linear 200ms;
+}
+.bi:first-of-type {
+  z-index: 1;
+}
+
+.bi:nth-of-type(2) {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.search-countries {
+  height: calc(100% - var(--searchbar-height));
+  overflow: auto;
+  list-style-type: none;
+  padding: 0px;
+}
+
+.search-countries li {
+  color: rgb(82, 82, 82);
+  cursor: pointer;
+  padding: 7px 7px 7px 13px;
+}
+.search-countries li:first-child {
+  margin-top: 0px;
+}
+.search-countries li:hover {
+  background-color: rgb(206, 206, 206);
+}
+
+.selected-country {
+  font-weight: bold;
+}

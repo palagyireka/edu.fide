@@ -15,6 +15,10 @@ const { cloudinary } = require("./cloudinary");
 const deltaToHtml = require("./utils/deltaToHtml");
 const { convert } = require("html-to-text");
 const cookieParser = require("cookie-parser");
+const Commissionmember = require("./models/commission");
+const Partnership = require("./models/partnership");
+const Download = require("./models/download");
+const Titleholder = require("./models/titleholder");
 
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
@@ -123,26 +127,32 @@ app.get("/potnfo", (req, res) => {
   res.render("potnfo");
 });
 
-app.get("/titleholders/:type", (req, res) => {
+app.get("/titleholders/:type", async (req, res) => {
   const type = req.params.type; // Extract the 'type' parameter from the URL
   const country = decodeURIComponent(req.query.country);
-  res.render("titleholders", { type, country });
-});
-
-app.get("/download", isLoggedIn, (req, res) => {
-  res.render("download");
+  const titleholders = await Titleholder.find({});
+  titleholdersData = JSON.stringify(titleholders);
+  res.render("titleholders", { type, country, titleholdersData });
 });
 
 app.get("/sendus", isLoggedIn, (req, res) => {
   res.render("sendus");
 });
 
-app.get("/commission", (req, res) => {
-  res.render("commission");
+app.get("/commission", async (req, res) => {
+  const commissionData = await Commissionmember.find({});
+  res.render("commission", { commissionData });
 });
 
-app.get("/partnerships", (req, res) => {
-  res.render("partnerships");
+app.get("/partnerships", async (req, res) => {
+  const partnershipMembers = await Partnership.find({});
+  res.render("partnerships", { partnershipMembers });
+});
+
+app.get("/download", isLoggedIn, async (req, res) => {
+  const materials = await Download.find({});
+  const downloadMaterials = JSON.stringify(materials);
+  res.render("download", { downloadMaterials });
 });
 
 app.get("/admin", async (req, res) => {
@@ -182,7 +192,7 @@ app.get("/gallery", async (req, res, next) => {
   let tags;
 
   if (query) {
-    cloudinaryExpression = `folder:"FIDE EDU Gallery"/* AND tags=${query}`;
+    cloudinaryExpression = `folder:"FIDE EDU Gallery" AND tags=${query}`;
   } else {
     cloudinaryExpression = 'folder:"FIDE EDU Gallery"/*';
   }

@@ -1,13 +1,16 @@
 <% layout('layouts/boilerplate') %>
 <main>
   <section class="titleholders-flex">
-    <div class="titleholders-select">
+    <div class="titleholders-select" data-t="<%= titleholdersData %>">
       <% if (type === 'lsi') { %>
       <label for="lsititleholders">LSI Title Holders</label>
       <select name="lsititleholders" id="lsititleholders" size="18"></select>
       <% } else if (type === 'si') { %>
       <label for="sititleholders">SI Title Holders</label>
       <select name="sititleholders" id="sititleholders" size="18"></select>
+      <% } else if(type === 'sli') { %>
+      <label for="slititleholders">SI Title Holders</label>
+      <select name="slititleholders" id="slititleholders" size="18"></select>
       <% } %>
     </div>
     <div>

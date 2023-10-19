@@ -5,9 +5,6 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  body {
-    overflow-y: hidden;
-  }
   .profile-logout {
     position: static;
     width: 100%;
@@ -19,8 +16,15 @@
   }
 
   #fidelogo {
-    right: 20px;
+    padding-right: 10vw;
+    padding-left: 0;
   }
+
+  #logo {
+    padding-left: 10vw;
+    padding-right: 0;
+  }
+
   #mainmenu .logo-container {
     height: 130px;
     width: 100%;
@@ -29,17 +33,20 @@
     border-radius: 0 0 50% 50%;
   }
   h1 {
-    font-size: 4vw;
-    width: 60%;
-    left: 22%;
-    top: 65px;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 2vw;
   }
 
   .lista2-hatter {
     display: none;
   }
 
-  /* Csak a label van formázva, ezért maga a checkbox eltüntetve */
+  #socmed-container {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+  }
 
   #menu-icon {
     display: block;
@@ -294,104 +301,69 @@
   }
 
   /* TÉRKÉP ÉS TÁRSAI */
+  .main-flex {
+    margin-top: 10px;
+    height: fit-content;
+    flex-direction: column;
+  }
+  .left-side,
+  .right-side {
+    width: 100%;
+    height: 450px;
+    flex-direction: row;
+  }
 
-  #map-search-container {
+  .calendar-list-container,
+  #featured {
+    width: calc(50% - 20px);
+    overflow-y: scroll;
+    height: 95%;
+  }
+
+  .calendar-ul {
     display: flex;
     flex-direction: column;
-    margin: 0;
-    height: fit-content;
+    align-items: flex-start;
+    justify-content: space-around;
   }
 
-  #search-and-calendar {
-    flex: 0 0 180px;
-    width: 100%;
-    margin: 0;
+  .featured-img-container {
+    float: left;
   }
 
-  .search-container {
-    width: 90%;
-    margin: 3% 5%;
+  .featured-img {
+    height: 300px;
+    width: unset;
+    float: left;
+    padding: 0;
+    margin: 10px;
   }
 
-  #calendar-container,
-  #featured {
-    position: static;
-    display: block;
-    width: 90%;
-    margin: 3% 5%;
-    overflow: hidden;
-    height: fit-content;
+  .search-container,
+  .country-menu-container {
+    height: 95%;
+    width: calc(50% - 20px);
   }
 
-  .searchbar input {
-    padding-left: 20px;
+  .country-name {
+    font-size: 22px;
   }
 
-  .search-countries li {
-    padding-left: 30px;
-  }
-
-  #container {
-    display: block;
-    width: 100%;
-    margin: 0;
-    height: fit-content;
-  }
-
-  .text-box-container {
-    height: auto;
-  }
-
-  .text-box {
-    animation-name: ctmenu;
-    animation-duration: 0.5s;
-  }
-
-  .shown-country-menu {
-    height: fit-content;
-  }
-
-  .countryname-container {
-    height: 40px;
-  }
   .country-menu {
-    padding: 0;
+    height: 90%;
+    font-size: 20px;
   }
 
-  #country-name:not(:checked) ~ label ~ .text-box {
-    opacity: 0;
-    height: 0;
-  }
-
-  #country-name:checked ~ label ~ .text-box {
-    opacity: 1;
-    height: auto;
-  }
-
-  @keyframes ctmenu {
-    from {
-      height: 0;
-      opacity: 0;
-    }
-    to {
-      height: auto;
-      opacity: 1;
-    }
-  }
-
-  #map-box {
-    width: 90%;
-    padding: 0;
-    margin: 3% 5%;
-    box-shadow: 0 0 10px 3px rgb(206, 206, 206);
-    border-radius: 10px;
+  .country-menu li ul li {
+    font-size: 18px;
   }
 
   /* LOGIN SIGNUP ÉS TÁRSAI */
 
   label[for="login-signup"] {
     top: 0;
-    right: 22%;
+    right: unset;
+    left: 60%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -468,5 +440,8 @@
 
   main.commission {
     padding: 20px 10%;
+  }
+  main.download input:checked + label {
+    padding: 15px 10px;
   }
 }

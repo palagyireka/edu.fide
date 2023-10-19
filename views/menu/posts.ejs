@@ -1,70 +1,62 @@
 <% layout('layouts/boilerplate') %>
 <main class="blogs">
   <div class="posts-title">
-    <p>Blogposts</p>
-    <div class="page-counter"><%= pageNumber %></div>
+    <p><%= tagName %></p>
   </div>
   <div id="b-posts">
     <% blogposts.forEach((blog) => {%>
     <a class="blog-card" href="/<%= path %>/<%= blog.id %>">
       <div class="tag-names"></div>
       <h2><%= blog.title %></h2>
-      <p>
-        <% if (blog.images[0].url !== "") { %>
+      <% if (blog.images[0].url !== "") { %>
+      <div class="img-container">
         <img src="<%= blog.images[0].url %>" alt="image" />
-        <% } %> <%= blog.text %><br />
-      </p>
+      </div>
+      <% } %>
+      <p><%= blog.text %></p>
 
       <span> Read more here >> </span>
     </a>
     <% }) %>
   </div>
-  <div class="first-prev">
-    <a
-      href="/<%= path %>?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %>"
-      >Previous</a
-    >
-    <a href="/<%= path %>">First</a>
-  </div>
-  <div class="next-last">
-    <a href="/<%= path %>?page=<%= parseInt(pageNumber)+ 1 %>">Next</a>
-    <a href="/<%= path %>?page=<%= totalPages %>">Last</a>
-  </div>
 </main>
 <script>
-  const jobbLinkek = document.querySelectorAll(".next-last a");
-  for (const link of jobbLinkek) {
-    link.addEventListener("mouseover", (evt) => {
-      evt.target.previousElementSibling.style.marginLeft = "65px";
-    });
-    link.addEventListener("mouseout", (evt) => {
-      evt.target.previousElementSibling.style.marginLeft = "15px";
-    });
+  const tagNameString = document.querySelector(".posts-title p").innerText;
+  let correctTagName = tagNameString.split(/(?=[A-Z])/).join(" ");
+  if (correctTagName.slice(0, 3) == "cie") {
+    correctTagName =
+      correctTagName.slice(0, 3).toUpperCase() + correctTagName.slice(3);
+  } else {
+    correctTagName = correctTagName[0].toUpperCase() + correctTagName.slice(1);
   }
+
+  document.querySelector(".posts-title p").innerText = correctTagName;
+
   const bPosts = document.querySelector("#b-posts");
   const blogCards = document.querySelectorAll(".blog-card");
   let counter = 0;
   while (counter < blogCards.length) {
-    const sor = document.createElement("div");
-    sor.className = "blogsor";
-    sor.appendChild(blogCards[counter]);
-    if (counter + 1 != blogCards.length) {
-      sor.appendChild(blogCards[counter + 1]);
-    }
-    if (counter + 2 != blogCards.length) {
-      sor.appendChild(blogCards[counter + 2]);
-    }
-    bPosts.appendChild(sor);
-    counter += 3;
-  }
-
-  const chrOrder = document.querySelector("#chrorder");
-  chrOrder.addEventListener("click", (evt) => {
-    console.log("fired");
-    if (evt.target.selectedIndex == 1) {
-      bPosts.style.flexDirection = "column-reverse";
+    if (counter < 2) {
+      const sor = document.createElement("div");
+      sor.className = "blogsor";
+      sor.appendChild(blogCards[counter]);
+      if (counter + 1 != blogCards.length) {
+        sor.appendChild(blogCards[counter + 1]);
+      }
+      bPosts.appendChild(sor);
+      counter += 2;
     } else {
-      bPosts.style.flexDirection = "column";
+      const sor = document.createElement("div");
+      sor.className = "blogsor";
+      sor.appendChild(blogCards[counter]);
+      if (counter + 1 != blogCards.length) {
+        sor.appendChild(blogCards[counter + 1]);
+      }
+      if (counter + 2 != blogCards.length) {
+        sor.appendChild(blogCards[counter + 2]);
+      }
+      bPosts.appendChild(sor);
+      counter += 3;
     }
-  });
+  }
 </script>

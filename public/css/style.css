@@ -161,32 +161,29 @@ table {
 }
 
 #mainmenu .logo-container {
-  display: block;
+  display: flex;
   width: 100vw;
   padding: 0;
   height: 15vh;
   min-height: 90px;
   background-color: #5b85aa;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #logo {
-  margin-top: 18.5px;
-  margin-left: 20px;
+  padding: 0 30px;
+}
+#fidelogo {
+  padding-right: 215px;
+  padding-left: 50px;
 }
 
 h1 {
-  position: absolute;
-  top: 27.5px;
-  left: 150px;
+  flex-grow: 4;
   font-size: 45px;
   color: white;
   font-weight: 400;
-}
-
-#fidelogo {
-  position: absolute;
-  top: 18.5px;
-  right: 235px;
 }
 
 /* ------------ ELSŐ SZINT -------------- */

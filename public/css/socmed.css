@@ -1,13 +1,10 @@
 #socmed-container {
-  position: fixed;
-  bottom: 8px;
-  right: 310px;
   background-image: url("socmedbtn.png");
   width: 55px;
   height: 55px;
   box-sizing: border-box;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 405;
   margin: 0;
   cursor: pointer;
 }
@@ -59,19 +56,19 @@
   border-radius: 50%;
   animation-direction: normal;
   animation-duration: 0.3s;
-  left: 0;
+  left: 3px;
 }
 
 #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(1) {
-  top: -60px;
+  top: 55px;
   animation-name: sc-j1;
 }
 #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(2) {
-  top: -120px;
+  top: 105px;
   animation-name: sc-j2;
 }
 #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(3) {
-  top: -180px;
+  top: 155px;
   animation-name: sc-j3;
 }
 
@@ -81,7 +78,7 @@
     opacity: 0;
   }
   to {
-    top: -60px;
+    top: 55px;
     opacity: 1;
   }
 }
@@ -92,7 +89,7 @@
     opacity: 0;
   }
   to {
-    top: -120;
+    top: 105px;
     opacity: 1;
   }
 }
@@ -103,18 +100,7 @@
     opacity: 0;
   }
   to {
-    top: -180;
-    opacity: 1;
-  }
-}
-
-@keyframes sc-j4 {
-  from {
-    top: 0;
-    opacity: 0;
-  }
-  to {
-    top: -240;
+    top: 155px;
     opacity: 1;
   }
 }

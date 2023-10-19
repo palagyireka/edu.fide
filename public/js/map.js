@@ -46,39 +46,10 @@ paths.forEach((item) => {
       searchedCountry.classList.remove("selected-country");
     }
 
-    document.querySelector(".text-box").classList.remove("shown-country-menu");
-    document.querySelector("#country-name").checked = true;
-    featuredMenu.style.display = "block";
-
-    let countryContacts = document.querySelectorAll("#country-contacts li");
-    const fedContacts = document.querySelector("#country-contacts");
-    if (countryContacts.length < 3) {
-      let counter = 3 - countryContacts.length;
-      for (let i = 0; i < counter; i++) {
-        const listItem = document.createElement("li");
-        fedContacts.appendChild(listItem);
-      }
-    }
-    countryContacts = document.querySelectorAll("#country-contacts li");
-    if (countryContacts[0]) {
-      let anchorTag = document.createElement("a");
-      anchorTag.href = website;
-      anchorTag.innerText = website;
-      anchorTag.target = "_blank";
-      countryContacts[0].innerHTML = "";
-      countryContacts[0].appendChild(anchorTag);
-    }
-    if (countryContacts[1]) countryContacts[1].innerText = contact;
-    if (countryContacts[2]) countryContacts[2].innerText = email;
-    for (const cont of countryContacts) {
-      if (cont.innerText == "" || cont.innerText == "undefined") {
-        cont.remove();
-      }
-    }
     document.querySelector(
       "#country-gallery"
     ).href = `/gallery?country=${country}`;
-    const cText = document.querySelector("#country-name ~ label");
+    const cText = document.querySelector(".country-name");
     cText.classList.add("hidden");
     const anchorTags = document.querySelectorAll(
       ".country-menu li:nth-of-type(2) ul li a"
@@ -204,29 +175,4 @@ filter.addEventListener("keyup", (event) => {
 cancelIcon.addEventListener("click", () => {
   filter.value = "";
   filter.dispatchEvent(new Event("keyup"));
-});
-
-// SIDEMENU STUFF
-
-const countryNameChB = document.querySelector("#country-name");
-const countryNameLBL = document.querySelector(`label[for="country-name"]`);
-const textBox = document.querySelector(".text-box");
-
-countryNameLBL.addEventListener("click", (evt) => {
-  if (!countryNameChB.checked) {
-    textBox.classList.add("shown-country-menu");
-    featuredMenu.style.display = "none";
-  } else {
-    textBox.classList.remove("shown-country-menu");
-    featuredMenu.style.display = "block";
-  }
-});
-countryNameChB.addEventListener("click", (evt) => {
-  if (!countryNameChB.checked) {
-    textBox.classList.add("shown-country-menu");
-    featuredMenu.style.display = "none";
-  } else {
-    textBox.classList.remove("shown-country-menu");
-    featuredMenu.style.display = "block";
-  }
 });

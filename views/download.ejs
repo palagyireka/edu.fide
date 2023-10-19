@@ -4,20 +4,16 @@
   <p>Please choose a cateogry from which you wish to download our materials.</p>
   <div class="categories">
     <span class="background"></span>
-    <input
-      type="radio"
-      name="category"
-      id="brochures"
-      value="brochures"
-    /><label for="brochures">EDU Brochures</label>
-    <input
-      type="radio"
-      name="category"
-      id="textbooks"
-      value="textbooks"
-    /><label for="textbooks">Textbooks</label>
-    <input type="radio" name="category" id="ciebooks" value="ciebooks" /><label
-      for="ciebooks"
+    <input type="radio" name="category" id="brochure" value="brochures" /><label
+      for="brochure"
+      >EDU Brochures</label
+    >
+    <input type="radio" name="category" id="textbook" value="textbooks" /><label
+      for="textbook"
+      >Textbooks</label
+    >
+    <input type="radio" name="category" id="ciebook" value="ciebooks" /><label
+      for="ciebook"
       >CIE Books</label
     >
     <input type="radio" name="category" id="other" value="other" /><label
@@ -25,7 +21,7 @@
       >Other Material</label
     >
   </div>
-  <table class="materials">
+  <table class="materials" data-d="<%= downloadMaterials %>">
     <thead>
       <tr>
         <th>Author</th>

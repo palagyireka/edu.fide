@@ -40,20 +40,7 @@ images.forEach((img) => {
   });
 });
 
-if (window.innerWidth > 1150 || window.screen.width > 1150) {
-  document
-    .querySelector(".next-last a:nth-of-type(2)")
-    .addEventListener("mouseover", (evt) => {
-      evt.target.previousElementSibling.style.marginLeft = "65px";
-    });
-  document
-    .querySelector(".next-last a:nth-of-type(2)")
-    .addEventListener("mouseout", (evt) => {
-      evt.target.previousElementSibling.style.marginLeft = "15px";
-    });
-}
-
-const filterDiv = document.getElementById("country-filter");
+const filterDiv = document.getElementById("gallery-country-filter");
 const tagOptions = [];
 
 const tags = filterDiv.dataset.tags.split(",");
@@ -67,7 +54,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const countryFilter = urlParams.get("country");
 
 VirtualSelect.init({
-  ele: "#country-filter",
+  ele: "#gallery-country-filter",
   options: tagOptions,
   multiple: false,
   showSelectedOptionsFirst: true,
