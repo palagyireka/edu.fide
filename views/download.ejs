@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
 <main class="download">
-  <p>Download</p>
+  <p><% if(currentUser.role === "admin"){ %>Download <% } %></p>
   <p>Please choose a cateogry from which you wish to download our materials.</p>
   <div class="categories">
     <span class="background"></span>
@@ -30,5 +30,34 @@
       </tr>
     </thead>
   </table>
+  <% if(currentUser.role === "admin"){ %>
+  <form action="" class="add-material">
+    <p>Add Download Material:</p>
+    <p>(Leave the unused inputs empty.)</p>
+    <label for="mat-title">Title:</label>
+    <input type="text" name="mat-title" id="mat-title" />
+    <label for="mat-lang">Language:</label>
+    <input type="text" name="mat-lang" id="mat-lang" />
+    <label for="mat-src"
+      >Flipbook link from
+      <a href="https://designrr.io/" target="_blank"
+        ><strong>Designrr</strong></a
+      >:</label
+    >
+    <p>
+      (Please make sure your link looks something like this:
+      https://designrr.page/?id=307583&token=537703293&type=FP&h=8238)
+    </p>
+    <input type="text" name="mat-src" id="mat-src" />
+    <label for="mat-type">Type of Material:</label>
+    <select name="mat-type" id="mat-type">
+      <option value="brochure">Brochure</option>
+      <option value="textbook">Textbook</option>
+      <option value="ciebook">CIE Book</option>
+      <option value="other">Other</option>
+    </select>
+    <input type="submit" value="Add" class="fancytime" />
+  </form>
+  <% } %>
 </main>
 <script src="/js/download.js"></script>

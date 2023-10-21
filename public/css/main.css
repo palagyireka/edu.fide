@@ -168,11 +168,17 @@ a {
 
 /* KERESÉS */
 
+.country-menu-container {
+  margin-top: 8px;
+  flex-grow: 1;
+}
+
 .search-container {
   transition: 0.3s;
   box-sizing: border-box;
-  height: 18vh;
-  width: 280px;
+  margin-top: 8px;
+  height: 22%;
+  width: 95%;
   box-shadow: 0 0 10px 3px rgb(206, 206, 206);
   border-radius: 10px;
   padding: 4px 4px 4px 0;

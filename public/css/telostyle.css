@@ -1,6 +1,25 @@
 @media only screen and (max-width: 810px) {
-  #mainmenu {
-    min-height: 138px;
+  .first-six {
+    width: 100%;
+    height: fit-content;
+  }
+  .result-card,
+  .first-six .result-card {
+    width: 40%;
+  }
+  .search-filters {
+    margin: 0 10%;
+    margin-top: 0;
+    margin-bottom: 40px;
+    width: 80%;
+  }
+  .search-filters ul {
+    align-items: center;
+    width: 100%;
+  }
+  .search-filters ul li {
+    text-align: center;
+    width: 100%;
   }
   .navtarolo .lista-1 {
     width: 100%;
@@ -93,36 +112,6 @@
     font-size: 16px;
   }
 
-  label[for="login-signup"] {
-    position: static;
-    width: 100%;
-    text-align: center;
-  }
-  #login-signup:checked {
-    margin: 0;
-    appearance: unset;
-    display: block;
-    position: absolute;
-    top: 18.5px;
-    right: 0;
-    width: 90px;
-    height: 63px;
-    z-index: 500;
-    background-color: white;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    cursor: pointer;
-    background-image: url("close.png");
-    background-repeat: no-repeat;
-    background-position: 20% 50%;
-  }
-  label[for="login-signup"] p {
-    display: inline;
-  }
-  label[for="login-signup"] div {
-    justify-content: center;
-  }
-
   /* GALÉRIA */
   .first-prev {
     left: 0;
@@ -152,7 +141,7 @@
   .first-prev a {
     margin: 0;
     border-radius: 0;
-    width: 70px;
+    width: 115px;
     padding: 8px;
     font-size: 18px;
     margin: -2px;
@@ -160,7 +149,6 @@
 
   .next-last a:hover,
   .first-prev a:hover {
-    width: 70px;
     margin-left: 0 !important;
     border-radius: 0 !important;
   }
@@ -210,12 +198,7 @@
   }
 
   /* LOGIN-SIGNUP */
-  #userspan {
-    left: 60%;
-  }
-  #newspan {
-    left: 22%;
-  }
+
   #signup-form .fancytime {
     width: 80px;
   }
@@ -355,19 +338,22 @@
   #socmed-container {
     right: 15px;
     top: unset;
-    bottom: 15px;
+    bottom: 70px;
   }
-
+  #socmed-btn:checked ~ label .socmed-list > li {
+    width: 50px;
+    height: 50px;
+  }
   #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(1) {
-    top: -55px;
+    top: -50px;
     animation-name: sc-j1;
   }
   #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(2) {
-    top: -105px;
+    top: -99px;
     animation-name: sc-j2;
   }
   #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(3) {
-    top: -155px;
+    top: -148px;
     animation-name: sc-j3;
   }
 
@@ -377,7 +363,7 @@
       opacity: 0;
     }
     to {
-      top: -55px;
+      top: -50px;
       opacity: 1;
     }
   }
@@ -388,7 +374,7 @@
       opacity: 0;
     }
     to {
-      top: -105px;
+      top: -99px;
       opacity: 1;
     }
   }
@@ -399,7 +385,7 @@
       opacity: 0;
     }
     to {
-      top: -155px;
+      top: -148px;
       opacity: 1;
     }
   }
@@ -428,6 +414,7 @@
     overflow: auto;
     height: fit-content;
     margin: 10px 0;
+    margin-top: 0;
   }
   .search-container,
   .country-menu-container {
@@ -443,6 +430,18 @@
 @media only screen and (max-width: 615px) {
   h1 {
     display: none;
+  }
+  label[for="login-signup"] {
+    margin-top: 0;
+  }
+  .newtitle {
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px;
+    margin-top: 30px;
+    color: #5b85aa;
   }
   main.intro,
   main.sendus,

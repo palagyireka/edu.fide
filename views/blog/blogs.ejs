@@ -31,39 +31,31 @@
   </div>
 </main>
 <script>
-  const jobbLinkek = document.querySelectorAll(".next-last a");
-  for (const link of jobbLinkek) {
-    link.addEventListener("mouseover", (evt) => {
-      evt.target.previousElementSibling.style.marginLeft = "65px";
-    });
-    link.addEventListener("mouseout", (evt) => {
-      evt.target.previousElementSibling.style.marginLeft = "15px";
-    });
-  }
   const bPosts = document.querySelector("#b-posts");
   const blogCards = document.querySelectorAll(".blog-card");
   let counter = 0;
   while (counter < blogCards.length) {
-    const sor = document.createElement("div");
-    sor.className = "blogsor";
-    sor.appendChild(blogCards[counter]);
-    if (counter + 1 != blogCards.length) {
-      sor.appendChild(blogCards[counter + 1]);
-    }
-    if (counter + 2 != blogCards.length) {
-      sor.appendChild(blogCards[counter + 2]);
-    }
-    bPosts.appendChild(sor);
-    counter += 3;
-  }
-
-  const chrOrder = document.querySelector("#chrorder");
-  chrOrder.addEventListener("click", (evt) => {
-    console.log("fired");
-    if (evt.target.selectedIndex == 1) {
-      bPosts.style.flexDirection = "column-reverse";
+    if (counter < 2) {
+      const sor = document.createElement("div");
+      sor.className = "blogsor";
+      sor.appendChild(blogCards[counter]);
+      if (counter + 1 != blogCards.length) {
+        sor.appendChild(blogCards[counter + 1]);
+      }
+      bPosts.appendChild(sor);
+      counter += 2;
     } else {
-      bPosts.style.flexDirection = "column";
+      const sor = document.createElement("div");
+      sor.className = "blogsor";
+      sor.appendChild(blogCards[counter]);
+      if (counter + 1 != blogCards.length) {
+        sor.appendChild(blogCards[counter + 1]);
+      }
+      if (counter + 2 != blogCards.length) {
+        sor.appendChild(blogCards[counter + 2]);
+      }
+      bPosts.appendChild(sor);
+      counter += 3;
     }
-  });
+  }
 </script>

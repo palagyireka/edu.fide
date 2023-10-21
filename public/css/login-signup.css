@@ -333,8 +333,10 @@ input.invalid {
 }
 
 .visible-password {
-  position: relative;
+  position: absolute;
   top: 35px;
+  left: 100%;
+  transform: translate(-110%, 0);
   z-index: 602;
   width: 36px;
   height: 18px;
@@ -343,15 +345,12 @@ input.invalid {
   color: #5b85aa;
 }
 
-.visible-password:hover {
-  cursor: pointer;
+#newspan {
+  transform: translate(-155%, 0);
 }
 
-#userspan {
-  left: 43%;
-}
-#newspan {
-  left: 32%;
+.visible-password:hover {
+  cursor: pointer;
 }
 
 .error.password-error,

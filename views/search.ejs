@@ -1,35 +1,39 @@
 <% layout('layouts/boilerplate') %>
-<main id="searchpm">
-  <form action="" id="searchbar">
-    <span id="keresotarto">
-      <input type="text" placeholder="Search" name="search" id="search" />
-    </span>
-    <label for="search">
-      <button type="submit">
-        <img src="css/searchbtn.png" alt="" />
-      </button>
-    </label>
-  </form>
-  <div id="searchtitles">
-    <h2>Filters</h2>
-    <h2>Search results</h2>
-  </div>
-  <div id="sfr-container">
-    <div id="searchfilters">
-      <label for="searchable-items">Please choose a searchable item:</label>
-      <select name="searchable-items" id="searchable-items">
-        <option value="">Click for searchable items:</option>
-        <option value="schools">Schools</option>
-        <option value="courses">FIDE Courses</option>
-        <option value="all">All</option>
-      </select>
-      <label for="orszag-search">Country:</label>
-      <select name="orszag-search" id="orszag-search"></select>
-      <label for="searchdate">Date:</label>
-      <input type="datetime-local" name="searchdate" id="searchdate" />
+<main class="search">
+  <div class="search-posts-container">
+    <p>Search Results:</p>
+    <div class="search-results">
+      <div class="search-filters">
+        <p>Search Filters:</p>
+        <ul>
+          <li>Tag</li>
+          <li>
+            <div id="tag-filter"></div>
+          </li>
+          <li>Country</li>
+          <li>
+            <div id="country-filter"></div>
+          </li>
+          <li>Year</li>
+          <li>
+            <div id="year-filter"></div>
+          </li>
+        </ul>
+      </div>
+      <% blogPosts.forEach((blog) => {%>
+      <a class="result-card" href="/blog/<%= blog.id %>">
+        <div class="tag-names"><%= blog.tags %></div>
+        <h2><%= blog.title %></h2>
+        <p>
+          <% if (blog.images[0].url !== "") { %>
+          <img src="<%= blog.images[0].url %>" alt="image" />
+          <% } %> <%= blog.text %><br />
+        </p>
+        <div class="year-tag"><%= blog.date.getFullYear() %></div>
+      </a>
+      <% }) %>
     </div>
-    <div id="searchresults"></div>
   </div>
 </main>
-<script src="/js/orszagkodok.js"></script>
+<script src="/js/virtual-select.min.js"></script>
 <script src="/js/search.js"></script>

@@ -154,23 +154,7 @@ label[for="title"] {
   width: 100%;
   margin: 0;
 }
-.blogsor:first-of-type .blog-card img:hover,
-.blogsor:nth-of-type(2) .blog-card img:hover {
-  border-radius: 0%;
-}
-.blogsor:first-of-type .blog-card span,
-.blogsor:nth-of-type(2) .blog-card span {
-  display: none;
-}
-.blogsor:first-of-type .blog-card:hover {
-  flex-grow: 1.2;
-}
-.blogsor:nth-of-type(2) .blog-card :hover {
-  border-radius: 0%;
-}
-.blogsor:nth-of-type(2) .blog-card:hover img {
-  border-radius: 0%;
-}
+
 .blogsor:first-of-type h2,
 .blogsor:nth-of-type(2) .blog-card h2 {
   position: absolute;
@@ -209,6 +193,25 @@ label[for="title"] {
 
 .blogsor .blog-card:hover img {
   border-radius: 25px;
+}
+
+.blogsor:first-of-type .blog-card img:hover,
+.blogsor:nth-of-type(2) .blog-card img:hover {
+  border-radius: 0%;
+}
+.blogsor:first-of-type .blog-card span,
+.blogsor:nth-of-type(2) .blog-card span {
+  display: none;
+}
+.blogsor:first-of-type .blog-card:hover {
+  flex-grow: 1.2;
+  border-radius: 0%;
+}
+.blogsor:nth-of-type(2) .blog-card:hover {
+  border-radius: 0%;
+}
+.blogsor:nth-of-type(2) .blog-card:hover img {
+  border-radius: 0%;
 }
 
 .blogs {

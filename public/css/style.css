@@ -140,6 +140,10 @@ table {
   display: none;
 }
 
+.newtitle {
+  display: none;
+}
+
 #menu-icon {
   display: none;
   position: fixed;
@@ -155,8 +159,7 @@ table {
 
 #mainmenu {
   width: 100vw;
-  height: 25vh;
-  min-height: 150px;
+  height: 160px;
   padding: 0;
 }
 
@@ -164,8 +167,7 @@ table {
   display: flex;
   width: 100vw;
   padding: 0;
-  height: 15vh;
-  min-height: 90px;
+  height: 100px;
   background-color: #5b85aa;
   justify-content: space-around;
   align-items: center;
@@ -194,8 +196,7 @@ h1 {
   align-items: center;
   flex-wrap: nowrap;
   width: 100vw;
-  height: 10vh;
-  min-height: 60px;
+  height: 60px;
   background-color: white;
   color: black;
 }
@@ -246,19 +247,20 @@ h1 {
   position: absolute;
   width: 100vw;
   left: 0;
-  top: 25vh;
-  height: 7vh;
-  min-height: 45px;
+  top: 160px;
+  height: 45px;
   background-color: #91b0b2;
 }
 
 .lista-2 {
   display: none;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
   position: absolute;
   width: 100vw;
-  top: 25vh;
-  height: 7vh;
-  min-height: 45px;
+  top: 160px;
+  height: 45px;
   color: white;
 }
 
@@ -279,7 +281,7 @@ h1 {
 .lista-2:hover,
 .lista-2-active {
   display: flex !important;
-  top: 25vh !important;
+  top: 160px;
   animation-name: lista2jovetel;
   animation-duration: 0.4s;
   left: 0;
@@ -297,7 +299,7 @@ h1 {
   padding: 16px 2.5vw;
   background-image: linear-gradient(#ffffff, #ffffff);
   background-size: 0% 0.1em;
-  background-position-y: 80%;
+  background-position-y: 75%;
   background-position-x: 50%;
   background-repeat: no-repeat;
   transition: 0.3s ease-in;
@@ -318,12 +320,15 @@ h1 {
 .lista-2 > li:active ul,
 .lista-2 > li:focus ul {
   opacity: 1;
-  position: relative;
+  position: absolute;
   transition: 0.3s;
   display: flex;
   flex-direction: column;
-  top: 15px;
-  left: 0;
+  top: 90%;
+  left: 50%;
+  height: fit-content;
+  width: 78%;
+  transform: translate(-50%, 0);
   font-size: 16px;
   background-color: #91b0b2;
   box-sizing: border-box;
@@ -333,7 +338,7 @@ h1 {
 }
 
 .lista-2 > li ul li {
-  height: 6vh;
+  height: 40px;
   box-sizing: border-box;
   padding: 14px 0;
   text-align: center;

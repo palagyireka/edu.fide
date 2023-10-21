@@ -5,37 +5,54 @@
 }
 
 @media only screen and (max-width: 1200px) {
+  .search-filters ul {
+    height: 80%;
+  }
+  .result-card .year-tag {
+    width: 25%;
+  }
+  .result-card h2 {
+    font-size: 16px;
+  }
   .profile-logout {
     position: static;
+    margin-top: 20px;
+    border-radius: 0;
     width: 100%;
     text-align: center;
   }
 
-  main {
+  main,
+  main.search {
     margin-top: 0;
   }
 
   #fidelogo {
     padding-right: 10vw;
+    padding-top: 10px;
     padding-left: 0;
   }
 
   #logo {
     padding-left: 10vw;
+    padding-top: 10px;
     padding-right: 0;
   }
-
+  #mainmenu {
+    height: 90px;
+    min-height: 90px;
+  }
   #mainmenu .logo-container {
-    height: 130px;
+    align-items: flex-start;
+    height: 103px;
     width: 100%;
     margin: 0;
     padding: 0;
-    border-radius: 0 0 50% 50%;
   }
   h1 {
-    padding-top: 50px;
+    padding-top: 70px;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.5em;
   }
 
   .lista2-hatter {
@@ -296,10 +313,6 @@
     padding-top: 10px;
   }
 
-  #mainmenu {
-    height: 130px;
-  }
-
   /* TÉRKÉP ÉS TÁRSAI */
   .main-flex {
     margin-top: 10px;
@@ -327,22 +340,19 @@
     justify-content: space-around;
   }
 
-  .featured-img-container {
-    float: left;
-  }
-
   .featured-img {
     height: 300px;
-    width: unset;
-    float: left;
-    padding: 0;
     margin: 10px;
   }
 
   .search-container,
   .country-menu-container {
     height: 95%;
-    width: calc(50% - 20px);
+    width: 45%;
+    margin-top: 0;
+  }
+  .search-container {
+    margin: 0 10px;
   }
 
   .country-name {
@@ -361,17 +371,47 @@
   /* LOGIN SIGNUP ÉS TÁRSAI */
 
   label[for="login-signup"] {
-    top: 0;
-    right: unset;
-    left: 60%;
+    position: static;
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: fit-content;
+    margin-top: 15px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     height: 55px;
   }
+  label[for="login-signup"]:hover {
+    width: 100%;
+  }
+  label[for="login-signup"] div {
+    justify-content: center;
+  }
   label[for="login-signup"] img,
   label[for="login-signup"] p {
     margin-top: 5px;
+  }
+  #login-signup:checked {
+    margin: 0;
+    appearance: unset;
+    display: block;
+    position: absolute;
+    top: 18.5px;
+    right: 0;
+    width: 90px;
+    height: 63px;
+    z-index: 500;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    cursor: pointer;
+    background-image: url("close.png");
+    background-repeat: no-repeat;
+    background-position: 20% 50%;
+  }
+  label[for="login-signup"] p {
+    display: inline;
   }
 
   /* KERESES */

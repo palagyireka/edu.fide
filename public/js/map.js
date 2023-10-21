@@ -54,10 +54,12 @@ paths.forEach((item) => {
     const anchorTags = document.querySelectorAll(
       ".country-menu li:nth-of-type(2) ul li a"
     );
-    anchorTags[0].href = `/titleholders/si?country=${country}`;
-    anchorTags[1].href = `/titleholders/lsi?country=${country}`;
+    const countryContactA = document.querySelector("#country-contact");
     setTimeout(() => {
       cText.innerText = country;
+      anchorTags[0].href = `/titleholders/si?country=${country}`;
+      anchorTags[1].href = `/titleholders/lsi?country=${country}`;
+      countryContactA.href = `/contact?country=${country}`;
     }, 200);
     setTimeout(() => {
       cText.classList.remove("hidden");

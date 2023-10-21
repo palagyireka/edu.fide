@@ -1,0 +1,18 @@
+<% layout('layouts/boilerplate') %>
+<main class="intro">
+  <h2><%= chosenContact.name %></h2>
+  <% if(chosenContact.contact && chosenContact.contact != ""){ %>
+  <p>Contact: <%= chosenContact.contact %></p>
+  <% } %> <% if(chosenContact.email && chosenContact.email != ""){ %>
+  <p>Email: <%= chosenContact.email %></p>
+  <% } %> <% if(chosenContact.website && chosenContact.website != ""){ %>
+  <p>
+    Website:
+    <a href="<%= chosenContact.website %>" target="_blank"
+      ><%= chosenContact.website %></a
+    >
+  </p>
+  <% } %><% if(chosenContact.desc && chosenContact.desc != ""){ %>
+  <p><%= chosenContact.desc %></p>
+  <% } %>
+</main>

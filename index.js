@@ -19,6 +19,7 @@ const Commissionmember = require("./models/commission");
 const Partnership = require("./models/partnership");
 const Download = require("./models/download");
 const Titleholder = require("./models/titleholder");
+const Countrycontact = require("./models/countrycontact");
 
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
@@ -103,12 +104,21 @@ app.get("/", isValidated, async (req, res) => {
   } else {
     tag = featuredPost.tags[0];
   }
-
   res.render("index", { featuredPost, tag });
 });
 
-app.get("/search", (req, res) => {
-  res.render("search");
+app.get("/search", async (req, res) => {
+  const blogPosts = await Blogpost.find({}).sort({ date: -1 });
+
+  blogPosts.forEach((post) => {
+    if (post.images.length === 0) {
+      post.images = [{ url: "" }];
+    }
+    post.text = deltaToHtml(post.text);
+    post.text = convert(post.text);
+    post.text = post.text.replace(/\[http.*?\]/gm, "");
+  });
+  res.render("search", { blogPosts });
 });
 
 app.get("/profile", (req, res) => {
@@ -142,6 +152,19 @@ app.get("/sendus", isLoggedIn, (req, res) => {
 app.get("/commission", async (req, res) => {
   const commissionData = await Commissionmember.find({});
   res.render("commission", { commissionData });
+});
+
+app.get("/contact", async (req, res) => {
+  const contactData = await Countrycontact.find({});
+  const countryC = decodeURIComponent(req.query.country);
+  let chosenContact;
+  for (const contact of contactData) {
+    if (contact.name === countryC) {
+      chosenContact = contact;
+      break;
+    }
+  }
+  res.render("contact", { chosenContact });
 });
 
 app.get("/partnerships", async (req, res) => {

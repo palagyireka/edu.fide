@@ -375,8 +375,8 @@
       switcher_horizontal_position = "right: 60%;";
       switcher_vertical_position = "top: 10px;";
     } else if (window.innerWidth <= 610 && window.screen.width <= 610) {
-      switcher_horizontal_position = "left:33%;";
-      switcher_vertical_position = "top: 80px;";
+      switcher_horizontal_position = "left:50%;transform:translate(-50%,0);";
+      switcher_vertical_position = "top: 70px;";
     }
     widget_code =
       '<div class="gt_switcher_wrapper" style="position:absolute;' +
