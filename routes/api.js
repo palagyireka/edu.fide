@@ -9,6 +9,8 @@ router.post("/image", upload.single("file"), api.imageUpload);
 
 router.get("/events", api.getEvents);
 
+router.get("/intro", api.getIntro);
+
 router.get("/:id/json", api.getText);
 
 module.exports = router;

@@ -26,10 +26,10 @@ const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
 const { isLoggedIn, isValidated } = require("./middleware");
 const userRoutes = require("./routes/users");
-const blogRoutes = require("./routes/blog");
 const apiRoutes = require("./routes/api");
 const adminRoutes = require("./routes/admin");
 const menuRoutes = require("./routes/menu");
+const staticRoutes = require("./routes/staticPages");
 const url = require("url");
 const { sendConfirmationEmail } = require("./utils/nodemailer");
 
@@ -83,7 +83,7 @@ app.use((req, res, next) => {
 app.use("/api", apiRoutes);
 app.use("/", userRoutes);
 app.use("/", menuRoutes);
-app.use("/blog", blogRoutes);
+app.use("/", staticRoutes);
 app.use("/admin", adminRoutes);
 
 app.get("/", isValidated, async (req, res) => {
@@ -104,6 +104,7 @@ app.get("/", isValidated, async (req, res) => {
   } else {
     tag = featuredPost.tags[0];
   }
+
   res.render("index", { featuredPost, tag });
 });
 
@@ -125,10 +126,6 @@ app.get("/profile", (req, res) => {
   res.render("profile");
 });
 
-app.get("/intro", (req, res) => {
-  res.render("intro");
-});
-
 app.get("/potcoursebook", (req, res) => {
   res.render("potcoursebook");
 });
@@ -141,7 +138,7 @@ app.get("/titleholders/:type", async (req, res) => {
   const type = req.params.type; // Extract the 'type' parameter from the URL
   const country = decodeURIComponent(req.query.country);
   const titleholders = await Titleholder.find({});
-  titleholdersData = JSON.stringify(titleholders);
+  const titleholdersData = JSON.stringify(titleholders);
   res.render("titleholders", { type, country, titleholdersData });
 });
 
@@ -167,15 +164,14 @@ app.get("/contact", async (req, res) => {
   res.render("contact", { chosenContact });
 });
 
-app.get("/partnerships", async (req, res) => {
-  const partnershipMembers = await Partnership.find({});
-  res.render("partnerships", { partnershipMembers });
-});
-
 app.get("/download", isLoggedIn, async (req, res) => {
   const materials = await Download.find({});
   const downloadMaterials = JSON.stringify(materials);
   res.render("download", { downloadMaterials });
+});
+
+app.get("/partnerships", (req, res) => {
+  res.render("partnerships");
 });
 
 app.get("/admin", async (req, res) => {
@@ -215,7 +211,7 @@ app.get("/gallery", async (req, res, next) => {
   let tags;
 
   if (query) {
-    cloudinaryExpression = `folder:"FIDE EDU Gallery" AND tags=${query}`;
+    cloudinaryExpression = `folder:"FIDE EDU Gallery" AND tags:${query}`;
   } else {
     cloudinaryExpression = 'folder:"FIDE EDU Gallery"/*';
   }
@@ -259,6 +255,7 @@ app.get("/gallery", async (req, res, next) => {
     .with_field("tags")
     .execute()
     .then((result) => {
+      console.log(result.resources[1].tags);
       imgUrls = result.resources.map((img) => {
         const url = img.url.split("/");
         url.splice(6, 0, "c_limit,h_1000");

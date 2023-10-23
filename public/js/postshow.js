@@ -1,7 +1,6 @@
 const textDiv = document.querySelector(".text-body");
 const url = window.location.href;
 const id = url.split("/")[4];
-console.log(id);
 
 async function getContent() {
   const response = await fetch(`/api/${id}/json`, {

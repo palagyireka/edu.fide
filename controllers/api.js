@@ -49,3 +49,5 @@ module.exports.getEvents = async (req, res) => {
     }
   );
 };
+
+module.exports.getIntro = async (req, res) => {};

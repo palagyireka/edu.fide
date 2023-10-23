@@ -21,12 +21,6 @@ const quill = new Quill("#editor", editorOptions);
 const saveBtn = document.getElementById("save-edit");
 const url = window.location.href;
 const id = url.split("/")[4];
-const titleInput = document.getElementById("title");
-
-const tagSelect = document.querySelector("#tag-select");
-const countrySelect = document.querySelector("#country-select");
-let originalTags = [];
-let originalCountries = [];
 
 function quill_img_handler() {
   let fileInput = this.container.querySelector("input.ql-image[type=file]");
@@ -76,29 +70,18 @@ function quill_img_handler() {
 }
 
 async function getContent() {
-  const response = await fetch(`/api/${id}/json`, {
+  const response = await fetch("json", {
     method: "GET",
   });
   const quillContent = await response.json();
-  titleInput.value = quillContent.title;
   quill.setContents(quillContent.text);
-  if (
-    typeof quillContent.tags != "undefined" &&
-    typeof quillContent.countries != "undefined"
-  ) {
-    originalTags = quillContent.tags;
-    originalCountries = quillContent.countries;
-  }
 }
 
 const clickHandler = async () => {
-  const titleContent = document.getElementById("title").value;
   const textContent = quill.getContents();
 
   const images = quill.root.innerHTML.match(/<img [^>]*src="[^"]*"[^>]*>/gm);
   let imageContent;
-  let tags;
-  let taggedCountries;
 
   if (images) {
     const bareImages = images.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
@@ -107,71 +90,27 @@ const clickHandler = async () => {
     });
   }
 
-  tagSelect.isAllSelected() ? (tags = ["All"]) : (tags = tagSelect.value);
-  countrySelect.isAllSelected()
-    ? (taggedCountries = ["All"])
-    : (taggedCountries = countrySelect.value);
-
   const postData = JSON.stringify({
-    title: titleContent,
     text: textContent,
-    images: images ? imageContent : null,
-    tags: tags,
-    countries: taggedCountries,
   });
 
-  //   fetch(`/admin/${id}`, {
-  //     method: "PUT",
-  //     body: postData,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then(() => {
-  //       window.location.replace("/admin/posts");
-  //     })
-  //     .catch(() => {
-  //       window.location.replace("/admin/posts");
-  //     });
+  fetch(`/intro`, {
+    method: "PUT",
+    body: postData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(() => {
+      window.location.replace(`/intro`);
+    })
+    .catch(() => {
+      window.location.replace(`/intro/edit`);
+    });
 };
-
-const countryOptions = countryCodes.map((x) => {
-  return { label: x.name, value: x["alpha-2"] };
-});
-
-const tagOptions = [
-  { label: "Commission News", value: "commissionNews" },
-  { label: "Conferences", value: "conferences" },
-  { label: "CIE Initiatives", value: "cieInitiatives" },
-  { label: "Personal Stories", value: "personalStories" },
-  { label: "Research News", value: "researchNews" },
-  { label: "Course News", value: "courseNews" },
-  { label: "CIE News", value: "cieNews" },
-  { label: "Blog", value: "blog" },
-];
 
 getContent();
 
-VirtualSelect.init({
-  ele: "#tag-select",
-  options: tagOptions,
-  multiple: true,
-  search: false,
-  required: true,
-  selectedValue: originalTags,
-});
-
-VirtualSelect.init({
-  ele: "#country-select",
-  options: countryOptions,
-  multiple: true,
-  showSelectedOptionsFirst: true,
-  required: true,
-  selectedValue: originalCountries,
-});
-
 saveBtn.addEventListener("click", () => {
-  if (tagSelect.validate() && countrySelect.validate()) {
-    clickHandler();
-  }
+  clickHandler();
 });

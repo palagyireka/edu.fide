@@ -87,7 +87,6 @@ module.exports.renderEdit = (req, res) => {
 };
 
 module.exports.editPost = async (req, res) => {
-  console.log("smt");
   const { id } = req.params;
   const editedPost = await Blogpost.findByIdAndUpdate(
     id,

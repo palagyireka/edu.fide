@@ -41,10 +41,10 @@ module.exports.isLoginEmailValidated = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (user) {
-    if ((user.status = "pending")) {
-      res.render("verifyEmail");
-    } else {
+    if (user.status === "active") {
       next();
+    } else if (user.status === "pending") {
+      res.render("verify-your-email");
     }
   } else {
     next(
