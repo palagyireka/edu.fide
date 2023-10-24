@@ -6,8 +6,6 @@ if (addMemberForm) {
   const cancelMemberBtn = document.querySelector("button#cancel-member");
   const memberInputs = document.querySelectorAll(`.add-material input`);
 
-  console.log(memberInputs);
-
   cancelMemberBtn.addEventListener("click", (evt) => {
     memberInputs.forEach((input) => (input.value = ""));
     addMemberForm.querySelector("textarea").value = "";
@@ -38,4 +36,31 @@ if (addMemberForm) {
       addMemberForm.querySelector("select").value = memberDatas[2].innerText;
     });
   });
+  const modOrderSelect = document.querySelector("#modify-member-order");
+
+  document.querySelector("#move-up-member").addEventListener("click", (evt) => {
+    const movingMember = document.querySelector(
+      `#modify-member-order option:checked`
+    );
+    const aboveMember = movingMember.previousElementSibling.cloneNode(true);
+    movingMember.previousElementSibling.remove();
+    modOrderSelect.insertBefore(aboveMember, movingMember.nextElementSibling);
+  });
+  document
+    .querySelector("#move-down-member")
+    .addEventListener("click", (evt) => {
+      const movingMember = document.querySelector(
+        `#modify-member-order option:checked`
+      );
+      const alsoMember = movingMember.nextElementSibling.cloneNode(true);
+      movingMember.nextElementSibling.remove();
+      if (movingMember.previousElementSibling) {
+        modOrderSelect.insertBefore(
+          alsoMember,
+          movingMember.previousElementSibling
+        );
+      } else {
+        modOrderSelect.insertBefore(alsoMember, movingMember);
+      }
+    });
 }

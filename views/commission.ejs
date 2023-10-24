@@ -4,7 +4,7 @@
   <div class="members">
     <% if (typeof currentUser !== "undefined") {if (currentUser.role ===
     "admin") {%>
-    <form action="/pot/titleholders/addmember" class="add-material">
+    <form action="/commission/addmember" class="add-material">
       <p>Add or Edit a Commission Member:</p>
       <p>Leave the unused inputs empty.</p>
       <p>Double click on the commission member you wish to edit.</p>
@@ -18,34 +18,44 @@
       </p>
       <div>
         <label for="comember-fname">First Name(s):</label>
-      <label for="comember-lname">Last Name(s):</label>
+        <label for="comember-lname">Last Name(s):</label>
       </div>
       <div>
-      <input type="text" name="comember-fname" id="comember-fname" />
-      <input type="text" name="comember-lname" id="comember-lname" />
+        <input type="text" name="comember-fname" id="comember-fname" />
+        <input type="text" name="comember-lname" id="comember-lname" />
       </div>
       <label for="member-rating-new">FIDE Rating Link:</label>
       <input type="text" name="member-rating-new" id="member-rating-new" />
-      <div><label for="new-member-pic">Picture:</label>
-      <p>Rank:</p>
+      <div>
+        <label for="new-member-pic">Picture:</label>
+        <p>Rank:</p>
       </div>
       <div>
-      <input type="file" name="new-member-pic" id="new-member-pic" />
-      <select name="new-member-rank" id="new-member-rank">
-        <option value="Member">Member</option>
-        <option value="Councillor">Councillor</option>
-        <option value="Senior Adviser">Senior Adviser</option>
-        <option value="Secretary">Secretary</option>
-        <option value="Chairman">Chairman</option>
-      </select>
+        <input type="file" name="new-member-pic" id="new-member-pic" />
+        <select name="new-member-rank" id="new-member-rank">
+          <option value="Member">Member</option>
+          <option value="Councillor">Councillor</option>
+          <option value="Senior Adviser">Senior Adviser</option>
+          <option value="Secretary">Secretary</option>
+          <option value="Chairman">Chairman</option>
+        </select>
       </div>
-      <div><label for="new-member-email">Email:</label>
-      <label for="new-member-phone">Phone:</label></div>
-      <div><input type="email" name="new-member-email" id="new-member-email" />
-      <input type="tel" name="new-member-phone" id="new-member-phone" /></div>
-      
+      <div>
+        <label for="new-member-email">Email:</label>
+        <label for="new-member-phone">Phone:</label>
+      </div>
+      <div>
+        <input type="email" name="new-member-email" id="new-member-email" />
+        <input type="tel" name="new-member-phone" id="new-member-phone" />
+      </div>
+
       <label for="new-member-desc">Member Introduction:</label>
-      <textarea name="new-member-desc" id="new-member-desc" /></textarea>
+      <textarea
+        name="new-member-desc"
+        id="new-member-desc"
+        cols="30"
+        rows="10"
+      ></textarea>
       <button type="submit" value="Add" class="fancytime" id="add-member">
         Add
       </button>
@@ -68,6 +78,27 @@
         Delete
       </button>
       <button id="cancel-member" class="fancytime" type="button">Cancel</button>
+    </form>
+    <form action="/commission/modifyorder" class="add-material">
+      <p>Modify the order of the members:</p>
+      <p>
+        Select the member you would like to move down or up in the order, then
+        click the save button when you are finished.
+      </p>
+      <div class="order-btns">
+        <button class="fancytime" id="move-up-member" type="button">
+          Move Up
+        </button>
+        <button class="fancytime" id="move-down-member" type="button">
+          Move Down
+        </button>
+      </div>
+      <select name="modify-member-order" id="modify-member-order" size="10">
+        <% commissionData.forEach((member)=>{ %>
+        <option value="<%= member.seq %>"><%= member.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit" class="fancytime">Save Order</button>
     </form>
     <script></script>
     <% } }%> <% commissionData.forEach((member)=>{ %>

@@ -141,3 +141,19 @@ main.sendus p:nth-last-of-type(2) {
 main.sendus p:nth-last-of-type(2) a {
   text-decoration: underline;
 }
+
+.email-mains {
+  margin-top: 45px;
+  width: 100vw;
+  height: calc(100vh - 205px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #5b85aa;
+}
+.email-mains * {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}

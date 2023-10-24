@@ -1,6 +1,78 @@
 <% layout('layouts/boilerplate') %>
 <main class="partnerships">
   <h2>Partnerships</h2>
+  <% if (typeof currentUser !== "undefined") {if (currentUser.role === "admin")
+  {%>
+  <form action="/partnerships/addmember" class="add-material">
+    <p>Add or Edit a Partnership:</p>
+    <p>Double click on the partnership member you wish to edit.</p>
+    <p>
+      If you want to cancel editing or adding a new partnership, click cancel to
+      clear the inputs.
+    </p>
+    <p>
+      If you want to delete a certain partnership, first double click on the
+      partnership, then click the delete button.
+    </p>
+    <label for="new-partner-title">Title:</label>
+    <input type="text" name="new-partner-title" id="new-partner-title" />
+    <label for="new-partner-website">Website Link:</label>
+    <input type="text" name="new-partner-website" id="new-partner-website" />
+    <label for="new-partner-img">Logo:</label>
+    <input type="file" name="new-partner-img" id="new-partner-img" />
+    <label for="new-partner-desc">Description:</label>
+    <textarea
+      name="new-partner-desc"
+      id="new-partner-desc"
+      cols="30"
+      rows="10"
+    ></textarea>
+    <button type="submit" value="Add" class="fancytime" id="add-partner">
+      Add
+    </button>
+    <button
+      type="submit"
+      value="Update"
+      id="update-partner"
+      class="fancytime"
+      disabled
+    >
+      Update
+    </button>
+    <button
+      type="submit"
+      value="Delete"
+      id="delete-partner"
+      class="fancytime"
+      disabled
+    >
+      Delete
+    </button>
+    <button id="cancel-partner" class="fancytime" type="button">Cancel</button>
+  </form>
+  <form action="/partnerships/modifyorder" class="add-material">
+    <p>Modify the order of partnerships:</p>
+    <p>
+      Select the partnership you would like to move down or up in the order,
+      then click the save button when you are finished.
+    </p>
+    <div class="order-btns">
+      <button class="fancytime" id="move-up-partner" type="button">
+        Move Up
+      </button>
+      <button class="fancytime" id="move-down-partner" type="button">
+        Move Down
+      </button>
+    </div>
+    <select name="modify-partner-order" id="modify-partner-order" size="10">
+      <% partnershipMembers.forEach((member)=>{ %>
+      <option value="<%= member.order %>"><%= member.title %></option>
+      <% }) %>
+    </select>
+    <button type="submit" class="fancytime">Save Order</button>
+  </form>
+  <script></script>
+  <% } }%>
   <div class="members">
     <% partnershipMembers.forEach((member)=>{ %>
     <div class="memberdiv">

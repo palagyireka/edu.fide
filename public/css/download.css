@@ -126,6 +126,7 @@ main.download input:checked + label {
 }
 
 .add-material {
+  box-sizing: border-box;
   border: 5px solid #5b85aa;
   border-radius: 5px;
   padding: 20px;
@@ -163,7 +164,8 @@ main.download input:checked + label {
 .add-material p:first-of-type {
   font-size: 20px;
 }
-.commission .add-material {
+.commission .add-material,
+.partnerships .add-material {
   box-sizing: border-box;
   margin: 10px;
 }
@@ -172,4 +174,17 @@ main.download input:checked + label {
 }
 .commission .add-material > div label {
   width: 49%;
+}
+
+.order-btns {
+  display: flex;
+  justify-content: space-around;
+}
+.order-btns .fancytime {
+  width: fit-content;
+}
+.order-btns + select {
+  width: 90%;
+  height: 250px;
+  margin: 10px 5%;
 }
