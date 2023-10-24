@@ -30,6 +30,7 @@ const apiRoutes = require("./routes/api");
 const adminRoutes = require("./routes/admin");
 const menuRoutes = require("./routes/menu");
 const staticRoutes = require("./routes/staticPages");
+const potRoutes = require("./routes/pot");
 const url = require("url");
 const { sendConfirmationEmail } = require("./utils/nodemailer");
 
@@ -85,6 +86,7 @@ app.use("/", userRoutes);
 app.use("/", menuRoutes);
 app.use("/", staticRoutes);
 app.use("/admin", adminRoutes);
+app.use("/pot", potRoutes);
 
 app.get("/", isValidated, async (req, res) => {
   const featuredPost = await Blogpost.findOne({ featured: true }, null, {
@@ -126,22 +128,6 @@ app.get("/profile", (req, res) => {
   res.render("profile");
 });
 
-app.get("/potcoursebook", (req, res) => {
-  res.render("potcoursebook");
-});
-
-app.get("/potnfo", (req, res) => {
-  res.render("potnfo");
-});
-
-app.get("/titleholders/:type", async (req, res) => {
-  const type = req.params.type; // Extract the 'type' parameter from the URL
-  const country = decodeURIComponent(req.query.country);
-  const titleholders = await Titleholder.find({});
-  const titleholdersData = JSON.stringify(titleholders);
-  res.render("titleholders", { type, country, titleholdersData });
-});
-
 app.get("/sendus", isLoggedIn, (req, res) => {
   res.render("sendus");
 });
@@ -149,6 +135,11 @@ app.get("/sendus", isLoggedIn, (req, res) => {
 app.get("/commission", async (req, res) => {
   const commissionData = await Commissionmember.find({});
   res.render("commission", { commissionData });
+});
+
+app.get("/partnerships", async (req, res) => {
+  const partnershipMembers = await Partnership.find({});
+  res.render("partnerships", { partnershipMembers });
 });
 
 app.get("/contact", async (req, res) => {
@@ -255,7 +246,6 @@ app.get("/gallery", async (req, res, next) => {
     .with_field("tags")
     .execute()
     .then((result) => {
-      console.log(result.resources[1].tags);
       imgUrls = result.resources.map((img) => {
         const url = img.url.split("/");
         url.splice(6, 0, "c_limit,h_1000");
@@ -293,7 +283,7 @@ app.get("/gallery", async (req, res, next) => {
 
     res.render("gallery", {
       galleryUrls,
-      pageNumber,
+      pageNumber: parseInt(pageNumber),
       totalPages,
       countryTags,
       query,

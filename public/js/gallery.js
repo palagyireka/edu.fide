@@ -70,7 +70,9 @@ filterDiv.addEventListener("reset", () => {
 filterDiv.addEventListener("change", (evt) => {
   url = `${document.location.origin}/gallery/?country=${evt.target.value}`;
 
-  if (window.location.href !== url) {
+  evt.stopPropagation();
+
+  if (evt.target.value !== countryFilter) {
     window.location.replace(url);
   }
 });
