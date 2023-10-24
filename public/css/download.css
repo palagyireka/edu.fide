@@ -146,11 +146,30 @@ main.download input:checked + label {
   display: inline-block;
 }
 .add-material input,
-#mat-type {
+#mat-type,
+.add-material select,
+.add-material textarea {
   display: block;
-  width: 95%;
+  width: 98%;
   height: 30px;
   font-size: 18px;
   padding: 3px;
   margin: 2px;
+}
+.add-material p {
+  margin: 10px 5px;
+  font-size: 18px;
+}
+.add-material p:first-of-type {
+  font-size: 20px;
+}
+.commission .add-material {
+  box-sizing: border-box;
+  margin: 10px;
+}
+.commission .add-material > div {
+  display: flex;
+}
+.commission .add-material > div label {
+  width: 49%;
 }

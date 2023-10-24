@@ -7,6 +7,7 @@ const api = require("../controllers/api");
 
 router.post("/image", upload.single("file"), api.imageUpload);
 
+router.get("/listevents", api.getListEvents);
 router.get("/events", api.getEvents);
 
 router.get("/intro", api.getIntro);

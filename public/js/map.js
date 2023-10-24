@@ -57,8 +57,8 @@ paths.forEach((item) => {
     const countryContactA = document.querySelector("#country-contact");
     setTimeout(() => {
       cText.innerText = country;
-      anchorTags[0].href = `/titleholders/si?country=${country}`;
-      anchorTags[1].href = `/titleholders/lsi?country=${country}`;
+      anchorTags[0].href = `/pot/titleholders/si?country=${country}`;
+      anchorTags[1].href = `/pot/titleholders/lsi?country=${country}`;
       countryContactA.href = `/contact?country=${country}`;
     }, 200);
     setTimeout(() => {

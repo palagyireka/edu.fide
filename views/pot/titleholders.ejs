@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate') %>
-<main>
+<main class="holder">
   <section class="titleholders-flex">
     <div class="titleholders-select" data-t="<%= titleholdersData %>">
       <% if (type === 'lsi') { %>
@@ -29,6 +29,12 @@
       </div>
       <div class="chosen-titleholder">
         <p>Selected Titleholder:</p>
+        <% if (typeof currentUser !== "undefined") {if (currentUser.role ===
+        "admin") {%>
+        <button id="delete-holder" class="fancytime" disabled>Delete</button>
+        <button id="edit-holder" class="fancytime" disabled>Edit</button>
+        <span class="admin-user-logged"></span>
+        <% }} %>
         <ul>
           <li>
             First Name:
@@ -48,6 +54,55 @@
       </div>
     </div>
   </section>
+  <% if (typeof currentUser !== "undefined") {if (currentUser.role === "admin")
+  {%>
+  <form action="/pot/titleholders/addholder" class="add-material">
+    <p>Add Titleholder:</p>
+    <label for="holder-fname">First Name(s):</label>
+    <input type="text" name="holder-fname" id="holder-fname" /><label
+      for="holder-lname"
+      >Last Name(s):</label
+    >
+    <input type="text" name="holder-lname" id="holder-lname" />
+    <div id="country-holder-new"></div>
+    <label for="fideid-new-holder">FIDE ID:</label>
+    <input type="text" name="fideid-new-holder" id="fideid-new-holder" />
+    <label for="new-holder-date"
+      >Award Date (the year will be extracted):</label
+    >
+    <input type="datetime-local" name="new-holder-date" id="new-holder-date" />
+    <p>Type of Title:</p>
+    <div class="title-types-div">
+      <div>
+        <input type="checkbox" name="title-type" id="SI" value="SI" />
+        <label for="SI">School Instructor</label>
+      </div>
+      <div>
+        <input type="checkbox" name="title-type" id="LSI" value="LSI" />
+        <label for="LSI">Lead School Instructor</label>
+      </div>
+      <div>
+        <input type="checkbox" name="title-type" id="SLI" value="SLI" />
+        <label for="SLI">Senior Lead Instructor</label>
+      </div>
+    </div>
+
+    <button type="submit" value="Add" class="fancytime" id="add-holder">
+      Add
+    </button>
+    <button
+      type="submit"
+      value="Update"
+      id="update-holder"
+      class="fancytime"
+      disabled
+    >
+      Update
+    </button>
+    <button id="cancel-holder" class="fancytime" disabled>Cancel</button>
+  </form>
+  <script></script>
+  <% } }%>
 </main>
 <script src="/js/orszagkodok.js"></script>
 <script src="/js/virtual-select.min.js"></script>

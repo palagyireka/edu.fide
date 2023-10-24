@@ -21,6 +21,13 @@
     text-align: center;
     width: 100%;
   }
+  .result-card .year-tag {
+    font-size: 10px;
+  }
+  .result-card .tag-names {
+    font-size: 12px;
+  }
+
   .navtarolo .lista-1 {
     width: 100%;
     padding: 0 25%;

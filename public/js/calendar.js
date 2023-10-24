@@ -1,4 +1,4 @@
-fetch("/api/events").then(async (response) => {
+fetch("/api/listevents").then(async (response) => {
   let { events } = await response.json();
   const transformedEvents = eventTransform(events);
   const calendarListView = document.querySelector(".calendar-ul");

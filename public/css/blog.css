@@ -233,6 +233,9 @@ label[for="title"] {
   height: auto;
   transition: 0.3s;
 }
+.blogsor:last-of-type .blog-card img {
+  width: 15%;
+}
 
 .blog-card p + span {
   display: block;

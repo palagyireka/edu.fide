@@ -132,8 +132,16 @@ app.get("/sendus", isLoggedIn, (req, res) => {
   res.render("sendus");
 });
 
+app.get("/onlinetools", (req, res) => {
+  res.render("onlinetools");
+});
+
+app.get("/course-registration", (req, res) => {
+  res.render("coursereg");
+});
+
 app.get("/commission", async (req, res) => {
-  const commissionData = await Commissionmember.find({});
+  const commissionData = await Commissionmember.find().sort({ seq: 1 });
   res.render("commission", { commissionData });
 });
 
@@ -161,8 +169,9 @@ app.get("/download", isLoggedIn, async (req, res) => {
   res.render("download", { downloadMaterials });
 });
 
-app.get("/partnerships", (req, res) => {
-  res.render("partnerships");
+app.get("/partnerships", async (req, res) => {
+  const partnershipMembers = await Partnership.find({});
+  res.render("partnerships", { partnershipMembers });
 });
 
 app.get("/admin", async (req, res) => {

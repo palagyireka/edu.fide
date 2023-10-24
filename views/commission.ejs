@@ -2,7 +2,75 @@
 <main class="commission">
   <h2>Commission Members</h2>
   <div class="members">
-    <% commissionData.forEach((member)=>{ %>
+    <% if (typeof currentUser !== "undefined") {if (currentUser.role ===
+    "admin") {%>
+    <form action="/pot/titleholders/addmember" class="add-material">
+      <p>Add or Edit a Commission Member:</p>
+      <p>Leave the unused inputs empty.</p>
+      <p>Double click on the commission member you wish to edit.</p>
+      <p>
+        If you want to cancel editing or adding a new member, click cancel to
+        clear the inputs.
+      </p>
+      <p>
+        If you want to delete a certain member, first double click on the
+        member, then click the delete button.
+      </p>
+      <div>
+        <label for="comember-fname">First Name(s):</label>
+      <label for="comember-lname">Last Name(s):</label>
+      </div>
+      <div>
+      <input type="text" name="comember-fname" id="comember-fname" />
+      <input type="text" name="comember-lname" id="comember-lname" />
+      </div>
+      <label for="member-rating-new">FIDE Rating Link:</label>
+      <input type="text" name="member-rating-new" id="member-rating-new" />
+      <div><label for="new-member-pic">Picture:</label>
+      <p>Rank:</p>
+      </div>
+      <div>
+      <input type="file" name="new-member-pic" id="new-member-pic" />
+      <select name="new-member-rank" id="new-member-rank">
+        <option value="Member">Member</option>
+        <option value="Councillor">Councillor</option>
+        <option value="Senior Adviser">Senior Adviser</option>
+        <option value="Secretary">Secretary</option>
+        <option value="Chairman">Chairman</option>
+      </select>
+      </div>
+      <div><label for="new-member-email">Email:</label>
+      <label for="new-member-phone">Phone:</label></div>
+      <div><input type="email" name="new-member-email" id="new-member-email" />
+      <input type="tel" name="new-member-phone" id="new-member-phone" /></div>
+      
+      <label for="new-member-desc">Member Introduction:</label>
+      <textarea name="new-member-desc" id="new-member-desc" /></textarea>
+      <button type="submit" value="Add" class="fancytime" id="add-member">
+        Add
+      </button>
+      <button
+        type="submit"
+        value="Update"
+        id="update-member"
+        class="fancytime"
+        disabled
+      >
+        Update
+      </button>
+      <button
+        type="submit"
+        value="Delete"
+        id="delete-member"
+        class="fancytime"
+        disabled
+      >
+        Delete
+      </button>
+      <button id="cancel-member" class="fancytime" type="button">Cancel</button>
+    </form>
+    <script></script>
+    <% } }%> <% commissionData.forEach((member)=>{ %>
     <div class="memberdiv">
       <img src="<%= member.imgHref %>" alt="<%= member.name %>" />
       <a href="<%= member.namelink %>" target="_blank"><%= member.name %></a>

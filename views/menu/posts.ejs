@@ -49,10 +49,10 @@
       const sor = document.createElement("div");
       sor.className = "blogsor";
       sor.appendChild(blogCards[counter]);
-      if (counter + 1 != blogCards.length) {
+      if (counter + 1 < blogCards.length) {
         sor.appendChild(blogCards[counter + 1]);
       }
-      if (counter + 2 != blogCards.length) {
+      if (counter + 2 < blogCards.length) {
         sor.appendChild(blogCards[counter + 2]);
       }
       bPosts.appendChild(sor);

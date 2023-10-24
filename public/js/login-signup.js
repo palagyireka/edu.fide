@@ -40,11 +40,6 @@ function formChange(evt) {
       userButtons[i].style.color = "#91b0b2";
       userForms[i].classList.remove("user-form-inactive");
       userForms[i].classList.add("user-form-active");
-      if (userForms[i].id == "signup-form") {
-        formContainer.style.paddingBottom = "15vh";
-      } else {
-        formContainer.style.paddingBottom = "25vh";
-      }
     } else {
       userButtons[i].style.flexGrow = "0";
       userButtons[i].style.backgroundColor = "#91b0b2";
@@ -70,11 +65,11 @@ respCie.addEventListener("focusout", closeCIEditor);
 
 function respEditor() {
   respCie.placeholder =
-    "You can describe your responsibilities in Chess and Education up to 400 characters. Touch or click anywhere outside the white box to exit editing. Do not click the close button if you want to submit your registration.";
+    "You can describe your responsibilities in Chess and Education up to 400 characters. Touch or click anywhere outside the white box to save and exit editing. DO NOT click the close button if you want to submit your registration.";
 }
 
 function closeCIEditor() {
-  respCie.placeholder = "Writing is optional. ;)";
+  respCie.placeholder = "Writing is optional.";
 }
 
 const makeVisibleSpans = document.querySelectorAll(".visible-password");

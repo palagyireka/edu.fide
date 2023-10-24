@@ -61,18 +61,19 @@ label[for="login-signup"] div {
 
 #login-signup:checked ~ label ~ #login-signup-form-container {
   position: absolute;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   z-index: 408;
   background-color: #5b85aa;
   color: black;
   box-sizing: border-box;
-  padding: 25vh 0;
-  padding-top: 15vh;
   margin: 0;
+  padding: 0;
 }
 
 #user-btns {
@@ -107,7 +108,7 @@ label[for="login-signup"] div {
   height: 280px;
 }
 #signup-form.user-form-active {
-  height: 490px;
+  height: 520px;
 }
 
 .user-form-active {
@@ -195,17 +196,17 @@ label[for="login-signup"] div {
   align-items: center;
 }
 
-.names:nth-last-of-type(3),
 .names:nth-last-of-type(2),
 .names:last-of-type {
   justify-content: center;
 }
 
-.names:nth-last-of-type(3) label,
 .names:nth-last-of-type(2) label,
 .names:last-of-type label {
   width: 92%;
   margin-left: 0;
+  margin-bottom: 12px;
+  padding-top: 12px;
 }
 
 .names label a {
@@ -227,6 +228,7 @@ label[for="resp-cie"] {
 
 #login-signup-forms {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -24,6 +24,32 @@ module.exports.getText = async (req, res) => {
   res.json(post);
 };
 
+module.exports.getListEvents = async (req, res) => {
+  const startTime = new Date();
+  startTime.setMonth(startTime.getMonth());
+
+  calendar.events.list(
+    {
+      calendarId: calendarId,
+      timeMin: startTime.toISOString(),
+      maxResults: 1000,
+      singleEvents: true,
+      orderBy: "startTime",
+    },
+    (error, result) => {
+      if (error) {
+        res.send(JSON.stringify({ error: error }));
+      } else {
+        if (result.data.items.length) {
+          res.send(JSON.stringify({ events: result.data.items }));
+        } else {
+          res.send(JSON.stringify({ message: "No upcoming events found." }));
+        }
+      }
+    }
+  );
+};
+
 module.exports.getEvents = async (req, res) => {
   const startTime = new Date();
   startTime.setMonth(startTime.getMonth() - 3);

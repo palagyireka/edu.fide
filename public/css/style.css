@@ -231,6 +231,7 @@ h1 {
   width: 100%;
   content: "Coming soon!";
   color: #c5725f;
+  text-align: center;
   background-color: white;
   border-radius: 10px;
   padding: 4px;

@@ -2,7 +2,7 @@ main.intro,
 main.sendus,
 main.commission,
 main.partnerships {
-  margin-top: 7vh;
+  margin-top: 45px;
   width: 100%;
   box-sizing: border-box;
   padding: 20px 10%;
@@ -14,12 +14,26 @@ main.intro h2,
 main.sendus h2,
 main.commission h2,
 main.partnerships h2 {
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 500;
 }
+
+main.intro a {
+  text-decoration: underline;
+  transition: 0.3s;
+}
+main.intro h3 a {
+  text-decoration: none;
+}
+
+main.intro a:hover {
+  letter-spacing: 3px;
+}
+
 main.intro h3 {
   font-weight: 500;
-  font-size: 18px;
+  letter-spacing: 2px;
+  font-size: 24px;
   margin: 20px 0;
 }
 
@@ -95,17 +109,11 @@ main.partnerships .memberdiv img {
   font-weight: 500;
 }
 
-main.intro p:last-of-type {
-  font-style: italic;
-}
-main.intro p:nth-of-type(2) {
-  font-style: normal;
-}
-
-main.intro img:first-of-type {
+main.intro img {
   float: left;
-  height: 40vw;
-  width: auto;
+  width: 60%;
+  height: auto;
+  margin: 10px;
 }
 
 /* ERROR */
