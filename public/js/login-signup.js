@@ -23,11 +23,11 @@ function userForm(evt) {
   userForms[1].classList.add("user-form-inactive");
   userForms[1].classList.remove("user-form-active");
   if (userCheckbox.checked) {
-    document.querySelector("#login-signup ~ label img").src = "css/close.png";
+    document.querySelector("#login-signup ~ label img").src = "/css/close.png";
     szoveg.innerHTML = "Close";
     szoveg.style.margin = "21.5px 15px";
   } else {
-    document.querySelector("#login-signup ~ label img").src = "css/login.png";
+    document.querySelector("#login-signup ~ label img").src = "/css/login.png";
     szoveg.innerHTML = "\n      Login or <br>\n      sign up\n    ";
     szoveg.style.margin = "10px 15px";
   }

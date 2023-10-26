@@ -33,7 +33,8 @@
   <% if(currentUser.role === "admin"){ %>
   <form action="/download/addmaterial" class="add-material">
     <p>Add Download Material:</p>
-    <p>(Leave the unused inputs empty.)</p>
+    <label for="mat-author">Author:</label>
+    <input type="text" name="mat-author" id="mat-author" />
     <label for="mat-title">Title:</label>
     <input type="text" name="mat-title" id="mat-title" />
     <label for="mat-lang">Language:</label>

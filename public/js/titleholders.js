@@ -75,7 +75,7 @@ function mutasdAzAdatokat(evt, torol) {
     if (document.querySelector(".admin-user-logged")) {
       editHolderBtn.disabled = true;
       deleteHolderBtn.disabled = true;
-      editHolderBtn.removeEventListener("click", editHolder(tl));
+      editHolderBtn.removeEventListener("click", () => editHolder(tl));
     }
     for (let i = 0; i < 5; i++) {
       titleHolderUL[i].innerText = "";
@@ -185,6 +185,23 @@ function filterOptions(evt) {
         mutasdAzAdatokat(evt, false)
       );
       document.querySelector(".titleholders-select select").appendChild(option);
+    }
+    if (
+      document.querySelector(".titleholders-select select").childNodes
+        .length === 0
+    ) {
+      allTitleHolders.forEach((holder) => {
+        const option = document.createElement("option");
+        option.value = holder.fullname;
+        option.innerText = holder.fullname;
+        option.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
+        option.addEventListener("touchstart", (evt) =>
+          mutasdAzAdatokat(evt, false)
+        );
+        document
+          .querySelector(".titleholders-select select")
+          .appendChild(option);
+      });
     }
   });
 }

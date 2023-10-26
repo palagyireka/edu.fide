@@ -1,3 +1,6 @@
+body {
+  overflow-x: hidden;
+}
 a {
   all: unset;
   cursor: pointer;

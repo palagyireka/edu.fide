@@ -28,9 +28,11 @@ const { isLoggedIn, isValidated } = require("./middleware");
 const userRoutes = require("./routes/users");
 const apiRoutes = require("./routes/api");
 const adminRoutes = require("./routes/admin");
+const downloadRoutes = require("./routes/download");
 const menuRoutes = require("./routes/menu");
 const staticRoutes = require("./routes/staticPages");
 const potRoutes = require("./routes/pot");
+const partnershipRoutes = require("./routes/partnership");
 const url = require("url");
 const { sendConfirmationEmail } = require("./utils/nodemailer");
 
@@ -86,7 +88,9 @@ app.use("/", userRoutes);
 app.use("/", menuRoutes);
 app.use("/", staticRoutes);
 app.use("/admin", adminRoutes);
+app.use("/download", downloadRoutes);
 app.use("/pot", potRoutes);
+app.use("/partnerships", partnershipRoutes);
 
 app.get("/", isValidated, async (req, res) => {
   const featuredPost = await Blogpost.findOne({ featured: true }, null, {

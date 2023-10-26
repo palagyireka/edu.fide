@@ -6,14 +6,6 @@
   <form action="/partnerships/addmember" class="add-material">
     <p>Add or Edit a Partnership:</p>
     <p>Double click on the partnership member you wish to edit.</p>
-    <p>
-      If you want to cancel editing or adding a new partnership, click cancel to
-      clear the inputs.
-    </p>
-    <p>
-      If you want to delete a certain partnership, first double click on the
-      partnership, then click the delete button.
-    </p>
     <label for="new-partner-title">Title:</label>
     <input type="text" name="new-partner-title" id="new-partner-title" />
     <label for="new-partner-website">Website Link:</label>
@@ -52,10 +44,7 @@
   </form>
   <form action="/partnerships/modifyorder" class="add-material">
     <p>Modify the order of partnerships:</p>
-    <p>
-      Select the partnership you would like to move down or up in the order,
-      then click the save button when you are finished.
-    </p>
+    <p>Select the partnership you would like to move.</p>
     <div class="order-btns">
       <button class="fancytime" id="move-up-partner" type="button">
         Move Up
@@ -76,11 +65,11 @@
   <div class="members">
     <% partnershipMembers.forEach((member)=>{ %>
     <div class="memberdiv">
-      <h3><% member.title %></h3>
+      <h3 data-o="<%= member.order %>"><%= member.title %></h3>
       <a href="<%= member.website %>" target="_blank"
         ><img src="<%= member.image %>" alt="<%= member.title %>"
       /></a>
-      <p><%= member.text %></p>
+      <p data-id="<%= member._id %>"><%= member.text %></p>
     </div>
     <% }) %>
   </div>

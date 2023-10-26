@@ -10,7 +10,7 @@ function setupListeners() {
     window.outerWidth > 1200
   ) {
     touchStarted = false;
-    keresesElement.src = "css/searchicon.png";
+    keresesElement.src = "/css/searchicon.png";
     lista2listak.forEach((item, index) => {
       item.style.justifyContent =
         index === 3 ? "center" : index <= 2 ? "left" : "right";
@@ -33,7 +33,7 @@ function setupListeners() {
     document
       .querySelector("#menu-icon")
       .addEventListener("touchstart", handleMenuIconTouchStart);
-    keresesElement.src = "css/searchiconmt.png";
+    keresesElement.src = "/css/searchiconmt.png";
   }
 }
 

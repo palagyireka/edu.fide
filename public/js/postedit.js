@@ -120,19 +120,20 @@ const clickHandler = async () => {
     countries: taggedCountries,
   });
 
-  //   fetch(`/admin/${id}`, {
-  //     method: "PUT",
-  //     body: postData,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then(() => {
-  //       window.location.replace("/admin/posts");
-  //     })
-  //     .catch(() => {
-  //       window.location.replace("/admin/posts");
-  //     });
+  fetch(`/admin/${id}`, {
+    method: "PUT",
+    body: postData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(() => {
+      window.location.replace("/admin/posts");
+    })
+    .catch(() => {
+      window.location.replace("/admin/posts");
+    });
+  window.location.replace("/admin/posts");
 };
 
 const countryOptions = countryCodes.map((x) => {

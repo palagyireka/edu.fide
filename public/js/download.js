@@ -79,3 +79,38 @@ catLabels.forEach((lbl) => {
     document.querySelector("table.materials").style.opacity = "1";
   });
 });
+
+const addForm = document.querySelector(".add-material");
+if (addForm) {
+  const addBtn = document.querySelector("#add-material");
+  addBtn.addEventListener("click", async (evt) => {
+    evt.preventDefault(); // Prevent the default form submission
+    const authorContent = document.getElementById("mat-author").value;
+    const titleContent = document.getElementById("mat-title").value;
+    const langContent = document.getElementById("mat-lang").value;
+    const srcContent = document.getElementById("mat-src").value;
+    const typeContent = document.getElementById("mat-type").value;
+    const postData = {
+      author: authorContent,
+      title: titleContent,
+      lang: langContent,
+      source: srcContent,
+      type: typeContent,
+    };
+
+    fetch(`/download/addmaterial`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then(() => {
+        window.location.replace("/download");
+      })
+      .catch(() => {
+        window.location.replace("/download");
+      });
+    window.location.replace("/download");
+  });
+}
