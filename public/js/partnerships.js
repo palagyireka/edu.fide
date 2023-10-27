@@ -50,14 +50,7 @@ if (modOrderSelect) {
       );
       const alsoMember = movingMember.nextElementSibling.cloneNode(true);
       movingMember.nextElementSibling.remove();
-      if (movingMember.previousElementSibling) {
-        modOrderSelect.insertBefore(
-          alsoMember,
-          movingMember.previousElementSibling
-        );
-      } else {
-        modOrderSelect.insertBefore(alsoMember, movingMember);
-      }
+      modOrderSelect.insertBefore(alsoMember, movingMember);
     });
 
   addBtn.addEventListener("click", async (evt) => {
@@ -129,6 +122,40 @@ if (modOrderSelect) {
       headers: {
         "Content-Type": "application/json",
       },
+    })
+      .then(() => {
+        window.location.replace("/partnerships");
+      })
+      .catch(() => {
+        window.location.replace("/partnerships");
+      });
+    window.location.replace("/partnerships");
+  });
+  const updateOrderBtn = document.querySelector("#update-order-p");
+  updateOrderBtn.addEventListener("click", async (evt) => {
+    evt.preventDefault();
+    const orderOptions = document.querySelectorAll(
+      "#modify-partner-order option"
+    );
+    let idsContent = [];
+    let ordersContent = [];
+    for (let i = 0; i < orderOptions.length; i++) {
+      const originalseq = Number(orderOptions[i].getAttribute("data-ors"));
+      if (originalseq !== i + 1) {
+        idsContent.push(orderOptions[i].value);
+        ordersContent.push(i + 1);
+      }
+    }
+    const postData = {
+      ids: idsContent,
+      orders: ordersContent,
+    };
+    fetch(`/partnerships/modifyorder`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
     })
       .then(() => {
         window.location.replace("/partnerships");

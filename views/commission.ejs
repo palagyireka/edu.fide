@@ -83,17 +83,23 @@
       </div>
       <select name="modify-member-order" id="modify-member-order" size="10">
         <% commissionData.forEach((member)=>{ %>
-        <option value="<%= member.seq %>"><%= member.name %></option>
+        <option value="<%= member.id %>" data-ors="<%= member.seq %>">
+          <%= member.name %>
+        </option>
         <% }) %>
       </select>
-      <button type="submit" class="fancytime">Save Order</button>
+      <button type="submit" class="fancytime" id="save-order-co">
+        Save Order
+      </button>
     </form>
     <script></script>
     <% } }%> <% commissionData.forEach((member)=>{ %>
     <div class="memberdiv">
       <img src="<%= member.imgHref %>" alt="<%= member.name %>" />
       <a href="<%= member.namelink %>" target="_blank"><%= member.name %></a>
-      <p><%= member.title %></p>
+      <p data-seq="<%= member.seq %>" data-id="<%= member.id %>">
+        <%= member.title %>
+      </p>
       <a href="mailto:<%= member.email %>"><%= member.email %></a>
       <a href="tel:<%= member.phone %>"><%= member.phone %></a>
       <p><%= member.introduction %></p>

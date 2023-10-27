@@ -29,6 +29,7 @@ const userRoutes = require("./routes/users");
 const apiRoutes = require("./routes/api");
 const adminRoutes = require("./routes/admin");
 const downloadRoutes = require("./routes/download");
+const commissionRoutes = require("./routes/commission");
 const menuRoutes = require("./routes/menu");
 const staticRoutes = require("./routes/staticPages");
 const potRoutes = require("./routes/pot");
@@ -89,6 +90,7 @@ app.use("/", menuRoutes);
 app.use("/", staticRoutes);
 app.use("/admin", adminRoutes);
 app.use("/download", downloadRoutes);
+app.use("/commission", commissionRoutes);
 app.use("/pot", potRoutes);
 app.use("/partnerships", partnershipRoutes);
 
@@ -150,7 +152,7 @@ app.get("/commission", async (req, res) => {
 });
 
 app.get("/partnerships", async (req, res) => {
-  const partnershipMembers = await Partnership.find({});
+  const partnershipMembers = await Partnership.find().sort({ order: 1 });
   res.render("partnerships", { partnershipMembers });
 });
 

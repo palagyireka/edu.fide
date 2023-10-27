@@ -8,6 +8,8 @@ router
   .route("/addmember")
   .post(isAdmin, catchAsync(partnership.createPartnership));
 
+router.route("/modifyorder").put(isAdmin, partnership.updatePartnerOrder);
+
 router
   .route("/:id")
   .put(isAdmin, partnership.updatePartnership)

@@ -1,4 +1,4 @@
-const Download = require("../models/partnership");
+const Download = require("../models/download");
 
 const { convert } = require("html-to-text");
 const url = require("url");

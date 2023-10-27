@@ -44,7 +44,6 @@
   </form>
   <form action="/partnerships/modifyorder" class="add-material">
     <p>Modify the order of partnerships:</p>
-    <p>Select the partnership you would like to move.</p>
     <div class="order-btns">
       <button class="fancytime" id="move-up-partner" type="button">
         Move Up
@@ -55,10 +54,14 @@
     </div>
     <select name="modify-partner-order" id="modify-partner-order" size="10">
       <% partnershipMembers.forEach((member)=>{ %>
-      <option value="<%= member.order %>"><%= member.title %></option>
+      <option value="<%= member.id %>" data-ors="<%= member.order %>">
+        <%= member.title %>
+      </option>
       <% }) %>
     </select>
-    <button type="submit" class="fancytime">Save Order</button>
+    <button type="submit" class="fancytime" id="update-order-p">
+      Save Order
+    </button>
   </form>
   <script></script>
   <% } }%>

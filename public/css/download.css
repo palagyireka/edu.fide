@@ -109,6 +109,19 @@ main.download input:checked + label {
 }
 .materials tr {
   font-weight: 400;
+  position: relative;
+}
+
+.delete-mat {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100.5%;
+  background-color: #c5725f;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .materials tr:hover {

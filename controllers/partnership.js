@@ -13,8 +13,20 @@ module.exports.createPartnership = async (req, res) => {
   });
 
   newPartner.save().then((post) => {
-    req.flash("success", "Successfully made a new campground!");
+    req.flash("success", "Successfully made a new partner!");
   });
+};
+
+module.exports.updatePartnerOrder = async (req, res) => {
+  const ids = req.body.ids;
+  const orders = req.body.orders;
+  for (let i = 0; i < ids.length; i++) {
+    const editedMember = await Partnership.findByIdAndUpdate(ids[i], {
+      order: orders[i],
+    });
+  }
+
+  req.flash("success", "Partner order saved!");
 };
 
 module.exports.updatePartnership = async (req, res) => {

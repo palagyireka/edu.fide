@@ -1,3 +1,4 @@
+const addForm = document.querySelector(".add-material");
 const downloadMaterials = JSON.parse(
   document.querySelector(".materials").getAttribute("data-d")
 );
@@ -49,6 +50,31 @@ catLabels.forEach((lbl) => {
         row.appendChild(authortd);
         row.appendChild(titletd);
         row.appendChild(langtd);
+        if (addForm) {
+          const deleteBtn = document.createElement("button");
+          deleteBtn.classList.add("delete-mat");
+          deleteBtn.innerText = "Delete";
+          deleteBtn.addEventListener("click", async (evt) => {
+            evt.preventDefault();
+            let id = dm._id;
+            console.log(`The id is: ${id}`);
+            const postData = {};
+            fetch(`/download/${id}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then(() => {
+                window.location.replace("/download");
+              })
+              .catch(() => {
+                window.location.replace("/download");
+              });
+            window.location.replace("/download");
+          });
+          row.appendChild(deleteBtn);
+        }
         tbody.appendChild(row);
         row.addEventListener("click", (evt) => {
           if (
@@ -80,11 +106,10 @@ catLabels.forEach((lbl) => {
   });
 });
 
-const addForm = document.querySelector(".add-material");
 if (addForm) {
   const addBtn = document.querySelector("#add-material");
   addBtn.addEventListener("click", async (evt) => {
-    evt.preventDefault(); // Prevent the default form submission
+    evt.preventDefault();
     const authorContent = document.getElementById("mat-author").value;
     const titleContent = document.getElementById("mat-title").value;
     const langContent = document.getElementById("mat-lang").value;
