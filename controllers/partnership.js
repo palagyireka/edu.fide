@@ -15,6 +15,7 @@ module.exports.createPartnership = async (req, res) => {
   newPartner.save().then((post) => {
     req.flash("success", "Successfully made a new partner!");
   });
+  res.json({ message: "Success!" });
 };
 
 module.exports.updatePartnerOrder = async (req, res) => {
@@ -27,6 +28,7 @@ module.exports.updatePartnerOrder = async (req, res) => {
   }
 
   req.flash("success", "Partner order saved!");
+  res.json({ message: "Success!" });
 };
 
 module.exports.updatePartnership = async (req, res) => {
@@ -38,10 +40,12 @@ module.exports.updatePartnership = async (req, res) => {
     order: req.body.order,
   });
   req.flash("success", "Partnership saved!");
+  res.json({ message: "Success!" });
 };
 
 module.exports.deletePartner = async (req, res) => {
   const { id } = req.params;
   await Partnership.findByIdAndDelete(id);
   req.flash("success", "Successfully deleted Partnership");
+  res.json({ message: "Success!" });
 };

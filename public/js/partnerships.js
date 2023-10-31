@@ -54,7 +54,7 @@ if (modOrderSelect) {
     });
 
   addBtn.addEventListener("click", async (evt) => {
-    evt.preventDefault(); // Prevent the default form submission
+    evt.preventDefault();
     const titleContent = document.getElementById("new-partner-title").value;
     const websiteContent = document.getElementById("new-partner-website").value;
     const textContent = document.getElementById("new-partner-desc").value;
@@ -81,11 +81,10 @@ if (modOrderSelect) {
       .catch(() => {
         window.location.replace("/partnerships");
       });
-    window.location.replace("/partnerships");
   });
 
   updateBtn.addEventListener("click", async (evt) => {
-    evt.preventDefault(); // Prevent the default form submission
+    evt.preventDefault();
     const titleContent = document.getElementById("new-partner-title").value;
     const websiteContent = document.getElementById("new-partner-website").value;
     const textContent = document.getElementById("new-partner-desc").value;
@@ -110,11 +109,10 @@ if (modOrderSelect) {
       .catch(() => {
         window.location.replace("/partnerships");
       });
-    window.location.replace("/partnerships");
   });
 
   deleteBtn.addEventListener("click", async (evt) => {
-    evt.preventDefault(); // Prevent the default form submission
+    evt.preventDefault();
     let id = encodeURIComponent(latestEditedMemberID);
     const postData = {};
     fetch(`/partnerships/${id}`, {
@@ -129,7 +127,6 @@ if (modOrderSelect) {
       .catch(() => {
         window.location.replace("/partnerships");
       });
-    window.location.replace("/partnerships");
   });
   const updateOrderBtn = document.querySelector("#update-order-p");
   updateOrderBtn.addEventListener("click", async (evt) => {
@@ -163,6 +160,5 @@ if (modOrderSelect) {
       .catch(() => {
         window.location.replace("/partnerships");
       });
-    window.location.replace("/partnerships");
   });
 }

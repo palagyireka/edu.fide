@@ -18,6 +18,7 @@ module.exports.createCommissionmember = async (req, res) => {
   newMember.save().then((post) => {
     req.flash("success", "Successfully made a new commission member!");
   });
+  res.json({ message: "Success!" });
 };
 
 module.exports.updateCommissionOrder = async (req, res) => {
@@ -30,6 +31,7 @@ module.exports.updateCommissionOrder = async (req, res) => {
   }
 
   req.flash("success", "Commission member saved!");
+  res.json({ message: "Success!" });
 };
 
 module.exports.updateCommissionmember = async (req, res) => {
@@ -45,10 +47,12 @@ module.exports.updateCommissionmember = async (req, res) => {
     seq: req.body.seq,
   });
   req.flash("success", "Commission member saved!");
+  res.json({ message: "Success!" });
 };
 
 module.exports.deleteCommissionmember = async (req, res) => {
   const { id } = req.params;
   await Commissionmember.findByIdAndDelete(id);
   req.flash("success", "Successfully deleted commission member");
+  res.json({ message: "Success!" });
 };

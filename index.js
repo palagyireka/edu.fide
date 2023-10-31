@@ -34,6 +34,7 @@ const menuRoutes = require("./routes/menu");
 const staticRoutes = require("./routes/staticPages");
 const potRoutes = require("./routes/pot");
 const partnershipRoutes = require("./routes/partnership");
+const titleholderRoutes = require("./routes/titleholder");
 const url = require("url");
 const { sendConfirmationEmail } = require("./utils/nodemailer");
 
@@ -93,6 +94,7 @@ app.use("/download", downloadRoutes);
 app.use("/commission", commissionRoutes);
 app.use("/pot", potRoutes);
 app.use("/partnerships", partnershipRoutes);
+app.use("/pot/titleholders", titleholderRoutes);
 
 app.get("/", isValidated, async (req, res) => {
   const featuredPost = await Blogpost.findOne({ featured: true }, null, {

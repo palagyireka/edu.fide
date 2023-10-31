@@ -159,16 +159,53 @@ main.download input:checked + label {
 .add-material label[for="mat-lang"] {
   display: inline-block;
 }
-.add-material input,
+.add-material > input,
+#country-new-holder.vscomp-ele.pop-comp-ele,
 #mat-type,
 .add-material select,
 .add-material textarea {
   display: block;
   width: 98%;
+  max-width: unset;
   height: 30px;
   font-size: 18px;
   padding: 3px;
   margin: 2px;
+}
+
+#country-new-holder.vscomp-ele.pop-comp-ele #vscomp-ele-wrapper-2938,
+#country-new-holder.vscomp-ele.pop-comp-ele .vscomp-value {
+  font-size: 18px;
+  height: 30px;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+#country-new-holder.vscomp-ele.pop-comp-ele .vscomp-toggle-button {
+  border-radius: 3px;
+  padding: 3px 30px 3px 3px;
+}
+#country-new-holder.vscomp-ele.pop-comp-ele .vscomp-dropbox {
+  border-radius: 3px;
+}
+
+#country-new-holder.vscomp-ele.pop-comp-ele
+  .vscomp-wrapper.focused
+  .vscomp-toggle-button,
+.vscomp-wrapper:focus .vscomp-toggle-button {
+  box-shadow: none;
+  border: 1px solid black;
+}
+#country-new-holder.vscomp-ele.pop-comp-ele
+  .vscomp-wrapper.focused
+  .vscomp-toggle-button,
+.vscomp-wrapper .vscomp-toggle-button {
+  box-shadow: none;
+  border: 1px solid grey;
+}
+
+#country-new-holder.vscomp-ele.pop-comp-ele .vscomp-wrapper {
+  font-size: 16px;
 }
 .add-material p {
   margin: 10px 5px;

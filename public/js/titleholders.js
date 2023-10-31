@@ -16,7 +16,6 @@ let allTitleHolders = JSON.parse(
 const lsiSelect = document.querySelector("#lsititleholders") ? "LSI" : false;
 const siSelect = document.querySelector("#sititleholders") ? "SI" : false;
 const sliSelect = document.querySelector("#slititleholders") ? "SLI" : false;
-
 const holderInputs = document.querySelectorAll(
   ".titleholders-flex ~ .add-material > input"
 );
@@ -26,6 +25,17 @@ const addHolderBtn = document.querySelector("#add-holder");
 const updateHolderBtn = document.querySelector("#update-holder");
 const cancelHolderBtn = document.querySelector("#cancel-holder");
 if (cancelHolderBtn) {
+  const countryOptionsNew = countryCodes.map((x) => {
+    return { label: x.name, value: x.name };
+  });
+  VirtualSelect.init({
+    ele: "#country-new-holder",
+    options: countryOptionsNew,
+    multiple: false,
+    showSelectedOptionsFirst: true,
+    required: true,
+    search: true,
+  });
   cancelHolderBtn.addEventListener("click", (evt) => {
     holderInputs.forEach((input) => (input.value = ""));
     addHolderBtn.disabled = false;
@@ -39,8 +49,118 @@ if (cancelHolderBtn) {
         checkbox.checked = false;
       });
   });
-}
+  addHolderBtn.addEventListener("click", async (evt) => {
+    evt.preventDefault();
+    const firstnameContent = document.querySelector("#holder-fname").value;
+    const lastnameContent = document.querySelector("#holder-lname").value;
+    const fullnameContent = firstnameContent + " " + lastnameContent;
+    const countryContent = document.querySelector("#country-new-holder").value;
+    const fideidContent = document.querySelector("#fideid-new-holder").value;
+    const awarddateContent = document.querySelector("#new-holder-date").value;
+    const yearContent = Number(
+      document
+        .querySelector("#new-holder-date")
+        .value.toString()
+        .substring(0, 4)
+    );
+    const titleContent = Array.from(
+      document.querySelectorAll(".title-types-div input:checked")
+    )
+      .map((input) => {
+        return input.value;
+      })
+      .join(",");
+    const postData = {
+      firstname: firstnameContent,
+      lastname: lastnameContent,
+      fullname: fullnameContent,
+      country: countryContent,
+      fideid: fideidContent,
+      awarddate: awarddateContent,
+      year: yearContent,
+      title: titleContent,
+    };
 
+    fetch(`/pot/titleholders/addmember`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then(() => {
+        window.location.replace("/pot/titleholders/si");
+      })
+      .catch(() => {
+        window.location.replace("/pot/titleholders/si");
+      });
+  });
+  deleteHolderBtn.addEventListener("click", async (evt) => {
+    evt.preventDefault();
+    let id = encodeURIComponent(deleteHolderID);
+    const postData = {};
+    fetch(`/pot/titleholders/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        window.location.replace("/pot/titleholders/si");
+      })
+      .catch(() => {
+        window.location.replace("/pot/titleholders/si");
+      });
+  });
+  updateHolderBtn.addEventListener("click", async (evt) => {
+    evt.preventDefault();
+    const firstnameContent = document.querySelector("#holder-fname").value;
+    const lastnameContent = document.querySelector("#holder-lname").value;
+    const fullnameContent = firstnameContent + " " + lastnameContent;
+    const countryContent = document.querySelector("#country-new-holder").value;
+    const fideidContent = document.querySelector("#fideid-new-holder").value;
+    const awarddateContent = document.querySelector("#new-holder-date").value;
+    const yearContent = Number(
+      document
+        .querySelector("#new-holder-date")
+        .value.toString()
+        .substring(0, 4)
+    );
+    const titleContent = Array.from(
+      document.querySelectorAll(".title-types-div input:checked")
+    )
+      .map((input) => {
+        return input.value;
+      })
+      .join(",");
+    const postData = {
+      firstname: firstnameContent,
+      lastname: lastnameContent,
+      fullname: fullnameContent,
+      country: countryContent,
+      fideid: fideidContent,
+      awarddate: awarddateContent,
+      year: yearContent,
+      title: titleContent,
+    };
+    let id = editHolderID;
+    fetch(`/pot/titleholders/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then(() => {
+        window.location.replace("/pot/titleholders/si");
+      })
+      .catch(() => {
+        window.location.replace("/pot/titleholders/si");
+      });
+  });
+}
+let deleteHolderID = 0;
+let editHolderID = 0;
 loadTitleHoldersSelect(lsiSelect);
 loadTitleHoldersSelect(siSelect);
 loadTitleHoldersSelect(sliSelect);
@@ -48,9 +168,11 @@ loadTitleHoldersSelect(sliSelect);
 function loadTitleHoldersSelect(slc) {
   if (slc) {
     allTitleHolders = allTitleHolders.filter((tl) => {
-      const tlTitles = tl.title.split(",");
-      if (tlTitles.includes(slc)) {
-        return tl;
+      if (tl.title && typeof tl.title === "string") {
+        const tlTitles = tl.title.split(",");
+        if (tlTitles.includes(slc)) {
+          return tl;
+        }
       }
     });
     for (const tl of allTitleHolders) {
@@ -73,9 +195,11 @@ const titleHolderUL = document.querySelectorAll(
 function mutasdAzAdatokat(evt, torol) {
   if (torol) {
     if (document.querySelector(".admin-user-logged")) {
-      editHolderBtn.disabled = true;
-      deleteHolderBtn.disabled = true;
-      editHolderBtn.removeEventListener("click", () => editHolder(tl));
+      if (cancelHolderBtn) {
+        editHolderBtn.disabled = true;
+        deleteHolderBtn.disabled = true;
+        editHolderBtn.removeEventListener("click", () => editHolder(tl));
+      }
     }
     for (let i = 0; i < 5; i++) {
       titleHolderUL[i].innerText = "";
@@ -101,6 +225,7 @@ function mutasdAzAdatokat(evt, torol) {
         titleHolderUL[2].innerText = tl.country;
         titleHolderUL[3].innerText = tl.fideid;
         titleHolderUL[4].innerText = tl.year;
+        deleteHolderID = tl._id;
         break;
       }
     }
@@ -118,8 +243,10 @@ function editHolder(tl) {
     holderInputs[0].value = tl.firstname;
     holderInputs[1].value = tl.lastname;
     holderInputs[2].value = tl.fideid;
-    holderInputs[3].value = formatDateForInput(tl.awarddate);
+    holderInputs[3].value = tl.awarddate;
+    document.querySelector("#country-new-holder").setValue(tl.country);
     const tlTitles = tl.title.split(",");
+    editHolderID = tl._id;
     document
       .querySelectorAll(
         ".titleholders-flex ~ .add-material .title-types-div input"
@@ -169,9 +296,11 @@ countryFilter.addEventListener("change", (evt) => filterOptions(evt));
 function filterOptions(evt) {
   const selectedCountry = countryFilter.value;
   const selectedYear = yearFilter.value;
+
   mutasdAzAdatokat(evt, true);
-  const allOptions = document.querySelectorAll(".titleholders-select option");
-  allOptions.forEach((option) => option.remove());
+  document
+    .querySelectorAll(".titleholders-select option")
+    .forEach((option) => option.remove());
 
   allTitleHolders.forEach((holder) => {
     const countryMatch = !selectedCountry || holder.country == selectedCountry;
@@ -186,22 +315,20 @@ function filterOptions(evt) {
       );
       document.querySelector(".titleholders-select select").appendChild(option);
     }
-    if (
-      document.querySelector(".titleholders-select select").childNodes
-        .length === 0
-    ) {
-      allTitleHolders.forEach((holder) => {
-        const option = document.createElement("option");
-        option.value = holder.fullname;
-        option.innerText = holder.fullname;
-        option.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
-        option.addEventListener("touchstart", (evt) =>
-          mutasdAzAdatokat(evt, false)
-        );
-        document
-          .querySelector(".titleholders-select select")
-          .appendChild(option);
-      });
-    }
   });
+  if (
+    document.querySelector(".titleholders-select select").childNodes.length ===
+    0
+  ) {
+    allTitleHolders.forEach((holder) => {
+      const option = document.createElement("option");
+      option.value = holder.fullname;
+      option.innerText = holder.fullname;
+      option.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
+      option.addEventListener("touchstart", (evt) =>
+        mutasdAzAdatokat(evt, false)
+      );
+      document.querySelector(".titleholders-select select").appendChild(option);
+    });
+  }
 }

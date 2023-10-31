@@ -136,6 +136,5 @@ if (addForm) {
       .catch(() => {
         window.location.replace("/download");
       });
-    window.location.replace("/download");
   });
 }

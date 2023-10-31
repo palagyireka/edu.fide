@@ -189,6 +189,5 @@ if (addMemberForm) {
       .catch(() => {
         window.location.replace("/commission");
       });
-    window.location.replace("/commission");
   });
 }
