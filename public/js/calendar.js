@@ -2,26 +2,28 @@ fetch("/api/listevents").then(async (response) => {
   let { events } = await response.json();
   const transformedEvents = eventTransform(events);
   const calendarListView = document.querySelector(".calendar-ul");
-  transformedEvents.forEach((event) => {
-    const listItem = document.createElement("li");
-    const listItemTitle = document.createElement("div");
-    const listItemDate = document.createElement("div");
-    listItemTitle.innerText = event.title;
-    listItemTitle.style.borderLeft = `4px solid ${event.backgroundColor}`;
-    let listItemDateString = new Date(event.start);
-    listItemDateString =
-      listItemDateString.toLocaleString("default", {
-        month: "long",
-      }) +
-      " " +
-      listItemDateString.toLocaleString("default", {
-        day: "numeric",
-      });
-    listItemDate.innerText = listItemDateString;
-    listItem.appendChild(listItemDate);
-    listItem.appendChild(listItemTitle);
-    calendarListView.appendChild(listItem);
-  });
+  if (transformedEvents) {
+    transformedEvents.forEach((event) => {
+      const listItem = document.createElement("li");
+      const listItemTitle = document.createElement("div");
+      const listItemDate = document.createElement("div");
+      listItemTitle.innerText = event.title;
+      listItemTitle.style.borderLeft = `4px solid ${event.backgroundColor}`;
+      let listItemDateString = new Date(event.start);
+      listItemDateString =
+        listItemDateString.toLocaleString("default", {
+          month: "long",
+        }) +
+        " " +
+        listItemDateString.toLocaleString("default", {
+          day: "numeric",
+        });
+      listItemDate.innerText = listItemDateString;
+      listItem.appendChild(listItemDate);
+      listItem.appendChild(listItemTitle);
+      calendarListView.appendChild(listItem);
+    });
+  }
 });
 
 const eventTransform = (events) => {

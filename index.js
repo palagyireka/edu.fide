@@ -117,8 +117,10 @@ app.get("/", isValidated, async (req, res) => {
     sort: { date: -1 },
   });
 
-  if (featuredPost.images.length === 0) {
-    featuredPost.images = [{ url: "" }];
+  if (featuredPost.images) {
+    if (featuredPost.images.length !== 0) {
+      featuredPost.images = [{ url: "" }];
+    }
   }
   featuredPost.text = deltaToHtml(featuredPost.text);
   featuredPost.text = convert(featuredPost.text);

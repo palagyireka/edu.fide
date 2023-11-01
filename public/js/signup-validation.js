@@ -96,6 +96,9 @@ function passwordErrorText() {
     passwordError.textContent = "You need to enter a password.";
   } else if (password.validity.tooShort) {
     passwordError.textContent = `Password should be at least ${password.minLength} characters.`;
+  } else {
+    passwordError.textContent =
+      "Your password should contain one capital letter, one number and one special character (+ - * / etc).";
   }
 
   passwordError.classList.add("active");

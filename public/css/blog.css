@@ -17,7 +17,9 @@
   box-sizing: border-box;
 }
 
-.show-blogpost p {
+.show-blogpost p,
+.show-blogpost ul,
+.show-blogpost ol {
   box-sizing: border-box;
   padding: 10px 15%;
   font-size: 18px;
@@ -25,6 +27,17 @@
   word-wrap: break-word;
   border-left: 20px solid #91b0b2;
   border-right: 20px solid #91b0b2;
+}
+
+.show-blogpost ul,
+.show-blogpost ol {
+  list-style: auto;
+  padding-left: calc(15% + 20px);
+}
+
+.show-blogpost ul li,
+.show-blogpost ol li {
+  margin: 5px 0;
 }
 
 .text-body {

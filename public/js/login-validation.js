@@ -42,6 +42,10 @@ function loginPasswordErrorText() {
   } else if (loginPassword.validity.tooShort) {
     loginPasswordError.textContent = `Password should be at least ${loginPassword.minLength} characters.`;
   }
+  //  else {
+  //   loginPasswordError.textContent =
+  //     "Your password should contain one capital letter, one number and one special character (+ - * / etc).";
+  // }
 
   loginPasswordError.classList.add("active");
   loginPassword.classList.add("invalid");
