@@ -19,8 +19,6 @@ const editorOptions = {
 
 const quill = new Quill("#editor", editorOptions);
 const saveBtn = document.getElementById("save-edit");
-const url = window.location.href;
-const id = url.split("/")[4];
 
 function quill_img_handler() {
   let fileInput = this.container.querySelector("input.ql-image[type=file]");
@@ -43,11 +41,12 @@ function quill_img_handler() {
       }
 
       const formData = new FormData();
+      formData.append("folder", "static_pages");
       formData.append("file", files[0]);
 
       this.quill.enable(false);
 
-      fetch("/api/image", {
+      fetch("/api/image/", {
         body: formData,
         method: "post",
       })
@@ -77,6 +76,15 @@ async function getContent() {
   quill.setContents(quillContent.text);
 }
 
+const getPath = () => {
+  const params = window.location.pathname.split("/");
+  params.pop();
+  params.shift();
+  return params;
+};
+
+const path = getPath();
+
 const clickHandler = async () => {
   const textContent = quill.getContents();
 
@@ -94,7 +102,7 @@ const clickHandler = async () => {
     text: textContent,
   });
 
-  fetch(`/intro`, {
+  fetch(`/${path}`, {
     method: "PUT",
     body: postData,
     headers: {
@@ -102,10 +110,10 @@ const clickHandler = async () => {
     },
   })
     .then(() => {
-      window.location.replace(`/intro`);
+      window.location.replace(`/${path}`);
     })
     .catch(() => {
-      window.location.replace(`/intro/edit`);
+      window.location.replace(`/${path}/edit`);
     });
 };
 

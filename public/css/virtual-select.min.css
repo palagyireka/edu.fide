@@ -82,6 +82,9 @@
   position: relative;
   width: 12px;
 }
+.not-valid {
+  border-color: red;
+}
 .vscomp-clear-icon::before,
 .vscomp-clear-icon::after {
   background-color: #999;

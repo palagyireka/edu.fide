@@ -207,6 +207,7 @@ main.download input:checked + label {
 #country-new-holder.vscomp-ele.pop-comp-ele .vscomp-wrapper {
   font-size: 16px;
 }
+
 .add-material p {
   margin: 10px 5px;
   font-size: 18px;

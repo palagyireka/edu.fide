@@ -11,6 +11,8 @@ router
   .get(isAdmin, admin.renderPosts)
   .post(isAdmin, catchAsync(admin.createPost));
 
+router.post("/posts/json", admin.renderMorePosts);
+
 router.get("/profiles", isAdmin, admin.showProfiles);
 
 router

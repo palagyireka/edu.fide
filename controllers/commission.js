@@ -7,7 +7,6 @@ module.exports.createCommissionmember = async (req, res) => {
   const newMember = new Commissionmember({
     name: req.body.name,
     namelink: req.body.namelink,
-    // imgHref: req.body.imghref,
     email: req.body.email,
     phone: req.body.phone,
     title: req.body.title,
@@ -15,10 +14,14 @@ module.exports.createCommissionmember = async (req, res) => {
     seq: req.body.seq,
   });
 
+  if (req.file) {
+    newMember.imgHref = req.file.path;
+  }
+
   newMember.save().then((post) => {
     req.flash("success", "Successfully made a new commission member!");
+    res.json({ message: "Success!" });
   });
-  res.json({ message: "Success!" });
 };
 
 module.exports.updateCommissionOrder = async (req, res) => {
@@ -36,16 +39,32 @@ module.exports.updateCommissionOrder = async (req, res) => {
 
 module.exports.updateCommissionmember = async (req, res) => {
   const { id } = req.params;
-  const editedMember = await Commissionmember.findByIdAndUpdate(id, {
-    name: req.body.name,
-    namelink: req.body.namelink,
-    // imgHref: req.body.imghref,
-    email: req.body.email,
-    phone: req.body.phone,
-    title: req.body.title,
-    introduction: req.body.introduction,
-    seq: req.body.seq,
-  });
+
+  let editedMember;
+
+  if (req.file) {
+    editedMember = await Commissionmember.findByIdAndUpdate(id, {
+      name: req.body.name,
+      namelink: req.body.namelink,
+      email: req.body.email,
+      phone: req.body.phone,
+      title: req.body.title,
+      introduction: req.body.introduction,
+      seq: req.body.seq,
+      imgHref: req.file.path,
+    });
+  } else {
+    editedMember = await Commissionmember.findByIdAndUpdate(id, {
+      name: req.body.name,
+      namelink: req.body.namelink,
+      email: req.body.email,
+      phone: req.body.phone,
+      title: req.body.title,
+      introduction: req.body.introduction,
+      seq: req.body.seq,
+    });
+  }
+
   req.flash("success", "Commission member saved!");
   res.json({ message: "Success!" });
 };

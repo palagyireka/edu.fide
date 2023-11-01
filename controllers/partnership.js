@@ -4,18 +4,22 @@ const { convert } = require("html-to-text");
 const url = require("url");
 
 module.exports.createPartnership = async (req, res) => {
-  const newPartner = new Partnership({
+  console.log(req.body);
+  const partnership = new Partnership({
     title: req.body.title,
     text: req.body.text,
-    image: "",
     website: req.body.website,
     order: req.body.order,
   });
 
-  newPartner.save().then((post) => {
+  if (req.file) {
+    partnership.image = req.file.path;
+  }
+
+  partnership.save().then((post) => {
     req.flash("success", "Successfully made a new partner!");
+    res.json({ message: "Success!" });
   });
-  res.json({ message: "Success!" });
 };
 
 module.exports.updatePartnerOrder = async (req, res) => {

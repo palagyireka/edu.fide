@@ -5,9 +5,11 @@ if (addMemberForm) {
   const deleteMemberBtn = document.querySelector("button#delete-member");
   const cancelMemberBtn = document.querySelector("button#cancel-member");
   const memberInputs = document.querySelectorAll(`.add-material input`);
+
   const updateOrderBtn = document.querySelector("#save-order-co");
   let latestEditedMemberSeq = -1;
   let latestEditedMemberID = -1;
+
   cancelMemberBtn.addEventListener("click", (evt) => {
     memberInputs.forEach((input) => (input.value = ""));
     addMemberForm.querySelector("textarea").value = "";
@@ -73,23 +75,25 @@ if (addMemberForm) {
     const titleContent = document.getElementById("new-member-rank").value;
     const introContent = document.getElementById("new-member-desc").value;
     const seqContent = document.querySelectorAll(".memberdiv").length;
-    const postData = {
-      name: nameContent,
-      namelink: nameLinkContent,
-      // imgHref: imghref,
-      email: emailContent,
-      phone: phoneContent,
-      title: titleContent,
-      introduction: introContent,
-      seq: seqContent,
-    };
+    const photo = document.getElementById("new-member-pic").files[0];
+    const formData = new FormData();
+
+    formData.append("name", nameContent);
+    formData.append("namelink", nameLinkContent);
+    formData.append("folder", "commission_members");
+    formData.append("email", emailContent);
+    formData.append("phone", phoneContent);
+    formData.append("title", titleContent);
+    formData.append("introduction", introContent);
+    formData.append("seq", seqContent);
+
+    if (photo) {
+      formData.append("image", photo);
+    }
 
     fetch(`/commission/addmember`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
+      body: formData,
     })
       .then(() => {
         window.location.replace("/commission");
@@ -97,7 +101,6 @@ if (addMemberForm) {
       .catch(() => {
         window.location.replace("/commission");
       });
-    window.location.replace("/commission");
   });
 
   updateMemberBtn.addEventListener("click", async (evt) => {
@@ -113,22 +116,25 @@ if (addMemberForm) {
     const introContent = document.getElementById("new-member-desc").value;
     const seqContent = Number(latestEditedMemberSeq);
     let id = encodeURIComponent(latestEditedMemberID);
-    const postData = {
-      name: nameContent,
-      namelink: nameLinkContent,
-      // imgHref: imghref,
-      email: emailContent,
-      phone: phoneContent,
-      title: titleContent,
-      introduction: introContent,
-      seq: seqContent,
-    };
+    const photo = document.getElementById("new-member-pic").files[0];
+    const formData = new FormData();
+
+    formData.append("name", nameContent);
+    formData.append("namelink", nameLinkContent);
+    formData.append("folder", "commission_members");
+    formData.append("email", emailContent);
+    formData.append("phone", phoneContent);
+    formData.append("title", titleContent);
+    formData.append("introduction", introContent);
+    formData.append("seq", seqContent);
+
+    if (photo) {
+      formData.append("image", photo);
+    }
+
     fetch(`/commission/${id}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
+      body: formData,
     })
       .then(() => {
         window.location.replace("/commission");
@@ -136,7 +142,6 @@ if (addMemberForm) {
       .catch(() => {
         window.location.replace("/commission");
       });
-    window.location.replace("/commission");
   });
 
   deleteMemberBtn.addEventListener("click", async (evt) => {
@@ -155,7 +160,6 @@ if (addMemberForm) {
       .catch(() => {
         window.location.replace("/commission");
       });
-    window.location.replace("/commission");
   });
 
   updateOrderBtn.addEventListener("click", async (evt) => {

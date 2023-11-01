@@ -16,6 +16,7 @@ let allTitleHolders = JSON.parse(
 const lsiSelect = document.querySelector("#lsititleholders") ? "LSI" : false;
 const siSelect = document.querySelector("#sititleholders") ? "SI" : false;
 const sliSelect = document.querySelector("#slititleholders") ? "SLI" : false;
+
 const holderInputs = document.querySelectorAll(
   ".titleholders-flex ~ .add-material > input"
 );
@@ -49,6 +50,7 @@ if (cancelHolderBtn) {
         checkbox.checked = false;
       });
   });
+
   addHolderBtn.addEventListener("click", async (evt) => {
     evt.preventDefault();
     const firstnameContent = document.querySelector("#holder-fname").value;
@@ -161,6 +163,7 @@ if (cancelHolderBtn) {
 }
 let deleteHolderID = 0;
 let editHolderID = 0;
+
 loadTitleHoldersSelect(lsiSelect);
 loadTitleHoldersSelect(siSelect);
 loadTitleHoldersSelect(sliSelect);

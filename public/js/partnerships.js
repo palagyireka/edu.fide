@@ -61,19 +61,22 @@ if (modOrderSelect) {
     const orderContent = document.querySelectorAll(
       "#modify-partner-order option"
     ).length;
-    const postData = {
-      title: titleContent,
-      text: textContent,
-      website: websiteContent,
-      order: orderContent,
-    };
+    const photo = document.getElementById("new-partner-img").files[0];
+    const formData = new FormData();
+
+    formData.append("title", titleContent);
+    formData.append("text", textContent);
+    formData.append("website", websiteContent);
+    formData.append("order", orderContent);
+    formData.append("folder", "partnerships");
+
+    if (photo) {
+      formData.append("image", photo);
+    }
 
     fetch(`/partnerships/addmember`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
+      body: formData,
     })
       .then(() => {
         window.location.replace("/partnerships");
@@ -90,18 +93,23 @@ if (modOrderSelect) {
     const textContent = document.getElementById("new-partner-desc").value;
     const orderContent = Number(latestEditedMemberOrder);
     let id = encodeURIComponent(latestEditedMemberID);
-    const postData = {
-      title: titleContent,
-      text: textContent,
-      website: websiteContent,
-      order: orderContent,
-    };
+
+    const photo = document.getElementById("new-partner-img").files[0];
+    const formData = new FormData();
+
+    formData.append("title", titleContent);
+    formData.append("text", textContent);
+    formData.append("website", websiteContent);
+    formData.append("order", orderContent);
+    formData.append("folder", "partnerships");
+
+    if (photo) {
+      formData.append("image", photo);
+    }
+
     fetch(`/partnerships/${id}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
+      body: formData,
     })
       .then(() => {
         window.location.replace("/partnerships");
@@ -112,7 +120,7 @@ if (modOrderSelect) {
   });
 
   deleteBtn.addEventListener("click", async (evt) => {
-    evt.preventDefault();
+    evt.preventDefault(); // Prevent the default form submission
     let id = encodeURIComponent(latestEditedMemberID);
     const postData = {};
     fetch(`/partnerships/${id}`, {
@@ -128,6 +136,7 @@ if (modOrderSelect) {
         window.location.replace("/partnerships");
       });
   });
+
   const updateOrderBtn = document.querySelector("#update-order-p");
   updateOrderBtn.addEventListener("click", async (evt) => {
     evt.preventDefault();

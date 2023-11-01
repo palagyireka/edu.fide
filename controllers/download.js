@@ -14,8 +14,8 @@ module.exports.addMaterial = async (req, res) => {
 
   newMaterial.save().then((post) => {
     req.flash("success", "Successfully made a new material!");
+    res.json({ message: "Success!" });
   });
-  res.json({ message: "Success!" });
 };
 
 module.exports.deleteMaterial = async (req, res) => {

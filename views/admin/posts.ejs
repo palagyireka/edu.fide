@@ -23,17 +23,7 @@
     </a>
     <% }) %>
   </div>
-  <div class="first-prev">
-    <a
-      href="/admin/posts?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %>"
-      >Previous</a
-    >
-    <a href="/admin/posts">First</a>
-  </div>
-  <div class="next-last">
-    <a href="/admin/posts?page=<%= parseInt(pageNumber)+ 1 %>">Next</a>
-    <a href="/admin/posts?page=<%= totalPages %>">Last</a>
-  </div>
+  <button id="load-more">Load More</button>
 </main>
 <script>
   const jobbLinkek = document.querySelectorAll(".next-last a");
@@ -72,3 +62,4 @@
     }
   });
 </script>
+<script src="/js/loadMorePosts.js"></script>

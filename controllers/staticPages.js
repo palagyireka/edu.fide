@@ -11,7 +11,7 @@ module.exports.renderIntroEditor = (req, res) => {
 
 module.exports.editIntro = (req, res) => {
   StaticPage.findOneAndUpdate({ page: "intro" }, { text: req.body.text }).then(
-    () => {
+    (obj) => {
       req.flash("success", "Edit saved!");
       res.send("ok");
     }

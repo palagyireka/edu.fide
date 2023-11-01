@@ -48,6 +48,7 @@ function quill_img_handler() {
       }
 
       const formData = new FormData();
+      formData.append("folder", "posts");
       formData.append("file", files[0]);
 
       this.quill.enable(false);

@@ -19,6 +19,9 @@
     </a>
     <% }) %>
   </div>
+  <% if (blogposts.length > 11) {%>
+  <button id="load-more">Load More</button>
+  <% } %>
 </main>
 <script>
   const tagNameString = document.querySelector(".posts-title p").innerText;
@@ -60,3 +63,4 @@
     }
   }
 </script>
+<script src="/js/loadMorePosts.js"></script>

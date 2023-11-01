@@ -25,6 +25,7 @@ const titleInput = document.getElementById("title");
 
 const tagSelect = document.querySelector("#tag-select");
 const countrySelect = document.querySelector("#country-select");
+const featured = document.querySelector("#featured-box");
 let originalTags = [];
 let originalCountries = [];
 
@@ -49,6 +50,7 @@ function quill_img_handler() {
       }
 
       const formData = new FormData();
+      formData.append("folder", "posts");
       formData.append("file", files[0]);
 
       this.quill.enable(false);
@@ -81,13 +83,15 @@ async function getContent() {
   });
   const quillContent = await response.json();
   titleInput.value = quillContent.title;
+  featured.checked = quillContent.featured;
   quill.setContents(quillContent.text);
   if (
-    typeof quillContent.tags != "undefined" &&
-    typeof quillContent.countries != "undefined"
+    typeof quillContent.tags !== "undefined" &&
+    typeof quillContent.countries !== "undefined"
   ) {
     originalTags = quillContent.tags;
     originalCountries = quillContent.countries;
+    console.log(originalTags, originalCountries);
   }
 }
 
@@ -105,6 +109,7 @@ const clickHandler = async () => {
     imageContent = bareImages.map((img) => {
       return { url: img, filename: img.split("/").pop() };
     });
+    console.log(imageContent);
   }
 
   tagSelect.isAllSelected() ? (tags = ["All"]) : (tags = tagSelect.value);
@@ -118,6 +123,7 @@ const clickHandler = async () => {
     images: images ? imageContent : null,
     tags: tags,
     countries: taggedCountries,
+    featured: featured.checked,
   });
 
   fetch(`/admin/${id}`, {
@@ -151,28 +157,45 @@ const tagOptions = [
   { label: "Blog", value: "blog" },
 ];
 
-getContent();
+getContent().then(() => {
+  VirtualSelect.init({
+    ele: "#tag-select",
+    options: tagOptions,
+    multiple: true,
+    search: false,
+    required: true,
+    selectedValue: originalTags,
+  });
 
-VirtualSelect.init({
-  ele: "#tag-select",
-  options: tagOptions,
-  multiple: true,
-  search: false,
-  required: true,
-  selectedValue: originalTags,
-});
-
-VirtualSelect.init({
-  ele: "#country-select",
-  options: countryOptions,
-  multiple: true,
-  showSelectedOptionsFirst: true,
-  required: true,
-  selectedValue: originalCountries,
+  VirtualSelect.init({
+    ele: "#country-select",
+    options: countryOptions,
+    multiple: true,
+    showSelectedOptionsFirst: true,
+    required: true,
+    selectedValue: originalCountries,
+  });
 });
 
 saveBtn.addEventListener("click", () => {
+  const countrySelector = document.querySelector(
+    "#country-select div .vscomp-toggle-button"
+  );
+  const tagSelector = document.querySelector(
+    "#tag-select div .vscomp-toggle-button"
+  );
+
+  tagSelector.classList.remove("not-valid");
+  countrySelector.classList.remove("not-valid");
+
   if (tagSelect.validate() && countrySelect.validate()) {
     clickHandler();
+  } else {
+    if (!tagSelect.validate()) {
+      tagSelector.classList.add("not-valid");
+    }
+    if (!countrySelect.validate()) {
+      countrySelector.classList.add("not-valid");
+    }
   }
 });

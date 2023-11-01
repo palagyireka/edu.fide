@@ -21,7 +21,7 @@ module.exports.createPost = async (req, res) => {
     newPost.images = req.body.images;
   }
   newPost.save().then((post) => {
-    req.flash("success", "Successfully made a new campground!");
+    req.flash("success", "Successfully made a new post!");
     res.send("ok");
   });
 };
@@ -68,6 +68,50 @@ module.exports.renderPosts = (req, res) => {
       transform(posts);
     }
     res.render("admin/posts", { posts, pageNumber, totalPages });
+  });
+};
+
+module.exports.renderMorePosts = async (req, res) => {
+  const pageNumber = req.body.page;
+  let posts;
+  let lastPage = false;
+
+  const transform = (blogs) => {
+    blogs.forEach((post) => {
+      if (post.images.length === 0) {
+        post.images = [{ url: "" }];
+      }
+      post.text = deltaToHtml(post.text);
+      post.text = convert(post.text);
+      post.text = post.text.replace(/\[http.*?\]/gm, "");
+      let charLength;
+      if (post.text.length >= 200) {
+        charLength = -(post.text.length - 200);
+      } else {
+        charLength = undefined;
+      }
+      post.text = post.text.slice(0, charLength);
+      post.text = post.text.trim();
+      post.text = post.text.replace(/\n/g, " ");
+    });
+  };
+
+  Blogpost.paginate(
+    {},
+    {
+      page: pageNumber,
+      limit: 12,
+      sort: { date: -1 },
+    }
+  ).then((results) => {
+    if (pageNumber === results.totalPages) {
+      lastPage = true;
+    }
+
+    posts = results.docs;
+    transform(posts);
+
+    res.json({ posts, lastPage });
   });
 };
 

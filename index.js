@@ -7,6 +7,7 @@ const app = express();
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const User = require("./models/user");
 const mongoose = require("mongoose");
 const passport = require("passport");
@@ -21,6 +22,7 @@ const Download = require("./models/download");
 const Titleholder = require("./models/titleholder");
 const Countrycontact = require("./models/countrycontact");
 
+const helmet = require("helmet");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
@@ -39,7 +41,7 @@ const url = require("url");
 const { sendConfirmationEmail } = require("./utils/nodemailer");
 
 const dbUrl = process.env.DB_URL;
-const secret = process.env.SECRET || "thisshouldbesecret";
+const secret = process.env.SECRET;
 
 mongoose.connect(dbUrl).catch((error) => console.log(error));
 // mongoose
@@ -62,7 +64,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser(secret));
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+  crypto: {
+    secret: secret,
+  },
+});
+
+store.on("error", function (e) {
+  console.log("SESSION STORE ERROR", e);
+});
+
 sessionConfig = {
+  store,
   secret,
   resave: false,
   saveUninitialized: false,
@@ -70,6 +85,7 @@ sessionConfig = {
 
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(helmet({ contentSecurityPolicy: false }));
 
 app.use(passport.initialize());
 app.use(passport.session());

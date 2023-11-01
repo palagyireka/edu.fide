@@ -1,9 +1,15 @@
 const textDiv = document.querySelector(".text-body");
-const url = window.location.href;
-const id = url.split("/")[4];
+
+const getPath = () => {
+  const params = window.location.pathname.split("/");
+  params.shift();
+  return params.join("/");
+};
+
+const path = getPath();
 
 async function getContent() {
-  const response = await fetch(`/intro/json`, {
+  const response = await fetch(`/${path}/json`, {
     method: "GET",
   });
   const quillContent = await response.json();

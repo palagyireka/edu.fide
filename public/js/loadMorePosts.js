@@ -1,5 +1,3 @@
-const bPosts = document.querySelector("#b-posts");
-
 const makeRows = () => {
   const blogCards = document.querySelectorAll("#b-posts > .blog-card");
   let counter = 0;
@@ -21,7 +19,7 @@ const makeRows = () => {
 
 makeRows();
 
-const loadMoreButton = document.getElementById("loadMore");
+const loadMoreButton = document.getElementById("load-more");
 let startFrom = 1;
 
 const renderNewPosts = (posts) => {
@@ -32,6 +30,12 @@ const renderNewPosts = (posts) => {
     const p = document.createElement("p");
     const span = document.createElement("span");
     const readMoreSpan = document.createElement("span");
+
+    let pathname = window.location.pathname;
+
+    if (window.location.pathname === "/admin/posts") {
+      pathname = "/admin";
+    }
 
     a.href = `${window.location.pathname}/${post._id}`;
     a.classList.add("blog-card");
@@ -55,7 +59,13 @@ const renderNewPosts = (posts) => {
 const clickHandler = async () => {
   const body = { page: startFrom + 1 };
 
-  fetch(window.location.pathname, {
+  let pathname = window.location.pathname;
+
+  if (window.location.pathname === "/admin/posts") {
+    pathname = "/admin/posts/json";
+  }
+
+  fetch(pathname, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
