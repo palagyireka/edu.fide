@@ -55,7 +55,8 @@
     <%- include("../partials/flash") %> <%- include('../partials/navbar') %> <%
     if (!currentUser) {%> <%- include('../partials/login-signup')%> <%} else {%>
     <%-include("../partials/profile-logout")%> <%} %> <%-
-    include('../partials/googletranslate') %> <%- body %>
+    include('../partials/googletranslate') %> <%- body %> <% if
+    (!cookiesAccepted) {%> <%- include("../partials/cookies") %> <%} %>
     <script src="/js/flash.js"></script>
   </body>
 </html>
