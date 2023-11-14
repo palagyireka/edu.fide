@@ -43,10 +43,11 @@
 }
 
 .flash-error {
-  color: #fea303;
+  color: black;
   background-color: #ffdb15;
+  border: 3px solid black;
 }
 
 .flash-error button svg {
-  fill: #fea303;
+  fill: black;
 }
