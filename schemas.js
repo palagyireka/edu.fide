@@ -32,6 +32,6 @@ module.exports.userSchema = Joi.object({
   jobtitle: Joi.string().max(50).escapeHTML(),
   countryResidence: Joi.string().required().max(50).escapeHTML(),
   respCie: Joi.string().max(400).allow("").escapeHTML(),
-  newsletter: Joi.boolean(),
+  newsletter: Joi.string().escapeHTML(),
   password: Joi.string().min(6).max(16).required(),
 });
