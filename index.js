@@ -19,7 +19,6 @@ const cookieParser = require("cookie-parser");
 const Commissionmember = require("./models/commission");
 const Partnership = require("./models/partnership");
 const Download = require("./models/download");
-const Titleholder = require("./models/titleholder");
 const Countrycontact = require("./models/countrycontact");
 
 const helmet = require("helmet");
@@ -38,10 +37,10 @@ const potRoutes = require("./routes/pot");
 const partnershipRoutes = require("./routes/partnership");
 const titleholderRoutes = require("./routes/titleholder");
 const url = require("url");
-const { sendConfirmationEmail } = require("./utils/nodemailer");
 
 const dbUrl = process.env.DB_URL;
 const secret = process.env.SECRET;
+const port = process.env.PORT || 3000;
 
 mongoose.connect(dbUrl).catch((error) => console.log(error));
 // mongoose
@@ -348,6 +347,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-app.listen(3000, () => {
-  console.log("App is listening on 3000");
+app.listen(port, () => {
+  console.log(`App is listening on ${port}`);
 });

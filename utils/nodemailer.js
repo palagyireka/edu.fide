@@ -14,7 +14,8 @@ const transporter = nodemailer.createTransport({
 module.exports.sendConfirmationEmail = async (
   name,
   email,
-  confirmationCode
+  confirmationCode,
+  url
 ) => {
   await transporter.sendMail({
     from: "fide.edu.register@gmail.com",
@@ -24,12 +25,12 @@ module.exports.sendConfirmationEmail = async (
           <h2>Hello ${name}!</h2>
           <div>
           <p>Please confirm your email by clicking on the following link</p>
-          <a href=${process.env.CURRENT_SITE}/user/confirm/${confirmationCode}> Click here</a>
+          <a href="${url}/user/confirm/${confirmationCode}"> Click here</a>
           </div>`,
   });
 };
 
-module.exports.sendPasswordResetEmail = async (name, email, link) => {
+module.exports.sendPasswordResetEmail = async (name, email, link, url) => {
   await transporter.sendMail({
     from: "fide.edu.register@gmail.com",
     to: email,
@@ -38,7 +39,7 @@ module.exports.sendPasswordResetEmail = async (name, email, link) => {
           <h2>Hello ${name}!</h2>
           <div>
           <p>Please set a new password by clicking on the following link</p>
-          <a href=${process.env.CURRENT_SITE}${link}}> Click here</a>
+          <a href="${url}${link}"> Click here</a>
           </div>`,
   });
 };

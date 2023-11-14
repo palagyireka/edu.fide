@@ -1,8 +1,5 @@
 const Download = require("../models/download");
 
-const { convert } = require("html-to-text");
-const url = require("url");
-
 module.exports.addMaterial = async (req, res) => {
   const newMaterial = new Download({
     author: req.body.author,

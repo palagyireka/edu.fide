@@ -69,7 +69,8 @@ module.exports.register = async (req, res, next) => {
   await sendConfirmationEmail(
     `${firstName} ${lastName}`,
     email,
-    user.confirmationCode
+    user.confirmationCode,
+    req.hostname
   );
 
   req.login(registeredUser, (err) => {
@@ -103,6 +104,10 @@ module.exports.verifyUser = async (req, res) => {
   res.render("email-verify");
 };
 
+module.exports.renderPasswordResetRequest = (req, res) => {
+  res.render("password-reset/password-reset-request");
+};
+
 module.exports.requestPasswordReset = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
@@ -112,8 +117,9 @@ module.exports.requestPasswordReset = async (req, res, next) => {
   let token = await Token.findOne({ userId: user._id });
   if (token) await token.deleteOne();
 
-  let resetToken = crypto.randomBytes(32).toString("hex");
-  const hash = bcrypt.hash(resetToken, bcryptSalt);
+  let resetToken = await crypto.randomBytes(32).toString("hex");
+  const salt = await bcrypt.genSalt(parseInt(bcryptSalt));
+  const hash = await bcrypt.hash(resetToken, salt);
 
   await new Token({
     userId: user._id,
@@ -121,19 +127,34 @@ module.exports.requestPasswordReset = async (req, res, next) => {
     createdAt: Date.now(),
   }).save();
 
-  const link = `/passwordReset?token=${resetToken}&id=${user._id}`;
+  const link = `/resetpassword?token=${resetToken}&id=${user._id}`;
 
   await sendPasswordResetEmail(
     `${user.firstName} ${user.lastName}`,
     user.email,
-    link
+    link,
+    req.hostname
   );
 
-  res.render("password-reset-requested");
+  res.render("message", {
+    message:
+      "We've sent a link to reset your password to the email address you provided. Please check your inbox and follow the instructions in the email. If you don't see the email in your inbox, it may be in your spam folder.",
+  });
 };
 
 module.exports.renderPasswordResetPage = (req, res) => {
-  res.render("password-reset");
+  const token = req.query.token;
+  const userId = req.query.id;
+  if (!token || !userId) {
+    next(
+      new ExpressError(
+        "Use the link to reset your password!",
+        422,
+        "flashError"
+      )
+    );
+  }
+  res.render("password-reset/password-reset", { token, userId });
 };
 
 module.exports.resetPassword = async (req, res, next) => {
@@ -151,7 +172,7 @@ module.exports.resetPassword = async (req, res, next) => {
     );
   }
 
-  const isValid = bcrypt.compare(token, passwordResetToken.token);
+  const isValid = await bcrypt.compare(token, passwordResetToken.token);
 
   if (!isValid) {
     next(

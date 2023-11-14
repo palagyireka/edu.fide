@@ -23,6 +23,16 @@ router
 
 router.get("/logout", users.logout);
 
+router
+  .route("/resetpassword")
+  .get(users.renderPasswordResetPage)
+  .post(catchAsync(users.resetPassword));
+
+router
+  .route("/resetpassword/request")
+  .get(users.renderPasswordResetRequest)
+  .post(catchAsync(users.requestPasswordReset));
+
 router.get("/user/confirm/:confirmationCode", catchAsync(users.verifyUser));
 
 module.exports = router;

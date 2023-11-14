@@ -398,3 +398,8 @@ input.invalid {
   border-bottom-right-radius: 40px;
   border-top-right-radius: 40px;
 }
+
+.forgot-password {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
