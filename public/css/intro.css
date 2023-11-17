@@ -157,3 +157,21 @@ main.sendus p:nth-last-of-type(2) a {
   font-weight: 600;
   color: white;
 }
+
+#coursebook-password {
+  width: 300px;
+  height: 25px;
+  font-size: 20px;
+}
+.coursebook-password {
+  width: fit-content;
+  position: relative;
+}
+#coursespan {
+  top: 5px;
+  transform: translate(-115%, 0);
+}
+#bruh.fancytime {
+  height: 30px;
+  width: 100px;
+}

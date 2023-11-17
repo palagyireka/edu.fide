@@ -31,7 +31,8 @@ main {
 }
 
 label[for="lsititleholders"],
-label[for="sititleholders"] {
+label[for="sititleholders"],
+label[for="slititleholders"] {
   display: block;
   font-size: 22px;
   margin-bottom: 15px;
@@ -63,6 +64,7 @@ label[for="sititleholders"] {
 .titleholders-filters {
   background-color: #91b0b2;
   height: 30%;
+  min-height: 140px;
   color: white;
   padding: 20px;
   border-radius: 10px;

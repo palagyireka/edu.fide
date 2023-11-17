@@ -29,7 +29,7 @@ const renderPosts = (tagName, path) => {
 
     Blogpost.paginate(query, {
       page: pageNumber,
-      limit: 12,
+      limit: 14,
       sort: { date: -1 },
     }).then((results) => {
       if (pageNumber === results.totalPages) {

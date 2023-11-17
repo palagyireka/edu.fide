@@ -91,10 +91,22 @@ if (cancelHolderBtn) {
       body: JSON.stringify(postData),
     })
       .then(() => {
-        window.location.replace("/pot/titleholders/si");
+        if (lsiSelect === "LSI") {
+          window.location.replace("/pot/titleholders/lsi");
+        } else if (siSelect === "SI") {
+          window.location.replace("/pot/titleholders/si");
+        } else if (sliSelect === "SLI") {
+          window.location.replace("/pot/titleholders/sli");
+        }
       })
       .catch(() => {
-        window.location.replace("/pot/titleholders/si");
+        if (lsiSelect === "LSI") {
+          window.location.replace("/pot/titleholders/lsi");
+        } else if (siSelect === "SI") {
+          window.location.replace("/pot/titleholders/si");
+        } else if (sliSelect === "SLI") {
+          window.location.replace("/pot/titleholders/sli");
+        }
       });
   });
   deleteHolderBtn.addEventListener("click", async (evt) => {

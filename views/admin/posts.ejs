@@ -23,7 +23,7 @@
     </a>
     <% }) %>
   </div>
-  <button id="load-more">Load More</button>
+  <button id="load-more" class="fancytime">Load More</button>
 </main>
 <script>
   const jobbLinkek = document.querySelectorAll(".next-last a");
@@ -51,15 +51,5 @@
     bPosts.appendChild(sor);
     counter += 3;
   }
-
-  const chrOrder = document.querySelector("#chrorder");
-  chrOrder.addEventListener("click", (evt) => {
-    console.log("fired");
-    if (evt.target.selectedIndex == 1) {
-      bPosts.style.flexDirection = "column-reverse";
-    } else {
-      bPosts.style.flexDirection = "column";
-    }
-  });
 </script>
 <script src="/js/loadMorePosts.js"></script>

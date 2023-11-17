@@ -9,7 +9,7 @@
       <label for="sititleholders">SI Title Holders</label>
       <select name="sititleholders" id="sititleholders" size="18"></select>
       <% } else if(type === 'sli') { %>
-      <label for="slititleholders">SI Title Holders</label>
+      <label for="slititleholders">SLI Title Holders</label>
       <select name="slititleholders" id="slititleholders" size="18"></select>
       <% } %>
     </div>
@@ -69,10 +69,8 @@
     <input type="text" name="fideid-new-holder" id="fideid-new-holder" />
     <label for="fideid-new-holder">Country:</label>
     <div id="country-new-holder"></div>
-    <label for="new-holder-date"
-      >Award Date (the year will be extracted):
-    </label>
-    <input type="datetime-local" name="new-holder-date" id="new-holder-date" />
+    <label for="new-holder-date">Award Date: </label>
+    <input type="text" name="new-holder-date" id="new-holder-date" />
     <p>Type of Title:</p>
     <div class="title-types-div">
       <div>

@@ -59,6 +59,7 @@ paths.forEach((item) => {
       cText.innerText = country;
       anchorTags[0].href = `/pot/titleholders/si?country=${country}`;
       anchorTags[1].href = `/pot/titleholders/lsi?country=${country}`;
+      anchorTags[2].href = `/pot/titleholders/sli?country=${country}`;
       countryContactA.href = `/contact?country=${country}`;
     }, 200);
     setTimeout(() => {
