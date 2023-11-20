@@ -73,10 +73,9 @@ module.exports.register = async (req, res, next) => {
     req.hostname
   );
 
-  req.login(registeredUser, (err) => {
-    if (err) return next(err);
-    req.flash("success", "Successfully registered!");
-    res.redirect("/");
+  res.render("message", {
+    message:
+      "<h3>Thank you for registering. We've sent a link to verify your email to the address you provided. Please check your inbox and follow the instructions in the email.</h3><p>If you don't see the email in your inbox, it may be in your spam or junk folder.</p><p>If you find the email in your spam folder, mark it as 'Not Spam' to ensure you receive future communications from us.</p>",
   });
 };
 
@@ -142,7 +141,7 @@ module.exports.requestPasswordReset = async (req, res, next) => {
   });
 };
 
-module.exports.renderPasswordResetPage = (req, res) => {
+module.exports.renderPasswordResetPage = async (req, res) => {
   const token = req.query.token;
   const userId = req.query.id;
   if (!token || !userId) {
@@ -154,6 +153,19 @@ module.exports.renderPasswordResetPage = (req, res) => {
       )
     );
   }
+
+  let passwordResetToken = await Token.findOne({ userId });
+
+  if (!passwordResetToken) {
+    next(
+      new ExpressError(
+        "Invalid or expired password reset token",
+        401,
+        "flashError"
+      )
+    );
+  }
+
   res.render("password-reset/password-reset", { token, userId });
 };
 

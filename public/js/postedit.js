@@ -1,3 +1,27 @@
+const Link = Quill.import("formats/link");
+
+Link.PROTOCOL_WHITELIST = ["http", "https", "mailto"];
+
+class CustomLinkSanitizer extends Link {
+  static sanitize(url) {
+    const sanitizedUrl = super.sanitize(url);
+
+    if (!sanitizedUrl || sanitizedUrl === "about:blank") return sanitizedUrl;
+
+    const hasWhitelistedProtocol = this.PROTOCOL_WHITELIST.some(function (
+      protocol
+    ) {
+      return sanitizedUrl.startsWith(protocol);
+    });
+
+    if (hasWhitelistedProtocol) return sanitizedUrl;
+
+    return `http://${sanitizedUrl}`;
+  }
+}
+
+Quill.register(CustomLinkSanitizer, true);
+
 const editorOptions = {
   theme: "snow",
   modules: {
@@ -91,8 +115,10 @@ async function getContent() {
   ) {
     originalTags = quillContent.tags;
     originalCountries = quillContent.countries;
-    console.log(originalTags, originalCountries);
   }
+
+  console.log(originalTags);
+  console.log(originalCountries);
 }
 
 const clickHandler = async () => {
@@ -104,12 +130,11 @@ const clickHandler = async () => {
   let tags;
   let taggedCountries;
 
-  if (images) {
+  if (images !== null) {
     const bareImages = images.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
     imageContent = bareImages.map((img) => {
       return { url: img, filename: img.split("/").pop() };
     });
-    console.log(imageContent);
   }
 
   tagSelect.isAllSelected() ? (tags = ["All"]) : (tags = tagSelect.value);
@@ -120,11 +145,13 @@ const clickHandler = async () => {
   const postData = JSON.stringify({
     title: titleContent,
     text: textContent,
-    images: images ? imageContent : null,
+    images: imageContent,
     tags: tags,
     countries: taggedCountries,
-    featured: featured.checked,
+    featured: document.querySelector("#featured-box").checked,
   });
+
+  console.log(postData);
 
   fetch(`/admin/${id}`, {
     method: "PUT",
@@ -175,6 +202,14 @@ getContent().then(() => {
     required: true,
     selectedValue: originalCountries,
   });
+
+  if (originalTags[0] === "All") {
+    tagSelect.toggleSelectAll();
+  }
+
+  if (originalCountries[0] === "All") {
+    countrySelect.toggleSelectAll();
+  }
 });
 
 saveBtn.addEventListener("click", () => {

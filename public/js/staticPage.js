@@ -1,3 +1,7 @@
+const pigeonFiles = document.querySelector("iframe");
+if (pigeonFiles) {
+  pigeonFiles.classList.add("pigeonframe");
+}
 const textDiv = document.querySelector(".text-body");
 
 const getPath = () => {

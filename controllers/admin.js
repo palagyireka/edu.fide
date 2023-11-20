@@ -32,7 +32,7 @@ module.exports.renderPosts = (req, res) => {
 
   const transform = (paginatedPosts) => {
     paginatedPosts.forEach((post) => {
-      if (post.images.length === 0 || post.images == null) {
+      if (post.images.length === 0 || !post.images[0]) {
         post.images = [{ url: "" }];
       }
       post.text = deltaToHtml(post.text);
@@ -137,9 +137,13 @@ module.exports.editPost = async (req, res) => {
     {
       title: req.body.title,
       text: req.body.text,
+      tags: req.body.tags,
+      countries: req.body.countries,
+      featured: req.body.featured,
     },
     { new: true }
   );
+
   if (req.body.images) {
     const difference = editedPost.images.filter(
       (x) => !req.body.images.includes(x)

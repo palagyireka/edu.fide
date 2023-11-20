@@ -9,29 +9,6 @@ module.exports.showTitleholders = async (req, res) => {
   res.render("pot/titleholders", { type, country, titleholdersData });
 };
 
-module.exports.showPotInfo = (req, res) => {
-  res.render("pot/potnfo");
-};
-
-module.exports.showPotInfoEdit = (req, res) => {
-  res.render("editor");
-};
-
-module.exports.editPotInfo = (req, res) => {
-  StaticPage.findOneAndUpdate(
-    { page: "potInfo" },
-    { text: req.body.text }
-  ).then((obj) => {
-    req.flash("success", "Edit saved!");
-    res.send("ok");
-  });
-};
-
-module.exports.getPotInfoText = async (req, res) => {
-  const text = await StaticPage.findOne({ page: "potInfo" });
-  res.json(text);
-};
-
 module.exports.showPassword = (req, res) => {
   res.render("pot/pot-coursebook-password");
 };

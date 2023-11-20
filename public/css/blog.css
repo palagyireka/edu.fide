@@ -166,10 +166,14 @@ label[for="title"] {
   width: 100%;
   transform: translate(0, -10%);
   margin: 0;
+  object-fit: cover;
+  height: 100%;
 }
 .blogsor:nth-of-type(2) .blog-card img {
   width: 100%;
   margin: 0;
+  object-fit: cover;
+  height: 100%;
 }
 
 .blogsor:first-of-type h2,

@@ -1,24 +1,32 @@
 const deltaToHtml = require("../utils/deltaToHtml");
 const StaticPage = require("../models/staticPages");
 
-module.exports.renderIntro = async (req, res) => {
-  res.render("intro");
+module.exports.renderPage = (route, fileUpload) => {
+  return async (req, res) => {
+    res.render("staticPage", { route, fileUpload });
+  };
 };
 
-module.exports.renderIntroEditor = (req, res) => {
-  res.render("editor");
+module.exports.renderEditor = () => {
+  return (req, res) => {
+    res.render("editor");
+  };
 };
 
-module.exports.editIntro = (req, res) => {
-  StaticPage.findOneAndUpdate({ page: "intro" }, { text: req.body.text }).then(
-    (obj) => {
-      req.flash("success", "Edit saved!");
-      res.send("ok");
-    }
-  );
+module.exports.editPage = (page) => {
+  return (req, res) => {
+    StaticPage.findOneAndUpdate({ page: page }, { text: req.body.text }).then(
+      (obj) => {
+        req.flash("success", "Edit saved!");
+        res.send("ok");
+      }
+    );
+  };
 };
 
-module.exports.getIntroText = async (req, res) => {
-  const text = await StaticPage.findOne({ page: "intro" });
-  res.json(text);
+module.exports.getPageContents = (page) => {
+  return async (req, res) => {
+    const text = await StaticPage.findOne({ page: page });
+    res.json(text);
+  };
 };

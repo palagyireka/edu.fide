@@ -1,3 +1,27 @@
+const Link = Quill.import("formats/link");
+
+Link.PROTOCOL_WHITELIST = ["http", "https", "mailto"];
+
+class CustomLinkSanitizer extends Link {
+  static sanitize(url) {
+    const sanitizedUrl = super.sanitize(url);
+
+    if (!sanitizedUrl || sanitizedUrl === "about:blank") return sanitizedUrl;
+
+    const hasWhitelistedProtocol = this.PROTOCOL_WHITELIST.some(function (
+      protocol
+    ) {
+      return sanitizedUrl.startsWith(protocol);
+    });
+
+    if (hasWhitelistedProtocol) return sanitizedUrl;
+
+    return `http://${sanitizedUrl}`;
+  }
+}
+
+Quill.register(CustomLinkSanitizer, true);
+
 const editorOptions = {
   theme: "snow",
   modules: {
@@ -84,10 +108,10 @@ const clickHandler = async () => {
   let tags;
   let taggedCountries;
 
-  if (images) {
+  if (images !== null) {
     const bareImages = images.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
     imageContent = bareImages.map((img) => {
-      ({ url: img, filename: img.split("/").pop() });
+      return { url: img, filename: img.split("/").pop() };
     });
   }
 
@@ -99,11 +123,13 @@ const clickHandler = async () => {
   const postData = {
     title: titleContent,
     text: textContent,
-    images: images ? imageContent : null,
+    images: imageContent,
     tags: tags,
     countries: taggedCountries,
     featured: featured.checked,
   };
+
+  console.log(JSON.stringify(postData));
 
   fetch("/admin/posts", {
     method: "POST",

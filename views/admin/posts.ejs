@@ -13,11 +13,12 @@
         <!-- style="background-image: url('<%= post.images[0].url %>')" -->
         <%= post.title %>
       </h2>
-      <p>
+      <div class="img-container">
         <% if (post.images[0].url !== "") { %>
         <img src="<%= post.images[0].url %>" alt="image" />
-        <% } %> <%= post.text %><br />
-      </p>
+        <% } %>
+        <p><%= post.text %><br /></p>
+      </div>
 
       <span> Read more here >> </span>
     </a>

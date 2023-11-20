@@ -80,10 +80,12 @@ const getPath = () => {
   const params = window.location.pathname.split("/");
   params.pop();
   params.shift();
-  return params;
+  return params.join("/");
 };
 
 const path = getPath();
+
+console.log(path);
 
 const clickHandler = async () => {
   const textContent = quill.getContents();

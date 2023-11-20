@@ -44,7 +44,9 @@ module.exports.isLoginEmailValidated = async (req, res, next) => {
     if (user.status === "active") {
       next();
     } else if (user.status === "pending") {
-      res.render("verify-your-email");
+      res.render("message", {
+        message: "<h3>Please verify your email address.</h3>",
+      });
     }
   } else {
     next(
