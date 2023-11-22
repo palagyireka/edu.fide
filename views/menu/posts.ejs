@@ -1,7 +1,10 @@
 <% layout('layouts/boilerplate') %>
 <main class="blogs">
   <div class="posts-title">
-    <p><%= tagName %></p>
+    <p>
+      <% if (tagName !== "") {%> <%=tagName%> <% } else if (countryName !== "")
+      {%> <%=countryName + " News"%> <%} else {%> <%="News"%> <%}%>
+    </p>
   </div>
   <div id="b-posts">
     <% blogposts.forEach((blog) => {%>

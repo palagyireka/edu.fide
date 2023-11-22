@@ -1,9 +1,10 @@
 const deltaToHtml = require("../utils/deltaToHtml");
 const { convert } = require("html-to-text");
 const Blogpost = require("../models/blogpost");
+const Countrycontact = require("../models/countrycontact");
 const url = require("url");
 
-const renderPosts = (tagName, path) => {
+module.exports.renderPosts = (tagName, path, country) => {
   return async (req, res) => {
     let lastPage = false;
     const pageNumber = req.query.page || 1;
@@ -25,7 +26,25 @@ const renderPosts = (tagName, path) => {
       });
     };
 
-    const query = { $or: [{ tags: tagName }, { tags: "all" }] };
+    let countryName = "";
+    let query;
+
+    if (country === true) {
+      if (req.query.country) {
+        query = { countries: req.query.country };
+        Countrycontact.findOne({ "alpha-2": req.query.country }).then(
+          (result) => {
+            if (result) {
+              countryName = result.name;
+            }
+          }
+        );
+      } else {
+        query = {};
+      }
+    } else {
+      query = { $or: [{ tags: tagName }, { tags: "all" }] };
+    }
 
     Blogpost.paginate(query, {
       page: pageNumber,
@@ -44,12 +63,13 @@ const renderPosts = (tagName, path) => {
         pageNumber,
         path,
         tagName,
+        countryName,
       });
     });
   };
 };
 
-const renderSinglePost = async (req, res) => {
+module.exports.renderSinglePost = async (req, res) => {
   const post = await Blogpost.findById(req.params.id);
   if (!post) {
     req.flash("error", "Cannot find this post");
@@ -60,7 +80,7 @@ const renderSinglePost = async (req, res) => {
   res.render("menu/show", { post });
 };
 
-const loadMore = (tagName) => {
+module.exports.loadMore = (tagName, country) => {
   return async (req, res) => {
     const pageNumber = req.body.page;
     let posts;
@@ -86,7 +106,17 @@ const loadMore = (tagName) => {
       });
     };
 
-    const query = { $or: [{ tags: tagName }, { tags: "all" }] };
+    let query;
+
+    if (country === true) {
+      if (req.query.country) {
+        query = { countries: req.query.country };
+      } else {
+        query = {};
+      }
+    } else {
+      query = { $or: [{ tags: tagName }, { tags: "all" }] };
+    }
 
     Blogpost.paginate(query, {
       page: pageNumber,
@@ -104,41 +134,3 @@ const loadMore = (tagName) => {
     });
   };
 };
-
-module.exports.renderCommissionNews = renderPosts(
-  "commissionNews",
-  "commissionnews"
-);
-module.exports.showCommissionNews = renderSinglePost;
-module.exports.renderMoreCommissionNews = loadMore("commissionNews");
-
-module.exports.renderConferences = renderPosts("conferences", "conferences");
-module.exports.showConferences = renderSinglePost;
-module.exports.renderMoreConferences = loadMore("conferences");
-
-module.exports.renderInitiatives = renderPosts("cieInitiatives", "initiatives");
-module.exports.showInitiatives = renderSinglePost;
-module.exports.renderMoreInitiatives = loadMore("cieInitiatives");
-
-module.exports.renderPersonalStories = renderPosts(
-  "personalStories",
-  "personalstories"
-);
-module.exports.showPersonalStories = renderSinglePost;
-module.exports.renderMorePersonalStories = loadMore("personalStories");
-
-module.exports.renderResearchNews = renderPosts("researchNews", "researchnews");
-module.exports.showResearchNews = renderSinglePost;
-module.exports.renderMoreResearchNews = loadMore("researchNews");
-
-module.exports.renderCourseNews = renderPosts("courseNews", "coursenews");
-module.exports.showCourseNews = renderSinglePost;
-module.exports.renderMoreCourseNews = loadMore("courseNews");
-
-module.exports.renderCieNews = renderPosts("cieNews", "cienews");
-module.exports.showCieNews = renderSinglePost;
-module.exports.renderMoreCieNews = loadMore("cieNews");
-
-module.exports.renderBlog = renderPosts("blog", "blog");
-module.exports.showBlog = renderSinglePost;
-module.exports.renderMoreBlog = loadMore("blog");

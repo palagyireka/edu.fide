@@ -358,19 +358,19 @@
 .ql-editor .ql-color-purple {
   color: #93f;
 }
-.ql-editor .ql-font-serif {
+.ql-font-serif {
   font-family: Georgia, Times New Roman, serif;
 }
-.ql-editor .ql-font-monospace {
+.ql-font-monospace {
   font-family: Monaco, Courier New, monospace;
 }
-.ql-editor .ql-size-small {
+.ql-size-small {
   font-size: 0.75em;
 }
-.ql-editor .ql-size-large {
+.ql-size-large {
   font-size: 1.5em;
 }
-.ql-editor .ql-size-huge {
+.ql-size-huge {
   font-size: 2.5em;
 }
 .ql-editor .ql-direction-rtl {

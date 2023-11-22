@@ -35,5 +35,6 @@ router
   .post(catchAsync(users.requestPasswordReset));
 
 router.get("/user/confirm/:confirmationCode", catchAsync(users.verifyUser));
+router.get("/send-confirm/:id", catchAsync(users.sendConfirmationEmailAgain));
 
 module.exports = router;

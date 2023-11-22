@@ -37,7 +37,7 @@ const renderNewPosts = (posts) => {
       pathname = "/admin";
     }
 
-    a.href = `${window.location.pathname}/${post._id}`;
+    a.href = `${pathname}/${post._id}`;
     a.classList.add("blog-card");
     title.innerText = post.title;
     if (post.images[0].url !== "") {

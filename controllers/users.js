@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const User = require("../models/user");
 const Token = require("../models/token");
 var jwt = require("jsonwebtoken");
@@ -79,6 +80,24 @@ module.exports.register = async (req, res, next) => {
   });
 };
 
+module.exports.sendConfirmationEmailAgain = async (req, res) => {
+  const user = await User.findById(new ObjectId(req.params.id));
+
+  console.log(user);
+
+  await sendConfirmationEmail(
+    `${user.firstName} ${user.lastName}`,
+    user.email,
+    user.confirmationCode,
+    req.hostname
+  );
+
+  res.render("message", {
+    message:
+      "<h3>We've sent a link to verify your email to the address you provided. Please check your inbox and follow the instructions in the email.</h3><p>If you don't see the email in your inbox, it may be in your spam or junk folder.</p><p>If you find the email in your spam folder, mark it as 'Not Spam' to ensure you receive future communications from us.</p>",
+  });
+};
+
 module.exports.logout = (req, res, next) => {
   req.logout(function (err) {
     if (err) {
@@ -100,7 +119,9 @@ module.exports.verifyUser = async (req, res) => {
 
   user.status = "active";
   await user.save();
-  res.render("email-verify");
+  res.render("message", {
+    message: "<h3>Your email has been verified. Please log in.</h3>",
+  });
 };
 
 module.exports.renderPasswordResetRequest = (req, res) => {

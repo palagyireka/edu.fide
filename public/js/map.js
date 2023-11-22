@@ -55,12 +55,15 @@ paths.forEach((item) => {
       ".country-menu li:nth-of-type(2) ul li a"
     );
     const countryContactA = document.querySelector("#country-contact");
+    const countryNewsA = document.querySelector("#country-news");
+
     setTimeout(() => {
       cText.innerText = country;
       anchorTags[0].href = `/pot/titleholders/si?country=${country}`;
       anchorTags[1].href = `/pot/titleholders/lsi?country=${country}`;
       anchorTags[2].href = `/pot/titleholders/sli?country=${country}`;
       countryContactA.href = `/contact?country=${country}`;
+      countryNewsA.href = `/posts?country=${countryCode}`;
     }, 200);
     setTimeout(() => {
       cText.classList.remove("hidden");

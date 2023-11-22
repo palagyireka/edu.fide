@@ -110,8 +110,6 @@ main.partnerships .memberdiv img {
 }
 
 main.intro img {
-  float: left;
-  width: 60%;
   height: auto;
   margin: 10px;
 }

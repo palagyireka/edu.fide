@@ -6,7 +6,6 @@
 }
 
 main.blogs a {
-  text-decoration: underline;
   transition: 0.3s;
 }
 main.blogs a:hover {
@@ -29,7 +28,7 @@ main.blogs a:hover {
 .show-blogpost ul,
 .show-blogpost ol {
   box-sizing: border-box;
-  padding: 10px 15%;
+  padding: 10px 10%;
   font-size: 18px;
   line-height: 1.1;
   word-wrap: break-word;
@@ -59,6 +58,11 @@ main.blogs a:hover {
 .img-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.img-wrapper img {
+  max-width: 90%;
+  height: auto;
 }
 
 .show-blogpost .fancytime,
@@ -337,4 +341,9 @@ label[for="title"] {
 }
 #load-more:hover {
   border-radius: 3px;
+}
+
+.text-body a {
+  text-decoration: underline;
+  color: #699ac4;
 }

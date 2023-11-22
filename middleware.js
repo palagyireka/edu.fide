@@ -39,13 +39,14 @@ module.exports.isValidated = (req, res, next) => {
 
 module.exports.isLoginEmailValidated = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
+  const link = `http://${req.hostname}/send-confirm/${user.id}`;
 
   if (user) {
     if (user.status === "active") {
       next();
     } else if (user.status === "pending") {
       res.render("message", {
-        message: "<h3>Please verify your email address.</h3>",
+        message: `<h3>Please verify your email address.</h3><p>Click on <a href="${link}">this link</a> to resend the verification email.</p>`,
       });
     }
   } else {
