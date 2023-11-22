@@ -20,6 +20,7 @@ const Commissionmember = require("./models/commission");
 const Partnership = require("./models/partnership");
 const Download = require("./models/download");
 const Countrycontact = require("./models/countrycontact");
+const FeaturedPost = require("./models/featuredPost");
 
 const helmet = require("helmet");
 const catchAsync = require("./utils/catchAsync");
@@ -113,9 +114,8 @@ app.use("/partnerships", partnershipRoutes);
 app.use("/pot/titleholders", titleholderRoutes);
 
 app.get("/", isValidated, async (req, res) => {
-  const featuredPost = await Blogpost.findOne({ featured: true }, null, {
-    sort: { date: -1 },
-  });
+  const featured = await FeaturedPost.findOne({}).populate("featuredPostId");
+  const featuredPost = featured.featuredPostId;
 
   featuredPost.images = [{ url: "" }];
 
@@ -173,18 +173,31 @@ app.get("/partnerships", async (req, res) => {
   res.render("partnerships", { partnershipMembers });
 });
 
-app.get("/contact", async (req, res) => {
-  const contactData = await Countrycontact.find({});
-  const countryC = decodeURIComponent(req.query.country);
-  let chosenContact;
-  for (const contact of contactData) {
-    if (contact.name === countryC) {
-      chosenContact = contact;
-      break;
-    }
-  }
-  res.render("contact", { chosenContact });
-});
+app
+  .route("/contact")
+  .get(
+    catchAsync(async (req, res) => {
+      const countryC = decodeURIComponent(req.query.country);
+      const chosenContact = await Countrycontact.findOne({ name: countryC });
+      res.render("contact", { chosenContact });
+    })
+  )
+  .post(
+    catchAsync(async (req, res) => {
+      await Countrycontact.findOneAndUpdate(
+        { "alpha-2": req.body.alpha2 },
+        {
+          contact: req.body.contact,
+          email: req.body.email,
+          website: req.body.website,
+        }
+      );
+      uriName = encodeURIComponent(req.body.name);
+
+      req.flash("success", "Contact updated");
+      res.redirect(`/contact?country=${uriName}`);
+    })
+  );
 
 app.get("/download", isLoggedIn, async (req, res) => {
   const materials = await Download.find({});

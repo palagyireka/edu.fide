@@ -1,4 +1,5 @@
 const Blogpost = require("../models/blogpost");
+const FeaturedPost = require("../models/featuredPost");
 const { google } = require("googleapis");
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 const privateKey = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
@@ -76,4 +77,7 @@ module.exports.getEvents = async (req, res) => {
   );
 };
 
-module.exports.getIntro = async (req, res) => {};
+module.exports.getFeatured = async (req, res) => {
+  const featured = await FeaturedPost.findOne({});
+  res.send(JSON.stringify({ featured }));
+};

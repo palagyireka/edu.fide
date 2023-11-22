@@ -1,18 +1,48 @@
 <% layout('layouts/boilerplate') %>
 <main class="intro">
-  <h2><%= chosenContact.name %></h2>
-  <% if(chosenContact.contact && chosenContact.contact != ""){ %>
-  <p>Contact: <%= chosenContact.contact %></p>
-  <% } %> <% if(chosenContact.email && chosenContact.email != ""){ %>
-  <p>Email: <%= chosenContact.email %></p>
-  <% } %> <% if(chosenContact.website && chosenContact.website != ""){ %>
-  <p>
-    Website:
-    <a href="<%= chosenContact.website %>" target="_blank"
-      ><%= chosenContact.website %></a
-    >
-  </p>
-  <% } %><% if(chosenContact.desc && chosenContact.desc != ""){ %>
-  <p><%= chosenContact.desc %></p>
-  <% } %>
+  <% if (typeof currentUser !== "undefined") {if (currentUser.role ===
+    "admin") {%> <form action="/contact" method="post"><% }} %>
+    <div class="contact-title">
+      <h2><%= chosenContact.name %></h2>
+    </div>
+    <div class="contact-description">
+      <div class="contact-wrap">
+        <% if(chosenContact.contact && chosenContact.contact != ""){ %>
+        <p>Contact: <%= chosenContact.contact %></p>
+        <% } %> <% if(chosenContact.email && chosenContact.email != ""){ %>
+        <p>Email: <%= chosenContact.email %></p>
+        <% } %> <% if(chosenContact.website && chosenContact.website != ""){ %>
+        <p>
+          Website:
+          <a href="<%= chosenContact.website %>" target="_blank"><%= chosenContact.website %></a>
+        </p>
+        <% } %><% if(chosenContact.desc && chosenContact.desc != ""){ %>
+        <p><%= chosenContact.desc %></p>
+        <% } %>
+      </div>
+      <% if (typeof currentUser !== "undefined") {if (currentUser.role ===
+  "admin") {%>
+      <div id="contact-edit">
+        <h4>Edit</h4>
+        <div class="contact-edit-wrapper">
+          <label for="contact-person">Contact:</label><input type="text" id="contact-person" name="contact" <%
+        if(chosenContact.contact)
+        {%>value="<%= chosenContact.contact %>" <% } %>>
+        </div>
+        <div class="contact-edit-wrapper">
+          <label for="contact-email">Email:</label><input type="text" id="contact-email" name="email" <% if(chosenContact.email) {%> value="<%= chosenContact.email %>" <% } %>>
+        </div>
+        <div class="contact-edit-wrapper">
+          <label for="contact-website">Website:</label><input type="text" id="contact-website" name="website" <% if(chosenContact.website) {%>value="<%=
+      chosenContact.website %>" <% } %>>
+        </div>
+        <input type="hidden" name="alpha2" value="<%= chosenContact["alpha-2"] %>">
+        <input type="hidden" name="name" value="<%= chosenContact.name %>">
+      </div>
+    </div>
+    <div id="contact-save">
+      <a href=""><button class="fancytime" type="submit">Save</button></a>
+    </div>
+  </form>
+  <% }} %>
 </main>

@@ -8,7 +8,9 @@
           <ul class="calendar-ul"></ul>
         </a>
       </div>
+      <% if (featuredPost) {%>
       <div id="featured"><%- include('partials/featured') %></div>
+      <% } %>
     </div>
     <%- include('partials/map') %>
     <div class="right-side">
@@ -16,29 +18,11 @@
         <div class="searchbar">
           <input placeholder="Search..." type="text" />
           <div class="search-symbol">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="12"
-              height="12"
-              fill="currentColor"
-              class="bi bi-search"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              class="bi bi-x hidden"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x hidden" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </div>
         </div>
@@ -48,11 +32,7 @@
         <p class="country-name">United States of America</p>
         <ul class="country-menu">
           <li>
-            <a
-              href="/contact?country=United States of America"
-              id="country-contact"
-              >Contact</a
-            >
+            <a href="/contact?country=United States of America" id="country-contact">Contact</a>
           </li>
           <li>
             FIDE title holders
@@ -63,13 +43,10 @@
                 </a>
               </li>
               <li>
-                <a href="/pot/titleholders/lsi?country=United States of America"
-                  >Lead School Instructors</a
-                >
+                <a href="/pot/titleholders/lsi?country=United States of America">Lead School Instructors</a>
               </li>
               <li>
-                <a href="/pot/titleholders/sli?country=United States of America"
-                  >Senior Lead Instructors
+                <a href="/pot/titleholders/sli?country=United States of America">Senior Lead Instructors
                 </a>
               </li>
             </ul>
@@ -79,10 +56,7 @@
             <ul>
               <li><a href="/posts?country=US" id="country-news">News</a></li>
               <li>
-                <a
-                  href="/gallery?country=United States of America"
-                  id="country-gallery"
-                >
+                <a href="/gallery?country=United States of America" id="country-gallery">
                   Gallery
                 </a>
               </li>
@@ -93,9 +67,7 @@
     </div>
   </div>
   <footer>
-    <a href="https://www.fide.com/privacy" target="_blank"
-      >Read our Privacy Policy</a
-    ><br />
+    <a href="https://www.fide.com/privacy" target="_blank">Read our Privacy Policy</a><br />
     Contact: <a href="mailto:education@fide.com">education[at]fide.com</a>
   </footer>
 </main>
