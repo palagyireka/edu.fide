@@ -1,4 +1,7 @@
 const Blogpost = require("../models/blogpost");
+const FeaturedPost = require("../models/featuredPost");
+const deltaToHtml = require("../utils/deltaToHtml");
+const { convert } = require("html-to-text");
 const { google } = require("googleapis");
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 const privateKey = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
@@ -76,4 +79,72 @@ module.exports.getEvents = async (req, res) => {
   );
 };
 
-module.exports.getIntro = async (req, res) => {};
+module.exports.getFeatured = async (req, res) => {
+  const featured = await FeaturedPost.findOne({});
+  res.send(JSON.stringify({ featured }));
+};
+
+module.exports.search = async (req, res) => {
+  const transform = (posts) => {
+    posts.forEach((post) => {
+      if (post.images.length === 0 || !post.images[0]) {
+        post.images = [{ url: "" }];
+      }
+      post.text = deltaToHtml(post.text);
+      post.text = convert(post.text);
+      post.text = post.text.replace(/\[http.*?\]/gm, "");
+    });
+  };
+
+  let lastPage = false;
+  const limit = 18;
+
+  const query = { $and: [{}] };
+
+  if (req.body.tag) {
+    req.body.tag !== "" ? query.$and.push({ tags: req.body.tag }) : null;
+  }
+  if (req.body.country) {
+    req.body.country !== ""
+      ? query.$and.push({ countries: req.body.country })
+      : null;
+  }
+  if (req.body.year) {
+    req.body.year !== ""
+      ? query.$and.push({
+          $expr: { $eq: [{ $year: "$date" }, parseInt(req.body.year)] },
+        })
+      : null;
+  }
+
+  const results = await Blogpost.aggregate([
+    { $match: query },
+    {
+      $facet: {
+        data: [
+          { $match: { date: { $lt: new Date(req.body.lastDate) } } },
+          { $sort: { date: -1 } },
+          { $limit: limit },
+        ],
+        totalPages: [{ $count: "count" }],
+      },
+    },
+  ]);
+
+  let totalPages;
+
+  if (!results[0].totalPages[0]) {
+    totalPages = 1;
+  } else {
+    totalPages = results[0].totalPages[0].count;
+  }
+
+  if (req.body.pageNumber * limit >= totalPages) {
+    lastPage = true;
+  }
+
+  posts = results[0].data;
+  transform(posts);
+
+  res.json({ posts, lastPage });
+};

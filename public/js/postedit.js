@@ -107,7 +107,16 @@ async function getContent() {
   });
   const quillContent = await response.json();
   titleInput.value = quillContent.title;
-  featured.checked = quillContent.featured;
+
+  const featuredResponse = await fetch("/api/featuredid");
+  const featuredPost = await featuredResponse.json();
+
+  if (featuredPost.featuredPostId === quillContent._id) {
+    featured.checked = true;
+  } else {
+    featured.checked = false;
+  }
+
   quill.setContents(quillContent.text);
   if (
     typeof quillContent.tags !== "undefined" &&
@@ -116,9 +125,6 @@ async function getContent() {
     originalTags = quillContent.tags;
     originalCountries = quillContent.countries;
   }
-
-  console.log(originalTags);
-  console.log(originalCountries);
 }
 
 const clickHandler = async () => {
@@ -150,8 +156,6 @@ const clickHandler = async () => {
     countries: taggedCountries,
     featured: document.querySelector("#featured-box").checked,
   });
-
-  console.log(postData);
 
   fetch(`/admin/${id}`, {
     method: "PUT",

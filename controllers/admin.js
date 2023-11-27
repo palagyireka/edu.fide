@@ -1,6 +1,8 @@
+const mongoose = require("mongoose");
 const deltaToHtml = require("../utils/deltaToHtml");
 const { convert } = require("html-to-text");
 const Blogpost = require("../models/blogpost");
+const FeaturedPost = require("../models/featuredPost");
 const url = require("url");
 const User = require("../models/user");
 
@@ -15,8 +17,12 @@ module.exports.createPost = async (req, res) => {
     date: new Date(),
     tags: req.body.tags,
     countries: req.body.countries,
-    featured: req.body.featured,
   });
+
+  if (req.body.featured === true) {
+    await FeaturedPost.findOneAndUpdate({}, { featuredPostId: newPost._id });
+  }
+
   if (req.body.images) {
     newPost.images = req.body.images;
   }
@@ -139,10 +145,16 @@ module.exports.editPost = async (req, res) => {
       text: req.body.text,
       tags: req.body.tags,
       countries: req.body.countries,
-      featured: req.body.featured,
     },
     { new: true }
   );
+
+  if (req.body.featured === true) {
+    await FeaturedPost.findOneAndUpdate(
+      {},
+      { featuredPostId: new mongoose.Types.ObjectId(id) }
+    );
+  }
 
   if (req.body.images) {
     const difference = editedPost.images.filter(

@@ -43,6 +43,13 @@ main.search {
   flex-wrap: wrap;
   width: 100%;
 }
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
 .search-filters p,
 .search-posts-container > p {
   margin: 10px;
@@ -78,7 +85,16 @@ main.search {
   font-size: 18px;
   font-weight: 500;
 }
-.result-card p {
+/* .result-card p {
+  overflow: hidden;
+  margin: 3px;
+  height: 50px;
+  flex-grow: 1;
+  font-size: 14px;
+  line-height: 1.3;
+} */
+
+.result-card .text-container {
   overflow: hidden;
   margin: 3px;
   height: 50px;
@@ -125,4 +141,8 @@ main.search {
   color: white;
   border-top-left-radius: 5px;
   background-color: #5b85aa;
+}
+
+.load-more-container {
+  width: 100%;
 }
