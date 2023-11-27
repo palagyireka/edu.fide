@@ -20,20 +20,15 @@
           </li>
         </ul>
       </div>
-      <% blogPosts.forEach((blog) => {%>
-      <a class="result-card" href="/blog/<%= blog.id %>">
-        <div class="tag-names"><%= blog.tags %></div>
-        <h2><%= blog.title %></h2>
-        <p>
-          <% if (blog.images[0].url !== "") { %>
-          <img src="<%= blog.images[0].url %>" alt="image" />
-          <% } %> <%= blog.text %><br />
-        </p>
-        <div class="year-tag"><%= blog.date.getFullYear() %></div>
-      </a>
-      <% }) %>
+      <div class="first-six"></div>
+      <div class="card-container"></div>
+      <div class="load-more-container"></div>
     </div>
   </div>
 </main>
 <script src="/js/virtual-select.min.js"></script>
-<script src="/js/search.js"></script>
+
+<script>
+  const aggregateData = <%- JSON.stringify(aggregate) %>
+</script>
+<script src="/js/search2.js"></script>

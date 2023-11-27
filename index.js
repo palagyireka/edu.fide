@@ -135,20 +135,6 @@ app.get("/", isValidated, async (req, res) => {
 });
 
 app.get("/search", async (req, res) => {
-  const blogPosts = await Blogpost.find({}).sort({ date: -1 });
-
-  blogPosts.forEach((post) => {
-    if (post.images.length === 0 || !post.images[0]) {
-      post.images = [{ url: "" }];
-    }
-    post.text = deltaToHtml(post.text);
-    post.text = convert(post.text);
-    post.text = post.text.replace(/\[http.*?\]/gm, "");
-  });
-  res.render("search", { blogPosts });
-});
-
-app.get("/search2", async (req, res) => {
   const aggregate = await Blogpost.aggregate([
     {
       $project: {
@@ -170,7 +156,7 @@ app.get("/search2", async (req, res) => {
     },
   ]);
 
-  res.render("search2", { aggregate: aggregate[0] });
+  res.render("search", { aggregate: aggregate[0] });
 });
 
 app.get("/profile", (req, res) => {

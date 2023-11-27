@@ -64,7 +64,7 @@ label[for="slititleholders"] {
 .titleholders-filters {
   background-color: #91b0b2;
   height: 30%;
-  min-height: 140px;
+  min-height: 190px;
   color: white;
   padding: 20px;
   border-radius: 10px;
@@ -79,7 +79,29 @@ label[for="slititleholders"] {
 .titleholders-filters ul {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   font-size: 18px;
+}
+
+.titleholders-filters ul li:last-of-type {
+  margin-top: 15px;
+  position: relative;
+}
+.clear-th-name {
+  position: absolute;
+  right: 10px;
+  top: 8.8px;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.titleholders-filters ul li:last-of-type input {
+  height: 35.6px;
+  border-radius: 15px;
+  font-size: 15px;
+  padding-left: 8px;
+  width: max-content;
 }
 
 .chosen-titleholder p {

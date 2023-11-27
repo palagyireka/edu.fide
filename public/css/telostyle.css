@@ -282,28 +282,30 @@
     align-items: center;
     padding: 0;
   }
-  .titleholders-flex > div {
+  .titleholders-flex > div,
+  .titleholders-flex > div:first-of-type,
+  .titleholders-flex > div:nth-of-type(2),
+  .titleholders-flex ~ .add-material {
     width: 100%;
+    margin: 0;
+    box-sizing: border-box;
   }
 
   .titleholders-filters {
-    height: 240px;
+    height: 340px;
   }
   .titleholders-filters ul {
     flex-direction: column;
   }
   .titleholders-filters li,
-  .titleholders-filters li input {
+  .titleholders-filters li input,
+  .titleholders-filters ul li:last-of-type input {
     width: 100%;
-    font-size: 19px;
-    padding: 10px;
+    margin-top: 10px;
   }
-  .titleholders-filters li > div span {
-    color: black;
-    right: 35px;
-    top: 5.5px;
+  .clear-th-name {
+    top: 36.8px;
   }
-
   main.intro div {
     flex-direction: column;
   }

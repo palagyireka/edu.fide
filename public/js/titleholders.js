@@ -120,10 +120,22 @@ if (cancelHolderBtn) {
       },
     })
       .then(() => {
-        window.location.replace("/pot/titleholders/si");
+        if (lsiSelect === "LSI") {
+          window.location.replace("/pot/titleholders/lsi");
+        } else if (siSelect === "SI") {
+          window.location.replace("/pot/titleholders/si");
+        } else if (sliSelect === "SLI") {
+          window.location.replace("/pot/titleholders/sli");
+        }
       })
       .catch(() => {
-        window.location.replace("/pot/titleholders/si");
+        if (lsiSelect === "LSI") {
+          window.location.replace("/pot/titleholders/lsi");
+        } else if (siSelect === "SI") {
+          window.location.replace("/pot/titleholders/si");
+        } else if (sliSelect === "SLI") {
+          window.location.replace("/pot/titleholders/sli");
+        }
       });
   });
   updateHolderBtn.addEventListener("click", async (evt) => {
@@ -166,10 +178,22 @@ if (cancelHolderBtn) {
       body: JSON.stringify(postData),
     })
       .then(() => {
-        window.location.replace("/pot/titleholders/si");
+        if (lsiSelect === "LSI") {
+          window.location.replace("/pot/titleholders/lsi");
+        } else if (siSelect === "SI") {
+          window.location.replace("/pot/titleholders/si");
+        } else if (sliSelect === "SLI") {
+          window.location.replace("/pot/titleholders/sli");
+        }
       })
       .catch(() => {
-        window.location.replace("/pot/titleholders/si");
+        if (lsiSelect === "LSI") {
+          window.location.replace("/pot/titleholders/lsi");
+        } else if (siSelect === "SI") {
+          window.location.replace("/pot/titleholders/si");
+        } else if (sliSelect === "SLI") {
+          window.location.replace("/pot/titleholders/sli");
+        }
       });
   });
 }
@@ -305,12 +329,29 @@ VirtualSelect.init({
   selectedValue: initialCountry,
 });
 
+const nameFilter = document.querySelector(
+  ".titleholders-filters ul li:last-of-type input"
+);
+document.querySelector(".clear-th-name").addEventListener("click", (evt) => {
+  if (nameFilter.value != "") {
+    nameFilter.value = "";
+    var keyupEvent = new KeyboardEvent("keyup", {
+      key: "Enter",
+      bubbles: true,
+      cancelable: true,
+    });
+    nameFilter.dispatchEvent(keyupEvent);
+  }
+});
+
 yearFilter.addEventListener("change", (evt) => filterOptions(evt));
 countryFilter.addEventListener("change", (evt) => filterOptions(evt));
+nameFilter.addEventListener("keyup", (evt) => filterOptions(evt));
 
 function filterOptions(evt) {
   const selectedCountry = countryFilter.value;
   const selectedYear = yearFilter.value;
+  const nameFraction = nameFilter.value;
 
   mutasdAzAdatokat(evt, true);
   document
@@ -320,7 +361,8 @@ function filterOptions(evt) {
   allTitleHolders.forEach((holder) => {
     const countryMatch = !selectedCountry || holder.country == selectedCountry;
     const yearMatch = !selectedYear || holder.year == selectedYear;
-    if (countryMatch && yearMatch) {
+    const nameMatch = !nameFraction || holder.fullname.includes(nameFraction);
+    if (countryMatch && yearMatch && nameMatch) {
       const option = document.createElement("option");
       option.value = holder.fullname;
       option.innerText = holder.fullname;
@@ -331,19 +373,4 @@ function filterOptions(evt) {
       document.querySelector(".titleholders-select select").appendChild(option);
     }
   });
-  if (
-    document.querySelector(".titleholders-select select").childNodes.length ===
-    0
-  ) {
-    allTitleHolders.forEach((holder) => {
-      const option = document.createElement("option");
-      option.value = holder.fullname;
-      option.innerText = holder.fullname;
-      option.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
-      option.addEventListener("touchstart", (evt) =>
-        mutasdAzAdatokat(evt, false)
-      );
-      document.querySelector(".titleholders-select select").appendChild(option);
-    });
-  }
 }
