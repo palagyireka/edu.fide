@@ -8,35 +8,26 @@
         around the world. Click on the pictures for captions.
       </p>
       <p>Filter Images By Country:</p>
-      <div
-      id="gallery-country-filter"
-      data-tags="<% for(let i = 0; i < countryTags.length; i++) { %><%= countryTags[i] %>,<%} %>"
-    ></div>
+      <div id="gallery-country-filter" data-tags="<% for(let i = 0; i < countryTags.length; i++) { %><%= countryTags[i] %>,<%} %>"></div>
     </div>
-    
+
     <div class="image-gallery">
       <% for (let i = 0; i < galleryUrls.length; i++) {%>
       <div class="image-container">
         <img class="image" id="img-<%= i %>" src="<%= galleryUrls[i].url %>" <%
-        if (typeof galleryUrls[i].desc !== "undefined") {%>
-        data-description="<%=galleryUrls[i].desc%>" <% } if (typeof
-        galleryUrls[i].country !== "undefined") {%>
-        data-country="<%=galleryUrls[i].country%>" <% } %> />
+        if (typeof galleryUrls[i].desc !== "undefined") {%> data-description="<%=galleryUrls[i].desc%>" <% } if (typeof
+        galleryUrls[i].country !== "undefined") {%> data-country="<%=galleryUrls[i].country%>" <% } if (typeof
+        galleryUrls[i].createdAt !== "undefined") {%> data-created="<%=galleryUrls[i].createdAt%>" <% } %> />
         <div class="overlay"></div>
       </div>
       <% } %>
     </div>
+    <% if (lastPage !== true) {%>
+    <button id="load-more" class="load-more-gallery fancytime">
+      Load More
+    </button>
+    <% } %>
   </div>
-  <div class="first-prev">
-    <% if(pageNumber !== 1) {%>
-    <a href="/gallery?page=<%= pageNumber > 1 ? parseInt(pageNumber) - 1 : 1 %><%=typeof query !== "undefined" ? `&country=${query}` : ""%>"> ← Previous</a>
-    <a href="/gallery<%=typeof query !== "undefined" ? `?country=${query}` : ""%>"> ↞ First</a>
-    <%}%>
-  </div>
-  <% if(pageNumber !== totalPages) {%><div class="next-last">
-    <a href="/gallery?page=<%= parseInt(pageNumber)+ 1 %><%=typeof query !== "undefined" ? `&country=${query}` : ""%>">Next →</a>
-    <a href="/gallery?page=<%= totalPages %><%=typeof query !== "undefined" ? `&country=${query}` : ""%>">Last ↠</a>
-  </div><%}%>
   <div id="modal-holder"></div>
 </main>
 

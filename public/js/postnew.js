@@ -180,7 +180,9 @@ VirtualSelect.init({
 });
 
 saveBtn.addEventListener("click", () => {
-  if (tagSelect.validate() && countrySelect.validate()) {
+  if (tagSelect.validate()) {
     clickHandler();
+  } else if (!tagSelect.validate()) {
+    tagSelector.classList.add("not-valid");
   }
 });

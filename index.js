@@ -250,57 +250,29 @@ app.get("/fullcalendar", (req, res) => {
   res.render("fullcalendar");
 });
 
-app.get("/gallery", async (req, res, next) => {
-  const pageNumber = req.query.page || 1;
-  const pageSize = 9;
-  let imgUrls = {};
+app.get("/gallery", async (req, res) => {
+  let imgUrls = [];
   const query = req.query.country;
   let cloudinaryExpression;
   let tags;
+  const resultNumber = 10;
 
   if (query) {
-    cloudinaryExpression = `folder:"FIDE EDU Gallery" AND tags:${query}`;
+    cloudinaryExpression = `folder:"FIDE EDU Gallery" AND tags="${query}"`;
   } else {
     cloudinaryExpression = 'folder:"FIDE EDU Gallery"/*';
   }
 
-  await cloudinary.search
-    .expression('folder:"FIDE EDU Gallery"/*')
-    .sort_by("public_id", "asc")
-    .with_field("tags")
-    .execute()
-    .then((result) => {
-      tags = result.resources.map((img) => {
-        const imgObject = {};
-
-        if (typeof img.tags !== "undefined") {
-          imgObject.tags = img.tags;
-        }
-
-        return imgObject;
-      });
-    });
-
-  const allCountryTags = [];
-
-  tags.forEach((x) => {
-    allCountryTags.push(...x.tags);
+  await cloudinary.api.tags({ max_results: 500 }).then((result) => {
+    tags = result.tags;
   });
-
-  function uniq(a) {
-    const seen = {};
-    return a.filter(function (item) {
-      return seen.hasOwnProperty(item) ? false : (seen[item] = true);
-    });
-  }
-
-  const countryTags = uniq(allCountryTags);
 
   await cloudinary.search
     .expression(cloudinaryExpression)
-    .sort_by("public_id", "asc")
+    .sort_by("created_at", "desc")
     .with_field("context")
     .with_field("tags")
+    .max_results(resultNumber)
     .execute()
     .then((result) => {
       imgUrls = result.resources.map((img) => {
@@ -313,39 +285,31 @@ app.get("/gallery", async (req, res, next) => {
           if (typeof img.context.alt !== "undefined") {
             imgObject.desc = img.context.alt;
           }
-          if (typeof img.context.Country !== "undefined") {
-            imgObject.country = img.context.Country;
+          if (typeof img.tags !== "undefined") {
+            imgObject.country = img.tags;
+          }
+          if (typeof img.created_at !== "undefined") {
+            imgObject.createdAt = img.created_at;
           }
         }
         return imgObject;
       });
     });
 
-  const totalPages = Math.ceil(imgUrls.length / pageSize);
+  let lastPage;
 
-  if (req.query.page > totalPages) {
-    return res.redirect(
-      url.format({
-        pathname: "/gallery",
-        query: {
-          page: totalPages,
-        },
-      })
-    );
+  if (imgUrls.length < resultNumber) {
+    lastPage = true;
   } else {
-    function paginate(array, pageSize, pageNumber) {
-      return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-    }
-    const galleryUrls = paginate(imgUrls, pageSize, pageNumber);
-
-    res.render("gallery", {
-      galleryUrls,
-      pageNumber: parseInt(pageNumber),
-      totalPages,
-      countryTags,
-      query,
-    });
+    lastPage = false;
+    imgUrls.pop();
   }
+
+  res.render("gallery", {
+    galleryUrls: imgUrls,
+    countryTags: tags,
+    lastPage,
+  });
 });
 
 app.all("*", (req, res, next) => {

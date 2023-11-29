@@ -83,7 +83,7 @@
   width: 12px;
 }
 .not-valid {
-  border-color: red;
+  border-color: red !important;
 }
 .vscomp-clear-icon::before,
 .vscomp-clear-icon::after {

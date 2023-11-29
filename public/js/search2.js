@@ -6,6 +6,7 @@ const tagOptions = [
   { label: "Course News", value: "courseNews" },
   { label: "CIE News", value: "cieNews" },
   { label: "Blog", value: "blog" },
+  { label: "Personal Stories", value: "personalStories" },
 ];
 const searchTagFilter = document.querySelector("#tag-filter");
 
@@ -74,7 +75,6 @@ const formatCards = (postData, isFirst = true) => {
     if (index === array.length - 1) {
       lastDate = post.date;
     }
-
     const card = document.createElement("a");
     const tagDiv = document.createElement("div");
     const title = document.createElement("h2");

@@ -3,6 +3,7 @@ const FeaturedPost = require("../models/featuredPost");
 const deltaToHtml = require("../utils/deltaToHtml");
 const { convert } = require("html-to-text");
 const { google } = require("googleapis");
+const { cloudinary } = require("../cloudinary");
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 const privateKey = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
 const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
@@ -147,4 +148,59 @@ module.exports.search = async (req, res) => {
   transform(posts);
 
   res.json({ posts, lastPage });
+};
+
+module.exports.gallery = async (req, res) => {
+  console.log(req.body);
+  const query = req.body.country;
+  const createdAt = req.body.lastDate;
+  let imgUrls;
+  let expression;
+  let lastPage = false;
+
+  if (query === "" || query === null) {
+    expression = 'folder:"FIDE EDU Gallery"';
+  } else {
+    expression = `folder:"FIDE EDU Gallery" AND tags="${query}"`;
+  }
+
+  if (createdAt !== "") {
+    expression += ` AND created_at<"${createdAt}"`;
+  }
+  console.log(expression);
+  await cloudinary.search
+    .expression(expression)
+    .sort_by("created_at", "desc")
+    .with_field("context")
+    .with_field("tags")
+    .max_results(10)
+    .execute()
+    .then((result) => {
+      imgUrls = result.resources.map((img) => {
+        const url = img.url.split("/");
+        url.splice(6, 0, "c_limit,h_1000");
+
+        const imgObject = { url: url.join("/") };
+
+        if (typeof img.context !== "undefined") {
+          if (typeof img.context.alt !== "undefined") {
+            imgObject.desc = img.context.alt;
+          }
+          if (typeof img.tags !== "undefined") {
+            imgObject.country = img.tags;
+          }
+        }
+        imgObject.createdAt = img.created_at;
+
+        return imgObject;
+      });
+    });
+
+  if (imgUrls.length < 10) {
+    lastPage = true;
+  } else {
+    imgUrls.pop();
+  }
+
+  res.json({ imgUrls, lastPage });
 };

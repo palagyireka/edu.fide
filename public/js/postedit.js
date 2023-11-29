@@ -227,14 +227,9 @@ saveBtn.addEventListener("click", () => {
   tagSelector.classList.remove("not-valid");
   countrySelector.classList.remove("not-valid");
 
-  if (tagSelect.validate() && countrySelect.validate()) {
+  if (tagSelect.validate()) {
     clickHandler();
-  } else {
-    if (!tagSelect.validate()) {
-      tagSelector.classList.add("not-valid");
-    }
-    if (!countrySelect.validate()) {
-      countrySelector.classList.add("not-valid");
-    }
+  } else if (!tagSelect.validate()) {
+    tagSelector.classList.add("not-valid");
   }
 });

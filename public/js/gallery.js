@@ -32,13 +32,15 @@ function close() {
   Modal.closeModal();
 }
 
-const images = document.querySelectorAll(".image-container");
-images.forEach((img) => {
+const addClickHandler = (img) => {
   img.addEventListener("click", () => {
     const photo = img.querySelector(".image");
     Modal.openModal(photo.src, photo.dataset.description);
   });
-});
+};
+
+const images = document.querySelectorAll(".image-container");
+images.forEach(addClickHandler);
 
 const filterDiv = document.getElementById("gallery-country-filter");
 const tagOptions = [];
@@ -76,3 +78,50 @@ filterDiv.addEventListener("change", (evt) => {
     window.location.replace(url);
   }
 });
+
+const imageGallery = document.querySelector(".image-gallery");
+const allImages = document.querySelectorAll(".image-container img");
+let lastDate = allImages[8].dataset.created;
+const loadMoreButton = document.getElementById("load-more");
+
+const loadMore = async () => {
+  const data = { lastDate, country: countryFilter };
+
+  const results = await fetch("/api/gallery", {
+    body: JSON.stringify(data),
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const newImgs = await results.json();
+
+  console.log(newImgs);
+
+  newImgs.imgUrls.forEach((image, index) => {
+    const container = document.createElement("div");
+    const img = document.createElement("img");
+    const overlay = document.createElement("div");
+
+    container.classList.add("image-container");
+    img.classList.add("image");
+    img.src = image.url;
+    img.dataset.description = image.desc;
+    overlay.classList.add("overlay");
+
+    container.append(img, overlay);
+    imageGallery.appendChild(container);
+
+    if (index === newImgs.imgUrls.length - 1) {
+      lastDate = image.createdAt;
+    }
+
+    addClickHandler(container);
+  });
+
+  if (newImgs.lastPage === true) {
+    loadMoreButton.remove();
+  }
+};
+
+loadMoreButton.addEventListener("click", loadMore);

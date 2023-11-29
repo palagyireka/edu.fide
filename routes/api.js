@@ -4,6 +4,7 @@ const multer = require("multer");
 const { storage } = require("../cloudinary");
 const uploadImage = multer({ storage });
 const api = require("../controllers/api");
+const catchAsync = require("../utils/catchAsync");
 
 router.post("/image", uploadImage.single("file"), api.imageUpload);
 
@@ -14,6 +15,8 @@ router.get("/:id/json", api.getText);
 
 router.get("/featuredid", api.getFeatured);
 
-router.post("/search", api.search);
+router.post("/search", catchAsync(api.search));
+
+router.post("/gallery", catchAsync(api.gallery));
 
 module.exports = router;
