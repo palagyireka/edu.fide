@@ -3,11 +3,15 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.elasticemail.com",
-  port: 2525,
+  host: "m.fide.com",
+  port: 587,
+  secureConnection: false,
   auth: {
     user: process.env.NODEMAILER_USERNAME,
     pass: process.env.NODEMAILER_PASSWORD,
+  },
+  tls: {
+    ciphers: "SSLv3",
   },
 });
 
@@ -18,7 +22,7 @@ module.exports.sendConfirmationEmail = async (
   url
 ) => {
   await transporter.sendMail({
-    from: "fide.edu.register@gmail.com",
+    from: "edu.noreply@fide.com",
     to: email,
     subject: "Please confirm your account",
     html: `<h1>Email Confirmation</h1>
@@ -42,7 +46,7 @@ module.exports.sendConfirmationEmail = async (
 
 module.exports.sendPasswordResetEmail = async (name, email, link, url) => {
   await transporter.sendMail({
-    from: "fide.edu.register@gmail.com",
+    from: "edu.noreply@fide.com",
     to: email,
     subject: "Password Reset",
     html: `<h1>Password Reset</h1>

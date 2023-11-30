@@ -24,8 +24,6 @@ db.once("open", () => {
 });
 
 const seedDB = async () => {
-  await Blogpost.deleteMany({});
-
   for (const post of blogposts) {
     const newPost = new Blogpost({
       title: post.title,
