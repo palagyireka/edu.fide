@@ -3,18 +3,26 @@ const router = express.Router();
 const staticPages = require("../controllers/staticPages");
 const { isLoggedIn, isAdmin } = require("../middleware");
 
-const staticRoute = (route, page, fileUpload, loggedIn = false) => {
-  return (
-    router
-      .route(`/${route}`)
-      .get(
-        (loggedIn = true ? isLoggedIn : null),
-        staticPages.renderPage(route, fileUpload)
-      )
-      .put(isAdmin, staticPages.editPage(page)) &&
-    router.get(`/${route}/edit`, isAdmin, staticPages.renderEditor()) &&
-    router.get(`/${route}/json`, isAdmin, staticPages.getPageContents(page))
-  );
+const staticRoute = (route, page, fileUpload, loggedIn) => {
+  if (loggedIn === true) {
+    return (
+      router
+        .route(`/${route}`)
+        .get(isLoggedIn, staticPages.renderPage(route, fileUpload))
+        .put(isAdmin, staticPages.editPage(page)) &&
+      router.get(`/${route}/edit`, isAdmin, staticPages.renderEditor()) &&
+      router.get(`/${route}/json`, staticPages.getPageContents(page))
+    );
+  } else {
+    return (
+      router
+        .route(`/${route}`)
+        .get(staticPages.renderPage(route, fileUpload))
+        .put(isAdmin, staticPages.editPage(page)) &&
+      router.get(`/${route}/edit`, isAdmin, staticPages.renderEditor()) &&
+      router.get(`/${route}/json`, staticPages.getPageContents(page))
+    );
+  }
 };
 
 staticRoute("intro", "intro");

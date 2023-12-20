@@ -1,5 +1,6 @@
 const Titleholder = require("../models/titleholder");
 const StaticPage = require("../models/staticPages");
+const CoursebookPassword = require("../models/coursebookPassword");
 
 module.exports.showTitleholders = async (req, res) => {
   const type = req.params.type;
@@ -13,10 +14,14 @@ module.exports.showPassword = (req, res) => {
   res.render("pot/pot-coursebook-password");
 };
 
-module.exports.sendPassword = (req, res) => {
-  res.redirect("/pot/coursebook");
-};
+module.exports.showCoursebook = async (req, res) => {
+  const password = req.body.coursebookPw;
+  const course = await CoursebookPassword.findOne({ password });
 
-module.exports.showCoursebook = (req, res) => {
-  res.render("pot/potcoursebook");
+  if (!course) {
+    req.flash("error", "Wrong Password!");
+    res.redirect("/pot/coursebook/password");
+  } else {
+    res.render("pot/potcoursebook");
+  }
 };

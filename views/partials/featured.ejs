@@ -10,5 +10,8 @@
     />
   </div>
   <% } %>
-  <div class="featured-text"><%= featuredPost.text %></div></a
->
+  <div class="featured-text"><%= featuredPost.text %></div>
+  <% if (readMore === true) {%>
+  <div class="read-more">Read more here >></div>
+  <% } %>
+</a>

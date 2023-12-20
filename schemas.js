@@ -35,3 +35,7 @@ module.exports.userSchema = Joi.object({
   newsletter: Joi.string().escapeHTML(),
   password: Joi.string().min(6).max(16).required(),
 });
+
+module.exports.coursebookPasswordSchema = Joi.object({
+  coursebookPw: Joi.string().escapeHTML().required(),
+});

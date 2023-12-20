@@ -118,20 +118,32 @@ app.get("/", isValidated, async (req, res) => {
   const featured = await FeaturedPost.findOne({}).populate("featuredPostId");
   const featuredPost = featured.featuredPostId;
 
-  featuredPost.images = [{ url: "" }];
+  if (featuredPost.images.length === 0) {
+    featuredPost.images = [{ url: "" }];
+  }
 
   featuredPost.text = deltaToHtml(featuredPost.text);
   featuredPost.text = convert(featuredPost.text);
   featuredPost.text = featuredPost.text.replace(/\[http.*?\]/gm, "");
 
+  let readMore = false;
+
+  const cutat = featuredPost.text.lastIndexOf(" ", 500);
+  if (cutat != -1) {
+    featuredPost.text = featuredPost.text.substring(0, cutat) + "...";
+    readMore = true;
+  }
+
   let tag;
   if (featuredPost.tags[0] === "all") {
     tag = "blog";
+  } else if (featuredPost.tags[0] === "cieInitiatives") {
+    tag = "initiatives";
   } else {
     tag = featuredPost.tags[0];
   }
 
-  res.render("index", { featuredPost, tag });
+  res.render("index", { featuredPost, tag, readMore });
 });
 
 app.get("/search", async (req, res) => {

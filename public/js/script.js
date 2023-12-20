@@ -24,15 +24,14 @@ function setupListeners() {
     lista2listak.forEach((item) => (item.style.justifyContent = "center"));
     lista1elemek.forEach((li) => li.classList.remove("lista-1-hover"));
     lista1elemek.forEach((li) => {
-      li.addEventListener("touchstart", handleTouchStart);
       li.addEventListener("click", handleTouchStart);
     });
     document.querySelectorAll(".l2b").forEach((gomb) => {
-      gomb.addEventListener("touchstart", handleL2bTouchStart);
+      gomb.addEventListener("click", handleL2bTouchStart);
     });
     document
       .querySelector("#menu-icon")
-      .addEventListener("touchstart", handleMenuIconTouchStart);
+      .addEventListener("click", handleMenuIconTouchStart);
     keresesElement.src = "/css/searchiconmt.png";
   }
 }
@@ -49,6 +48,7 @@ function handleMouseEnter(evt) {
 }
 
 function handleTouchStart(evt) {
+  console.log(evt.target);
   touchStarted = true;
   lista1elemek.forEach((elem) => elem.classList.remove("lista-1-hover"));
   if (evt.target.tagName === "A") {
@@ -63,7 +63,8 @@ function handleTouchStart(evt) {
     } else if (isMobile) {
       elrejtVagyMutat(false, lista1elemek);
       elrejtVagyMutat(false, lista2listak);
-      evt.target.nextElementSibling?.classList.add("onmobile2");
+      evt.target.nextElementSibling.classList.add("onmobile2");
+      console.log(evt.target.nextElementSibling);
     }
   }
 }
@@ -75,7 +76,7 @@ function handleL2bTouchStart(evt) {
 
 function handleMenuIconTouchStart(evt) {
   if (evt.target.checked) {
-    elrejtVagyMutat(true, lista2listak);
+    elrejtVagyMutat(false, lista2listak);
   }
 }
 
@@ -87,6 +88,10 @@ function elrejtVagyMutat(mutat, lista) {
     }
     elem.classList.remove("ontablet2");
   }
+}
+
+for (elem of lista2listak) {
+  elem.style.display = "none";
 }
 
 setupListeners();

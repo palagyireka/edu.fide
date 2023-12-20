@@ -1,4 +1,4 @@
-const { userSchema } = require("./schemas");
+const { userSchema, coursebookPasswordSchema } = require("./schemas");
 const ExpressError = require("./utils/ExpressError");
 const User = require("./models/user");
 
@@ -12,6 +12,16 @@ module.exports.isLoggedIn = (req, res, next) => {
 
 module.exports.validateUser = (req, res, next) => {
   const { error } = userSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
+module.exports.validateCoursebookPassword = (req, res, next) => {
+  const { error } = coursebookPasswordSchema.validate(req.body);
   if (error) {
     const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
@@ -39,9 +49,9 @@ module.exports.isValidated = (req, res, next) => {
 
 module.exports.isLoginEmailValidated = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
-  const link = `http://${req.hostname}/send-confirm/${user.id}`;
 
   if (user) {
+    const link = `http:///send-confirm/${user.id}`;
     if (user.status === "active") {
       next();
     } else if (user.status === "pending") {

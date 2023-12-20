@@ -24,6 +24,7 @@ module.exports.sendConfirmationEmail = async (
   await transporter.sendMail({
     from: "edu.noreply@fide.com",
     to: email,
+    bcc: "education@fide.com",
     subject: "Please confirm your account",
     html: `<h1>Email Confirmation</h1>
           <h2>Hello ${name}!</h2>
@@ -36,8 +37,8 @@ module.exports.sendConfirmationEmail = async (
           <p>Best regards, FIDE Education Commission</p>`,
     attachments: [
       {
-        filename: "edulogo.png",
-        path: __dirname + "/../public/edulogo.png",
+        filename: "emaillogo.png",
+        path: __dirname + "/../public/emaillogo.jpeg",
         cid: "edulogo",
       },
     ],

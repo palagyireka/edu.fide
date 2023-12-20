@@ -16,6 +16,7 @@ async function getContent() {
   const response = await fetch(`/${path}/json`, {
     method: "GET",
   });
+
   const quillContent = await response.json();
 
   var tempQuill = new Quill(document.createElement("div"), {

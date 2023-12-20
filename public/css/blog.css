@@ -36,6 +36,17 @@ main.blogs a:hover {
   border-right: 20px solid #91b0b2;
 }
 
+.show-blogpost pre {
+  box-sizing: border-box;
+  padding: 10px 10%;
+  border-left: 20px solid #91b0b2;
+  border-right: 20px solid #91b0b2;
+  border-top: none;
+  border-bottom: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .show-blogpost ul,
 .show-blogpost ol {
   list-style: auto;

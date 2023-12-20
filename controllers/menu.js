@@ -16,13 +16,13 @@ module.exports.renderPosts = (tagName, path, country) => {
         post.text = deltaToHtml(post.text);
         post.text = convert(post.text);
         post.text = post.text.replace(/\[http.*?\]/gm, "");
-        let charLength;
-        if (post.text.length >= 200) {
-          charLength = -(post.text.length - 200);
-        } else {
-          charLength = undefined;
+
+        const charLength = post.title.length > 70 ? 100 : 200;
+
+        const cutat = post.text.lastIndexOf(" ", charLength);
+        if (cutat != -1) {
+          post.text = post.text.substring(0, cutat) + "...";
         }
-        post.text = post.text.slice(0, charLength);
       });
     };
 
@@ -31,14 +31,15 @@ module.exports.renderPosts = (tagName, path, country) => {
 
     if (country === true) {
       if (req.query.country) {
-        query = { countries: req.query.country };
-        Countrycontact.findOne({ "alpha-2": req.query.country }).then(
-          (result) => {
-            if (result) {
-              countryName = result.name;
-            }
-          }
-        );
+        const result = await Countrycontact.findOne({
+          "alpha-2": req.query.country,
+        });
+        if (result) {
+          countryName = result.name;
+          query = { countries: req.query.country };
+        } else {
+          query = {};
+        }
       } else {
         query = {};
       }
@@ -54,7 +55,6 @@ module.exports.renderPosts = (tagName, path, country) => {
       if (pageNumber === results.totalPages) {
         lastPage = true;
       }
-
       const blogposts = results.docs;
       transform(blogposts);
 

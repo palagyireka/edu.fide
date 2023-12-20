@@ -71,7 +71,7 @@ module.exports.register = async (req, res, next) => {
     `${firstName} ${lastName}`,
     email,
     user.confirmationCode,
-    req.hostname
+    "https://edu.fide.com"
   );
 
   res.render("message", {
@@ -83,13 +83,11 @@ module.exports.register = async (req, res, next) => {
 module.exports.sendConfirmationEmailAgain = async (req, res) => {
   const user = await User.findById(new ObjectId(req.params.id));
 
-  console.log(user);
-
   await sendConfirmationEmail(
     `${user.firstName} ${user.lastName}`,
     user.email,
     user.confirmationCode,
-    req.hostname
+    "https://edu.fide.com"
   );
 
   res.render("message", {
@@ -108,7 +106,7 @@ module.exports.logout = (req, res, next) => {
   });
 };
 
-module.exports.verifyUser = async (req, res) => {
+module.exports.verifyUser = async (req, res, next) => {
   const user = await User.findOne({
     confirmationCode: req.params.confirmationCode,
   });
@@ -153,7 +151,7 @@ module.exports.requestPasswordReset = async (req, res, next) => {
     `${user.firstName} ${user.lastName}`,
     user.email,
     link,
-    req.hostname
+    "https://edu.fide.com"
   );
 
   res.render("message", {
