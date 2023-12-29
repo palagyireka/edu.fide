@@ -143,7 +143,9 @@ app.get("/", isValidated, async (req, res) => {
     tag = featuredPost.tags[0];
   }
 
-  res.render("index", { featuredPost, tag, readMore });
+  const index = true;
+
+  res.render("index", { featuredPost, tag, readMore, index });
 });
 
 app.get("/search", async (req, res) => {

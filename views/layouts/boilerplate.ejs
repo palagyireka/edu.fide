@@ -46,7 +46,7 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 11:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
   </head>
-  <body>
+  <body <% if (typeof index !== "undefined") {%>style="background-color: #ccd6f1;"<% } %>>
     <%- include("../partials/flash") %> <%- include('../partials/navbar') %> <%
     if (!currentUser) {%> <%- include('../partials/login-signup')%> <%} else {%>
     <%-include("../partials/profile-logout")%> <%} %> <%-
