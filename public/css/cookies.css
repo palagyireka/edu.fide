@@ -35,22 +35,7 @@ label[for="cookies"] {
   overflow: hidden;
   border: 2px solid #5b85aa;
 }
-label[for="cookies"]::before {
-  content: "Cookie Usage Notice! Click here to accept!";
-}
 
-@keyframes animateLabel {
-  0% {
-    width: 0px;
-    border-width: 0;
-    padding: 0;
-  }
-  100% {
-    padding: 10px;
-    width: 300px;
-    border-width: 2px;
-  }
-}
 .cookies-desc {
   position: fixed;
   bottom: 0;
@@ -67,7 +52,6 @@ label[for="cookies"]::before {
   flex-wrap: wrap;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
 }
 
 #cookies:not(:checked) + label[for="cookies"] + .cookies-desc {
@@ -87,25 +71,15 @@ label[for="cookies"]::before {
   content: "X";
   font-weight: 600;
 }
-.cookies-desc > p:first-of-type {
-  font-size: 18px;
-  padding: 5px;
-  font-weight: 600;
-}
+
 .cookies-desc h2 {
-  font-size: 16px;
+  font-size: 18px;
   padding: 5px;
   font-weight: 500;
 }
-.cookies-desc > div:last-of-type h2:last-of-type {
-  font-size: 18px;
-}
-.cookies-desc > div:last-of-type h2:last-of-type ~ p {
-  font-size: 16px;
-}
+
 .cookies-desc > div:last-of-type {
   flex-grow: 1;
-  width: 65%;
 }
 .cookies-desc p {
   font-size: 14px;
@@ -122,4 +96,15 @@ label[for="cookies"]::before {
   width: 50%;
   box-sizing: border-box;
   padding: 10px;
+}
+
+.cookie-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cookie-button-container button {
+  width: 20rem;
 }

@@ -1,5 +1,6 @@
 body {
   overflow-x: hidden;
+  background-color: #ccd6f1;
 }
 a {
   all: unset;
@@ -35,12 +36,13 @@ a {
 #map ellipse {
   fill: #5b85aa;
   stroke-width: 1px;
+  stroke: #ccd6f1;
 }
 
 #map path.selected,
 #map circle.selected,
 #map ellipse.selected {
-  fill: #c5725f;
+  fill: #e51e43;
   opacity: 1;
 }
 
@@ -107,7 +109,7 @@ a {
 
 .country-menu {
   padding: 0 10px;
-  background-color: white;
+  background-color: #ccd6f1;
 }
 
 .country-menu > li {
@@ -182,10 +184,11 @@ a {
   margin-top: 8px;
   height: 22%;
   width: 95%;
-  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
+  /* box-shadow: 0 0 10px 3px rgb(206, 206, 206); */
   border-radius: 10px;
   padding: 4px 4px 4px 0;
   --searchbar-height: 30px;
+  background-color: #5b85ab;
 }
 
 .searchbar {
@@ -213,7 +216,11 @@ a {
   height: 30px;
   width: 80%;
   margin-left: 20px;
-  color: rgb(85, 85, 85);
+  color: #e5e5e5;
+}
+
+.searchbar input::placeholder {
+  color: #e5e5e5;
 }
 
 .bi {
@@ -239,10 +246,16 @@ a {
   overflow: auto;
   list-style-type: none;
   padding: 0px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.search-countries::-webkit-scrollbar {
+  display: none;
 }
 
 .search-countries li {
-  color: rgb(82, 82, 82);
+  color: white;
   cursor: pointer;
   padding: 7px 7px 7px 13px;
 }
@@ -250,9 +263,16 @@ a {
   margin-top: 0px;
 }
 .search-countries li:hover {
-  background-color: rgb(206, 206, 206);
+  background-color: #266399;
 }
 
 .selected-country {
   font-weight: bold;
+}
+
+.map-info {
+  text-align: right;
+  font-style: italic;
+  transform: translate(-10px, -10px);
+  color: rgb(82, 82, 82);
 }

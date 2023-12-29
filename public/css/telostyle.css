@@ -436,6 +436,14 @@
   .search-container {
     height: 200px;
   }
+
+  footer {
+    flex-direction: column;
+    height: 100px;
+  }
+  footer div {
+    margin-bottom: 3px;
+  }
 }
 
 @media only screen and (max-width: 615px) {

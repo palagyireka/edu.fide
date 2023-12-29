@@ -33,5 +33,6 @@ staticRoute("course-registration", "courseRegistration");
 staticRoute("pot/potinfo", "potInfo");
 staticRoute("pol/polinfo", "polInfo");
 staticRoute("fide-schools", "fideSchools", true);
+staticRoute("cookies", "cookies");
 
 module.exports = router;

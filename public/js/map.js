@@ -2,7 +2,7 @@ const element = document.querySelector("#map");
 const featuredMenu = document.querySelector("#featured");
 var panZoomMap = svgPanZoom(element, {
   zoomEnabled: true,
-  controlIconsEnabled: true,
+  controlIconsEnabled: false,
   fit: true,
   center: true,
   minZoom: 1,

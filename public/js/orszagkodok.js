@@ -1,5 +1,3 @@
-// Ezek ISO országkódok, a végleges verzióban a backend szerveren lesznek tárolva
-
 let countryCodes = [
   {
     name: "Afghanistan",
@@ -209,15 +207,9 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Bolivia (Plurinational State of)",
+    name: "Bolivia",
     "alpha-2": "BO",
     "country-code": "068",
-    desc: "",
-  },
-  {
-    name: "Bonaire, Sint Eustatius and Saba",
-    "alpha-2": "BQ",
-    "country-code": "535",
     desc: "",
   },
   {
@@ -233,12 +225,6 @@ let countryCodes = [
     email: "tmokwaledi[at]gmail.com",
     website: "https://www.bnsc.co.bw/node/187",
     contact: "",
-    desc: "",
-  },
-  {
-    name: "Bouvet Island",
-    "alpha-2": "BV",
-    "country-code": "074",
     desc: "",
   },
   {
@@ -398,7 +384,7 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Congo, Democratic Republic of the",
+    name: "Democratic Republic of the Congo",
     "alpha-2": "CD",
     "country-code": "180",
     desc: "",
@@ -458,7 +444,7 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Czechia",
+    name: "Czech Republic",
     "alpha-2": "CZ",
     "country-code": "203",
     desc: "",
@@ -632,12 +618,6 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "French Southern Territories",
-    "alpha-2": "TF",
-    "country-code": "260",
-    desc: "",
-  },
-  {
     name: "Gabon",
     "alpha-2": "GA",
     "country-code": "266",
@@ -776,12 +756,6 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Heard Island and McDonald Islands",
-    "alpha-2": "HM",
-    "country-code": "334",
-    desc: "",
-  },
-  {
     name: "Vatican",
     "alpha-2": "VA",
     "country-code": "379",
@@ -839,7 +813,7 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Iran (Islamic Republic of)",
+    name: "Iran",
     "alpha-2": "IR",
     "country-code": "364",
     desc: "",
@@ -959,13 +933,13 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Korea (Democratic People's Republic of)",
+    name: "North Korea",
     "alpha-2": "KP",
     "country-code": "408",
     desc: "",
   },
   {
-    name: "Korea, Republic of",
+    name: "South Korea",
     "alpha-2": "KR",
     "country-code": "410",
     desc: "",
@@ -989,7 +963,7 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Lao People's Democratic Republic",
+    name: "Laos",
     "alpha-2": "LA",
     "country-code": "418",
     desc: "",
@@ -1172,13 +1146,13 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Micronesia (Federated States of)",
+    name: "Micronesia",
     "alpha-2": "FM",
     "country-code": "583",
     desc: "",
   },
   {
-    name: "Moldova, Republic of",
+    name: "Moldova",
     "alpha-2": "MD",
     "country-code": "498",
     desc: "",
@@ -1385,7 +1359,7 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Palestine, State of",
+    name: "Palestine",
     "alpha-2": "PS",
     "country-code": "275",
     desc: "",
@@ -1748,12 +1722,6 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Svalbard and Jan Mayen",
-    "alpha-2": "SJ",
-    "country-code": "744",
-    desc: "",
-  },
-  {
     name: "Sweden",
     "alpha-2": "SE",
     "country-code": "752",
@@ -1772,13 +1740,13 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Syrian Arab Republic",
+    name: "Syria",
     "alpha-2": "SY",
     "country-code": "760",
     desc: "",
   },
   {
-    name: "Taiwan, Province of China",
+    name: "Taiwan",
     "alpha-2": "TW",
     "country-code": "158",
     desc: "",
@@ -1799,7 +1767,7 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Tanzania, United Republic of",
+    name: "Tanzania",
     "alpha-2": "TZ",
     "country-code": "834",
     desc: "",
@@ -1955,13 +1923,13 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Venezuela (Bolivarian Republic of)",
+    name: "Venezuela",
     "alpha-2": "VE",
     "country-code": "862",
     desc: "",
   },
   {
-    name: "Viet Nam",
+    name: "Vietnam",
     "alpha-2": "VN",
     "country-code": "704",
     desc: "",

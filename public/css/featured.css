@@ -9,11 +9,19 @@
   max-height: calc(100% - 20px);
   box-sizing: border-box;
   width: 260px;
-  box-shadow: 0 0 10px 3px rgb(206, 206, 206);
+  /* box-shadow: 0 0 10px 3px rgb(206, 206, 206); */
   border-radius: 10px;
   margin: 0px 5px 0px 10px;
   padding: 10px;
   z-index: 1;
+  margin-top: 8px;
+  background-color: white;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#featured::-webkit-scrollbar {
+  display: none;
 }
 
 #featured p {
@@ -23,22 +31,21 @@
 
 .featured-title {
   font-weight: 600;
-  margin-bottom: 10px;
 }
 
 .featured-img-container {
-  float: left;
+  float: right;
+  width: 50%;
+  margin: 0px 10px 10px 10px;
 }
 
 .featured-img {
-  height: 150px;
-  width: unset;
-  float: left;
+  width: 100%;
   padding: 0;
-  margin: 3px;
 }
 
 .featured-text {
+  margin-top: 10px;
   text-align: justify;
 }
 

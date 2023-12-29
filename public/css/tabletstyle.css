@@ -16,7 +16,7 @@
   }
   .profile-logout {
     position: static;
-    margin-top: 20px;
+    margin-top: 11px;
     border-radius: 0;
     width: 100%;
     text-align: center;
@@ -341,7 +341,6 @@
   }
 
   .featured-img {
-    height: 300px;
     margin: 10px;
   }
 
@@ -483,5 +482,9 @@
   }
   main.download input:checked + label {
     padding: 15px 10px;
+  }
+
+  .map-info {
+    transform: none;
   }
 }
