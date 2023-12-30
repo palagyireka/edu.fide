@@ -8,7 +8,6 @@ fetch("/api/listevents").then(async (response) => {
       const listItemTitle = document.createElement("div");
       const listItemDate = document.createElement("div");
       listItemTitle.innerText = event.title;
-      listItemTitle.style.borderLeft = `4px solid ${event.backgroundColor}`;
       let listItemDateString = new Date(event.start);
       listItemDateString =
         listItemDateString.toLocaleString("default", {

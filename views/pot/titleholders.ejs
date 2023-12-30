@@ -4,13 +4,25 @@
     <div class="titleholders-select" data-t="<%= titleholdersData %>">
       <% if (type === 'lsi') { %>
       <label for="lsititleholders">LSI Title Holders</label>
-      <select name="lsititleholders" id="lsititleholders" size="18"></select>
+      <div
+        name="lsititleholders"
+        id="lsititleholders"
+        class="titleholders-container"
+      ></div>
       <% } else if (type === 'si') { %>
       <label for="sititleholders">SI Title Holders</label>
-      <select name="sititleholders" id="sititleholders" size="18"></select>
+      <div
+        name="sititleholders"
+        id="sititleholders"
+        class="titleholders-container"
+      ></div>
       <% } else if(type === 'sli') { %>
       <label for="slititleholders">SLI Title Holders</label>
-      <select name="slititleholders" id="slititleholders" size="18"></select>
+      <div
+        name="slititleholders"
+        id="slititleholders"
+        class="titleholders-container"
+      ></div>
       <% } %>
     </div>
     <div>

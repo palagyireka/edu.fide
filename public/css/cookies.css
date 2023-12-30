@@ -86,6 +86,10 @@ label[for="cookies"] {
   padding: 5px;
 }
 
+.cookies-desc a {
+  text-decoration: underline;
+}
+
 .cookies-desc ul {
   margin-left: 20px;
   font-size: 14px;

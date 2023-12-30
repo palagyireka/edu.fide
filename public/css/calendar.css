@@ -24,7 +24,13 @@
 }
 
 .calendar-ul li {
-  margin: 5px;
+  margin: 5px 5px 5px 0;
+  border-left: 4px solid rgb(91, 133, 170);
+  padding-left: 5px;
+}
+
+.calendar-ul li:first-of-type {
+  border-left: 4px solid #b03752;
 }
 
 .calendar-ul li div:first-of-type {

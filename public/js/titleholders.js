@@ -215,14 +215,20 @@ function loadTitleHoldersSelect(slc) {
       }
     });
     for (const tl of allTitleHolders) {
-      const option = document.createElement("option");
+      const option = document.createElement("div");
+      option.classList.add("titleholder-option");
       option.value = tl.fullname;
       option.innerText = tl.fullname;
-      option.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
-      option.addEventListener("touchstart", (evt) =>
-        mutasdAzAdatokat(evt, false)
-      );
-      document.querySelector(".titleholders-select select").appendChild(option);
+      option.addEventListener("click", (evt) => {
+        const active = document.querySelector(".option-active");
+        if (active) {
+          active.classList.remove("option-active");
+        }
+        evt.target.classList.add("option-active");
+
+        return mutasdAzAdatokat(evt, false);
+      });
+      document.querySelector(".titleholders-select div").appendChild(option);
     }
   }
 }
@@ -355,7 +361,7 @@ function filterOptions(evt) {
 
   mutasdAzAdatokat(evt, true);
   document
-    .querySelectorAll(".titleholders-select option")
+    .querySelectorAll(".titleholder-option")
     .forEach((option) => option.remove());
 
   allTitleHolders.forEach((holder) => {
@@ -363,14 +369,20 @@ function filterOptions(evt) {
     const yearMatch = !selectedYear || holder.year == selectedYear;
     const nameMatch = !nameFraction || holder.fullname.includes(nameFraction);
     if (countryMatch && yearMatch && nameMatch) {
-      const option = document.createElement("option");
+      const option = document.createElement("div");
+      option.classList.add("titleholder-option");
       option.value = holder.fullname;
       option.innerText = holder.fullname;
-      option.addEventListener("click", (evt) => mutasdAzAdatokat(evt, false));
-      option.addEventListener("touchstart", (evt) =>
-        mutasdAzAdatokat(evt, false)
-      );
-      document.querySelector(".titleholders-select select").appendChild(option);
+      option.addEventListener("click", (evt) => {
+        const active = document.querySelector(".option-active");
+        if (active) {
+          active.classList.remove("option-active");
+        }
+        evt.target.classList.add("option-active");
+
+        return mutasdAzAdatokat(evt, false);
+      });
+      document.querySelector(".titleholders-select div").appendChild(option);
     }
   });
 }
