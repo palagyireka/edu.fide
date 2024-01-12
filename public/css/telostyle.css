@@ -346,7 +346,9 @@
     }
   }
 
-  #socmed-btn:checked ~ label .socmed-list > li {
+  /* Socmed button opens downward */
+
+  /* #socmed-btn:checked ~ label .socmed-list > li {
     width: 50px;
     height: 50px;
   }
@@ -394,7 +396,7 @@
       top: -148px;
       opacity: 1;
     }
-  }
+  } */
 
   label[for="cookies"] {
     width: 270px;

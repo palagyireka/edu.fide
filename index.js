@@ -27,6 +27,7 @@ const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
 const { isLoggedIn, isValidated } = require("./middleware");
+const { OgMarkup, DefaultMarkup } = require("./utils/ogMarkup");
 
 const userRoutes = require("./routes/users");
 const apiRoutes = require("./routes/api");
@@ -145,7 +146,9 @@ app.get("/", isValidated, async (req, res) => {
 
   const index = true;
 
-  res.render("index", { featuredPost, tag, readMore, index });
+  const ogMarkup = new DefaultMarkup(req, "FIDE Chess in Education Commission");
+
+  res.render("index", { featuredPost, tag, readMore, index, ogMarkup });
 });
 
 app.get("/search", async (req, res) => {
@@ -170,33 +173,64 @@ app.get("/search", async (req, res) => {
     },
   ]);
 
-  res.render("search", { aggregate: aggregate[0] });
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Search - FIDE Chess in Education Commission"
+  );
+
+  res.render("search", { aggregate: aggregate[0], ogMarkup });
 });
 
 app.get("/profile", (req, res) => {
-  res.render("profile");
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Profile - FIDE Chess in Education Commission - "
+  );
+  res.render("profile", { ogMarkup });
 });
 
 app.get("/sendus", isLoggedIn, (req, res) => {
-  res.render("sendus");
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Send Us - FIDE Chess in Education Commission"
+  );
+  res.render("sendus", { ogMarkup });
 });
 
 app.get("/onlinetools", (req, res) => {
-  res.render("onlinetools");
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Online Tools - FIDE Chess in Education Commission "
+  );
+  res.render("onlinetools", { ogMarkup });
 });
 
 app.get("/course-registration", (req, res) => {
-  res.render("coursereg");
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Course Registration - FIDE Chess in Education Commission "
+  );
+  res.render("coursereg", { ogMarkup });
 });
 
 app.get("/commission", async (req, res) => {
   const commissionData = await Commissionmember.find().sort({ seq: 1 });
-  res.render("commission", { commissionData });
+
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Commission Members - FIDE Chess in Education Commission "
+  );
+  res.render("commission", { commissionData, ogMarkup });
 });
 
 app.get("/partnerships", async (req, res) => {
   const partnershipMembers = await Partnership.find().sort({ order: 1 });
-  res.render("partnerships", { partnershipMembers });
+
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Partnerships - FIDE Chess in Education Commission "
+  );
+  res.render("partnerships", { partnershipMembers, ogMarkup });
 });
 
 app
@@ -205,7 +239,12 @@ app
     catchAsync(async (req, res) => {
       const countryC = decodeURIComponent(req.query.country);
       const chosenContact = await Countrycontact.findOne({ name: countryC });
-      res.render("contact", { chosenContact });
+
+      const ogMarkup = new DefaultMarkup(
+        req,
+        "Contact - FIDE Chess in Education Commission "
+      );
+      res.render("contact", { chosenContact, ogMarkup });
     })
   )
   .post(
@@ -228,12 +267,12 @@ app
 app.get("/download", isLoggedIn, async (req, res) => {
   const materials = await Download.find({});
   const downloadMaterials = JSON.stringify(materials);
-  res.render("download", { downloadMaterials });
-});
 
-app.get("/partnerships", async (req, res) => {
-  const partnershipMembers = await Partnership.find({});
-  res.render("partnerships", { partnershipMembers });
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Download Materials - FIDE Chess in Education Commission "
+  );
+  res.render("download", { downloadMaterials, ogMarkup });
 });
 
 app.get("/admin", async (req, res) => {
@@ -261,7 +300,11 @@ app.get("/admin", async (req, res) => {
 });
 
 app.get("/fullcalendar", (req, res) => {
-  res.render("fullcalendar");
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Calendar - FIDE Chess in Education Commission "
+  );
+  res.render("fullcalendar", { ogMarkup });
 });
 
 app.get("/gallery", async (req, res) => {
@@ -319,10 +362,16 @@ app.get("/gallery", async (req, res) => {
     imgUrls.pop();
   }
 
+  const ogMarkup = new DefaultMarkup(
+    req,
+    "Gallery - FIDE Chess in Education Commission "
+  );
+
   res.render("gallery", {
     galleryUrls: imgUrls,
     countryTags: tags,
     lastPage,
+    ogMarkup,
   });
 });
 

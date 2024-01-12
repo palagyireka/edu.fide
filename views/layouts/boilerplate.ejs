@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" <% if (typeof ogMarkup !== "undefined") {%>prefix="og: http://ogp.me/ns#"<% } %>>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -45,6 +45,23 @@
     <meta http-equiv="expires" content="-1" />
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 11:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
+    <% if (typeof ogMarkup !== "undefined") {%><meta
+      property="og:url"
+      content="<%= ogMarkup.url %>"
+    />
+    <meta property="og:type" content="<%= ogMarkup.type %>" />
+    <meta property="og:title" content="<%= ogMarkup.title %>" />
+    <meta
+      property="og:description"
+      content="<%= ogMarkup.description %>"
+    />
+    <meta
+      property="og:image"
+      content="<%= ogMarkup.image %>"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="FIDE EDU" /><% } %>
   </head>
   <body <% if (typeof index !== "undefined") {%>style="background-color: #ccd6f1;"<% } %>>
     <%- include("../partials/flash") %> <%- include('../partials/navbar') %> <%
@@ -52,6 +69,6 @@
     <%-include("../partials/profile-logout")%> <%} %> <%-
     include('../partials/googletranslate') %> <%- body %> <% if
     (!cookiesAccepted) {%> <%- include("../partials/cookies") %> <%} %>
-    <script src="/js/flash.js"></script>
   </body>
+  <script src="/js/flash.js"></script>
 </html>

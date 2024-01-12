@@ -1,5 +1,4 @@
 const Titleholder = require("../models/titleholder");
-const StaticPage = require("../models/staticPages");
 const CoursebookPassword = require("../models/coursebookPassword");
 
 module.exports.showTitleholders = async (req, res) => {

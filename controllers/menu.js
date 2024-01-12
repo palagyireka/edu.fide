@@ -2,7 +2,21 @@ const deltaToHtml = require("../utils/deltaToHtml");
 const { convert } = require("html-to-text");
 const Blogpost = require("../models/blogpost");
 const Countrycontact = require("../models/countrycontact");
-const url = require("url");
+const { OgMarkup, DefaultMarkup } = require("../utils/ogMarkup");
+const tagNames = require("../utils/tagNames");
+
+const cutPostText = (post, charLength) => {
+  if (typeof post.text !== "string") {
+    post.text = deltaToHtml(post.text);
+  }
+  post.text = convert(post.text);
+  post.text = post.text.replace(/\[http.*?\]/gm, "");
+
+  const cutat = post.text.lastIndexOf(" ", charLength);
+  if (cutat != -1) {
+    post.text = post.text.substring(0, cutat) + "...";
+  }
+};
 
 module.exports.renderPosts = (tagName, path, country) => {
   return async (req, res) => {
@@ -13,16 +27,9 @@ module.exports.renderPosts = (tagName, path, country) => {
         if (post.images.length === 0) {
           post.images = [{ url: "" }];
         }
-        post.text = deltaToHtml(post.text);
-        post.text = convert(post.text);
-        post.text = post.text.replace(/\[http.*?\]/gm, "");
+        const charLength = post.title.length > 70 ? 130 : 150;
 
-        const charLength = post.title.length > 70 ? 100 : 200;
-
-        const cutat = post.text.lastIndexOf(" ", charLength);
-        if (cutat != -1) {
-          post.text = post.text.substring(0, cutat) + "...";
-        }
+        cutPostText(post, charLength);
       });
     };
 
@@ -47,6 +54,13 @@ module.exports.renderPosts = (tagName, path, country) => {
       query = { $or: [{ tags: tagName }, { tags: "all" }] };
     }
 
+    const normalTagName = tagNames[tagName];
+
+    const ogMarkup = new DefaultMarkup(
+      req,
+      `${normalTagName} - FIDE Chess in Education Commission`
+    );
+
     Blogpost.paginate(query, {
       page: pageNumber,
       limit: 14,
@@ -58,12 +72,15 @@ module.exports.renderPosts = (tagName, path, country) => {
       const blogposts = results.docs;
       transform(blogposts);
 
+      console.log(tagName);
+
       res.render("menu/posts", {
         blogposts,
         pageNumber,
         path,
         tagName,
         countryName,
+        ogMarkup,
       });
     });
   };
@@ -77,7 +94,19 @@ module.exports.renderSinglePost = async (req, res) => {
   }
   post.text = deltaToHtml(post.text);
 
-  res.render("menu/show", { post });
+  const description = post;
+  cutPostText(description, 170);
+  description.text = description.text.replace(/[\n\r]/g, " ");
+
+  const ogMarkup = new OgMarkup(
+    req,
+    "article",
+    post.title,
+    description.text,
+    post.images[0].url
+  );
+
+  res.render("menu/show", { post, ogMarkup });
 };
 
 module.exports.loadMore = (tagName, country) => {
@@ -91,18 +120,7 @@ module.exports.loadMore = (tagName, country) => {
         if (post.images.length === 0) {
           post.images = [{ url: "" }];
         }
-        post.text = deltaToHtml(post.text);
-        post.text = convert(post.text);
-        post.text = post.text.replace(/\[http.*?\]/gm, "");
-        let charLength;
-        if (post.text.length >= 200) {
-          charLength = -(post.text.length - 200);
-        } else {
-          charLength = undefined;
-        }
-        post.text = post.text.slice(0, charLength);
-        post.text = post.text.trim();
-        post.text = post.text.replace(/\n/g, " ");
+        cutPostText(post, 170);
       });
     };
 
