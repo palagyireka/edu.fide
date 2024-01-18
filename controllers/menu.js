@@ -25,7 +25,7 @@ module.exports.renderPosts = (tagName, path, country) => {
     const transform = (blogs) => {
       blogs.forEach((post) => {
         if (post.images.length === 0) {
-          post.images = [{ url: "" }];
+          post.images = [{ url: "/emaillogo.jpeg" }];
         }
         const charLength = post.title.length > 70 ? 130 : 150;
 
@@ -98,13 +98,15 @@ module.exports.renderSinglePost = async (req, res) => {
   cutPostText(description, 170);
   description.text = description.text.replace(/[\n\r]/g, " ");
 
-  const ogMarkup = new OgMarkup(
-    req,
-    "article",
-    post.title,
-    description.text,
-    post.images[0].url
-  );
+  const ogMarkup = post.images[0]
+    ? new OgMarkup(
+        req,
+        "article",
+        post.title,
+        description.text,
+        post.images[0].url
+      )
+    : new OgMarkup(req, "article", post.title, description.text);
 
   res.render("menu/show", { post, ogMarkup });
 };

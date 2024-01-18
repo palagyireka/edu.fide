@@ -2,8 +2,9 @@
 <main class="blogs">
   <div class="posts-title">
     <p>Posts</p>
-    <button class="fancytime"><a href="/admin/posts/new">New Post</a></button>
-    <div class="page-counter"><%= pageNumber %></div>
+    <button class="fancytime" id="new-post-button">
+      <a href="/admin/posts/new">New Post</a>
+    </button>
   </div>
   <div id="b-posts">
     <% posts.forEach((post) => {%>

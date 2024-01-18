@@ -281,12 +281,18 @@ label[for="title"] {
   top: 88%;
 }
 
+.posts-title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .posts-title p {
+  text-align: center;
   display: inline-block;
-  width: 100%;
   height: max-content;
   font-size: 30px;
-  padding: 25px 40px;
+  padding: 25px 0px;
   box-sizing: border-box;
   color: white;
 }

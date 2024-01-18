@@ -342,11 +342,24 @@ h1 {
   cursor: auto;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  margin-top: 45px;
+  padding-top: 5px;
+  min-height: calc(100vh - 255px);
+}
+
 footer {
+  bottom: 0;
   height: 40px;
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 5px;
   box-sizing: border-box;
   background-color: #5b85aa;
   color: white;
