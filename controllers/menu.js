@@ -72,8 +72,6 @@ module.exports.renderPosts = (tagName, path, country) => {
       const blogposts = results.docs;
       transform(blogposts);
 
-      console.log(tagName);
-
       res.render("menu/posts", {
         blogposts,
         pageNumber,

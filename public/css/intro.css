@@ -8,6 +8,7 @@ main.partnerships {
   padding: 20px 10%;
   border-left: 50px solid #5b85aa;
   border-right: 50px solid #5b85aa;
+  min-height: calc(100vh - 205px);
 }
 
 main.intro h2,
