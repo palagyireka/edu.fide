@@ -8,8 +8,8 @@ const TitleholderSchema = new Schema({
   fullname: String,
   country: String,
   fideid: String,
-  awarddate: String,
   year: Number,
+  briefdesc: String,
   title: String,
 });
 

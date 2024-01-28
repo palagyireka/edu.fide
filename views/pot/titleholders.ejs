@@ -38,7 +38,7 @@
             <div id="year-filter"></div>
           </li>
           <li>
-            Full Name:
+            Name:
             <input type="text" />
             <span class="clear-th-name">X</span>
           </li>
@@ -84,8 +84,14 @@
     <div id="country-holder-new"></div>
     <label for="fideid-new-holder">FIDE ID:</label>
     <input type="text" name="fideid-new-holder" id="fideid-new-holder" />
-    <label for="fideid-new-holder">Country:</label>
+    <label for="country-new-holder">Country:</label>
     <div id="country-new-holder"></div>
+    <label for="new-holder-pic">Profile Picture:</label>
+    <div id="new-holder-pic"></div>
+    <% if (type === 'lsi' || type === "sli") { %>
+    <label for="new-new-holder-br-intro">Brief Introduction:</label>
+    <input type="text" name="new-holder-br-intro" id="new-holder-br-intro" />
+    <% } %>
     <label for="new-holder-date">Award Date: </label>
     <input type="text" name="new-holder-date" id="new-holder-date" />
     <p>Type of Title:</p>

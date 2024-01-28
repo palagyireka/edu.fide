@@ -58,7 +58,6 @@ if (cancelHolderBtn) {
     const fullnameContent = firstnameContent + " " + lastnameContent;
     const countryContent = document.querySelector("#country-new-holder").value;
     const fideidContent = document.querySelector("#fideid-new-holder").value;
-    const awarddateContent = document.querySelector("#new-holder-date").value;
     const yearContent = Number(
       document
         .querySelector("#new-holder-date")
@@ -72,14 +71,17 @@ if (cancelHolderBtn) {
         return input.value;
       })
       .join(",");
+    const briefDescContent =
+      document.querySelector("new-holder-br-intro")?.value ?? "";
+
     const postData = {
       firstname: firstnameContent,
       lastname: lastnameContent,
       fullname: fullnameContent,
       country: countryContent,
       fideid: fideidContent,
-      awarddate: awarddateContent,
       year: yearContent,
+      briefdesc: briefDescContent,
       title: titleContent,
     };
 

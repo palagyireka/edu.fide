@@ -52,7 +52,6 @@
 }
 #socmed-btn:checked ~ label .socmed-list > li {
   position: absolute;
-  background-color: white;
   border-radius: 50%;
   animation-direction: normal;
   animation-duration: 0.3s;
@@ -70,6 +69,10 @@
 #socmed-btn:checked ~ label .socmed-list > li:nth-of-type(3) {
   top: 155px;
   animation-name: sc-j3;
+}
+#socmed-btn:checked ~ label .socmed-list > li:nth-of-type(4) {
+  top: 205px;
+  animation-name: sc-j4;
 }
 
 @keyframes sc-j1 {
@@ -101,6 +104,17 @@
   }
   to {
     top: 155px;
+    opacity: 1;
+  }
+}
+
+@keyframes sc-j4 {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 205px;
     opacity: 1;
   }
 }
