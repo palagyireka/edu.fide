@@ -1,4 +1,8 @@
-const { userSchema, coursebookPasswordSchema } = require("./schemas");
+const {
+  userSchema,
+  coursebookPasswordSchema,
+  schoolAwardsApplicantSchema,
+} = require("./schemas");
 const ExpressError = require("./utils/ExpressError");
 const User = require("./models/user");
 
@@ -30,8 +34,21 @@ module.exports.validateCoursebookPassword = (req, res, next) => {
   }
 };
 
+module.exports.validateSchoolAwardsApplicant = (req, res, next) => {
+  const { error } = schoolAwardsApplicantSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
 module.exports.isAdmin = (req, res, next) => {
-  if (req.user.role !== "admin") {
+  if (typeof req.user === "undefined") {
+    req.flash("error", "You do not have permission to do that!");
+    return res.redirect("/");
+  } else if (req.user.role !== "admin") {
     req.flash("error", "You do not have permission to do that!");
     return res.redirect("/");
   }

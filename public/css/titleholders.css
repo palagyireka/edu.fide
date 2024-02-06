@@ -147,8 +147,6 @@ label[for="slititleholders"] {
 }
 main.holder {
   background-color: #5b85aa;
-  margin-top: 0;
-  padding-top: 45px;
 }
 .titleholders-flex ~ .add-material label[for="LSI"],
 .titleholders-flex ~ .add-material label[for="SI"],

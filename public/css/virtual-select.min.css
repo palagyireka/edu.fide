@@ -45,9 +45,10 @@
   border: 1px solid #ddd;
   cursor: pointer;
   display: flex;
-  padding: 7px 30px 7px 10px;
+  padding: 7px 70px 7px 10px;
   position: relative;
   width: 100%;
+  border-radius: 15px;
 }
 .vscomp-value {
   height: 20px;
@@ -148,6 +149,7 @@
 .vscomp-dropbox {
   background-color: #fff;
   width: 100%;
+  overflow: hidden;
 }
 .vscomp-options-container {
   max-height: 210px;

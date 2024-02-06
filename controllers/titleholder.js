@@ -10,8 +10,8 @@ module.exports.createTitleholder = async (req, res) => {
     fullname: req.body.fullname,
     country: req.body.country,
     fideid: req.body.fideid,
+    awarddate: req.body.awarddate,
     year: req.body.year,
-    briefdesc: req.body.briefdesc,
     title: req.body.title,
   });
 
@@ -29,8 +29,8 @@ module.exports.updateTitleholder = async (req, res) => {
     fullname: req.body.fullname,
     country: req.body.country,
     fideid: req.body.fideid,
+    awarddate: req.body.awarddate,
     year: req.body.year,
-    briefdesc: req.body.briefdesc,
     title: req.body.title,
   });
   req.flash("success", "Titleholder saved!");

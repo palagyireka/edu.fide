@@ -40,9 +40,6 @@ center,
 dl,
 dt,
 dd,
-ol,
-ul,
-li,
 fieldset,
 form,
 label,
@@ -100,15 +97,21 @@ section {
 /* HTML5 display-role reset for older browsers */
 
 body {
+  min-height: 100vh;
   line-height: 1;
   background-color: white;
   color: black;
   font-family: "Raleway", Tahoma, Geneva, Verdana, sans-serif;
 }
-
 ol,
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 blockquote,
@@ -127,6 +130,33 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+#form {
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+  ul ul,
+  ol ul {
+    list-style-type: circle;
+    list-style-position: inside;
+    margin-left: 15px;
+  }
+  ol ol,
+  ul ol {
+    list-style-type: lower-latin;
+    list-style-position: inside;
+    margin-left: 15px;
+  }
+  ul li {
+    list-style-position: outside;
+    margin-left: 1em;
+  }
 }
 
 /* -------------- FŐMENÜ BEÁLLÍTÁSOK ASZTALRA----------- */
@@ -349,7 +379,7 @@ body {
 
 main {
   flex: 1;
-  margin-top: 45px;
+  margin-top: 40px;
   padding-top: 5px;
   min-height: calc(100vh - 255px);
 }
@@ -445,4 +475,30 @@ footer a {
 
 .text-body {
   overflow: hidden;
+}
+
+.fide-schools-main {
+  background-color: #f3f3f3;
+}
+
+h2.fide-schools-title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bolder;
+  font-size: xx-large;
+  margin: 20px auto 35px auto;
+}
+
+div.fide-schools-wrapper {
+  max-width: 750px;
+  margin: auto;
+}
+
+.fide-schools-top {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+#language-select {
+  margin-top: 20px;
 }

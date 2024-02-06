@@ -51,6 +51,17 @@ todayBtn.addEventListener("click", () => {
   setDate();
 });
 
+calendar.createEvents([
+  {
+    id: "1",
+    title: "test",
+    calendarId: "1",
+    category: "time",
+    start: new Date(),
+    end: new Date(),
+  },
+]);
+
 fetch("/api/events")
   .then(async (response) => {
     let { events } = await response.json();

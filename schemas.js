@@ -39,3 +39,28 @@ module.exports.userSchema = Joi.object({
 module.exports.coursebookPasswordSchema = Joi.object({
   coursebookPw: Joi.string().escapeHTML().required(),
 });
+
+module.exports.schoolAwardsApplicantSchema = Joi.object({
+  email: Joi.string().max(100).escapeHTML(),
+  fullName: Joi.string().max(100).escapeHTML(),
+  areYouMainContact: Joi.string().max(20).escapeHTML(),
+  mainContactName: Joi.string().max(100).escapeHTML(),
+  mainContactEmail: Joi.string().max(100).escapeHTML(),
+  nameOfSchool: Joi.string().max(100).escapeHTML(),
+  otherSchoolDetails: Joi.string().max(5000).escapeHTML(),
+  typeOfSchool: Joi.string().max(50).escapeHTML(),
+  schoolId: Joi.string().max(50).escapeHTML(),
+  facilities: Joi.string().max(10000).escapeHTML(),
+  studentInvolvment: Joi.string().max(10000).escapeHTML(),
+  teachingMaterials: Joi.string().max(10000).escapeHTML(),
+  chessEvents: Joi.string().max(10000).escapeHTML(),
+  chessEducators: Joi.string().max(10000).escapeHTML(),
+  representationOfSchoolChess: Joi.string().max(10000).escapeHTML(),
+  socialCommitment: Joi.string().max(10000).escapeHTML(),
+  chessAsAnEducationalTool: Joi.string().max(10000).escapeHTML(),
+  financingSchoolChess: Joi.string().max(10000).escapeHTML(),
+  testimonials: Joi.string().max(50).escapeHTML(),
+  processingYourInformation: Joi.string().max(50).escapeHTML(),
+  publishOnWebsite: Joi.string().max(50).escapeHTML(),
+  date: Joi.date(),
+});

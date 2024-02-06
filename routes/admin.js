@@ -15,6 +15,10 @@ router.post("/posts/json", admin.renderMorePosts);
 
 router.get("/profiles", isAdmin, admin.showProfiles);
 
+router.route("/fide-schools").get(admin.showFideSchoolApplicants);
+
+router.route("/fide-schools/download").get(admin.downloadFideSchoolApplicants);
+
 router
   .route("/:id")
   .get(isAdmin, catchAsync(admin.showPost))

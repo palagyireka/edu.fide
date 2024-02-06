@@ -7,6 +7,7 @@ const tagOptions = [
   { label: "CIE News", value: "cieNews" },
   { label: "Blog", value: "blog" },
   { label: "Personal Stories", value: "personalStories" },
+  { label: "All", value: "all" },
 ];
 const searchTagFilter = document.querySelector("#tag-filter");
 

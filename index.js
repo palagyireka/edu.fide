@@ -39,6 +39,7 @@ const staticRoutes = require("./routes/staticPages");
 const potRoutes = require("./routes/pot");
 const partnershipRoutes = require("./routes/partnership");
 const titleholderRoutes = require("./routes/titleholder");
+const certificationRoutes = require("./routes/certification");
 const url = require("url");
 
 const dbUrl = process.env.DB_URL;
@@ -114,6 +115,7 @@ app.use("/commission", commissionRoutes);
 app.use("/pot", potRoutes);
 app.use("/partnerships", partnershipRoutes);
 app.use("/pot/titleholders", titleholderRoutes);
+app.use("/certification", certificationRoutes);
 
 app.get("/", isValidated, async (req, res) => {
   const featured = await FeaturedPost.findOne({}).populate("featuredPostId");
@@ -380,6 +382,7 @@ app.all("*", (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  console.log(err);
   if (err.type === "flashError") {
     req.flash("error", err.message);
     res.redirect("/");
