@@ -44,12 +44,12 @@ a {
   opacity: 1;
 }
 
-#map path:hover,
+/* #map path:hover,
 #map circle:hover,
 #map ellipse:hover {
   cursor: pointer;
   fill: #91b0b2;
-}
+} */
 
 .uk-mate {
   fill: #5b85aa;
@@ -64,9 +64,9 @@ a {
   transition: transform 0.3s;
 }
 
-#map path:hover {
+/* #map path:hover {
   fill: #91b0b2;
-}
+} */
 .map-container {
   width: 100%;
   height: 100%;

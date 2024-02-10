@@ -4,24 +4,52 @@ fetch("/api/listevents").then(async (response) => {
   const calendarListView = document.querySelector(".calendar-ul");
   if (transformedEvents) {
     transformedEvents.forEach((event) => {
+      const anchor = document.createElement("a");
+      anchor.href = `/fullcalendar?date=${event.start.toString()}&evtid=${
+        event.id
+      }`;
       const listItem = document.createElement("li");
       const listItemTitle = document.createElement("div");
       const listItemDate = document.createElement("div");
       listItemTitle.innerText = event.title;
-      let listItemDateString = new Date(event.start);
-      listItemDateString =
-        listItemDateString.toLocaleString("default", {
+      let listItemStartDate = new Date(event.start);
+      let listItemComparison = new Date(event.start);
+      let listItemEndDate = new Date(event.end);
+      listItemStartDate =
+        listItemStartDate.toLocaleString("default", {
           month: "long",
         }) +
         " " +
-        listItemDateString.toLocaleString("default", {
+        listItemStartDate.toLocaleString("default", {
           day: "numeric",
         });
-      listItemDate.innerText = listItemDateString;
-      listItem.appendChild(listItemDate);
-      listItem.appendChild(listItemTitle);
+      if (
+        listItemEndDate &&
+        listItemEndDate.getDay() != listItemComparison.getDay()
+      ) {
+        listItemEndDate =
+          listItemEndDate.toLocaleString("default", {
+            month: "long",
+          }) +
+          " " +
+          listItemEndDate.toLocaleString("default", {
+            day: "numeric",
+          });
+        listItemDate.innerText = listItemStartDate + " - " + listItemEndDate;
+      } else {
+        listItemDate.innerText = listItemStartDate;
+      }
+      anchor.appendChild(listItemDate);
+      anchor.appendChild(listItemTitle);
+      listItem.appendChild(anchor);
       calendarListView.appendChild(listItem);
     });
+    const listItem = document.createElement("li");
+    const anchor = document.createElement("a");
+    anchor.href = "/fullcalendar?date=today";
+    anchor.innerText = "View full calendar here.";
+    listItem.appendChild(anchor);
+    calendarListView.appendChild(listItem);
   }
 });
 

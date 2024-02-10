@@ -4,7 +4,6 @@ const { convert } = require("html-to-text");
 const url = require("url");
 
 module.exports.createPartnership = async (req, res) => {
-  console.log(req.body);
   const partnership = new Partnership({
     title: req.body.title,
     text: req.body.text,

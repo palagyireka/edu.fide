@@ -150,6 +150,7 @@ label[for="title"] {
   box-sizing: border-box;
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
   margin: 0;
   padding: 15px 0;
 }
@@ -185,6 +186,32 @@ label[for="title"] {
   font-size: 14px;
   line-height: 1.2;
   word-wrap: break-word;
+  overflow: hidden;
+  height: 115px;
+}
+
+.blog-card .tagnames {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 50px;
+  transform: translateY(-100%);
+  width: calc(100% - 100px);
+  overflow-y: hidden;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-size: 14px;
+  height: 30px;
+  background-color: #91b0b2;
+  color: white;
+  font-weight: 500;
+  padding: 8px;
+  box-sizing: border-box;
+  font-style: italic;
+}
+.blog-card:hover .tagnames {
+  display: block;
+  letter-spacing: normal !important;
 }
 
 .blog-card img {
@@ -198,7 +225,10 @@ label[for="title"] {
 .blogsor:last-of-type .blog-card img {
   width: 15%;
 }
-
+.blogsor:first-of-type:hover .tagnames,
+.blogsor:nth-of-type(2):hover .tagnames {
+  display: none;
+}
 .blogsor:first-of-type .blog-card img:hover,
 .blogsor:nth-of-type(2) .blog-card img:hover {
   border-radius: 0%;
@@ -224,6 +254,8 @@ label[for="title"] {
 
 .blogsor:first-of-type .blog-card {
   height: 380px;
+  width: 45%;
+  flex-grow: 0;
 }
 
 .blogsor:first-of-type .blog-card p,
@@ -275,10 +307,12 @@ label[for="title"] {
 
 .blog-card p + span {
   display: block;
+  box-sizing: border-box;
   position: absolute;
   font-style: italic;
   font-size: 14px;
   top: 88%;
+  background-color: white;
 }
 
 .posts-title {
@@ -292,7 +326,7 @@ label[for="title"] {
   display: inline-block;
   height: max-content;
   font-size: 30px;
-  padding: 25px 0px;
+  padding: 10px 0px 20px 0px;
   box-sizing: border-box;
   color: white;
 }

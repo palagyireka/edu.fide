@@ -2,12 +2,6 @@
 <main>
   <div class="main-flex">
     <div class="left-side">
-      <div class="calendar-list-container">
-        <a href="/fullcalendar" class="calendar-anchor">
-          <p>Upcoming Events</p>
-          <ul class="calendar-ul"></ul>
-        </a>
-      </div>
       <% if (featuredPost) {%>
       <div id="featured"><%- include('partials/featured') %></div>
       <% } %>
@@ -15,14 +9,14 @@
     <div class="map-container">
       <%- include('partials/map') %>
       <div class="map-info">
-        <span
+        <!-- <span
           >Select your country of interest to see country-specific CIE
           information.</span
-        >
+        > -->
       </div>
     </div>
     <div class="right-side">
-      <div class="search-container">
+      <!-- <div class="search-container">
         <div class="searchbar">
           <input placeholder="Search..." type="text" />
           <div class="search-symbol">
@@ -53,8 +47,12 @@
           </div>
         </div>
         <ul class="search-countries"></ul>
+      </div> -->
+      <div class="calendar-list-container">
+        <p>Upcoming Events</p>
+        <ul class="calendar-ul"></ul>
       </div>
-      <div class="country-menu-container">
+      <!-- <div class="country-menu-container">
         <p class="country-name">Brazil</p>
         <ul class="country-menu">
           <li>
@@ -92,7 +90,7 @@
             </ul>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </main>

@@ -9,22 +9,18 @@
   <div id="b-posts">
     <% blogposts.forEach((blog) => {%>
     <a class="blog-card" href="/<%= path %>/<%= blog.id %>">
-      <div class="tag-names"></div>
-      <h2><%= blog.title %></h2>
-      <% if (blog.images[0].url !== "") { %>
-      <div class="img-container">
-        <img src="<%= blog.images[0].url %>" alt="image" />
-      </div>
+    <div class="tagnames">
+      <% for(let i=0;i<blog.tags.length;i++) { %>
+      <span><%= blog.tags[i] %></span>
       <% } %>
-      <p><%= blog.text %></p>
-
-      <span> Read more here >> </span>
-    </a>
-    <% }) %>
+    </div>
+    <h2><%= blog.title %></h2>
+    <% if (blog.images[0].url !== "") { %>
+    <div class="img-container">
+      <img src="<%= blog.images[0].url %>" alt="image" />
+    </div>
+    <% } %>
   </div>
-  <% if (blogposts.length > 13) {%>
-  <button id="load-more" class="fancytime">Load More</button>
-  <% } %>
 </main>
 <script>
   const tagNameString = document.querySelector(".posts-title p").innerText;
@@ -35,6 +31,25 @@
   } else {
     correctTagName = correctTagName[0].toUpperCase() + correctTagName.slice(1);
   }
+  const cardTags = document.querySelectorAll(".tagnames");
+cardTags.forEach((cardtag) => {
+  const tags = cardtag.innerText
+    .split(" ")
+    .map((tag) => {
+      let formattedTag = tag.trim();
+      formattedTag = formattedTag.split(/(?=[A-Z])/).join(" ");
+      if (formattedTag.slice(0, 3) === "cie") {
+        formattedTag =
+          formattedTag.slice(0, 3).toUpperCase() + formattedTag.slice(3);
+      } else {
+        formattedTag = formattedTag[0].toUpperCase() + formattedTag.slice(1);
+      }
+      return formattedTag;
+    })
+    .join(", ");
+  cardtag.innerText = tags;
+});
+
 
   document.querySelector(".posts-title p").innerText = correctTagName;
 
@@ -65,5 +80,5 @@
       counter += 3;
     }
   }
-</script>
+  </script>
 <script src="/js/loadMorePosts.js"></script>

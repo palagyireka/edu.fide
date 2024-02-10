@@ -72,23 +72,27 @@ if (cancelHolderBtn) {
         return input.value;
       })
       .join(",");
-    const postData = {
-      firstname: firstnameContent,
-      lastname: lastnameContent,
-      fullname: fullnameContent,
-      country: countryContent,
-      fideid: fideidContent,
-      awarddate: awarddateContent,
-      year: yearContent,
-      title: titleContent,
-    };
+    const briefDescContent =
+      document.querySelector("#new-holder-br-intro")?.value ?? "";
+    const photoContent = document.getElementById("new-holder-img").files[0];
+    const formData = new FormData();
+    formData.append("firstname", firstnameContent);
+    formData.append("lastname", lastnameContent);
+    formData.append("fullname", fullnameContent);
+    formData.append("country", countryContent);
+    formData.append("fideid", fideidContent);
+    formData.append("year", yearContent);
+    formData.append("briefdesc", briefDescContent);
+    formData.append("title", titleContent);
+    formData.append("folder", "partnerships");
+
+    if (photoContent) {
+      formData.append("image", photoContent);
+    }
 
     fetch(`/pot/titleholders/addmember`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
+      body: formData,
     })
       .then(() => {
         if (lsiSelect === "LSI") {
@@ -109,6 +113,7 @@ if (cancelHolderBtn) {
         }
       });
   });
+
   deleteHolderBtn.addEventListener("click", async (evt) => {
     evt.preventDefault();
     let id = encodeURIComponent(deleteHolderID);
@@ -145,7 +150,6 @@ if (cancelHolderBtn) {
     const fullnameContent = firstnameContent + " " + lastnameContent;
     const countryContent = document.querySelector("#country-new-holder").value;
     const fideidContent = document.querySelector("#fideid-new-holder").value;
-    const awarddateContent = document.querySelector("#new-holder-date").value;
     const yearContent = Number(
       document
         .querySelector("#new-holder-date")
@@ -165,7 +169,6 @@ if (cancelHolderBtn) {
       fullname: fullnameContent,
       country: countryContent,
       fideid: fideidContent,
-      awarddate: awarddateContent,
       year: yearContent,
       title: titleContent,
     };
@@ -238,6 +241,7 @@ const titleHolderUL = document.querySelectorAll(
 );
 
 function mutasdAzAdatokat(evt, torol) {
+  const briefDesc = document.querySelector(".titleholder-introduction");
   if (torol) {
     if (document.querySelector(".admin-user-logged")) {
       if (cancelHolderBtn) {
@@ -249,6 +253,13 @@ function mutasdAzAdatokat(evt, torol) {
     for (let i = 0; i < 5; i++) {
       titleHolderUL[i].innerText = "";
     }
+    if (briefDesc) {
+      briefDesc.style.display = "none";
+    }
+    const p = document.createElement("p");
+    p.id = "selected-tl-picture";
+    p.innerText = "Selected Titleholder:";
+    document.querySelector("#selected-tl-picture").replaceWith(p);
   } else {
     for (const tl of allTitleHolders) {
       if (evt.target.value == tl.fullname) {
@@ -270,6 +281,15 @@ function mutasdAzAdatokat(evt, torol) {
         titleHolderUL[2].innerText = tl.country;
         titleHolderUL[3].innerText = tl.fideid;
         titleHolderUL[4].innerText = tl.year;
+        const tlImage = document.createElement("img");
+        tlImage.src = tl.image;
+        tlImage.alt = "Selected Titleholder:";
+        tlImage.id = "selected-tl-picture";
+        document.querySelector("#selected-tl-picture").replaceWith(tlImage);
+        if (briefDesc) {
+          briefDesc.style.display = "block";
+          briefDesc.lastElementChild.innerText = tl.briefdesc;
+        }
         deleteHolderID = tl._id;
         break;
       }

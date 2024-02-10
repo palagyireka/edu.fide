@@ -1,9 +1,26 @@
 <% layout('layouts/boilerplate') %>
 <div class="calendar-head">
   <div class="calendar-nav">
-    <button id="prev-btn">🡨</button>
+    <button id="prev-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+      >
+        <polygon
+          points="12.718 4.707 11.305 3.292 2.585 12 11.305 20.707 12.718 19.292 6.417 13 20 13 20 11 6.416 11 12.718 4.707"
+        />
+      </svg>
+    </button>
     <button id="today-btn">Today</button>
-    <button id="next-btn">🡪</button>
+    <button id="next-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+        <path
+          d="M11.293 4.707 17.586 11H4v2h13.586l-6.293 6.293 1.414 1.414L21.414 12l-8.707-8.707-1.414 1.414z"
+        />
+      </svg>
+    </button>
   </div>
   <div id="month"></div>
 </div>

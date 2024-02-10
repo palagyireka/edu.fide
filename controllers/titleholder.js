@@ -4,7 +4,7 @@ const { convert } = require("html-to-text");
 const url = require("url");
 
 module.exports.createTitleholder = async (req, res) => {
-  const newPartner = new Titleholder({
+  const newHolder = new Titleholder({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     fullname: req.body.fullname,
@@ -15,10 +15,14 @@ module.exports.createTitleholder = async (req, res) => {
     title: req.body.title,
   });
 
-  newPartner.save().then((post) => {
-    req.flash("success", "Successfully made a new partner!");
+  if (req.file) {
+    newHolder.image = req.file.path;
+  }
+
+  newHolder.save().then((post) => {
+    req.flash("success", "Successfully made a new titleholder!");
+    res.json({ message: "Success!" });
   });
-  res.json({ message: "Success!" });
 };
 
 module.exports.updateTitleholder = async (req, res) => {

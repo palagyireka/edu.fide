@@ -10,7 +10,6 @@ const calendar = new Calendar("#calendar", {
   isReadOnly: true,
   month: { startDayOfWeek: 1 },
 });
-
 const months = [
   "January",
   "February",
@@ -26,6 +25,29 @@ const months = [
   "December",
 ];
 
+const urlParams = new URLSearchParams(window.location.search);
+const eventDate = new Date(urlParams.get("date").substring(0, 10));
+
+function waitForElm(selector) {
+  return new Promise((resolve) => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
+
+    const observer = new MutationObserver((mutations) => {
+      if (document.querySelector(selector)) {
+        observer.disconnect();
+        resolve(document.querySelector(selector));
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+}
+
 function setDate() {
   const dateObj = calendar.getDate();
   const currentYear = dateObj.d.getFullYear();
@@ -33,9 +55,17 @@ function setDate() {
 
   monthDisplay.innerText = `${currentYear} ${months[currentMonth]}`;
 }
-
+for (
+  let i = 0;
+  i < (calendar.getDate().getMonth() - eventDate.getMonth()) * -1;
+  i++
+) {
+  loopFired = true;
+  calendar.next();
+}
 setDate();
-
+const urlParamsD = new URLSearchParams(window.location.search);
+const eventID = urlParams.get("evtid");
 prevBtn.addEventListener("click", () => {
   calendar.prev();
   setDate();
@@ -72,6 +102,22 @@ fetch("/api/events")
     console.log(e);
   });
 
+waitForElm(`[data-event-id="${eventID}"]`).then(() => {
+  const el = document.querySelector(`[data-event-id="${eventID}"]`);
+  console.log(el);
+
+  const elRect = el.getBoundingClientRect();
+  const model = calendar.getEvent(eventID, "1");
+
+  calendar.getStoreDispatchers().popup.showDetailPopup(
+    {
+      event: model,
+      eventRect: elRect,
+    },
+    false
+  );
+});
+
 const eventTransform = (events) => {
   return events.map((evt) => {
     let evtCategory;
@@ -95,7 +141,7 @@ const eventTransform = (events) => {
       category: evtCategory,
       start: evtStart,
       end: evtEnd,
-      attendees: ["fideEdu"],
+      attendees: [""],
       color: "#FFFFFF",
     };
 

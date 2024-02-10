@@ -60,7 +60,7 @@
   }
 
   #socmed-container {
-    position: relative;
+    position: initial;
     right: 15px;
     top: 15px;
   }
