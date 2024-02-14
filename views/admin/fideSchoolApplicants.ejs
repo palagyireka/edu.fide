@@ -1,163 +1,169 @@
 <% layout('layouts/boilerplate') %>
 
 <main>
-  <div><button id="csv-download">Download spreadsheet</button></div>
-  <%if (typeof applicants !== "undefined") { applicants.forEach((applicant,
-  index) => {%>
-  <div class="applicant">
-    <div class="applicant-information">
-      <div class="applicant-header">
-        <span> <%= applicant.fullName %>, <%= applicant.schoolId %></span>
-        <span
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="minussign hidden show-more"
-            viewBox="0 0 16 16"
-            id="minussign-<%= index %>"
-          >
-            <path
-              d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
-            />
-            <path
-              d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"
-            />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            class="plussign show-more"
-            id="plussign-<%= index %>"
-          >
-            <path
-              d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
-            />
-            <path
-              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
-            /></svg
-        ></span>
-      </div>
-      <table class="applicant-base-info">
-        <tbody>
-          <tr>
-            <th scope="row">E-mail:</th>
-            <td><%= applicant.email %></td>
-          </tr>
-          <tr>
-            <th scope="row">Full name</th>
-            <td><%= applicant.fullName %></td>
-          </tr>
-          <tr>
-            <th scope="row">Main contact?</th>
-            <td><%= applicant.areYouMainContact %></td>
-          </tr>
-          <tr>
-            <th scope="row">Name of main Contact Person:</th>
-            <td><%= applicant.mainContactName %></td>
-          </tr>
-          <tr>
-            <th scope="row">Email of main Contact Person:</th>
-            <td><%= applicant.mainContactEmail %></td>
-          </tr>
-          <tr>
-            <th scope="row">Name of School:</th>
-            <td><%= applicant.nameOfSchool %></td>
-          </tr>
-          <tr>
-            <th scope="row">Other school details:</th>
-            <td><%- applicant.otherSchoolDetails %></td>
-          </tr>
-          <tr>
-            <th scope="row">Type of school</th>
-            <td><%= applicant.typeOfSchool %></td>
-          </tr>
-          <tr>
-            <th scope="row">ID</th>
-            <td><%= applicant.schoolId %></td>
-          </tr>
-          <tr>
-            <th scope="row">Date</th>
-            <td><%= applicant.date %></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="long-answers hidden" id="answers<%= index %>">
-        <div class="long-answer">
-          <div class="long-answer-question">
-            1. Facilities<br />Describe the facilities that enable chess
-            instruction in your school.
-          </div>
-          <div class="applicant-answer"><%-applicant.facilities%></div>
+  <div>
+    <button id="csv-download">Download spreadsheet</button
+    ><button id="pdf-download">Download PDF</button>
+  </div>
+  <div id="applicants">
+    <%if (typeof applicants !== "undefined") { applicants.forEach((applicant,
+    index) => {%>
+    <div class="applicant">
+      <div class="applicant-information">
+        <div class="applicant-header">
+          <span> <%= applicant.fullName %>, <%= applicant.schoolId %></span>
+          <span
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="minussign hidden show-more"
+              viewBox="0 0 16 16"
+              id="minussign-<%= index %>"
+            >
+              <path
+                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+              />
+              <path
+                d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+              class="plussign show-more"
+              id="plussign-<%= index %>"
+            >
+              <path
+                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+              />
+              <path
+                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+              /></svg
+          ></span>
         </div>
-        <div class="long-answer">
-          <div class="long-answer-question">
-            2. Student involvement<br />Provide details about student
-            involvement in chess activities.
+        <table class="applicant-base-info">
+          <tbody>
+            <tr>
+              <th scope="row">E-mail:</th>
+              <td><%= applicant.email %></td>
+            </tr>
+            <tr>
+              <th scope="row">Full name</th>
+              <td><%= applicant.fullName %></td>
+            </tr>
+            <tr>
+              <th scope="row">Main contact?</th>
+              <td><%= applicant.areYouMainContact %></td>
+            </tr>
+            <tr>
+              <th scope="row">Name of main Contact Person:</th>
+              <td><%= applicant.mainContactName %></td>
+            </tr>
+            <tr>
+              <th scope="row">Email of main Contact Person:</th>
+              <td><%= applicant.mainContactEmail %></td>
+            </tr>
+            <tr>
+              <th scope="row">Name of School:</th>
+              <td><%= applicant.nameOfSchool %></td>
+            </tr>
+            <tr>
+              <th scope="row">Other school details:</th>
+              <td><%- applicant.otherSchoolDetails %></td>
+            </tr>
+            <tr>
+              <th scope="row">Type of school</th>
+              <td><%= applicant.typeOfSchool %></td>
+            </tr>
+            <tr>
+              <th scope="row">ID</th>
+              <td><%= applicant.schoolId %></td>
+            </tr>
+            <tr>
+              <th scope="row">Date</th>
+              <td><%= applicant.date %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="long-answers hidden" id="answers<%= index %>">
+          <div class="long-answer">
+            <div class="long-answer-question">
+              1. Facilities<br />Describe the facilities that enable chess
+              instruction in your school.
+            </div>
+            <div class="applicant-answer"><%-applicant.facilities%></div>
           </div>
-          <div class="applicant-answer"><%-applicant.studentInvolvment%></div>
-        </div>
-        <div class="long-answer">
-          <div class="long-answer-question">
-            3. Teaching materials<br />Explain what is taught in the chess
-            classes and what materials are used.
+          <div class="long-answer">
+            <div class="long-answer-question">
+              2. Student involvement<br />Provide details about student
+              involvement in chess activities.
+            </div>
+            <div class="applicant-answer"><%-applicant.studentInvolvment%></div>
           </div>
-          <div class="applicant-answer"><%-applicant.teachingMaterials%></div>
-        </div>
-        <div class="long-answer">
-          <div class="long-answer-question">
-            4. Chess events<br />What chess events are organized in your school?
+          <div class="long-answer">
+            <div class="long-answer-question">
+              3. Teaching materials<br />Explain what is taught in the chess
+              classes and what materials are used.
+            </div>
+            <div class="applicant-answer"><%-applicant.teachingMaterials%></div>
           </div>
-          <div class="applicant-answer"><%-applicant.chessEvents%></div>
-        </div>
-        <div class="long-answer">
-          <div class="long-answer-question">
-            5. Chess educators<br />Who teaches chess and what are their
-            qualifications in education and in chess?
+          <div class="long-answer">
+            <div class="long-answer-question">
+              4. Chess events<br />What chess events are organized in your
+              school?
+            </div>
+            <div class="applicant-answer"><%-applicant.chessEvents%></div>
           </div>
-          <div class="applicant-answer"><%-applicant.chessEducators%></div>
-        </div>
-        <div class="long-answer">
-          <div class="long-answer-question">
-            6. Representation of school chess<br />How visible is chess in your
-            school and in the wider community?
+          <div class="long-answer">
+            <div class="long-answer-question">
+              5. Chess educators<br />Who teaches chess and what are their
+              qualifications in education and in chess?
+            </div>
+            <div class="applicant-answer"><%-applicant.chessEducators%></div>
           </div>
-          <div class="applicant-answer">
-            <%-applicant.representationOfSchoolChess%>
+          <div class="long-answer">
+            <div class="long-answer-question">
+              6. Representation of school chess<br />How visible is chess in
+              your school and in the wider community?
+            </div>
+            <div class="applicant-answer">
+              <%-applicant.representationOfSchoolChess%>
+            </div>
           </div>
-        </div>
-        <div class="long-answer">
-          <div class="long-answer-question">
-            7. Social commitment<br />How inclusive and socially committed is
-            your school chess?
+          <div class="long-answer">
+            <div class="long-answer-question">
+              7. Social commitment<br />How inclusive and socially committed is
+              your school chess?
+            </div>
+            <div class="applicant-answer"><%-applicant.socialCommitment%></div>
           </div>
-          <div class="applicant-answer"><%-applicant.socialCommitment%></div>
-        </div>
-        <div class="long-answer">
-          <div class="long-answer-question">
-            8. Chess as an educational tool<br />How is chess integrated into
-            the school curriculum?
+          <div class="long-answer">
+            <div class="long-answer-question">
+              8. Chess as an educational tool<br />How is chess integrated into
+              the school curriculum?
+            </div>
+            <div class="applicant-answer">
+              <%-applicant.chessAsAnEducationalTool%>
+            </div>
           </div>
-          <div class="applicant-answer">
-            <%-applicant.chessAsAnEducationalTool%>
-          </div>
-        </div>
-        <div class="long-answer">
-          <div class="long-answer-question">
-            9. Financing school chess<br />Explain how your school chess program
-            is financed.
-          </div>
-          <div class="applicant-answer">
-            <%-applicant.financingSchoolChess%>
+          <div class="long-answer">
+            <div class="long-answer-question">
+              9. Financing school chess<br />Explain how your school chess
+              program is financed.
+            </div>
+            <div class="applicant-answer">
+              <%-applicant.financingSchoolChess%>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <% }) }%>
   </div>
-  <% }) }%>
 </main>
 <script src="/js/fide-schools-admin.js"></script>

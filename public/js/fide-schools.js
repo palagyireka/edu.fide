@@ -3,6 +3,7 @@ VirtualSelect.init({
   options: [
     { label: "English", value: "default" },
     { label: "German", value: "de" },
+    { label: "Spanish", value: "es" },
     { label: "Russian", value: "ru" },
   ],
   hideClearButton: true,
