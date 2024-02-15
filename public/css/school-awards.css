@@ -1,0 +1,86 @@
+.fide-schools-main {
+  background-color: #f3f3f3;
+}
+
+h2.fide-schools-title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 32px;
+  letter-spacing: 4px;
+  margin: 20px auto 35px auto;
+}
+
+div.fide-schools-wrapper {
+  box-sizing: border-box;
+  padding: 5px 13%;
+}
+div.fide-schools-wrapper * {
+  box-sizing: border-box;
+}
+
+.fide-schools-top {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.fide-schools-wrapper h3 {
+  font-size: 25px;
+  margin-top: 15px;
+}
+.fide-schools-wrapper p {
+  margin: 8px 0;
+  line-height: 1.2;
+  font-size: 18px;
+}
+.fide-schools-wrapper ul,
+.fide-schools-wrapper ol {
+  font-size: 18px;
+}
+.school-grading {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.school-grading li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+svg,
+svg * {
+  box-sizing: unset;
+}
+.form-lang p {
+  margin-right: 8px;
+}
+.form-lang {
+  max-width: calc(90 * (var(--sjs-base-unit, var(--base-unit, 8px))));
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: calc(6 * (var(--sjs-base-unit, var(--base-unit, 8px))));
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.sd-page {
+  padding: 0 !important;
+}
+.sd-body.sd-body--static {
+  padding-top: 15px !important ;
+}
+
+ul.lang-checklist {
+  display: flex;
+}
+ul.lang-checklist li a {
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+}
+ul.lang-checklist li a svg {
+  margin-right: 8px;
+}
