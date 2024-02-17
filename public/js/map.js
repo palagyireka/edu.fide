@@ -1,3 +1,10 @@
+const mapNoti = document.querySelector("#world-map-noti");
+mapNoti.addEventListener("click", (evt) => {
+  window.alert(
+    "Our world map is for illustration only to show country-specific Chess in Education information. The boundaries and the names shown do not represent nor imply official endorsement by FIDE or by any countries or by any national member federations."
+  );
+});
+
 const element = document.querySelector("#map");
 const featuredMenu = document.querySelector("#featured");
 var panZoomMap = svgPanZoom(element, {
@@ -73,11 +80,26 @@ paths.forEach((item) => {
   // ------------HOVER------------
 
   const UKCopy = document.getElementById("UKcopy");
+  const PakistanUp = document.getElementById("PakistanUp");
+  const ChinaUp = document.getElementById("ChinaUp");
+  const IndiaUp = document.getElementById("IndiaUp");
   UKCopy.classList.add("hidden");
+  PakistanUp.classList.add("hidden");
+  ChinaUp.classList.add("hidden");
+  IndiaUp.classList.add("hidden");
 
   item.addEventListener("mousemove", (event) => {
     if (item.id == "path435") {
       UKCopy.classList.remove("hidden");
+    }
+    if (item.id == "PakistanDown") {
+      PakistanUp.classList.remove("hidden");
+    }
+    if (item.id == "ChinaDown") {
+      ChinaUp.classList.remove("hidden");
+    }
+    if (item.id == "IndiaDown") {
+      IndiaUp.classList.remove("hidden");
     }
     hoverText.querySelector("span").textContent = country;
     hoverText.classList.remove("hidden");
@@ -88,6 +110,15 @@ paths.forEach((item) => {
   item.addEventListener("mouseleave", () => {
     if (item.id == "UKcopy") {
       UKCopy.classList.add("hidden");
+    }
+    if (item.id == "PakistanUp") {
+      PakistanUp.classList.add("hidden");
+    }
+    if (item.id == "ChinaUp") {
+      ChinaUp.classList.add("hidden");
+    }
+    if (item.id == "IndiaUp") {
+      IndiaUp.classList.add("hidden");
     }
     hoverText.classList.add("hidden");
   });

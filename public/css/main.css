@@ -33,8 +33,6 @@ a {
 #map circle,
 #map ellipse {
   fill: #5b85aa;
-  stroke-width: 1px;
-  stroke: #ccd6f1;
 }
 
 #map path.selected,
@@ -44,12 +42,12 @@ a {
   opacity: 1;
 }
 
-/* #map path:hover,
+#map path:hover,
 #map circle:hover,
 #map ellipse:hover {
   cursor: pointer;
   fill: #91b0b2;
-} */
+}
 
 .uk-mate {
   fill: #5b85aa;
@@ -180,7 +178,7 @@ a {
   transition: 0.3s;
   box-sizing: border-box;
   margin-top: 8px;
-  height: 22%;
+  height: 30%;
   width: 95%;
   /* box-shadow: 0 0 10px 3px rgb(206, 206, 206); */
   border-radius: 10px;

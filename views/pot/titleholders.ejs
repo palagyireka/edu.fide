@@ -45,7 +45,7 @@
         </ul>
       </div>
       <div class="chosen-titleholder">
-        <p>Selected Titleholder:</p>
+        <p id="selected-tl-picture">Selected Titleholder:</p>
         <% if (typeof currentUser !== "undefined") {if (currentUser.role ===
         "admin") {%>
         <button id="delete-holder" class="fancytime" disabled>Delete</button>
@@ -70,7 +70,11 @@
         </ul>
       </div>
     </div>
+    <div class="titleholder-introduction">
+      <p></p>
+    </div>
   </section>
+
   <% if (typeof currentUser !== "undefined") {if (currentUser.role === "admin")
   {%>
   <form action="/pot/titleholders/addholder" class="add-material">
@@ -86,8 +90,12 @@
     <input type="text" name="fideid-new-holder" id="fideid-new-holder" />
     <label for="fideid-new-holder">Country:</label>
     <div id="country-new-holder"></div>
-    <label for="new-holder-date">Award Date: </label>
+    <label for="new-holder-date">Year Of Award: </label>
     <input type="text" name="new-holder-date" id="new-holder-date" />
+    <label for="new-holder-br-intro">Brief Introduction:</label>
+    <input type="text" name="new-holder-br-intro" id="new-holder-br-intro" />
+    <label for="new-holder-img">Profile Picture:</label>
+    <input type="file" name="new-holder-img" id="new-holder-img" />
     <p>Type of Title:</p>
     <div class="title-types-div">
       <div>

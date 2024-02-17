@@ -58,13 +58,7 @@ if (cancelHolderBtn) {
     const fullnameContent = firstnameContent + " " + lastnameContent;
     const countryContent = document.querySelector("#country-new-holder").value;
     const fideidContent = document.querySelector("#fideid-new-holder").value;
-    const awarddateContent = document.querySelector("#new-holder-date").value;
-    const yearContent = Number(
-      document
-        .querySelector("#new-holder-date")
-        .value.toString()
-        .substring(0, 4)
-    );
+    const yearContent = document.querySelector("#new-holder-date").value;
     const titleContent = Array.from(
       document.querySelectorAll(".title-types-div input:checked")
     )
@@ -150,12 +144,7 @@ if (cancelHolderBtn) {
     const fullnameContent = firstnameContent + " " + lastnameContent;
     const countryContent = document.querySelector("#country-new-holder").value;
     const fideidContent = document.querySelector("#fideid-new-holder").value;
-    const yearContent = Number(
-      document
-        .querySelector("#new-holder-date")
-        .value.toString()
-        .substring(0, 4)
-    );
+    const yearContent = document.querySelector("#new-holder-date").value;
     const titleContent = Array.from(
       document.querySelectorAll(".title-types-div input:checked")
     )
@@ -163,22 +152,28 @@ if (cancelHolderBtn) {
         return input.value;
       })
       .join(",");
-    const postData = {
-      firstname: firstnameContent,
-      lastname: lastnameContent,
-      fullname: fullnameContent,
-      country: countryContent,
-      fideid: fideidContent,
-      year: yearContent,
-      title: titleContent,
-    };
+    const briefDescContent =
+      document.querySelector("#new-holder-br-intro")?.value ?? "";
+    const photoContent = document.getElementById("new-holder-img").files[0];
+    const formData = new FormData();
+    formData.append("firstname", firstnameContent);
+    formData.append("lastname", lastnameContent);
+    formData.append("fullname", fullnameContent);
+    formData.append("country", countryContent);
+    formData.append("fideid", fideidContent);
+    formData.append("year", yearContent);
+    formData.append("briefdesc", briefDescContent);
+    formData.append("title", titleContent);
+    formData.append("folder", "partnerships");
+
+    if (photoContent) {
+      formData.append("image", photoContent);
+    }
+
     let id = editHolderID;
     fetch(`/pot/titleholders/${id}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
+      body: formData,
     })
       .then(() => {
         if (lsiSelect === "LSI") {
@@ -288,7 +283,9 @@ function mutasdAzAdatokat(evt, torol) {
         document.querySelector("#selected-tl-picture").replaceWith(tlImage);
         if (briefDesc) {
           briefDesc.style.display = "block";
-          briefDesc.lastElementChild.innerText = tl.briefdesc;
+          if (tl.briefdesc != null) {
+            briefDesc.lastElementChild.innerText = tl.briefdesc;
+          }
         }
         deleteHolderID = tl._id;
         break;
@@ -309,6 +306,7 @@ function editHolder(tl) {
     holderInputs[1].value = tl.lastname;
     holderInputs[2].value = tl.fideid;
     holderInputs[3].value = tl.awarddate;
+    holderInputs[4].value = tl.briefdesc;
     document.querySelector("#country-new-holder").setValue(tl.country);
     const tlTitles = tl.title.split(",");
     editHolderID = tl._id;

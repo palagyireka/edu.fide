@@ -136,7 +136,7 @@ label[for="slititleholders"] {
 
 img#selected-tl-picture {
   display: inline-block;
-  width: 100%;
+  width: 40%;
   object-fit: cover;
 }
 

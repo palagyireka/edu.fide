@@ -10,7 +10,7 @@ module.exports.createTitleholder = async (req, res) => {
     fullname: req.body.fullname,
     country: req.body.country,
     fideid: req.body.fideid,
-    awarddate: req.body.awarddate,
+    briefdesc: req.body.briefdesc,
     year: req.body.year,
     title: req.body.title,
   });
@@ -27,16 +27,32 @@ module.exports.createTitleholder = async (req, res) => {
 
 module.exports.updateTitleholder = async (req, res) => {
   const { id } = req.params;
-  const editedPartner = await Titleholder.findByIdAndUpdate(id, {
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    fullname: req.body.fullname,
-    country: req.body.country,
-    fideid: req.body.fideid,
-    awarddate: req.body.awarddate,
-    year: req.body.year,
-    title: req.body.title,
-  });
+  let updatedHolder;
+  if (req.file) {
+    updatedHolder = await Titleholder.findByIdAndUpdate(id, {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      fullname: req.body.fullname,
+      country: req.body.country,
+      fideid: req.body.fideid,
+      image: req.file.path,
+      briefdesc: req.body.briefdesc,
+      year: req.body.year,
+      title: req.body.title,
+    });
+  } else {
+    updatedHolder = await Titleholder.findByIdAndUpdate(id, {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      fullname: req.body.fullname,
+      country: req.body.country,
+      fideid: req.body.fideid,
+      briefdesc: req.body.briefdesc,
+      year: req.body.year,
+      title: req.body.title,
+    });
+  }
+
   req.flash("success", "Titleholder saved!");
   res.json({ message: "Success!" });
 };

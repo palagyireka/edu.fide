@@ -387,6 +387,9 @@
   label[for="login-signup"] div {
     justify-content: center;
   }
+  label[for="login-signup"] div #socmed-container {
+    margin-left: 40px;
+  }
   label[for="login-signup"] img,
   label[for="login-signup"] p {
     margin-top: 5px;

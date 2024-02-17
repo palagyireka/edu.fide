@@ -17,7 +17,7 @@ router
 
 router
   .route("/:id")
-  .put(isAdmin, titleholder.updateTitleholder)
+  .put(isAdmin, uploadImage.single("image"), titleholder.updateTitleholder)
   .delete(isAdmin, titleholder.deleteTitleholder);
 
 module.exports = router;
