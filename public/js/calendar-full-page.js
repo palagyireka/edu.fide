@@ -81,21 +81,13 @@ todayBtn.addEventListener("click", () => {
   setDate();
 });
 
-calendar.createEvents([
-  {
-    id: "1",
-    title: "test",
-    calendarId: "1",
-    category: "time",
-    start: new Date(),
-    end: new Date(),
-  },
-]);
+const eventAttachments = [];
+let transformedEvents;
 
 fetch("/api/events")
   .then(async (response) => {
     let { events } = await response.json();
-    const transformedEvents = eventTransform(events);
+    transformedEvents = eventTransform(events);
     calendar.createEvents(transformedEvents);
   })
   .catch((e) => {
@@ -104,7 +96,6 @@ fetch("/api/events")
 
 waitForElm(`[data-event-id="${eventID}"]`).then(() => {
   const el = document.querySelector(`[data-event-id="${eventID}"]`);
-  console.log(el);
 
   const elRect = el.getBoundingClientRect();
   const model = calendar.getEvent(eventID, "1");
@@ -199,6 +190,47 @@ const eventTransform = (events) => {
       eventObject.backgroundColor = "#5b85aa";
     }
 
+    if (evt.attachments) {
+      eventAttachments.push(evt.attachments[0]);
+    } else {
+      eventAttachments.push("");
+    }
     return eventObject;
   });
 };
+
+const changeToAttachment = () => {
+  const title = document.querySelector(
+    ".toastui-calendar-template-popupDetailTitle"
+  ).innerText;
+  const spaceForLink = document.querySelector(
+    ".toastui-calendar-template-popupDetailAttendees"
+  );
+  const index = transformedEvents.findIndex(
+    (element) => element.title === title
+  );
+
+  spaceForLink.innerHTML = `<a href="${eventAttachments[index].fileUrl}" target="_blank">${eventAttachments[index].title}</a>`;
+};
+
+const popup = document.querySelector(".toastui-calendar-popup-overlay");
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.attributeName !== "style") return;
+    if (mutation.target.style.display === "block") {
+      changeToAttachment();
+      const attachmentIcon = document.querySelector(
+        ".toastui-calendar-ic-user-b"
+      );
+
+      attachmentIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+<path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0z"/>
+</svg>`;
+    }
+  });
+});
+
+observer.observe(popup, {
+  attributeFilter: ["style"],
+});

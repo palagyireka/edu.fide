@@ -129,3 +129,31 @@ div.toastui-calendar-see-more {
 .toastui-calendar-weekday-event {
   margin-top: 3px;
 }
+
+.toastui-calendar-ic-user-b {
+  background: none !important;
+}
+
+.toastui-calendar-ic-user-b svg {
+  text-indent: 0 !important;
+  margin-left: 19px;
+  margin-bottom: 11px;
+  transform: translateY(-2px);
+}
+
+div:has(> span.toastui-calendar-ic-state-b) {
+  display: none;
+}
+
+.toastui-calendar-detail-item {
+  margin: 10px 0px;
+}
+
+.toastui-calendar-content {
+  line-height: 1.5 !important;
+}
+
+.toastui-calendar-content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

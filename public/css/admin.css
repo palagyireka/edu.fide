@@ -88,7 +88,7 @@ main.blogs .posts-title .fancytime:hover {
 }
 
 .applicant-base-info tr:first-child td {
-  border-bottom: 0px;
+  border-top: 0px;
 }
 
 .applicant-base-info tr:last-child td {

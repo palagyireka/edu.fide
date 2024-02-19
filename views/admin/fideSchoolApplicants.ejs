@@ -2,8 +2,7 @@
 
 <main>
   <div>
-    <button id="csv-download">Download spreadsheet</button
-    ><button id="pdf-download">Download PDF</button>
+    <button id="csv-download">Download spreadsheet</button>
   </div>
   <div id="applicants">
     <%if (typeof applicants !== "undefined") { applicants.forEach((applicant,
@@ -86,7 +85,7 @@
             </tr>
             <tr>
               <th scope="row">Date</th>
-              <td><%= applicant.date %></td>
+              <td><%= applicant.date.toISOString().split("T")[0] %></td>
             </tr>
           </tbody>
         </table>

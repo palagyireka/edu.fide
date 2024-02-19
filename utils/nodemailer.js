@@ -1,4 +1,7 @@
 const nodemailer = require("nodemailer");
+const ejs = require("ejs");
+const path = require("path");
+const juice = require("juice");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -56,5 +59,19 @@ module.exports.sendPasswordResetEmail = async (name, email, link, url) => {
           <p>Please set a new password by clicking on the following link</p>
           <a href="${url}${link}"> Click here</a>
           </div>`,
+  });
+};
+
+module.exports.sendSchoolAwardsNotification = async (applicant) => {
+  const data = await ejs.renderFile(
+    path.join(__dirname, "..", "templates", "schoolawards.ejs"),
+    { applicant }
+  );
+
+  await transporter.sendMail({
+    from: "edu.noreply@fide.com",
+    to: "vernyel.j@gmail.com",
+    subject: "New School Awards Application",
+    html: juice(data),
   });
 };

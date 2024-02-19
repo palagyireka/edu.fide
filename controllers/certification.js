@@ -1,5 +1,5 @@
-const { response } = require("express");
 const SchoolAwardsApplicant = require("../models/schoolAwardsApplicant");
+const nodemailer = require("../utils/nodemailer");
 
 module.exports.renderFideSchools = (req, res) => {
   res.render("fide-schools");
@@ -22,8 +22,11 @@ module.exports.sendForm = async (req, res) => {
     date: new Date(),
   });
 
-  newApplicant.save().then((response) => {
-    req.flash("success", "Application sent!");
-    res.send();
-  });
+  newApplicant
+    .save()
+    .then(() => nodemailer.sendSchoolAwardsNotification(req.body))
+    .then(() => {
+      req.flash("success", "Application sent!");
+      res.send();
+    });
 };
