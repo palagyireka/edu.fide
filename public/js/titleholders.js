@@ -251,6 +251,7 @@ function mutasdAzAdatokat(evt, torol) {
     if (briefDesc) {
       briefDesc.style.display = "none";
     }
+    document.querySelector(".titleholder-introduction p").innerText = "";
     const p = document.createElement("p");
     p.id = "selected-tl-picture";
     p.innerText = "Selected Titleholder:";
@@ -276,6 +277,8 @@ function mutasdAzAdatokat(evt, torol) {
         titleHolderUL[2].innerText = tl.country;
         titleHolderUL[3].innerText = tl.fideid;
         titleHolderUL[4].innerText = tl.year;
+        document.querySelector(".titleholder-introduction p").innerText =
+          tl.briefdesc;
         const tlImage = document.createElement("img");
         tlImage.src = tl.image;
         tlImage.alt = "Selected Titleholder:";
