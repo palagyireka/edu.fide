@@ -1,8 +1,8 @@
 <% layout('layouts/boilerplate') %>
 
 <main>
-  <div>
-    <button id="csv-download">Download spreadsheet</button>
+  <div class="csv-download">
+    <button id="csv-download" class="fancytime">Download spreadsheet</button>
   </div>
   <div id="applicants">
     <%if (typeof applicants !== "undefined") { applicants.forEach((applicant,
@@ -85,7 +85,7 @@
             </tr>
             <tr>
               <th scope="row">Date</th>
-              <td><%= applicant.date.toISOString().split("T")[0] %></td>
+              <td><%= applicant.date %></td>
             </tr>
           </tbody>
         </table>

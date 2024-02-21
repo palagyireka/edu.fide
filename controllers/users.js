@@ -112,7 +112,7 @@ module.exports.verifyUser = async (req, res, next) => {
   });
 
   if (!user) {
-    next(new ExpressError("User Not found.", 404, "flashError"));
+    throw new ExpressError("User Not found.", 404, "flashError");
   }
 
   user.status = "active";
@@ -129,7 +129,7 @@ module.exports.renderPasswordResetRequest = (req, res) => {
 module.exports.requestPasswordReset = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    next(new ExpressError("Email does not exist", 404, "flashError"));
+    throw new ExpressError("Email does not exist", 404, "flashError");
   }
 
   let token = await Token.findOne({ userId: user._id });
@@ -160,28 +160,24 @@ module.exports.requestPasswordReset = async (req, res, next) => {
   });
 };
 
-module.exports.renderPasswordResetPage = async (req, res) => {
+module.exports.renderPasswordResetPage = async (req, res, next) => {
   const token = req.query.token;
   const userId = req.query.id;
   if (!token || !userId) {
-    next(
-      new ExpressError(
-        "Use the link to reset your password!",
-        422,
-        "flashError"
-      )
+    throw new ExpressError(
+      "Use the link to reset your password!",
+      422,
+      "flashError"
     );
   }
 
   let passwordResetToken = await Token.findOne({ userId });
 
   if (!passwordResetToken) {
-    next(
-      new ExpressError(
-        "Invalid or expired password reset token",
-        401,
-        "flashError"
-      )
+    throw new ExpressError(
+      "Invalid or expired password reset token",
+      401,
+      "flashError"
     );
   }
 
@@ -194,24 +190,20 @@ module.exports.resetPassword = async (req, res, next) => {
   let passwordResetToken = await Token.findOne({ userId });
 
   if (!passwordResetToken) {
-    next(
-      new ExpressError(
-        "Invalid or expired password reset token",
-        401,
-        "flashError"
-      )
+    throw new ExpressError(
+      "Invalid or expired password reset token",
+      401,
+      "flashError"
     );
   }
 
   const isValid = await bcrypt.compare(token, passwordResetToken.token);
 
   if (!isValid) {
-    next(
-      new ExpressError(
-        "Invalid or expired password reset token",
-        401,
-        "flashError"
-      )
+    throw new ExpressError(
+      "Invalid or expired password reset token",
+      401,
+      "flashError"
     );
   }
 

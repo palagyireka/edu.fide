@@ -249,19 +249,6 @@ h1 {
   background-image: none;
 }
 
-.lista-1 > li:nth-of-type(4) + .lista-2 > li:hover::before {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 100%;
-  content: "Coming soon!";
-  color: #c5725f;
-  text-align: center;
-  background-color: white;
-  border-radius: 10px;
-  padding: 4px;
-}
-
 .lista-1 > li:last-of-type {
   background-image: none;
   height: auto;

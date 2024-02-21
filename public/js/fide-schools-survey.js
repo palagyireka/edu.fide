@@ -24,6 +24,7 @@ const surveyJson = {
             ru: "Адрес электронной почты",
           },
           type: "text",
+          isRequired: true,
         },
         {
           name: "fullName",
@@ -34,6 +35,7 @@ const surveyJson = {
             ru: "Ваше имя (ФИО)",
           },
           type: "text",
+          isRequired: true,
         },
         {
           name: "areYouMainContact",
@@ -79,6 +81,7 @@ const surveyJson = {
             ru: "Имя основного контактного лица (ФИО)",
           },
           type: "text",
+          isRequired: true,
         },
         {
           name: "mainContactEmail",
@@ -92,6 +95,7 @@ const surveyJson = {
           validators: [
             { type: "email", text: "Value must be a valid email address" },
           ],
+          isRequired: true,
         },
       ],
     },
@@ -115,6 +119,7 @@ const surveyJson = {
             ru: "Наименование школы (полное)",
           },
           type: "text",
+          isRequired: true,
         },
         {
           name: "otherSchoolDetails",
@@ -134,6 +139,7 @@ const surveyJson = {
           type: "comment",
           rows: 3,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "typeOfSchool",
@@ -191,6 +197,7 @@ const surveyJson = {
             ru: "Введите свой идентификатор (ID) ниже:",
           },
           type: "text",
+          isRequired: true,
         },
       ],
     },
@@ -225,6 +232,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "studentInvolvment",
@@ -245,6 +253,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "teachingMaterials",
@@ -265,6 +274,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "chessEvents",
@@ -286,6 +296,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "chessEducators",
@@ -307,6 +318,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "representationOfSchoolChess",
@@ -328,6 +340,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "socialCommitment",
@@ -349,6 +362,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "chessAsAnEducationalTool",
@@ -370,6 +384,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "financingSchoolChess",
@@ -391,6 +406,7 @@ const surveyJson = {
           type: "comment",
           rows: 7,
           autoGrow: true,
+          isRequired: true,
         },
         {
           name: "testimonials",
@@ -413,6 +429,7 @@ const surveyJson = {
               },
             },
           ],
+          isRequired: true,
         },
       ],
     },
@@ -446,6 +463,7 @@ const surveyJson = {
               },
             },
           ],
+          isRequired: true,
         },
         {
           name: "publishOnWebsite",
@@ -468,6 +486,7 @@ const surveyJson = {
               },
             },
           ],
+          isRequired: true,
         },
       ],
     },

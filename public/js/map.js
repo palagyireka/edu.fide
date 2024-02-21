@@ -213,3 +213,7 @@ cancelIcon.addEventListener("click", () => {
   filter.value = "";
   filter.dispatchEvent(new Event("keyup"));
 });
+
+fetch("/api/getip")
+  .then((result) => result.json())
+  .then((ip) => {});

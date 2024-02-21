@@ -19,4 +19,6 @@ router.post("/search", catchAsync(api.search));
 
 router.post("/gallery", catchAsync(api.gallery));
 
+router.get("/getip", api.getIp);
+
 module.exports = router;

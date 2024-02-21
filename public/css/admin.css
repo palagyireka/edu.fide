@@ -159,3 +159,9 @@ svg.plussign:hover path:last-of-type,
 svg.minussign:hover path:last-of-type {
   fill: white;
 }
+
+.csv-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

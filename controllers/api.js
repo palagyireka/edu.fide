@@ -9,6 +9,7 @@ const privateKey = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
 const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
 const projectNumber = process.env.GOOGLE_PROJECT_NUMBER;
 const calendarId = process.env.GOOGLE_CALENDAR_ID;
+const https = require("https");
 
 const jwtClient = new google.auth.JWT(clientEmail, null, privateKey, SCOPES);
 
@@ -203,4 +204,16 @@ module.exports.gallery = async (req, res) => {
   }
 
   res.json({ imgUrls, lastPage });
+};
+
+module.exports.getIp = (req, res) => {
+  let url = `https://api.ip2location.io/?key=F68B4C8DEFCC6B4B2418CFEDDCBC2B87&ip=8.8.8.8&format=json`;
+
+  let response = "";
+  let request = https.get(url, function (resp) {
+    resp.on("data", (chunk) => (response = response + chunk));
+    resp.on("end", function () {
+      res.json(response);
+    });
+  });
 };

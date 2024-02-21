@@ -70,7 +70,7 @@ module.exports.sendSchoolAwardsNotification = async (applicant) => {
 
   await transporter.sendMail({
     from: "edu.noreply@fide.com",
-    to: "vernyel.j@gmail.com",
+    to: "edu.secretary@fide.com",
     subject: "New School Awards Application",
     html: juice(data),
   });

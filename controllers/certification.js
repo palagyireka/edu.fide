@@ -7,7 +7,8 @@ module.exports.renderFideSchools = (req, res) => {
 
 module.exports.done = (req, res) => {
   res.render("message", {
-    message: "Thank you for your application! We will get in touch.",
+    message:
+      "Thank you for your application! We will get in touch. Remember to send us your supporting materials indexed with your chosen School ID.",
   });
 };
 module.exports.unsuccessful = (req, res) => {
@@ -24,7 +25,7 @@ module.exports.sendForm = async (req, res) => {
 
   newApplicant
     .save()
-    .then(() => nodemailer.sendSchoolAwardsNotification(req.body))
+    .then(() => nodemailer.sendSchoolAwardsNotification(newApplicant))
     .then(() => {
       req.flash("success", "Application sent!");
       res.send();
