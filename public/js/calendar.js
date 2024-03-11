@@ -47,7 +47,7 @@ fetch("/api/listevents").then(async (response) => {
     const listItem = document.createElement("li");
     const anchor = document.createElement("a");
     anchor.href = "/fullcalendar?date=today";
-    anchor.innerText = "View full calendar here.";
+    anchor.innerHTML = "<b>View full calendar here.</b>";
     listItem.appendChild(anchor);
     calendarListView.appendChild(listItem);
   }

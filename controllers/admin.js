@@ -358,7 +358,7 @@ module.exports.downloadFideSchoolApplicants = async (req, res) => {
       key: "publishOnWebsite",
       style: { numFmt: "@" },
     },
-    { header: "date", key: "date", style: { numFmt: "@" } },
+    { header: "date", key: "date" },
   ];
 
   worksheet.addRows(applicants);
@@ -389,4 +389,116 @@ module.exports.downloadFideSchoolApplicants = async (req, res) => {
     });
   }
   sendWorkbook(workbook, res);
+};
+
+module.exports.downloadUserData = async (req, res) => {
+  const users = await User.find({}, null, {
+    sort: { date: -1 },
+  });
+
+  console.log(users);
+
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet("Users");
+
+  worksheet.columns = [
+    { header: "Email", key: "email", style: { numFmt: "@" }, width: 20 },
+    {
+      header: "First Name",
+      key: "firstName",
+      style: { numFmt: "@" },
+      width: 20,
+    },
+    { header: "Last Name", key: "lastName", style: { numFmt: "@" }, width: 20 },
+    {
+      header: "Role",
+      key: "role",
+      style: { numFmt: "@" },
+    },
+    {
+      header: "Workplace",
+      key: "workplace",
+      style: { numFmt: "@" },
+      width: 20,
+    },
+    {
+      header: "Jobtitle",
+      key: "jobtitle",
+      style: { numFmt: "@" },
+      width: 20,
+    },
+    {
+      header: "Country of Residence",
+      key: "countryResidence",
+      style: { numFmt: "@" },
+      width: 20,
+    },
+    {
+      header: "CIE Responsibilities",
+      key: "respCie",
+      style: { numFmt: "@" },
+      width: 30,
+    },
+    {
+      header: "Registration Date",
+      key: "registrationDate",
+      width: 30,
+    },
+    { header: "Status", key: "status", style: { numFmt: "@" }, width: 20 },
+    {
+      header: "Newsletter",
+      key: "newsletter",
+      width: 10,
+    },
+  ];
+
+  worksheet.addRows(users);
+
+  let rowIndex = 1;
+  for (rowIndex; rowIndex <= worksheet.rowCount; rowIndex++) {
+    worksheet.getRow(rowIndex).alignment = {
+      vertical: "top",
+      wrapText: true,
+    };
+    worksheet.getRow(rowIndex).height = 50;
+  }
+
+  function sendWorkbook(workbook, response) {
+    var fileName = "FileName.xlsx";
+
+    response.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    );
+    response.setHeader(
+      "Content-Disposition",
+      "attachment; filename=" + fileName
+    );
+
+    workbook.xlsx.write(response).then(function () {
+      response.end();
+    });
+  }
+  sendWorkbook(workbook, res);
+};
+
+module.exports.loadMoreUsers = (req, res) => {
+  const pageNumber = req.body.page;
+  let lastPage = false;
+
+  User.paginate(
+    {},
+    {
+      page: pageNumber,
+      limit: 100,
+      sort: { date: -1 },
+    }
+  ).then((results) => {
+    if (pageNumber === results.totalPages) {
+      lastPage = true;
+    }
+    const users = results.docs;
+
+    res.json({ users, lastPage });
+  });
 };

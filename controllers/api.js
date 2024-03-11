@@ -207,7 +207,7 @@ module.exports.gallery = async (req, res) => {
 };
 
 module.exports.getIp = (req, res) => {
-  let url = `https://api.ip2location.io/?key=F68B4C8DEFCC6B4B2418CFEDDCBC2B87&ip=8.8.8.8&format=json`;
+  let url = `https://api.ip2location.io/?key=F68B4C8DEFCC6B4B2418CFEDDCBC2B87&ip=${req.ip}&format=json`;
 
   let response = "";
   let request = https.get(url, function (resp) {

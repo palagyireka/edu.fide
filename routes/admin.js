@@ -19,6 +19,10 @@ router.route("/fide-schools").get(isAdmin, admin.showFideSchoolApplicants);
 
 router.route("/fide-schools/download").get(admin.downloadFideSchoolApplicants);
 
+router.route("/users/csv").get(admin.downloadUserData);
+
+router.route("/users").post(admin.loadMoreUsers);
+
 router
   .route("/:id")
   .get(isAdmin, catchAsync(admin.showPost))

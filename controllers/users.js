@@ -67,12 +67,12 @@ module.exports.register = async (req, res, next) => {
 
   const registeredUser = await User.register(user, password);
 
-  await sendConfirmationEmail(
-    `${firstName} ${lastName}`,
-    email,
-    user.confirmationCode,
-    "https://edu.fide.com"
-  );
+  // await sendConfirmationEmail(
+  //   `${firstName} ${lastName}`,
+  //   email,
+  //   user.confirmationCode,
+  //   "https://edu.fide.com"
+  // );
 
   res.render("message", {
     message:

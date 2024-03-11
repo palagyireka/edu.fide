@@ -96,8 +96,6 @@ const loadMore = async () => {
   });
   const newImgs = await results.json();
 
-  console.log(newImgs);
-
   newImgs.imgUrls.forEach((image, index) => {
     const container = document.createElement("div");
     const img = document.createElement("img");

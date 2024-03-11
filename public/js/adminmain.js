@@ -1,28 +1,7 @@
-const plussigns = document.querySelectorAll(".plussign");
-const minussigns = document.querySelectorAll(".minussign");
-const longAnswers = document.querySelectorAll(".long-answers");
-
-const toggleHidden = (index) => {
-  const plussign = document.querySelector(`#plussign-${index}`);
-  const minussign = document.querySelector(`#minussign-${index}`);
-  const longAnswer = document.querySelector(`#answers${index}`);
-
-  plussign.classList.toggle("hidden");
-  minussign.classList.toggle("hidden");
-  longAnswer.classList.toggle("hidden");
-};
-
-plussigns.forEach((sign, index) => {
-  sign.addEventListener("click", () => toggleHidden(index));
-});
-minussigns.forEach((sign, index) => {
-  sign.addEventListener("click", () => toggleHidden(index));
-});
-
-const downloadButton = document.getElementById("csv-download");
+const downloadButton = document.getElementById("user-csv-download");
 
 const downloadCsv = () => {
-  fetch(`fide-schools/download`, {
+  fetch(`/admin/users/csv`, {
     method: "GET",
   })
     .then((res) => {
@@ -30,7 +9,7 @@ const downloadCsv = () => {
       return res;
     })
     .then(async (res) => ({
-      filename: "applicants.xlsx",
+      filename: "users.xlsx",
       blob: await res.blob(),
     }))
     .then((resObj) => {
@@ -59,3 +38,33 @@ const downloadCsv = () => {
 };
 
 downloadButton.addEventListener("click", downloadCsv);
+
+const loadMoreButton = document.getElementById("load-more");
+
+let pageNumber = 1;
+
+const loadMore = async () => {
+  const body = { page: pageNumber + 1 };
+
+  fetch("admin/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "manual",
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((postData) => {
+      console.log(postData);
+      if (postData.lastPage === true) {
+        loadMoreButton.style.visibility = "hidden";
+      }
+    });
+
+  pageNumber += 1;
+};
+
+loadMoreButton.addEventListener("click", loadMore);

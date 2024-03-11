@@ -69,7 +69,6 @@ const languageSelector = document.querySelector("#language-select");
 
 const changeLanguage = (evt) => {
   survey.locale = evt.target.value;
-  console.log(evt.target.value);
 };
 
 languageSelector.addEventListener("change", changeLanguage);

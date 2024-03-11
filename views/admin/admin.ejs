@@ -7,5 +7,12 @@
   <p><a href="/admin/fide-schools">View FIDE School Awards applications</a></p>
   <p></p>
   <h3>List of All Registered Users:</h3>
+  <div class="user-csv-download">
+    <button id="user-csv-download" class="fancytime">
+      Download spreadsheet
+    </button>
+  </div>
   <%- include('./profiles') %>
+  <button class="fancytime" id="load-more"></button>
 </main>
+<script src="/js/adminmain.js"></script>
