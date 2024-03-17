@@ -25,6 +25,7 @@ const surveyJson = {
           },
           type: "text",
           isRequired: true,
+          maxLength: 100,
         },
         {
           name: "fullName",
@@ -36,6 +37,7 @@ const surveyJson = {
           },
           type: "text",
           isRequired: true,
+          maxLength: 500,
         },
         {
           name: "areYouMainContact",
@@ -82,6 +84,7 @@ const surveyJson = {
           },
           type: "text",
           isRequired: true,
+          maxLength: 500,
         },
         {
           name: "mainContactEmail",
@@ -96,6 +99,7 @@ const surveyJson = {
             { type: "email", text: "Value must be a valid email address" },
           ],
           isRequired: true,
+          maxLength: 100,
         },
       ],
     },
@@ -120,6 +124,7 @@ const surveyJson = {
           },
           type: "text",
           isRequired: true,
+          maxLength: 500,
         },
         {
           name: "otherSchoolDetails",
@@ -140,6 +145,7 @@ const surveyJson = {
           rows: 3,
           autoGrow: true,
           isRequired: true,
+          maxLength: 5000,
         },
         {
           name: "typeOfSchool",
@@ -198,6 +204,7 @@ const surveyJson = {
           },
           type: "text",
           isRequired: true,
+          maxLength: 100,
         },
       ],
     },
@@ -233,6 +240,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "studentInvolvment",
@@ -254,6 +262,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "teachingMaterials",
@@ -275,6 +284,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "chessEvents",
@@ -297,6 +307,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "chessEducators",
@@ -319,6 +330,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "representationOfSchoolChess",
@@ -341,6 +353,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "socialCommitment",
@@ -363,6 +376,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "chessAsAnEducationalTool",
@@ -385,6 +399,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "financingSchoolChess",
@@ -407,6 +422,7 @@ const surveyJson = {
           rows: 7,
           autoGrow: true,
           isRequired: true,
+          maxLength: 10000,
         },
         {
           name: "testimonials",

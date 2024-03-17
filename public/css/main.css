@@ -185,6 +185,7 @@ a {
   padding: 4px 4px 4px 0;
   --searchbar-height: 30px;
   background-color: #5b85ab;
+  overflow: hidden;
 }
 
 .searchbar {

@@ -94,3 +94,9 @@ ul.lang-checklist li a svg {
 .supporting-materials div {
   font-weight: bolder;
 }
+
+.warning-container {
+  color: #e60a3e;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}

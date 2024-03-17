@@ -20,6 +20,31 @@ var panZoomMap = svgPanZoom(element, {
 const paths = document.querySelectorAll("#map .sm_state");
 const hoverText = document.querySelector("#hover-text");
 
+const countryMenuChange = (country, countryCode) => {
+  document.querySelector(
+    "#country-gallery"
+  ).href = `/gallery?country=${country}`;
+  const cText = document.querySelector(".country-name");
+  // cText.classList.add("hidden");
+  const anchorTags = document.querySelectorAll(
+    ".country-menu li:nth-of-type(2) ul li a"
+  );
+  const countryContactA = document.querySelector("#country-contact");
+  const countryNewsA = document.querySelector("#country-news");
+
+  setTimeout(() => {
+    cText.innerText = country;
+    anchorTags[0].href = `/pot/titleholders/si?country=${country}`;
+    anchorTags[1].href = `/pot/titleholders/lsi?country=${country}`;
+    anchorTags[2].href = `/pot/titleholders/sli?country=${country}`;
+    countryContactA.href = `/contact?country=${country}`;
+    countryNewsA.href = `/posts?country=${countryCode}`;
+  }, 200);
+  // setTimeout(() => {
+  //   cText.classList.remove("hidden");
+  // }, 200);
+};
+
 const addCountryFunctions = (userLocation) => {
   paths.forEach((item) => {
     const countryCode = item.classList[1].slice(-2);
@@ -58,28 +83,7 @@ const addCountryFunctions = (userLocation) => {
         searchedCountry.classList.remove("selected-country");
       }
 
-      document.querySelector(
-        "#country-gallery"
-      ).href = `/gallery?country=${country}`;
-      const cText = document.querySelector(".country-name");
-      cText.classList.add("hidden");
-      const anchorTags = document.querySelectorAll(
-        ".country-menu li:nth-of-type(2) ul li a"
-      );
-      const countryContactA = document.querySelector("#country-contact");
-      const countryNewsA = document.querySelector("#country-news");
-
-      setTimeout(() => {
-        cText.innerText = country;
-        anchorTags[0].href = `/pot/titleholders/si?country=${country}`;
-        anchorTags[1].href = `/pot/titleholders/lsi?country=${country}`;
-        anchorTags[2].href = `/pot/titleholders/sli?country=${country}`;
-        countryContactA.href = `/contact?country=${country}`;
-        countryNewsA.href = `/posts?country=${countryCode}`;
-      }, 200);
-      setTimeout(() => {
-        cText.classList.remove("hidden");
-      }, 200);
+      countryMenuChange(country, countryCode);
     }
 
     // ------------HOVER------------
@@ -136,6 +140,7 @@ fetch("/api/getip")
     const locationInfo = JSON.parse(ip);
 
     addCountryFunctions(locationInfo.country_code);
+    countryMenuChange(locationInfo.country_name, locationInfo.country_code);
   });
 
 // COUNTRY SEARCH

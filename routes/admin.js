@@ -17,11 +17,13 @@ router.get("/profiles", isAdmin, admin.showProfiles);
 
 router.route("/fide-schools").get(isAdmin, admin.showFideSchoolApplicants);
 
-router.route("/fide-schools/download").get(admin.downloadFideSchoolApplicants);
+router
+  .route("/fide-schools/download")
+  .get(isAdmin, admin.downloadFideSchoolApplicants);
 
-router.route("/users/csv").get(admin.downloadUserData);
+router.route("/users/csv").get(isAdmin, admin.downloadUserData);
 
-router.route("/users").post(admin.loadMoreUsers);
+router.route("/users").post(isAdmin, admin.loadMoreUsers);
 
 router
   .route("/:id")

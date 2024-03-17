@@ -72,3 +72,58 @@ const changeLanguage = (evt) => {
 };
 
 languageSelector.addEventListener("change", changeLanguage);
+
+function waitForElement(selector) {
+  return new Promise((resolve) => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
+
+    const observer = new MutationObserver((mutations) => {
+      if (document.querySelector(selector)) {
+        observer.disconnect();
+        resolve(document.querySelector(selector));
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+}
+
+const pasteWarning = (evt) => {
+  const paste = evt.clipboardData.getData("text");
+  if (paste.length >= evt.target.maxLength) {
+    const warningContainer = document.createElement("div");
+    warningContainer.innerText = `The pasted text exceeds the limit of ${evt.target.maxLength} characters in this answer.`;
+    warningContainer.classList.add("warning-container");
+    evt.target.parentNode.parentNode.appendChild(warningContainer);
+  }
+};
+
+const pasteWarningDelete = (evt) => {
+  const container =
+    evt.target.parentNode.parentNode.querySelector(".warning-container");
+
+  if (container && evt.target.value.length < evt.target.maxLength) {
+    container.remove();
+  }
+};
+
+function watchForInput() {
+  const inputs = document.querySelectorAll(".sd-input");
+  if (inputs) {
+    inputs.forEach((input) => {
+      input.addEventListener("paste", pasteWarning);
+      input.addEventListener("focusout", pasteWarningDelete);
+    });
+  }
+}
+
+const observer = new MutationObserver(watchForInput);
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
