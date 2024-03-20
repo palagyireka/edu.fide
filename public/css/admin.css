@@ -1,33 +1,41 @@
 main.admin h2 {
-  font-size: 22px;
-  margin: 10vh 0 20px 0;
-  width: 100%;
+  font-size: 1.7rem;
+  margin: 20px auto;
+  width: fit-content;
   padding: 0 20px;
   box-sizing: border-box;
+  font-weight: bold;
 }
 
 main.admin h3 {
-  margin: 0 0 15px 30px;
+  margin: 30px auto;
+  width: fit-content;
+  font-weight: 700;
+  font-size: 1.3rem;
 }
 
 main.admin p {
   padding: 20px 30px;
 }
 
-.profiles-container * {
-  box-sizing: border-box;
+#profiles-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .profiles-container {
-  width: 98vw;
-  margin: 0 1vw;
+  max-width: 1300px;
+  margin: 10px;
   box-sizing: border-box;
   border: 3px solid #5b85aa;
+  margin-top: 10px;
 }
 .profiles-container thead th {
   font-weight: 500;
   padding: 10px;
   border: 2px solid #5b85aa;
+  vertical-align: middle;
 }
 
 .profiles-container thead {
@@ -37,6 +45,7 @@ main.admin p {
 .profiles-container td {
   padding: 10px;
   border: 1px solid #5b85aa;
+  vertical-align: middle;
 }
 .profiles-container a {
   text-decoration: underline;
@@ -135,6 +144,7 @@ main.blogs .posts-title .fancytime:hover {
   margin: 10px 0px;
 }
 
+svg.xsign,
 svg.plussign,
 svg.minussign {
   border-radius: 3px;
@@ -144,24 +154,100 @@ svg.minussign {
   font-size: x-large;
 }
 
+svg.xsign path:last-of-type,
 svg.plussign path:last-of-type,
 svg.minussign path:last-of-type {
   fill: black;
   transition: all 150ms linear;
 }
 
+svg.xsign:hover,
 svg.plussign:hover,
 svg.minussign:hover {
   background-color: black;
 }
 
+svg.xsign:hover path:last-of-type,
 svg.plussign:hover path:last-of-type,
 svg.minussign:hover path:last-of-type {
   fill: white;
 }
 
-.csv-download {
+.applicant-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.csv-download,
+.user-csv-download {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.admin-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 90px;
+  margin-bottom: 50px;
+  padding-bottom: 70px;
+  border-bottom: dashed black 1px;
+}
+
+.admin-options div {
+  flex-basis: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-options div a {
+  font-size: 1.1rem;
+  border-bottom: #5b85aa00 2px solid;
+  transition: all 0.2s linear;
+}
+
+.admin-options div a:hover {
+  box-sizing: border-box;
+  border-bottom: #5b85aa 2px solid;
+}
+
+button.delete-applicant {
+  all: unset;
+}
+
+#csv-download {
+  z-index: 0;
+}
+
+#delete-dialog {
+  border: #004706 2px solid;
+  border-radius: 10px;
+}
+
+#delete-message {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+#delete-buttons {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#delete-buttons button {
+  border-radius: 5px;
+  padding: 8px;
+  border: none;
+  background-color: #004706;
+  color: white;
+  cursor: pointer;
+}
+
+button#delete-confirm {
+  background-color: #750000;
 }

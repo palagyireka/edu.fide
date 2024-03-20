@@ -174,7 +174,7 @@ module.exports.deletePost = async (req, res) => {
   const { id } = req.params;
   await Blogpost.findByIdAndDelete(id);
   req.flash("success", "Successfully deleted post");
-  res.redirect("/admin/posts");
+  res.redirect(303, "/admin/posts");
 };
 
 module.exports.showProfiles = async (req, res) => {
@@ -239,6 +239,14 @@ module.exports.showFideSchoolApplicants = async (req, res) => {
       res.render("admin/fideSchoolApplicants", { applicants });
     }
   });
+};
+
+module.exports.deleteFideSchoolApplicant = async (req, res) => {
+  const { id } = req.params;
+  await SchoolAwardsApplicant.findByIdAndDelete(id);
+  req.flash("success", "Successfully deleted applicant");
+  req.method = "GET";
+  res.redirect(303, "/admin/fide-schools");
 };
 
 module.exports.downloadFideSchoolApplicants = async (req, res) => {

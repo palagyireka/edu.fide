@@ -1,4 +1,8 @@
 const downloadButton = document.getElementById("user-csv-download");
+const loadMoreButton = document.getElementById("load-more");
+const profileTable = document.querySelector(".profiles-container tbody");
+
+let pageNumber = 1;
 
 const downloadCsv = () => {
   fetch(`/admin/users/csv`, {
@@ -37,11 +41,46 @@ const downloadCsv = () => {
     });
 };
 
-downloadButton.addEventListener("click", downloadCsv);
+const createUserChart = (users) => {
+  users.forEach((user) => {
+    const newRow = document.createElement("tr");
 
-const loadMoreButton = document.getElementById("load-more");
+    const emailCell = document.createElement("td");
+    const emailLink = document.createElement("a");
+    emailLink.href = `mailto:${user.email}`;
+    emailLink.innerText = user.email;
+    emailCell.appendChild(emailLink);
 
-let pageNumber = 1;
+    const nameCell = document.createElement("td");
+    nameCell.innerText = `${user.firstName} ${user.lastName}`;
+
+    const workplaceCell = document.createElement("td");
+    workplaceCell.innerText = user.workplaceCell;
+
+    const jobCell = document.createElement("td");
+    jobCell.innerText = user.jobtitle;
+
+    const respCell = document.createElement("td");
+    respCell.innerText = user.respCie;
+
+    const regCell = document.createElement("td");
+    regCell.innerText = new Date(user.registrationDate).toDateString();
+
+    const newsletterCell = document.createElement("td");
+    newsletterCell.innerText = user.newsletter === true ? "✅" : "❌";
+
+    [
+      emailCell,
+      nameCell,
+      workplaceCell,
+      jobCell,
+      respCell,
+      regCell,
+      newsletterCell,
+    ].forEach((cell) => newRow.appendChild(cell));
+    profileTable.appendChild(newRow);
+  });
+};
 
 const loadMore = async () => {
   const body = { page: pageNumber + 1 };
@@ -59,6 +98,7 @@ const loadMore = async () => {
     })
     .then((postData) => {
       console.log(postData);
+      createUserChart(postData.users);
       if (postData.lastPage === true) {
         loadMoreButton.style.visibility = "hidden";
       }
@@ -67,4 +107,5 @@ const loadMore = async () => {
   pageNumber += 1;
 };
 
+downloadButton.addEventListener("click", downloadCsv);
 loadMoreButton.addEventListener("click", loadMore);

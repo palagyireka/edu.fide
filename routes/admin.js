@@ -3,6 +3,7 @@ const router = express.Router();
 const admin = require("../controllers/admin");
 const { isAdmin } = require("../middleware");
 const catchAsync = require("../utils/catchAsync");
+const catchAsyncFlash = require("../utils/catchAsyncFlash");
 
 router.get("/posts/new", isAdmin, admin.renderNew);
 
@@ -25,11 +26,17 @@ router.route("/users/csv").get(isAdmin, admin.downloadUserData);
 
 router.route("/users").post(isAdmin, admin.loadMoreUsers);
 
+router.delete(
+  "/fide-schools/:id",
+  isAdmin,
+  catchAsyncFlash(admin.deleteFideSchoolApplicant)
+);
+
 router
   .route("/:id")
   .get(isAdmin, catchAsync(admin.showPost))
   .put(isAdmin, admin.editPost)
-  .delete(isAdmin, admin.deletePost);
+  .delete(isAdmin, catchAsyncFlash(admin.deletePost));
 
 router.route("/:id/edit").get(isAdmin, admin.renderEdit);
 

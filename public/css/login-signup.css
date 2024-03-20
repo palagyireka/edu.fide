@@ -149,8 +149,11 @@ label[for="login-signup"] div {
 .fancytime {
   font-size: 18px;
   font-family: "Raleway";
-  height: 40px;
+  min-height: 40px;
+  max-height: 50px;
+  max-width: 250px;
   width: 20%;
+  min-width: 125px;
   margin-top: 8px;
   cursor: pointer;
   border: 2px solid #5b85aa;

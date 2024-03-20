@@ -174,3 +174,9 @@ main.sendus p:nth-last-of-type(2) a {
   height: 30px;
   width: 100px;
 }
+
+.static-text-body {
+  max-width: 800px;
+  margin: auto;
+  overflow: hidden;
+}

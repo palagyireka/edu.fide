@@ -1,24 +1,26 @@
-<table class="profiles-container">
-  <thead>
-    <th>Email</th>
-    <th>Full Name</th>
-    <th>Workplace</th>
-    <th>Job Title</th>
-    <th>Responsibilities</th>
-    <th>Registration Date</th>
-    <th>N?</th>
-  </thead>
-  <tbody>
-    <% userProfiles.forEach((profile) => { %>
-    <tr>
-      <td><a href="mailto:<%= profile.email %>"><%= profile.email %></a></td>
-      <td><%= profile.firstName %> <%= profile.lastName %></td>
-      <td><% profile.workplace %></td>
-      <td><%= profile.jobtitle %></td>
-      <td><%= profile.respCie %></td>
-      <td><%= profile.registrationDate.toDateString() %></td>
-      <td><%= profile.newsletter === true ? "✅" : "❌" %></td>
-    </tr>
-    <% }) %>
-  </tbody>
-</table>
+<div id="profiles-wrapper">
+  <table class="profiles-container">
+    <thead>
+      <th>Email</th>
+      <th>Full Name</th>
+      <th>Workplace</th>
+      <th>Job Title</th>
+      <th>Responsibilities</th>
+      <th>Registration Date</th>
+      <th>N?</th>
+    </thead>
+    <tbody>
+      <% userProfiles.forEach((profile) => { %>
+      <tr>
+        <td><a href="mailto:<%= profile.email %>"><%= profile.email %></a></td>
+        <td><%= profile.firstName %> <%= profile.lastName %></td>
+        <td><%= profile.workplace %></td>
+        <td><%= profile.jobtitle %></td>
+        <td><%= profile.respCie %></td>
+        <td><%= profile.registrationDate.toDateString() %></td>
+        <td><%= profile.newsletter === true ? "✅" : "❌" %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

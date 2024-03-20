@@ -1,6 +1,11 @@
 const plussigns = document.querySelectorAll(".plussign");
 const minussigns = document.querySelectorAll(".minussign");
+const deleteApplicantButtons = document.querySelectorAll(".delete-applicant");
 const longAnswers = document.querySelectorAll(".long-answers");
+const downloadButton = document.getElementById("csv-download");
+const deleteDialog = document.getElementById("delete-dialog");
+const deleteConfirmButton = document.getElementById("delete-confirm");
+const deleteConfirmMessage = document.getElementById("delete-message");
 
 const toggleHidden = (index) => {
   const plussign = document.querySelector(`#plussign-${index}`);
@@ -18,15 +23,27 @@ plussigns.forEach((sign, index) => {
 minussigns.forEach((sign, index) => {
   sign.addEventListener("click", () => toggleHidden(index));
 });
+deleteApplicantButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    deleteDialog.showModal();
+    deleteConfirmButton.value = button.dataset.id;
+    deleteConfirmMessage.innerText = `Delete ${button.dataset.name}'s application?`;
+  });
+});
 
-const downloadButton = document.getElementById("csv-download");
+const deleteApplicant = async () => {
+  const id = deleteConfirmButton.value;
+  fetch(`/admin/fide-schools/${id}`, {
+    method: "DELETE",
+    redirect: "follow",
+  });
+};
 
 const downloadCsv = () => {
   fetch(`fide-schools/download`, {
     method: "GET",
   })
     .then((res) => {
-      console.log(res);
       return res;
     })
     .then(async (res) => ({
@@ -58,4 +75,5 @@ const downloadCsv = () => {
     });
 };
 
+deleteConfirmButton.addEventListener("click", deleteApplicant);
 downloadButton.addEventListener("click", downloadCsv);

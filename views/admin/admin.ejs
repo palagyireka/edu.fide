@@ -1,18 +1,22 @@
 <% layout('layouts/boilerplate') %>
 <main class="admin">
   <h2>Administrator Main Page</h2>
-  <p>
-    <a href="/admin/posts"> View all posts. </a>
-  </p>
-  <p><a href="/admin/fide-schools">View FIDE School Awards applications</a></p>
-  <p></p>
-  <h3>List of All Registered Users:</h3>
-  <!-- <div class="user-csv-download">
+  <div class="admin-options">
+    <div>
+      <a href="/admin/posts">View all posts</a>
+    </div>
+    <div>
+      <a href="/admin/fide-schools">View FIDE School Awards applications</a>
+    </div>
+  </div>
+  <h3>Users</h3>
+  <div class="user-csv-download">
     <button id="user-csv-download" class="fancytime">
       Download spreadsheet
     </button>
-  </div> -->
+  </div>
   <%- include('./profiles') %>
-  <!-- <button class="fancytime" id="load-more"></button> -->
+  <div class="profiles-load-more"></div>
+  <button class="fancytime" id="load-more">Load More</button>
 </main>
 <script src="/js/adminmain.js"></script>

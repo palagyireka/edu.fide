@@ -32,15 +32,11 @@ main.blogs a:hover {
   font-size: 18px;
   line-height: 1.1;
   word-wrap: break-word;
-  border-left: 20px solid #91b0b2;
-  border-right: 20px solid #91b0b2;
 }
 
 .show-blogpost pre {
   box-sizing: border-box;
   padding: 10px 10%;
-  border-left: 20px solid #91b0b2;
-  border-right: 20px solid #91b0b2;
   border-top: none;
   border-bottom: none;
   margin-top: 0;
@@ -59,7 +55,8 @@ main.blogs a:hover {
 }
 
 .text-body {
-  margin-top: 10px;
+  max-width: 900px;
+  margin: auto;
 }
 
 .text-body img {
@@ -393,4 +390,9 @@ label[for="title"] {
 .text-body a {
   text-decoration: underline;
   color: #699ac4;
+}
+
+.text {
+  border-left: 20px solid #91b0b2;
+  border-right: 20px solid #91b0b2;
 }
