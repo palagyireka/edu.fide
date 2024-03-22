@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>
+<main class="testimonials">
+  <div class="tes-data" data-t="<%= testimonialsData %>">
+    <% if (type === 'pot') { %>
+    <p id="potp">Preparation of Teachers Course Testimonials</p>
+    <% } else if (type === 'pol') { %>
+    <p id="polp">Preparation of Lecturers Course Testimonials</p>
+    <% }%>
+  </div>
+  <table class="fliptb">
+    <tbody>
+      <% for(let i = 0;i<2;i++){ %>
+      <tr>
+        <% for(let j=0;j<5;j++){ %>
+        <td>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <object type="image/svg+xml" data="" class="chess-pieces">
+                  Chess Piece
+                </object>
+              </div>
+              <div class="flip-card-back">
+                <p></p>
+                <p></p>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </td>
+        <% } %>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</main>
+<script src="/js/testimonials.js"></script>
+<script src="/js/virtual-select.min.js"></script>
