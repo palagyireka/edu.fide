@@ -9,6 +9,7 @@ const CountrycontactSchema = new Schema({
   website: String,
   contact: String,
   desc: String,
+  contactDelta: Object,
 });
 
 module.exports = mongoose.model("Countrycontact", CountrycontactSchema);
