@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const FIDEref = document.querySelector("#fidelogo").parentElement;
   const logoCont = document.querySelector(".logo-container");
   const loginSignup = document.querySelector(`label[for="login-signup"] div`);
+  const profileLogout = document.querySelector("div.profile-logout");
   function socmedAllit() {
     if (
       window.innerWidth > 1200 &&
@@ -13,7 +14,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
       logoCont.insertBefore(socMed, FIDEref);
     } else {
       socMed.remove();
-      loginSignup.appendChild(socMed);
+      if (loginSignup) {
+        loginSignup.appendChild(socMed);
+      } else if (profileLogout) {
+        profileLogout.appendChild(socMed);
+      }
     }
   }
   socmedAllit();

@@ -31,7 +31,29 @@ document.querySelectorAll(".chess-pieces").forEach((piece) => {
   piece.data = babuk[Math.floor(Math.random() * 6)];
 });
 
-const flipCards = document.querySelectorAll(".flip-card-page");
+const flipCardBacks = document.querySelectorAll(".flip-card-back");
+let usedTestimonials = [{}];
+let unusedTestimonials = allTestimonials.filter((test) =>
+  usedTestimonials.includes(test)
+);
+
+document.querySelectorAll(".flipcard").forEach((card) => {
+  card.addEventListener("mouseover", () => {
+    const cardBack = card.querySelector(".flip-card-back");
+    if (usedTestimonials.length < allTestimonials.length) {
+      const random = Math.floor(Math.random() * unusedTestimonials.length);
+      const rTest = unusedTestimonials[random];
+      cardBack.children[0] = rTest.name;
+      cardBack.children[1] = rTest.text;
+      cardBack.children[2] = rTest.date;
+      usedTestimonials.push(rTest);
+      unusedTestimonials = allTestimonials.filter((test) =>
+        usedTestimonials.includes(test)
+      );
+    }
+  });
+});
+
 // let usedTestimonials = [{}];
 
 // flipCards.forEach((card) => {

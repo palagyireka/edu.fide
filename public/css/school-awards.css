@@ -75,9 +75,10 @@ svg * {
 ul.lang-checklist {
   display: flex;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 ul.lang-checklist li a {
-  margin: 0 15px;
+  margin: 15px;
   display: flex;
   align-items: center;
 }

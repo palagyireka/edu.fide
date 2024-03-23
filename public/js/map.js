@@ -71,16 +71,70 @@ const addCountryFunctions = (userLocation) => {
     item.addEventListener("touchstart", orszagValaszt);
 
     function orszagValaszt(evt) {
-      const selectedCountry = document.querySelector(".selected");
-      const searchedCountry = document.querySelector(".selected-country");
-
+      const selectedCountry = document.querySelectorAll(".selected");
+      const searchedCountry = document.querySelectorAll(".selected-country");
       if (selectedCountry) {
-        selectedCountry.classList.remove("selected");
+        selectedCountry.forEach((country) => {
+          country.classList.remove("selected");
+        });
       }
       evt.target.classList.add("selected");
+      console.log(evt.target.id);
+      if (
+        window.innerWidth > 1200 &&
+        window.screen.width > 1200 &&
+        window.outerWidth > 1200
+      ) {
+        if (evt.target.id == "path435") {
+          UKCopy.classList.remove("hidden");
+          UKCopy.classList.add("selected");
+        }
+        if (evt.target.id == "PakistanUp") {
+          ChinaUp.classList.add("hidden");
+          IndiaUp.classList.add("hidden");
+        }
+        if (evt.target.id == "ChinaUp") {
+          IndiaUp.classList.add("hidden");
+          PakistanUp.classList.add("hidden");
+        }
+        if (evt.target.id == "IndiaUp") {
+          ChinaUp.classList.add("hidden");
+          PakistanUp.classList.add("hidden");
+        }
+      } else {
+        if (evt.target.id == "path435") {
+          UKCopy.classList.remove("hidden");
+          UKCopy.classList.add("selected");
+        }
+        if (evt.target.id == "PakistanDown") {
+          PakistanUp.classList.remove("hidden");
+          PakistanUp.classList.add("selected");
+          IndiaUp.classList.add("hidden");
+          ChinaUp.classList.add("hidden");
+        }
+        if (evt.target.id == "ChinaDown") {
+          ChinaUp.classList.remove("hidden");
+          ChinaUp.classList.add("selected");
+          IndiaUp.classList.add("hidden");
+          PakistanUp.classList.add("hidden");
+        }
+        if (evt.target.id == "IndiaDown") {
+          IndiaUp.classList.remove("hidden");
+          IndiaUp.classList.add("selected");
+          ChinaUp.classList.add("hidden");
+          PakistanUp.classList.add("hidden");
+        }
+      }
+
+      hoverText.querySelector("span").textContent = country;
+      hoverText.classList.remove("hidden");
+      hoverText.style.top = event.clientY + "px";
+      hoverText.style.left = event.clientX + "px";
 
       if (searchedCountry) {
-        searchedCountry.classList.remove("selected-country");
+        searchedCountry.forEach((country) => {
+          country.classList.remove("selected-country");
+        });
       }
 
       countryMenuChange(country, countryCode);
@@ -120,17 +174,19 @@ const addCountryFunctions = (userLocation) => {
       if (item.id == "UKcopy") {
         UKCopy.classList.add("hidden");
       }
-      if (item.id == "PakistanUp") {
+      if (item.id == "PakistanUp" && !item.classList.contains("selected")) {
         PakistanUp.classList.add("hidden");
       }
-      if (item.id == "ChinaUp") {
+      if (item.id == "ChinaUp" && !item.classList.contains("selected")) {
         ChinaUp.classList.add("hidden");
       }
-      if (item.id == "IndiaUp") {
+      if (item.id == "IndiaUp" && !item.classList.contains("selected")) {
         IndiaUp.classList.add("hidden");
       }
       hoverText.classList.add("hidden");
     });
+
+    item.addEventListener("touchstart", (event) => {});
   });
 };
 
