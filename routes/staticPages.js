@@ -34,5 +34,7 @@ staticRoute("pot/potinfo", "potInfo");
 staticRoute("pol/polinfo", "polInfo");
 staticRoute("fide-schools", "fideSchools", true);
 staticRoute("cookies", "cookies");
+staticRoute("learn-chess", "learnChess");
+staticRoute("links", "links");
 
 module.exports = router;

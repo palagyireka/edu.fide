@@ -79,7 +79,6 @@ const addCountryFunctions = (userLocation) => {
         });
       }
       evt.target.classList.add("selected");
-      console.log(evt.target.id);
       if (
         window.innerWidth > 1200 &&
         window.screen.width > 1200 &&

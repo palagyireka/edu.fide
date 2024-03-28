@@ -1,4 +1,5 @@
 const Blogpost = require("../models/blogpost");
+const Countrycontact = require("../models/countrycontact");
 const FeaturedPost = require("../models/featuredPost");
 const deltaToHtml = require("../utils/deltaToHtml");
 const { convert } = require("html-to-text");
@@ -72,6 +73,7 @@ module.exports.getEvents = async (req, res) => {
         res.send(JSON.stringify({ error: error }));
       } else {
         if (result.data.items.length) {
+          console.log(result.data.items);
           res.send(JSON.stringify({ events: result.data.items }));
         } else {
           res.send(JSON.stringify({ message: "No upcoming events found." }));
@@ -216,4 +218,11 @@ module.exports.getIp = (req, res) => {
       res.json(response);
     });
   });
+};
+
+module.exports.getContactInfo = async (req, res) => {
+  const countryC = decodeURIComponent(req.query.country);
+  const chosenContact = await Countrycontact.findOne({ name: countryC });
+
+  res.json(chosenContact);
 };

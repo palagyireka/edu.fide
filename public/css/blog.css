@@ -12,7 +12,7 @@ main.blogs a:hover {
   letter-spacing: 3px;
 }
 
-.show-blogpost h2 {
+h2.title {
   height: 100px;
   color: white;
   font-weight: bold;
@@ -28,10 +28,17 @@ main.blogs a:hover {
 .show-blogpost ul,
 .show-blogpost ol {
   box-sizing: border-box;
-  padding: 10px 10%;
-  font-size: 18px;
+  padding: 10px 20px;
+  font-size: 16px;
   line-height: 1.1;
   word-wrap: break-word;
+}
+
+.text-body h1,
+.text-body h2,
+.text-body h3,
+.text-body h4 {
+  padding: 0px 20px;
 }
 
 .show-blogpost pre {

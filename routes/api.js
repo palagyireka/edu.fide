@@ -21,4 +21,6 @@ router.post("/gallery", catchAsync(api.gallery));
 
 router.get("/getip", api.getIp);
 
+router.get("/contact", api.getContactInfo);
+
 module.exports = router;

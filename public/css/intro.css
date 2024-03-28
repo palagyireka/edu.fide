@@ -42,7 +42,6 @@ main.intro p,
 main.sendus p,
 main.intro ul li {
   margin: 10px;
-  line-height: 1.2;
 }
 main.intro ul {
   margin: 10px 35px;
@@ -179,4 +178,66 @@ main.sendus p:nth-last-of-type(2) a {
   max-width: 800px;
   margin: auto;
   overflow: hidden;
+}
+
+.static-text-body h1,
+.ql-editor h1,
+.text-body h1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: black;
+}
+
+.static-text-body h2,
+.ql-editor h2,
+.text-body h2 {
+  display: block;
+  font-size: 1.5em !important;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: 600 !important;
+}
+
+.static-text-body h3,
+.ql-editor h3,
+.text-body h3 {
+  display: block;
+  font-size: 1.2em !important;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+}
+
+.static-text-body h4,
+.ql-editor h4,
+.text-body h4 {
+  display: block;
+  font-size: 1em !important;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: 600 !important;
+}
+
+.static-text-body ol,
+.text-body ol {
+  list-style: decimal !important;
+  margin: 10px 35px;
+}
+
+.static-text-body ol li,
+.text-body ol li {
+  display: list-item;
+  margin: 10px;
 }

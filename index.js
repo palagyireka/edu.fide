@@ -253,20 +253,20 @@ app
       res.render("contact", { chosenContact, ogMarkup });
     })
   )
-  .post(
+  .put(
     catchAsync(async (req, res) => {
       await Countrycontact.findOneAndUpdate(
-        { "alpha-2": req.body.alpha2 },
+        { name: req.body.country },
         {
-          contact: req.body.contact,
-          email: req.body.email,
-          website: req.body.website,
+          contactDelta: req.body.contactDelta,
         }
       );
-      uriName = encodeURIComponent(req.body.name);
+      uriName = encodeURIComponent(req.body.country);
+
+      req.method = "GET";
 
       req.flash("success", "Contact updated");
-      res.redirect(`/contact?country=${uriName}`);
+      res.redirect(303, `/contact?country=${uriName}`);
     })
   );
 

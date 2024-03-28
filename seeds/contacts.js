@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    "mongodb+srv://vernyelj:DbFXR2vYE3HUFDhU@cluster0.ebvtrcv.mongodb.net/fideEduWebsite"
+    "mongodb+srv://fideedu:Vi7HPNttt7V7KhkZ@cluster0.cwtiae2.mongodb.net/fideEduWebsite"
   )
   .catch((error) => console.log(error));
 

@@ -63,7 +63,10 @@ const eventTransform = (events) => {
       if (typeof evt.start.date !== "undefined") {
         evtCategory = "allday";
         evtStart = evt.start.date;
-        evtEnd = evt.end.date;
+        const endDate = new Date(
+          new Date(evt.end.date).valueOf() - 1000 * 3600 * 24
+        );
+        evtEnd = endDate;
       } else {
         evtCategory = "time";
         evtStart = evt.start.dateTime;

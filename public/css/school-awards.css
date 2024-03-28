@@ -101,3 +101,14 @@ ul.lang-checklist li a svg {
   margin-top: 20px;
   font-size: 0.9rem;
 }
+
+ul.fide-schools-list li {
+  list-style: inherit !important;
+  margin: 15px 10px;
+}
+
+ul.fide-schools-list {
+  list-style: inherit !important;
+  list-style-position: inside;
+  padding: 0px 30px;
+}
