@@ -196,7 +196,7 @@ const eventTransform = (events) => {
     if (evt.attachments) {
       eventAttachments.push(evt.attachments[0]);
     } else {
-      eventAttachments.push("");
+      eventAttachments.push(null);
     }
     return eventObject;
   });
@@ -206,14 +206,27 @@ const changeToAttachment = () => {
   const title = document.querySelector(
     ".toastui-calendar-template-popupDetailTitle"
   ).innerText;
+
   const spaceForLink = document.querySelector(
     ".toastui-calendar-template-popupDetailAttendees"
   );
-  const index = transformedEvents.findIndex(
-    (element) => element.title === title
-  );
 
-  spaceForLink.innerHTML = `<a href="${eventAttachments[index].fileUrl}" target="_blank">${eventAttachments[index].title}</a>`;
+  const date = document
+    .querySelector(".toastui-calendar-template-popupDetailDate")
+    .innerText.split("-");
+
+  const startDate = new Date(date[0]);
+
+  const index = transformedEvents.findIndex(
+    (element) =>
+      element.title.trim() === title.trim() &&
+      startDate.toDateString() === new Date(element.start).toDateString()
+  );
+  if (eventAttachments[index] == null) {
+    spaceForLink.parentElement.parentElement.remove();
+  } else {
+    spaceForLink.innerHTML = `<a href="${eventAttachments[index].fileUrl}" target="_blank">${eventAttachments[index].title}</a>`;
+  }
 };
 
 const popup = document.querySelector(".toastui-calendar-popup-overlay");
@@ -226,10 +239,11 @@ const observer = new MutationObserver((mutations) => {
       const attachmentIcon = document.querySelector(
         ".toastui-calendar-ic-user-b"
       );
-
-      attachmentIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+      if (attachmentIcon) {
+        attachmentIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
 <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0z"/>
 </svg>`;
+      }
     }
   });
 });

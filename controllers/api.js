@@ -73,7 +73,6 @@ module.exports.getEvents = async (req, res) => {
         res.send(JSON.stringify({ error: error }));
       } else {
         if (result.data.items.length) {
-          console.log(result.data.items);
           res.send(JSON.stringify({ events: result.data.items }));
         } else {
           res.send(JSON.stringify({ message: "No upcoming events found." }));
@@ -154,7 +153,6 @@ module.exports.search = async (req, res) => {
 };
 
 module.exports.gallery = async (req, res) => {
-  console.log(req.body);
   const query = req.body.country;
   const createdAt = req.body.lastDate;
   let imgUrls;
@@ -170,7 +168,6 @@ module.exports.gallery = async (req, res) => {
   if (createdAt !== "") {
     expression += ` AND created_at<"${createdAt}"`;
   }
-  console.log(expression);
   await cloudinary.search
     .expression(expression)
     .sort_by("created_at", "desc")
