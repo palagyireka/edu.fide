@@ -26,7 +26,12 @@ const months = [
 ];
 
 const urlParams = new URLSearchParams(window.location.search);
-const eventDate = new Date(urlParams.get("date").substring(0, 10));
+let eventDate;
+if (urlParams.get("date") !== "today") {
+  eventDate = new Date(urlParams.get("date").substring(0, 10));
+} else {
+  eventDate = null;
+}
 
 function waitForElm(selector) {
   return new Promise((resolve) => {
@@ -55,14 +60,14 @@ function setDate() {
 
   monthDisplay.innerText = `${currentYear} ${months[currentMonth]}`;
 }
-for (
-  let i = 0;
-  i < (calendar.getDate().getMonth() - eventDate.getMonth()) * -1;
-  i++
-) {
-  loopFired = true;
-  calendar.next();
+
+if (eventDate) {
+  while (calendar.getDate().getMonth() !== eventDate.getMonth()) {
+    loopFired = true;
+    calendar.next();
+  }
 }
+
 setDate();
 const urlParamsD = new URLSearchParams(window.location.search);
 const eventID = urlParams.get("evtid");
