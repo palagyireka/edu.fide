@@ -1,7 +1,7 @@
 let allTestimonials = JSON.parse(
   document.querySelector("div.tes-data").dataset.t
 );
-
+console.log(allTestimonials);
 const potP = document.querySelector("#potp") ? "POT" : false;
 const polP = document.querySelector("#polp") ? "POL" : false;
 
@@ -28,28 +28,29 @@ const babuk = [
 ];
 
 document.querySelectorAll(".chess-pieces").forEach((piece) => {
-  piece.data = babuk[Math.floor(Math.random() * 6)];
+  piece.setAttribute("data", babuk[Math.floor(Math.random() * 6)]);
 });
 
 const flipCardBacks = document.querySelectorAll(".flip-card-back");
 let usedTestimonials = [{}];
-let unusedTestimonials = allTestimonials.filter((test) =>
-  usedTestimonials.includes(test)
+let unusedTestimonials = allTestimonials.filter(
+  (test) => !usedTestimonials.includes(test)
 );
 
-document.querySelectorAll(".flipcard").forEach((card) => {
-  card.addEventListener("mouseover", () => {
+document.querySelectorAll(".flip-card").forEach((card) => {
+  card.addEventListener("mouseenter", () => {
     const cardBack = card.querySelector(".flip-card-back");
     if (usedTestimonials.length < allTestimonials.length) {
       const random = Math.floor(Math.random() * unusedTestimonials.length);
       const rTest = unusedTestimonials[random];
-      cardBack.children[0] = rTest.name;
-      cardBack.children[1] = rTest.text;
-      cardBack.children[2] = rTest.date;
+      cardBack.children[0].innerText = rTest.name;
+      cardBack.children[1].innerText = rTest.text;
+      cardBack.children[2].innerText = rTest.date;
       usedTestimonials.push(rTest);
-      unusedTestimonials = allTestimonials.filter((test) =>
-        usedTestimonials.includes(test)
-      );
+      unusedTestimonials.splice(random, 1);
+    } else {
+      usedTestimonials = [];
+      unusedTestimonials = allTestimonials.slice(); // Make a copy of allTestimonials
     }
   });
 });

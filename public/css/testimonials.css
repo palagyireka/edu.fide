@@ -7,10 +7,16 @@
   width: 100%;
 }
 
+.fliptb tr {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .flip-card {
   background-color: transparent;
   width: 300px;
-  height: 200px;
+  height: 230px;
   perspective: 1000px;
 }
 
@@ -39,12 +45,12 @@
 }
 
 .flip-card-inner .flip-card-front {
-  background-color: #bbb;
+  background-color: #ccd6f1;
   color: black;
 }
 
 .flip-card-inner .flip-card-back {
-  background-color: #2980b9;
+  background-color: #5b85aa;
   color: white;
   transform: rotateY(180deg);
 }
