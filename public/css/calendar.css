@@ -83,6 +83,7 @@ div.toastui-calendar-see-more {
 }
 
 .calendar-nav {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -156,4 +157,8 @@ div:has(> span.toastui-calendar-ic-state-b) {
 .toastui-calendar-content a {
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.toastui-calendar-popup-overlay {
+  top: 300px !important;
 }
