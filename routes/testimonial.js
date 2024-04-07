@@ -10,7 +10,7 @@ router
   .post(isAdmin, catchAsync(testimonial.createTestimonial));
 
 router
-  .route("/add/:id")
+  .route("/update/:id")
   .put(isAdmin, testimonial.updateTestimonial)
   .delete(isAdmin, testimonial.deleteTestimonial);
 

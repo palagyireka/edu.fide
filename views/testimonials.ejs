@@ -33,6 +33,47 @@
       <% } %>
     </tbody>
   </table>
+  <% if (typeof currentUser !== "undefined"){if (currentUser.role === "admin")
+  {%>
+  <form action="/testimonials/addmember" class="add-material" id="add-tes">
+    <p>Add or Edit Testimonial:</p>
+    <label for="tes-name">Name:</label>
+    <input type="text" name="tes-name" id="tes-name" />
+    <label for="tes-text">Text:</label>
+    <input type="text" name="tes-text" id="tes-text" />
+    <label for="tes-date">Year and Month:</label>
+    <input type="text" name="tes-date" id="tes-date" />
+    <p>Click on the testimonial you want to edit or delete:</p>
+    <select class="tesul">
+      <option value="">Choose from the dropdown:</option>
+    </select>
+    <button type="submit" value="Add" class="fancytime" id="add-tes">
+      Add
+    </button>
+    <button
+      type="submit"
+      value="Update"
+      id="update-tes"
+      class="fancytime"
+      disabled
+    >
+      Update
+    </button>
+    <button
+      type="submit"
+      value="Delete"
+      id="delete-tes"
+      class="fancytime"
+      disabled
+    >
+      Delete
+    </button>
+    <button id="cancel-tes" class="fancytime" type="button">Cancel</button>
+  </form>
+  <script>
+    let alltesi = JSON.parse(document.querySelector("div.tes-data").dataset.t);
+  </script>
+  <% }} %>
 </main>
 <script src="/js/testimonials.js"></script>
 <script src="/js/virtual-select.min.js"></script>

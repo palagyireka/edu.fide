@@ -1,7 +1,6 @@
 let allTestimonials = JSON.parse(
   document.querySelector("div.tes-data").dataset.t
 );
-console.log(allTestimonials);
 const potP = document.querySelector("#potp") ? "POT" : false;
 const polP = document.querySelector("#polp") ? "POL" : false;
 
@@ -16,6 +15,144 @@ function loadTestimonials(slc) {
       }
     });
   }
+}
+
+const tul = document.querySelector(".tesul");
+if (tul) {
+  allTestimonials.forEach((tes) => {
+    const option = document.createElement("option");
+    option.innerText = `${tes.name}: ${tes.text}`;
+    option.value = JSON.stringify(tes); // Store the entire testimonial object as the option value
+    tul.appendChild(option);
+  });
+  const inputs = document.querySelectorAll("#add-tes input");
+  const addbtn = document.querySelector("button#add-tes");
+  const delbtn = document.querySelector("#delete-tes");
+  const updatebtn = document.querySelector("#update-tes");
+  const cancelbtn = document.querySelector("#cancel-tes");
+  let latestid = "";
+  tul.addEventListener("change", () => {
+    const selectedTestimonial = JSON.parse(tul.value); // Retrieve the selected testimonial object
+    inputs[0].value = selectedTestimonial.name;
+    inputs[1].value = selectedTestimonial.text;
+    inputs[2].value = selectedTestimonial.date;
+    latestid = selectedTestimonial._id;
+    cancelbtn.disabled = false;
+    delbtn.disabled = false;
+    updatebtn.disabled = false;
+    addbtn.disabled = true;
+  });
+  cancelbtn.addEventListener("click", () => {
+    inputs.forEach((input) => {
+      input.value = "";
+    });
+  });
+  addbtn.addEventListener("click", async (evt) => {
+    evt.preventDefault();
+    const nameContent = inputs[0].value;
+    const dateContent = inputs[2].value;
+    const textContent = inputs[1].value;
+    let courseContent;
+    if (potP) {
+      courseContent = "POT";
+    } else {
+      courseContent = "POL";
+    }
+    const postData = {
+      name: nameContent,
+      date: dateContent,
+      text: textContent,
+      course: courseContent,
+    };
+    fetch(`/testimonials/addmember`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then(() => {
+        if (potP) {
+          window.location.replace("/testimonials/pot");
+        } else {
+          window.location.replace("/testimonials/pol");
+        }
+      })
+      .catch(() => {
+        if (potP) {
+          window.location.replace("/testimonials/pot");
+        } else {
+          window.location.replace("/testimonials/pol");
+        }
+      });
+  });
+  updatebtn.addEventListener("click", async (evt) => {
+    evt.preventDefault();
+    const nameContent = inputs[0].value;
+    const dateContent = inputs[2].value;
+    const textContent = inputs[1].value;
+    let id = encodeURIComponent(latestid);
+    let courseContent;
+    if (potP) {
+      courseContent = "POT";
+    } else {
+      courseContent = "POL";
+    }
+    const postData = {
+      name: nameContent,
+      date: dateContent,
+      text: textContent,
+      course: courseContent,
+    };
+
+    fetch(`/testimonials/update/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then(() => {
+        if (potP) {
+          window.location.replace("/testimonials/pot");
+        } else {
+          window.location.replace("/testimonials/pol");
+        }
+      })
+      .catch(() => {
+        if (potP) {
+          window.location.replace("/testimonials/pot");
+        } else {
+          window.location.replace("/testimonials/pol");
+        }
+      });
+  });
+
+  delbtn.addEventListener("click", async (evt) => {
+    evt.preventDefault();
+    let id = encodeURIComponent(latestid);
+    const postData = {};
+    fetch(`/testimonials/update/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        if (potP) {
+          window.location.replace("/testimonials/pot");
+        } else {
+          window.location.replace("/testimonials/pol");
+        }
+      })
+      .catch(() => {
+        if (potP) {
+          window.location.replace("/testimonials/pot");
+        } else {
+          window.location.replace("/testimonials/pol");
+        }
+      });
+  });
 }
 
 const babuk = [
