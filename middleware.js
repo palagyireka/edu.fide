@@ -68,7 +68,7 @@ module.exports.isLoginEmailValidated = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (user) {
-    const link = `http:///send-confirm/${user.id}`;
+    const link = `https://edu.fide.com/send-confirm/${user.id}`;
     if (user.status === "active") {
       next();
     } else if (user.status === "pending") {
