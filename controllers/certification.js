@@ -1,8 +1,51 @@
 const SchoolAwardsApplicant = require("../models/schoolAwardsApplicant");
+const Fideschool = require("../models/fideschool");
 const nodemailer = require("../utils/nodemailer");
 
-module.exports.renderFideSchools = (req, res) => {
-  res.render("fide-schools");
+module.exports.renderFideSchoolsApp = (req, res) => {
+  res.render("fide-schools-app");
+};
+
+module.exports.renderFideSchools = async (req, res) => {
+  const fideschools = await Fideschool.find({});
+  let fideschoolsData = JSON.stringify(fideschools);
+  fideschoolsData = JSON.parse(fideschoolsData);
+  res.render("fide-schools", { fideschoolsData });
+};
+
+module.exports.createSchool = async (req, res) => {
+  const fideschool = new Fideschool({
+    name: req.body.name,
+    country: req.body.country,
+    city: req.body.city,
+    awardlevel: req.body.awardlevel,
+    awarddate: req.body.awarddate,
+  });
+
+  fideschool.save().then((post) => {
+    req.flash("success", "Successfully added a new school!");
+    res.json({ message: "Success!" });
+  });
+};
+
+module.exports.updateSchool = async (req, res) => {
+  const { id } = req.params;
+  const editedSchool = await Fideschool.findByIdAndUpdate(id, {
+    name: req.body.name,
+    country: req.body.country,
+    city: req.body.city,
+    awardlevel: req.body.awardlevel,
+    awarddate: req.body.awarddate,
+  });
+  req.flash("success", "School saved!");
+  res.json({ message: "Success!" });
+};
+
+module.exports.deleteSchool = async (req, res) => {
+  const { id } = req.params;
+  await Fideschool.findByIdAndDelete(id);
+  req.flash("success", "Successfully deleted the school");
+  res.json({ message: "Success!" });
 };
 
 module.exports.done = (req, res) => {

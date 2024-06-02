@@ -242,7 +242,6 @@ h1 {
   background-size: 100% 0.12em !important;
 }
 
-.lista-1 > li:nth-of-type(4) + .lista-2 > li,
 .lista-1 > li:nth-of-type(3) + .lista-2 > li {
   cursor: auto;
   background-image: none;
@@ -356,11 +355,6 @@ h1 {
   text-align: center;
   font-size: 17px;
   cursor: auto;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
 }
 
 main {

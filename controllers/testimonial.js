@@ -6,7 +6,6 @@ const url = require("url");
 module.exports.showTestimonials = async (req, res) => {
   const type = req.params.type;
   const testimonials = await Testimonial.find({});
-  console.log(testimonials);
   const testimonialsData = JSON.stringify(testimonials);
   res.render("testimonials", { type, testimonialsData });
 };

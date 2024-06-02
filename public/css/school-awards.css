@@ -1,5 +1,11 @@
 .fide-schools-main {
-  background-color: #f3f3f3;
+  background: linear-gradient(240deg, #f5e4cf, #c3d7e9, #f5e4cf);
+  display: block;
+  width: 100%;
+}
+
+.sd-root-modern {
+  background-color: #ffffff72 !important;
 }
 
 h2.fide-schools-title {
@@ -57,10 +63,10 @@ svg * {
   margin-right: 8px;
 }
 .form-lang {
-  max-width: calc(90 * (var(--sjs-base-unit, var(--base-unit, 8px))));
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 0;
+  max-width: 100%;
+  background-color: #ffffff72 !important;
+
+  padding: 30px 0px 0px 40px;
   display: flex;
   align-items: center;
   flex-flow: row wrap;
@@ -111,4 +117,75 @@ ul.fide-schools-list {
   list-style: inherit !important;
   list-style-position: inside;
   padding: 0px 30px;
+}
+
+.winners-container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.fide-schools-main *,
+.fide-schools-main * * {
+  box-sizing: border-box;
+}
+
+.schtitle {
+  font-size: 22px;
+  font-weight: 500;
+  display: block;
+  height: 100px;
+  padding: 39px 20px;
+}
+
+.sch {
+  display: block;
+  width: 20%;
+  min-width: 255px;
+  height: 220px;
+  margin: 30px;
+  padding: 20px;
+  border: 3px solid #5b85aa;
+  float: left;
+  transform-origin: center center;
+  transition: 0.5s;
+  background-color: #ffffff62;
+  position: relative;
+}
+.rotate {
+  transform: rotate(calc(0deg + var(--rotation)));
+}
+
+.sch > div:first-of-type {
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.sch a,
+.sch > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sch svg {
+  margin: 0 3px;
+}
+
+.schmedal {
+  position: absolute;
+  right: -30px;
+  bottom: -20px;
+  overflow: hidden;
+}
+
+.schmedal svg {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+html {
+  overflow-x: hidden;
 }
