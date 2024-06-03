@@ -58,8 +58,8 @@ a {
   width: 100%;
 }
 
-.svg-pan-zoom_viewport.zoom {
-  transition: transform 0.3s;
+.zoom {
+  transition: viewBox 0.8s ease;
 }
 
 /* #map path:hover {
@@ -165,6 +165,7 @@ a {
   text-align: left;
   width: 90%;
   height: 25px;
+  margin-left: 10px;
 }
 
 /* KERESÉS */

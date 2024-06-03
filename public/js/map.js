@@ -5,17 +5,103 @@ mapNoti.addEventListener("click", (evt) => {
   );
 });
 
-const element = document.querySelector("#map");
+const worldMap = document.querySelector("svg#map");
 const featuredMenu = document.querySelector("#featured");
-var panZoomMap = svgPanZoom(element, {
-  zoomEnabled: true,
-  controlIconsEnabled: false,
-  fit: true,
-  center: true,
-  minZoom: 1,
-  maxZoom: 8,
-  zoomScaleSensitivity: 0.4,
-});
+worldMap.setAttribute("viewBox", "0 0 1902 762");
+
+let isPanning = false;
+let startX, startY, viewBoxX, viewBoxY;
+
+worldMap.addEventListener("mousedown", startPan);
+worldMap.addEventListener("touchstart", startPan);
+worldMap.addEventListener("wheel", handleWheel);
+
+function startPan(event) {
+  const rect = worldMap.getBoundingClientRect();
+  const mouseX = event.clientX - rect.left; // X coordinate of mouse relative to SVG
+  const mouseY = event.clientY - rect.top; // Y coordinate of mouse relative to SVG
+
+  // Check if the mouse is within the SVG boundaries
+  if (mouseX < 0 || mouseX > rect.width || mouseY < 0 || mouseY > rect.height)
+    return;
+
+  isPanning = true;
+  const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+  const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+  startX = clientX;
+  startY = clientY;
+
+  const viewBox = worldMap.getAttribute("viewBox").split(" ").map(Number);
+  viewBoxX = viewBox[0];
+  viewBoxY = viewBox[1];
+
+  worldMap.addEventListener("mousemove", pan);
+  worldMap.addEventListener("touchmove", pan);
+  worldMap.addEventListener("mouseup", endPan);
+  worldMap.addEventListener("touchend", endPan);
+}
+
+function pan(event) {
+  if (!isPanning) return;
+  const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+  const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+
+  const dx = startX - clientX;
+  const dy = startY - clientY;
+
+  const newViewBoxX = viewBoxX + dx;
+  const newViewBoxY = viewBoxY + dy;
+
+  worldMap.setAttribute(
+    "viewBox",
+    `${newViewBoxX} ${newViewBoxY} ${worldMap.viewBox.baseVal.width} ${worldMap.viewBox.baseVal.height}`
+  );
+}
+
+function endPan() {
+  isPanning = false;
+  worldMap.removeEventListener("mousemove", pan);
+  worldMap.removeEventListener("touchmove", pan);
+  worldMap.removeEventListener("mouseup", endPan);
+  worldMap.removeEventListener("touchend", endPan);
+}
+
+function handleWheel(event) {
+  const rect = worldMap.getBoundingClientRect();
+  const mouseX = event.clientX - rect.left;
+  const mouseY = event.clientY - rect.top;
+  if (mouseX < 0 || mouseX > rect.width || mouseY < 0 || mouseY > rect.height)
+    return;
+  event.preventDefault();
+
+  const delta = normalizeWheelDelta(event);
+  const zoomFactor = 0.1;
+
+  let viewBox = worldMap.getAttribute("viewBox").split(" ").map(Number);
+  const [x, y, width, height] = viewBox;
+
+  // Calculate new width and height
+  const newWidth = width * (1 - delta * zoomFactor); // Invert delta value here
+  const newHeight = height * (1 - delta * zoomFactor); // Invert delta value here
+
+  // Ensure zooming is within limits
+  if (newWidth > 0 && newHeight > 0) {
+    // Calculate new x and y to keep the viewBox centered
+    const newX = x - (newWidth - width) / 2;
+    const newY = y - (newHeight - height) / 2;
+
+    worldMap.setAttribute(
+      "viewBox",
+      `${newX} ${newY} ${newWidth} ${newHeight}`
+    );
+  }
+}
+
+// Normalize wheel delta across different browsers
+function normalizeWheelDelta(event) {
+  if (event.deltaY === 0) return 0;
+  return event.deltaY > 0 ? -1 : 1;
+}
 
 const paths = document.querySelectorAll("#map .sm_state");
 const hoverText = document.querySelector("#hover-text");
@@ -127,8 +213,8 @@ const addCountryFunctions = (userLocation) => {
 
       hoverText.querySelector("span").textContent = country;
       hoverText.classList.remove("hidden");
-      hoverText.style.top = event.clientY + "px";
-      hoverText.style.left = event.clientX + "px";
+      hoverText.style.top = evt.clientY + "px";
+      hoverText.style.left = evt.clientX + "px";
 
       if (searchedCountry) {
         searchedCountry.forEach((country) => {
@@ -204,30 +290,31 @@ const list = document.querySelector(".search-countries");
 
 function zoomIn(path) {
   const selectedCountry = document.querySelector(".selected");
-  const tBBox = path.getBBox();
-  const previousBBox = selectedCountry.getBBox();
-  const xDifference = Math.abs(tBBox.x - previousBBox.x);
-  const yDifference = Math.abs(tBBox.x - previousBBox.x);
-  const tViewport = document.querySelector("g.svg-pan-zoom_viewport");
+  let pathB = path.getBBox();
+  const prevBox = selectedCountry
+    ? selectedCountry.getBBox()
+    : { x: 0, y: 0, width: 0, height: 0 };
+  const aspectRatio =
+    worldMap.viewBox.baseVal.width / worldMap.viewBox.baseVal.height;
 
-  if (xDifference > 0 || yDifference > 0) {
-    panZoomMap.reset();
-    tViewport.classList.add("zoom");
-    setTimeout(() => {
-      tViewport.classList.remove("zoom");
-    }, 1000);
+  let newWidth, newHeight;
+  if (pathB.width > pathB.height) {
+    newWidth = pathB.width + 350;
+    newHeight = newWidth / aspectRatio;
+  } else {
+    newHeight = pathB.height + 250;
+    newWidth = newHeight * aspectRatio;
   }
 
-  setTimeout(() => {
-    var tViewport = document.querySelector("g.svg-pan-zoom_viewport");
-    var tMatrix = tViewport.transform.baseVal.getItem(0).matrix;
-    var tPoint = {
-      x: tBBox.x - 750 + tBBox.width / 2,
-      y: tBBox.y - 250 + tBBox.height / 2,
-    };
-
-    panZoomMap.zoomAtPoint(1.5, tPoint);
-  }, 5);
+  const newX = pathB.x - (newWidth - pathB.width) / 2;
+  const newY = pathB.y - (newHeight - pathB.height) / 2;
+  const moveTo = `${newX} ${newY} ${newWidth} ${newHeight}`;
+  gsap.to(worldMap, {
+    duration: 0.8,
+    attr: { viewBox: moveTo },
+    ease: "power3.inOut",
+  });
+  // worldMap.setAttribute("viewBox", `${newX} ${newY} ${newWidth} ${newHeight}`);
 }
 
 for (let country of countryCodes) {
