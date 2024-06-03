@@ -47,37 +47,37 @@ module.exports.register = async (req, res, next) => {
   if (user) {
     req.flash("error", "This email has already been registered!");
     res.redirect("/");
+  } else {
+    const token = jwt.sign({ email }, secret);
+
+    user = new User({
+      email,
+      firstName,
+      lastName,
+      workplace,
+      jobtitle,
+      countryResidence,
+      respCie,
+      newsletter,
+      registrationDate: new Date(),
+      status: "pending",
+      confirmationCode: token,
+    });
+
+    const registeredUser = await User.register(user, password);
+
+    await sendConfirmationEmail(
+      `${firstName} ${lastName}`,
+      email,
+      user.confirmationCode,
+      "https://edu.fide.com"
+    );
+
+    res.render("message", {
+      message:
+        "<h3>Thank you for registering. We've sent a link to verify your email to the address you provided. Please check your inbox and follow the instructions in the email.</h3><p>If you don't see the email in your inbox, it may be in your spam or junk folder.</p><p>If you find the email in your spam folder, mark it as 'Not Spam' to ensure you receive future communications from us.</p>",
+    });
   }
-
-  const token = jwt.sign({ email }, secret);
-
-  user = new User({
-    email,
-    firstName,
-    lastName,
-    workplace,
-    jobtitle,
-    countryResidence,
-    respCie,
-    newsletter,
-    registrationDate: new Date(),
-    status: "pending",
-    confirmationCode: token,
-  });
-
-  const registeredUser = await User.register(user, password);
-
-  await sendConfirmationEmail(
-    `${firstName} ${lastName}`,
-    email,
-    user.confirmationCode,
-    "https://edu.fide.com"
-  );
-
-  res.render("message", {
-    message:
-      "<h3>Thank you for registering. We've sent a link to verify your email to the address you provided. Please check your inbox and follow the instructions in the email.</h3><p>If you don't see the email in your inbox, it may be in your spam or junk folder.</p><p>If you find the email in your spam folder, mark it as 'Not Spam' to ensure you receive future communications from us.</p>",
-  });
 };
 
 module.exports.sendConfirmationEmailAgain = async (req, res) => {

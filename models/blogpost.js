@@ -19,4 +19,4 @@ const BlogpostSchema = new Schema({
 
 BlogpostSchema.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("Blogpost", BlogpostSchema);
+module.exports = mongoose.model("Post", BlogpostSchema);

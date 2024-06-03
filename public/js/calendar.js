@@ -60,13 +60,10 @@ const eventTransform = (events) => {
       let evtStart;
       let evtEnd;
 
-      if (typeof evt.start.date !== "undefined") {
+      if (evt.start.date) {
         evtCategory = "allday";
         evtStart = evt.start.date;
-        const endDate = new Date(
-          new Date(evt.end.date).valueOf() - 1000 * 3600 * 24
-        );
-        evtEnd = endDate;
+        evtEnd = new Date(new Date(evt.end.date).valueOf() - 1000 * 3600 * 24);
       } else {
         evtCategory = "time";
         evtStart = evt.start.dateTime;
@@ -84,21 +81,21 @@ const eventTransform = (events) => {
         color: "#FFFFFF",
       };
 
-      if (typeof evt.summary !== "undefined") {
+      if (evt.summary) {
         eventObject.title = evt.summary;
       } else {
         eventObject.title = "No title";
       }
 
-      if (typeof evt.location !== "undefined") {
+      if (evt.location) {
         eventObject.location = evt.location;
       }
 
-      if (typeof evt.description !== "undefined") {
+      if (evt.description) {
         eventObject.body = evt.description;
       }
 
-      if (typeof evt.colorId !== "undefined") {
+      if (evt.colorId) {
         switch (evt.colorId) {
           case "1":
             eventObject.backgroundColor = "#7986cb";

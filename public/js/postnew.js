@@ -129,8 +129,6 @@ const clickHandler = async () => {
     featured: featured.checked,
   };
 
-  console.log(JSON.stringify(postData));
-
   fetch("/admin/posts", {
     method: "POST",
     body: JSON.stringify(postData),

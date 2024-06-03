@@ -12,7 +12,6 @@ const UserSchema = new mongoose.Schema({
   countryResidence: String,
   respCie: { type: String, required: false },
   newsletter: { type: Boolean, default: false },
-  verified: Boolean,
   registrationDate: Date,
   status: {
     type: String,

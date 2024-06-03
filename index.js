@@ -122,8 +122,8 @@ app.use("/pot/titleholders", titleholderRoutes);
 app.use("/certification", certificationRoutes);
 
 app.get("/", isValidated, async (req, res) => {
-  const featured = await FeaturedPost.findOne({}).populate("featuredPostId");
-  const featuredPost = featured.featuredPostId;
+  const featured = await FeaturedPost.findOne({}).populate("featuredPost");
+  const featuredPost = featured.featuredPost;
 
   if (featuredPost.images.length === 0) {
     featuredPost.images = [{ url: "" }];

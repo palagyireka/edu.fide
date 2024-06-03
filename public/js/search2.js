@@ -145,7 +145,7 @@ const loadCards = (isFirst = true) => {
   });
 };
 
-const newSearch = () => {
+const newSearch = (event) => {
   const previousElements = document.querySelectorAll(".result-card");
   previousElements.forEach((element) => {
     element.remove();
@@ -154,7 +154,9 @@ const newSearch = () => {
   lastDate = new Date("2050-01");
   pageNumber = 1;
 
-  loadCards();
+  if (!event.target.classList.contains("vscomp-search-input")) {
+    loadCards();
+  }
 };
 
 const loadMore = () => {
