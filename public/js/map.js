@@ -15,6 +15,52 @@ let startX, startY, viewBoxX, viewBoxY;
 worldMap.addEventListener("mousedown", startPan);
 worldMap.addEventListener("touchstart", startPan);
 worldMap.addEventListener("wheel", handleWheel);
+worldMap.addEventListener("touchmove", handleTouchMove);
+worldMap.addEventListener("touchend", handleTouchEnd);
+
+let initialScale = null;
+// Handle touch move for pinch-to-zoom
+function handleTouchMove(event) {
+  if (event.touches.length === 2) {
+    event.preventDefault();
+    const touch1 = event.touches[0];
+    const touch2 = event.touches[1];
+    const dx = touch2.clientX - touch1.clientX;
+    const dy = touch2.clientY - touch1.clientY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (!initialScale) {
+      initialScale = distance;
+    } else {
+      const scale = distance / initialScale;
+      zoomMap(scale);
+    }
+  }
+}
+// Handle touch end to reset initial scale
+function handleTouchEnd(event) {
+  if (event.touches.length < 2) {
+    initialScale = null;
+  }
+}
+// Function to zoom the map based on scale
+function zoomMap(scale) {
+  let viewBox = worldMap.getAttribute("viewBox").split(" ").map(Number);
+  const [x, y, width, height] = viewBox;
+
+  const newWidth = width / scale;
+  const newHeight = height / scale;
+
+  if (newWidth > 0 && newHeight > 0) {
+    const newX = x - (newWidth - width) / 2;
+    const newY = y - (newHeight - height) / 2;
+
+    worldMap.setAttribute(
+      "viewBox",
+      `${newX} ${newY} ${newWidth} ${newHeight}`
+    );
+  }
+}
 
 function startPan(event) {
   const rect = worldMap.getBoundingClientRect();
@@ -372,5 +418,10 @@ filter.addEventListener("keyup", (event) => {
 
 cancelIcon.addEventListener("click", () => {
   filter.value = "";
+  gsap.to(worldMap, {
+    duration: 0.8,
+    attr: { viewBox: "0 0 1902 762" },
+    ease: "power3.inOut",
+  });
   filter.dispatchEvent(new Event("keyup"));
 });
