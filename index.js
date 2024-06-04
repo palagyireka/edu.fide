@@ -42,6 +42,7 @@ const partnershipRoutes = require("./routes/partnership");
 const testimonialRoutes = require("./routes/testimonial");
 const titleholderRoutes = require("./routes/titleholder");
 const certificationRoutes = require("./routes/certification");
+const bookRoutes = require("./routes/books");
 const url = require("url");
 
 const dbUrl = process.env.DB_URL;
@@ -109,6 +110,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api", apiRoutes);
+app.use("/newbooks", bookRoutes);
 app.use("/", userRoutes);
 app.use("/", menuRoutes);
 app.use("/", staticRoutes);

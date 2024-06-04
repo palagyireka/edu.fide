@@ -85,8 +85,6 @@ const getPath = () => {
 
 const path = getPath();
 
-console.log(path);
-
 const clickHandler = async () => {
   const textContent = quill.getContents();
 

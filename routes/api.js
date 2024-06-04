@@ -15,6 +15,10 @@ router.get("/:id/json", api.getText);
 
 router.get("/featuredid", api.getFeatured);
 
+router.get("/books", catchAsync(api.getBooks));
+
+router.get("/books/:bookId", catchAsync(api.getBookText));
+
 router.post("/search", catchAsync(api.search));
 
 router.post("/gallery", catchAsync(api.gallery));

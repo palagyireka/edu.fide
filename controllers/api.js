@@ -1,6 +1,7 @@
-const Blogpost = require("../models/blogpost");
+const Post = require("../models/blogpost");
 const Countrycontact = require("../models/countrycontact");
 const FeaturedPost = require("../models/featuredPost");
+const Book = require("../models/books");
 const deltaToHtml = require("../utils/deltaToHtml");
 const { convert } = require("html-to-text");
 const { google } = require("googleapis");
@@ -26,7 +27,7 @@ module.exports.imageUpload = (req, res) => {
 
 module.exports.getText = async (req, res) => {
   const { id } = req.params;
-  const post = await Blogpost.findById(id);
+  const post = await Post.findById(id);
   res.json(post);
 };
 
@@ -120,7 +121,7 @@ module.exports.search = async (req, res) => {
       : null;
   }
 
-  const results = await Blogpost.aggregate([
+  const results = await Post.aggregate([
     { $match: query },
     {
       $facet: {
@@ -222,4 +223,17 @@ module.exports.getContactInfo = async (req, res) => {
   const chosenContact = await Countrycontact.findOne({ name: countryC });
 
   res.json(chosenContact);
+};
+
+module.exports.getBookText = async (req, res) => {
+  const bookId = req.params.bookId;
+
+  const book = await Book.findById(bookId);
+
+  res.json(book);
+};
+
+module.exports.getBooks = async (req, res) => {
+  const books = await Book.find();
+  res.json(books);
 };
