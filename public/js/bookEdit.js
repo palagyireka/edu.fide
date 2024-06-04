@@ -142,41 +142,36 @@ async function getContent() {
 const clickHandler = async () => {
   const titleContent = document.getElementById("title").value;
   const authorContent = document.getElementById("author").value;
-  const textContent = quill.getContents();
+  const textContent = JSON.stringify(quill.getContents());
+  const imageContent = document.getElementById("image").files;
 
-  const bookData = JSON.stringify({
-    title: titleContent,
-    author: authorContent,
-    text: textContent,
-  });
+  const form = new FormData();
+
+  form.append("title", titleContent);
+  form.append("author", authorContent);
+  form.append("text", textContent);
+
+  if (imageContent) {
+    form.append("image", imageContent[0]);
+    form.append("folder", "books");
+  }
 
   if (isNew) {
     fetch("/newbooks", {
       method: "POST",
-      body: bookData,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: form,
       redirect: "follow",
     }).then((resp) => {
       window.location.replace("/newbooks");
     });
   } else {
-    console.log({ bookData, id });
-
-    fetch(`/newbooks/${id}`, {
-      method: "PUT",
-      body: bookData,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        window.location.replace("/newbooks");
-      })
-      .catch(() => {
-        window.location.replace("/newbooks");
-      });
+    fetch(`/newbooks/${id}?_method=PUT`, {
+      method: "POST",
+      body: form,
+      redirect: "follow",
+    }).then(() => {
+      window.location.replace("/newbooks");
+    });
   }
 };
 

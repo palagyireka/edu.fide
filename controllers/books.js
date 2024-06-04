@@ -11,7 +11,18 @@ module.exports.bookEditor = (req, res) => {
 module.exports.addBook = async (req, res) => {
   const book = req.body;
 
-  const newBook = new Book({ ...book, date: new Date() });
+  const image = req.file;
+  const newBook = new Book({
+    title: book.title,
+    author: book.author,
+    text: JSON.parse(book.text),
+
+    date: new Date(),
+  });
+  if (image) {
+    newBook.image = { name: req.file.filename, url: req.file.path };
+  }
+
   await newBook.save();
 
   req.flash("success", "New book added");
@@ -19,9 +30,19 @@ module.exports.addBook = async (req, res) => {
 };
 
 module.exports.editBook = async (req, res) => {
-  const book = req.body;
+  const bookData = {
+    title: req.body.title,
+    author: req.body.author,
+    text: JSON.parse(req.body.text),
+  };
 
-  const editedBook = await Book.findByIdAndUpdate(req.params.bookId, book);
+  const image = req.file;
+  if (image) {
+    bookData.image = { name: req.file.filename, url: req.file.path };
+    console.log(image);
+  }
+
+  const editedBook = await Book.findByIdAndUpdate(req.params.bookId, bookData);
 
   req.flash("success", "Updated");
   res.send("ok");

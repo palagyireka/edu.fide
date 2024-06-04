@@ -53,6 +53,12 @@ async function getContent() {
       authorDiv.innerText = book.author;
       wrapperDiv.appendChild(authorDiv);
     }
+
+    if (book.image) {
+      const bookImage = document.createElement("img");
+      bookImage.src = book.image.url;
+      wrapperDiv.appendChild(bookImage);
+    }
   });
 
   const imgs = document.querySelectorAll(".text-body img");
