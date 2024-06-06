@@ -1,76 +1,54 @@
-const bodyDiv = document.querySelector(".text-body");
-const url = window.location.href;
-
-async function getContent() {
-  const response = await fetch(`/api/books`, {
-    method: "GET",
+const bookts = document.querySelectorAll(".booktxt");
+bookts.forEach((booktxt) => {
+  let booktext = booktxt.getAttribute("data-b");
+  booktext = JSON.parse(booktext);
+  const tempQuill = new Quill(document.createElement("div"), {
+    modules: {
+      imageResize: {},
+    },
   });
+  tempQuill.setContents(booktext);
+  booktxt.innerHTML += tempQuill.root.innerHTML;
+});
 
-  const bookData = await response.json();
+document.querySelectorAll(".bookw").forEach((b) => {
+  b.style.width = `${b.querySelector(".booklbl img").offsetWidth + 30}px`;
+  const ad = b.querySelector(".bookad")
+    ? b.querySelector(".bookad").offsetHeight
+    : 0;
+  b.style.height = `${
+    b.querySelector(".booklbl img").offsetHeight + ad + 30
+  }px`;
+});
 
-  bookData.reverse().forEach((book) => {
-    const tempQuill = new Quill(document.createElement("div"), {
-      modules: {
-        imageResize: {},
-      },
+document.querySelectorAll(".bookpop").forEach((p) => {
+  const lbl = p.querySelector(".booklbl");
+  const input = p.previousElementSibling;
+  const txt = p.querySelector(".booktxt");
+  const img = lbl.firstElementChild.cloneNode(true);
+  lbl.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    input.checked = true;
+    togglePopup(p, input, txt, lbl, img);
+  });
+  input.addEventListener("change", () => {
+    togglePopup(p, input, txt, lbl, img);
+  });
+});
+
+function togglePopup(p, input, txt, lbl, img) {
+  if (input.checked) {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
-    tempQuill.setContents(book.text);
-
-    const wrapperDiv = document.createElement("div");
-    const titleDiv = document.createElement("div");
-
-    const textDiv = document.createElement("div");
-    const deleteButton = document.createElement("button");
-    const deleteForm = document.createElement("form");
-    const editLink = document.createElement("a");
-
-    deleteForm.method = "post";
-    deleteForm.action = `/newbooks/${book._id}?_method=DELETE`;
-
-    wrapperDiv.classList.add("book-wrapper");
-    titleDiv.classList.add("book-title");
-    textDiv.classList.add("book-text");
-    deleteButton.classList.add("book-delete-button");
-    editLink.classList.add("book-edit");
-
-    deleteButton.innerText = "Delete";
-    editLink.innerText = "Edit";
-    editLink.href = `/newbooks/${book._id}`;
-    titleDiv.innerText = book.title;
-    textDiv.innerHTML += tempQuill.root.innerHTML;
-
-    deleteForm.appendChild(deleteButton);
-    wrapperDiv.appendChild(titleDiv);
-
-    wrapperDiv.appendChild(textDiv);
-    wrapperDiv.appendChild(editLink);
-    wrapperDiv.appendChild(deleteForm);
-    bodyDiv.appendChild(wrapperDiv);
-
-    if (book.author) {
-      const authorDiv = document.createElement("div");
-      authorDiv.classList.add("book-author");
-      authorDiv.innerText = book.author;
-      wrapperDiv.appendChild(authorDiv);
-    }
-
-    if (book.image) {
-      const bookImage = document.createElement("img");
-      bookImage.src = book.image.url;
-      wrapperDiv.appendChild(bookImage);
-    }
-  });
-
-  const imgs = document.querySelectorAll(".text-body img");
-
-  imgs.forEach((img) => {
-    const parent = img.parentNode;
-    const imgWrapper = document.createElement("div");
-    imgWrapper.classList.add("img-wrapper");
-
-    parent.replaceChild(imgWrapper, img);
-    imgWrapper.appendChild(img);
-  });
+    p.classList.add("book-popup");
+    lbl.style.display = "none";
+    txt.insertBefore(img, txt.firstChild);
+  } else {
+    p.classList.remove("book-popup");
+    img.remove();
+    lbl.style.display = "block";
+  }
 }
-
-getContent();

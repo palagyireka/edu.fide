@@ -32,7 +32,7 @@ function handleTouchMove(event) {
     if (!initialScale) {
       initialScale = distance;
     } else {
-      const scale = distance / initialScale;
+      const scale = (distance / initialScale) * 0.1;
       zoomMap(scale);
     }
   }

@@ -1,7 +1,10 @@
 const Book = require("../models/books");
 
-module.exports.allBooks = (req, res) => {
-  res.render("book/allBooks");
+module.exports.allBooks = async (req, res) => {
+  const books = await Book.find({});
+  let booksData = JSON.stringify(books);
+  booksData = JSON.parse(booksData);
+  res.render("book/allBooks", { booksData });
 };
 
 module.exports.bookEditor = (req, res) => {

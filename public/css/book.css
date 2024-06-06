@@ -1,0 +1,104 @@
+main.books {
+  box-sizing: border-box;
+  padding: 30px 70px;
+}
+main.books *,
+main.books * * {
+  box-sizing: border-box;
+}
+
+.booksc {
+  display: flex;
+  flex-wrap: wrap;
+}
+.bookw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  background-color: #5b85aa;
+  border-radius: 5px;
+}
+.bookad {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.booklbl {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.booklbl img {
+  height: 430px;
+}
+.bookw input[type="checkbox"] {
+  display: none;
+}
+.bookw input[type="checkbox"]:not(:checked) + div > .booklbl + .booktxt {
+  display: none;
+}
+
+.bookt {
+  font-size: 24px;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+.booka {
+  font-size: 20px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.bookw input[type="checkbox"]:checked {
+  display: block;
+  z-index: 1100;
+  position: absolute;
+  appearance: unset;
+  top: 30px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.4s ease-in-out;
+  cursor: pointer;
+  background-image: url("closeb.png");
+  background-size: contain;
+}
+
+.bookw input[type="checkbox"]:checked:hover {
+  transform: rotate(90deg);
+}
+
+.book-popup {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+  background-color: rgba(128, 128, 128, 0.622);
+}
+
+.book-popup .booklbl {
+  flex-shrink: 0;
+  float: left;
+}
+
+.book-popup .booktxt {
+  background-color: white;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+.booktxt img {
+  float: left;
+  height: 480px;
+  margin: 0 15px 15px 0;
+}

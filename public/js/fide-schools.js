@@ -27,9 +27,7 @@ if (dropd) {
   const cancelbtn = document.querySelector("#cancelsch");
   let latestid = "";
   dropd.addEventListener("change", () => {
-    console.log(dropd.value);
     const selectedSch = JSON.parse(dropd.value);
-
     inputs[0].value = selectedSch.name;
     inputs[1].value = selectedSch.country;
     inputs[2].value = selectedSch.city;
@@ -91,7 +89,7 @@ if (dropd) {
       awarddate: dateContent,
     };
 
-    fetch(`/certification/fide-schools/update/${id}`, {
+    fetch(`/certification/fide-schools/update/${latestid}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
