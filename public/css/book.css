@@ -56,7 +56,7 @@ main.books * * {
 .bookw input[type="checkbox"]:checked {
   display: block;
   z-index: 1100;
-  position: absolute;
+  position: fixed;
   appearance: unset;
   top: 30px;
   left: 30px;
@@ -73,7 +73,8 @@ main.books * * {
 }
 
 .book-popup {
-  position: absolute;
+  position: fixed;
+  overflow: scroll;
   z-index: 1000;
   top: 0;
   left: 0;
@@ -92,12 +93,16 @@ main.books * * {
 
 .book-popup .booktxt {
   background-color: white;
+  word-wrap: break-word;
+  width: 100%;
+  position: relative;
   font-size: 14px;
   line-height: 1.5;
   padding: 20px;
 }
 
 .booktxt img {
+  position: relative;
   float: left;
   height: 480px;
   margin: 0 15px 15px 0;

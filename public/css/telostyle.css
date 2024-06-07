@@ -27,6 +27,28 @@
   .result-card .tag-names {
     font-size: 12px;
   }
+  main.books {
+    padding: 20px 5px;
+  }
+
+  .booktxt img {
+    height: unset;
+    width: 100%;
+  }
+
+  .booksc {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  .book-popup {
+    padding: 0;
+    flex-wrap: wrap;
+  }
 
   .navtarolo .lista-1 {
     width: 100%;
