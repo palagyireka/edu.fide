@@ -19,19 +19,36 @@ module.exports.createPost = async (req, res) => {
     date: new Date(),
     tags: req.body.tags,
     countries: req.body.countries,
+    featured: req.body.featured,
   });
-
-  if (req.body.featured === true) {
-    await FeaturedPost.findOneAndUpdate({}, { featuredPostId: newPost._id });
-  }
 
   if (req.body.images) {
     newPost.images = req.body.images;
   }
-  newPost.save().then((post) => {
-    req.flash("success", "Successfully made a new post!");
-    res.send("ok");
-  });
+
+  await newPost.save();
+
+  if (req.body.featured === true) {
+    const featured = await FeaturedPost.findOne({});
+    if (!featured) {
+      const newFeatured = new FeaturedPost({
+        featuredPosts: [{ post: newPost._id, featuredDate: new Date() }],
+      });
+      await newFeatured.save();
+    } else {
+      if (featured.featuredPosts.length >= 4) {
+        featured.featuredPosts.sort((a, b) => a.featuredDate - b.featuredDate);
+        featured.featuredPosts.shift();
+      }
+      featured.featuredPosts.push({
+        post: newPost._id,
+        featuredDate: new Date(),
+      });
+      await featured.save();
+    }
+  }
+  req.flash("success", "Successfully made a new post!");
+  res.send("ok");
 };
 
 module.exports.renderPosts = (req, res) => {

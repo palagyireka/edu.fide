@@ -124,39 +124,27 @@ app.use("/pot/titleholders", titleholderRoutes);
 app.use("/certification", certificationRoutes);
 
 app.get("/", isValidated, async (req, res) => {
-  const featured = await FeaturedPost.findOne({}).populate("featuredPost");
-  const featuredPost = featured.featuredPost;
-
-  if (featuredPost.images.length === 0) {
-    featuredPost.images = [{ url: "" }];
-  }
-
-  featuredPost.text = deltaToHtml(featuredPost.text);
-  featuredPost.text = convert(featuredPost.text);
-  featuredPost.text = featuredPost.text.replace(/\[http.*?\]/gm, "");
-
-  let readMore = false;
-
-  const cutat = featuredPost.text.lastIndexOf(" ", 500);
-  if (cutat != -1) {
-    featuredPost.text = featuredPost.text.substring(0, cutat) + "...";
-    readMore = true;
-  }
-
-  let tag;
-  if (featuredPost.tags[0] === "all") {
-    tag = "blog";
-  } else if (featuredPost.tags[0] === "cieInitiatives") {
-    tag = "initiatives";
-  } else {
-    tag = featuredPost.tags[0];
-  }
-
-  const index = true;
-
+  const featured = await FeaturedPost.findOne({}).populate(
+    "featuredPosts.post"
+  );
+  let featuredPosts = featured
+    ? featured.featuredPosts.map((fp) => fp.post)
+    : [];
+  featuredPosts.forEach((p) => {
+    if (p.images.length === 0) {
+      p.images = [{ url: "" }];
+    }
+    p.text = deltaToHtml(p.text);
+    p.text = convert(p.text);
+    p.text = p.text.replace(/\[http.*?\]/gm, "");
+    const cutat = p.text.lastIndexOf(" ", 500);
+    if (cutat != -1) {
+      p.text = p.text.substring(0, cutat) + "...";
+    }
+  });
   const ogMarkup = new DefaultMarkup(req, "FIDE Chess in Education Commission");
 
-  res.render("index", { featuredPost, tag, readMore, index, ogMarkup });
+  res.render("index", { featuredPosts, ogMarkup });
 });
 
 app.get("/search", async (req, res) => {

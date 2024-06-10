@@ -6,7 +6,7 @@
         <p>Upcoming Events</p>
         <ul class="calendar-ul"></ul>
       </div>
-      <% if (featuredPost) {%>
+      <% if (featuredPosts) {%>
       <div id="featured"><%- include('partials/featured') %></div>
       <% } %>
     </div>
@@ -117,3 +117,6 @@
 ></script>
 <script src="/js/map.js"></script>
 <script src="/js/calendar.js"></script>
+<script>
+  document.querySelector("body").style.backgroundColor = "#ccd6f1";
+</script>

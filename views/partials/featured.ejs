@@ -1,17 +1,13 @@
 <p>Featured</p>
-<a href="/<%= tag %>/<%= featuredPost._id %>">
-  <div class="featured-title"><%= featuredPost.title %></div>
-  <% if (featuredPost.images[0].url !== "") { %>
+<a href="">
+  <div
+    class="featured-title"
+    data-f="<%= JSON.stringify(featuredPosts) %>"
+  ></div>
   <div class="featured-img-container">
-    <img
-      src="<%= featuredPost.images[0].url %>"
-      alt="image"
-      class="featured-img"
-    />
+    <img src="" alt="image" class="featured-img" />
   </div>
-  <% } %>
-  <div class="featured-text"><%= featuredPost.text %></div>
-  <% if (readMore === true) {%>
+  <div class="featured-text"></div>
   <div class="read-more">Read more here >></div>
-  <% } %>
 </a>
+<script src="/js/featured.js"></script>
