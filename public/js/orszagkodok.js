@@ -1746,12 +1746,6 @@ let countryCodes = [
     desc: "",
   },
   {
-    name: "Taiwan",
-    "alpha-2": "TW",
-    "country-code": "158",
-    desc: "",
-  },
-  {
     name: "Taipei",
     "alpha-2": "TP",
     "country-code": "notACountry",
