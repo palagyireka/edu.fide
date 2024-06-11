@@ -203,6 +203,7 @@ const addCountryFunctions = (userLocation) => {
     item.addEventListener("touchstart", orszagValaszt);
 
     function orszagValaszt(evt) {
+      ChinaUp.classList.add("hidden");
       const selectedCountry = document.querySelectorAll(".selected");
       const searchedCountry = document.querySelectorAll(".selected-country");
       if (selectedCountry) {
@@ -210,6 +211,7 @@ const addCountryFunctions = (userLocation) => {
           country.classList.remove("selected");
         });
       }
+
       evt.target.classList.add("selected");
       if (
         window.innerWidth > 1200 &&
@@ -227,10 +229,16 @@ const addCountryFunctions = (userLocation) => {
         if (evt.target.id == "ChinaUp") {
           IndiaUp.classList.add("hidden");
           PakistanUp.classList.add("hidden");
+          document
+            .querySelectorAll(".sm_state_CN")
+            .forEach((item) => item.classList.add("selected"));
         }
         if (evt.target.id == "IndiaUp") {
           ChinaUp.classList.add("hidden");
           PakistanUp.classList.add("hidden");
+        }
+        if (evt.target.id === "path147") {
+          document.getElementById("ChinaUp").dispatchEvent(new Event("click"));
         }
       } else {
         if (evt.target.id == "path435") {
@@ -282,7 +290,7 @@ const addCountryFunctions = (userLocation) => {
     ChinaUp.classList.add("hidden");
     IndiaUp.classList.add("hidden");
 
-    item.addEventListener("mousemove", (event) => {
+    item.addEventListener("mouseenter", (event) => {
       if (item.id == "path435") {
         UKCopy.classList.remove("hidden");
       }
@@ -291,9 +299,17 @@ const addCountryFunctions = (userLocation) => {
       }
       if (item.id == "ChinaDown") {
         ChinaUp.classList.remove("hidden");
+        document.getElementById("path147").style.fill = "#91b0b2";
+      }
+      if (item.id == "ChinaUp") {
+        document.getElementById("path147").style.fill = "#91b0b2";
       }
       if (item.id == "IndiaDown") {
         IndiaUp.classList.remove("hidden");
+      }
+      if (item.id === "path147") {
+        document.getElementById("ChinaUp").style.fill = "#91b0b2";
+        ChinaUp.classList.remove("hidden");
       }
       hoverText.querySelector("span").textContent = country;
       hoverText.classList.remove("hidden");
@@ -308,11 +324,18 @@ const addCountryFunctions = (userLocation) => {
       if (item.id == "PakistanUp" && !item.classList.contains("selected")) {
         PakistanUp.classList.add("hidden");
       }
-      if (item.id == "ChinaUp" && !item.classList.contains("selected")) {
-        ChinaUp.classList.add("hidden");
+      if (item.id == "ChinaUp") {
+        if (!item.classList.contains("selected")) {
+          ChinaUp.classList.add("hidden");
+        }
+        document.getElementById("path147").style.fill = null;
       }
       if (item.id == "IndiaUp" && !item.classList.contains("selected")) {
         IndiaUp.classList.add("hidden");
+      }
+      if (item.id === "path147") {
+        document.getElementById("ChinaUp").style.fill = null;
+        ChinaUp.classList.add("hidden");
       }
       hoverText.classList.add("hidden");
     });
@@ -368,9 +391,11 @@ for (let country of countryCodes) {
   listItem.innerText = country.name;
 
   listItem.addEventListener("click", () => {
-    const item = document.querySelector(`.sm_state_${country["alpha-2"]}`);
-    zoomIn(item);
-    item.dispatchEvent(new Event("click"));
+    const items = document.querySelectorAll(`.sm_state_${country["alpha-2"]}`);
+    items.forEach((item) => {
+      zoomIn(item);
+      item.dispatchEvent(new Event("click"));
+    });
   });
   list.appendChild(listItem);
 }
@@ -397,7 +422,6 @@ listItems.forEach((item) => {
 
 filter.addEventListener("keyup", (event) => {
   const filterValue = event.target.value.toUpperCase();
-
   if (filterValue != "") {
     searchIcon.classList.add("hidden");
     cancelIcon.classList.remove("hidden");
@@ -407,7 +431,7 @@ filter.addEventListener("keyup", (event) => {
   }
 
   for (let item of listItems) {
-    text = item.innerText.toUpperCase();
+    let text = item.innerText.toUpperCase();
     if (text.indexOf(filterValue) > -1) {
       item.removeAttribute("hidden");
     } else {
